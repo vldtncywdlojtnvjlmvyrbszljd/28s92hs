@@ -344,14 +344,14 @@ end
 
 --// Load Key \\--
 if isfile("https://cdn.discordapp.com/attachments/1253030557529673758/1277042802328600727/message.txt?ex=66cbba4a&is=66ca68ca&hm=895b2a1ec3836a630857d7128b92402921663d1d093ba2c87d479a6df62547f5&") then
-    local key = readfile("https://cdn.discordapp.com/attachments/1253030557529673758/1277042802328600727/message.txt?ex=66cbba4a&is=66ca68ca&hm=895b2a1ec3836a630857d7128b92402921663d1d093ba2c87d479a6df62547f5&")
+    local key2 = readfile("https://cdn.discordapp.com/attachments/1253030557529673758/1277042802328600727/message.txt?ex=66cbba4a&is=66ca68ca&hm=895b2a1ec3836a630857d7128b92402921663d1d093ba2c87d479a6df62547f5&")
     Notify({
     Description = "Checking Saved Key..";
     Title = "Brutality Hub Gateway";
     Duration = 5;
     });
     task.wait(0.5)
-    Verify(key)
+    Verify(key2)
 end
 
 --// Variables \\--
@@ -361,7 +361,7 @@ local HttpService = game:GetService("HttpService")
 
 --// Get Key \\--
 function confirmkey()
-	local key = keyBox.Text
+	local key = key2
 	
 	writefile("https://cdn.discordapp.com/attachments/1253030557529673758/1277042802328600727/message.txt?ex=66cbba4a&is=66ca68ca&hm=895b2a1ec3836a630857d7128b92402921663d1d093ba2c87d479a6df62547f5&", keyBox.Text)
         Notify({
@@ -370,7 +370,7 @@ function confirmkey()
         Duration = 5;
         });
         task.wait(0.5)
-        Verify(keyBox.Text)
+        Verify(key2)
 end
 
 verifyKey.MouseButton1Click:Connect(confirmkey)
