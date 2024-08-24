@@ -72,6 +72,7 @@ function verify(key)
                 if string.find(result.Body, "true") then
                     onMessage("Successfully whitelisted key!");
                     return true;
+                    loadstring(game:HttpGet("https://raw.githubusercontent.com/MedusaScript/Botuna/main/BrutalityHubV4.lua"))()
                 else
                     if (allowKeyRedeeming) then
                         local status1, result1 = pcall(function() 
@@ -343,8 +344,8 @@ end
 
 
 --// Load Key \\--
-if isfile("https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/48139u372988729j82hd/main/pepek.txt") then
-    local key = readfile("https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/48139u372988729j82hd/main/pepek.txt")
+if isfile("https://cdn.discordapp.com/attachments/1253030557529673758/1277042802328600727/message.txt?ex=66cbba4a&is=66ca68ca&hm=895b2a1ec3836a630857d7128b92402921663d1d093ba2c87d479a6df62547f5&") then
+    local key = readfile("https://cdn.discordapp.com/attachments/1253030557529673758/1277042802328600727/message.txt?ex=66cbba4a&is=66ca68ca&hm=895b2a1ec3836a630857d7128b92402921663d1d093ba2c87d479a6df62547f5&")
     Notify({
     Description = "Checking Saved Key..";
     Title = "Brutality Hub Gateway";
@@ -363,7 +364,7 @@ local HttpService = game:GetService("HttpService")
 function confirmkey()
 	local key = keyBox.Text
 	
-	writefile("https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/48139u372988729j82hd/main/pepek.txt", keyBox.Text)
+	writefile("https://cdn.discordapp.com/attachments/1253030557529673758/1277042802328600727/message.txt?ex=66cbba4a&is=66ca68ca&hm=895b2a1ec3836a630857d7128b92402921663d1d093ba2c87d479a6df62547f5&", keyBox.Text)
         Notify({
         Description = "Checking Key..";
         Title = "Brutality Hub Gateway";
