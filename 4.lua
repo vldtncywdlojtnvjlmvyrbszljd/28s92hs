@@ -72,7 +72,6 @@ function verify(key)
                 if string.find(result.Body, "true") then
                     onMessage("Successfully whitelisted key!");
                     return true;
-                    loadstring(game:HttpGet("https://raw.githubusercontent.com/MedusaScript/Botuna/main/BrutalityHubV4.lua"))()
                 else
                     if (allowKeyRedeeming) then
                         local status1, result1 = pcall(function() 
