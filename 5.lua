@@ -231,13 +231,13 @@ end;
 
 getKeyButton.MouseButton1Click:Connect(function()
     setclipboard(getLink())
-    validationLabel.Text = "Link key copied!"
+    validationLabel.Text = "Link Key Kopied!"
     validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 end)
 
 DiscordButton.MouseButton1Click:Connect(function()
-    setclipboard(getLink())
-    validationLabel.Text = "Link Discord copied!"
+    setclipboard('https://discord.com/invite/brutality-hub-1182005198206545941')
+    validationLabel.Text = "Link Discord Copied!"
     validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 end)
 
