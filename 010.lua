@@ -235,6 +235,12 @@ getKeyButton.MouseButton1Click:Connect(function()
     validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 end)
 
+DiscordButton.MouseButton1Click:Connect(function()
+    setclipboard(getLink())
+    validationLabel.Text = "Link Discord copied!"
+    validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+end)
+
 checkKeyButton.MouseButton1Click:Connect(function()
     local key = textBox.Text
     if verify(key) then
