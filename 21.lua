@@ -2530,32 +2530,32 @@ spawn(function()
         task.wait()
     until game.Players.LocalPlayer and game.Players.LocalPlayer.Team ~= nil 
     wait(1.5)
-    require(game.ReplicatedStorage.Notification).new("<Color=Red>Banana hub chào ae<Color=/>"):Display()
+    require(game.ReplicatedStorage.Notification).new("<Color=Red>Brutality Hub V4<Color=/>"):Display()
     wait(.5)
-    require(game.ReplicatedStorage.Notification).new("<Color=Yellow>Hãy sử dụng DeltaX Hoặc Fluxus để có trải nghiệm tốt!!<Color=/>"):Display()
+    require(game.ReplicatedStorage.Notification).new("<Color=Yellow>Thanks Use Brutality Hub<Color=/>"):Display()
     wait(.24)
-    require(game.ReplicatedStorage.Notification).new("<Color=Yellow>Tham gia discord để cập nhật thông tin mới nhất nhé<Color=/>"):Display()
+    require(game.ReplicatedStorage.Notification).new("<Color=Yellow>Join Server Discord For Use Webhook Notify<Color=/>"):Display()
     wait(.29)
-    require(game.ReplicatedStorage.Notification).new("<Color=Yellow>Đăng ký kênh khangCC để xem video mới nhất nhé<Color=/>"):Display()
+    require(game.ReplicatedStorage.Notification).new("<Color=Yellow>Please Subscribe Medusa Script Roblox<Color=/>"):Display()
     wait(.36)
 end)
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "Banana hub", HidePremium = false, IntroText = "Banana hub⚜️", SaveConfig = true, ConfigFolder = "NightHub"})
+local Window = OrionLib:MakeWindow({Name = "BRUTALITY HUB", HidePremium = false, IntroText = "BRUTALITY HUB", SaveConfig = true, ConfigFolder = "NightHub"})
 
 
 
 OrionLib:MakeNotification({
-    Name = "Banana hub",
+    Name = "Brutality Hub V4",
     Content = "Please Wait loading script...,Do not enable any function",
-    Image = "rbxassetid://8192162908",
+    Image = "rbxassetid://104397992902189",
     Time = 5
 })
 wait(3)
 OrionLib:MakeNotification({
     Name = "Banana hub",
     Content = "đợi hub load config rồi mới sài nha",
-    Image = "rbxassetid://8192162908",
+    Image = "rbxassetid://1043979929021898",
     Time = 10
 })
 
@@ -2604,7 +2604,7 @@ local RA = Window:MakeTab({
 })
 
 local LC = Window:MakeTab({
-    Name = "🙆‍♂️ BẢN THÂN",
+    Name = "BẢN THÂN",
     Icon = "rbxassetid://104397992902189",
     PremiumOnly = false
 })
@@ -5494,8 +5494,25 @@ local Elite_Hunter_Status = SV:AddLabel("Only Third Sea")
             end)
     end)
 end
+local Mirragecheck = SV:AddLabel("Only Third Sea")
 
-Mirragecheck = SV:AddLabel("Only Third Sea")
+    local FrozenIsland = SV:AddSection({
+        Name = "Frozen Dimension Check"
+    })
+
+local FrozenIsland = SV:AddLabel("Only Third Sea")
+
+    spawn(function()
+        pcall(function()
+            while wait() do
+                if game.Workspace._WorldOrigin.Locations:FindFirstChild('Frozen Dimension') then
+                    FrozenIsland:Set('Frozen Dimension Spawning | ❄️')
+                else
+                    FrozenIsland:Set('Frozen Dimension Not Found | ❌')
+                end
+            end
+        end)
+    end)
 
 local Section = SV:AddSection({
     Name = "Dough King Check"
