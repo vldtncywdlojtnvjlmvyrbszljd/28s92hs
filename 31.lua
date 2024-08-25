@@ -7,10 +7,11 @@ Window:AddMinimizeButton({
 
 local Tabs = {
   Discord = Window:MakeTab({"Home", "Info"}),
-  MainFarm = Window:MakeTab({"Farm", "Home"}),
-  Items = Window:MakeTab({"Items", "Swords"}),
-  Stats = Window:MakeTab({"Stats", "Signal"}),
-  Teleport = Window:MakeTab({"Teleport", "Locate"}),
+  MainFarm = Window:MakeTab({"Farm Level", "Home"}),
+  Items = Window:MakeTab({"Quest Items", "Swords"}),
+  Stats = Window:MakeTab({"Statistic", "Signal"}),
+  Stats = Window:MakeTab({"Status Server", "Signal"}),
+  Teleport = Window:MakeTab({"Teleport Island", "Locate"}),
   Shop = Window:MakeTab({"Shop", "ShoppingCart"}),
   Misc = Window:MakeTab({"Misc", "Settings"})
 }
