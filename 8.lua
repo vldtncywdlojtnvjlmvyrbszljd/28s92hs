@@ -297,7 +297,7 @@ local LogoHub = Instance.new("ImageLabel")
             PageImage.Parent = TabButton
             PageImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             PageImage.BackgroundTransparency = 1.000
-            PageImage.Position = UDim2.new(0, 5, 0, 5)
+            PageImage.Position = UDim2.new(0, 5, 0, 5) -- baru sampai sini
             PageImage.Size = UDim2.new(0, 15, 0, 15)
             PageImage.Image = "rbxassetid://"..tostring(Image)
             
@@ -1091,3 +1091,45 @@ local LogoToggle = Instance.new("ImageLabel")
     end
     return uitab
 end
+
+local Library = Update:Window("                  PREMIUM","104397992902189",Enum.KeyCode.RightControl); --12523036534
+
+local H = Library:AddTab("Home","6026568198")
+local Main = Library:AddTab("Level Farm","13075651575")
+local M = Library:AddTab("All Quest","13075622619")
+local RaceV4 = Library:AddTab("RaceV4","11162889532")
+local P = Library:AddTab("Player","7251993295")
+local R = Library:AddTab("Raid","11155986081")
+local T = Library:AddTab("Teleport","11155851001")
+local S = Library:AddTab("Shop","6031265976")
+local D = Library:AddTab("Devil Fruit","7044233235")
+local ESX = Library:AddTab("ESP","7044233235")
+local Ss = Library:AddTab("MISC","11156061121")
+local Dms = Library:AddTab("Sea Event","11156061121")
+
+--mulai masuk ke fitur sc
+
+H:AddSeperator("Made By Medusa Script")
+H:AddLabel("Click for copy link")
+H:AddLabel("Comingsoon New Update")
+H:AddLabel("Add Fitur Over Power")
+
+H:AddButton("Buy Permanent Key",function()
+setclipboard("https://discord.gg/brutality-hub-1182005198206545941")
+end)
+
+H:AddButton("Free Webhook Notify",function()
+setclipboard("https://discord.gg/brutality-hub-1182005198206545941")
+end)
+
+H:AddButton("Join Server Discord",function()
+setclipboard("https://discord.gg/brutality-hub-1182005198206545941")
+end)
+
+H:AddButton("Youtube Brutality Hub",function()
+setclipboard("https://youtube.com/@medusascriptroblox/")
+end)
+
+H:AddButton("Website Script",function()
+setclipboard("https://www.medusascript.xyz")
+end)
