@@ -7,10 +7,10 @@ screenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
 
 local frame = Instance.new("Frame")
 frame.Size = UDim2.new(0, 350, 0, 210)
-frame.Position = UDim2.new(0.5, -100, 0.3, -100)
+frame.Position = UDim2.new(0.5, -100, 0.5, -100)
 frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 frame.BorderSizePixel = 3
-frame.BorderColor3 = Color3.fromRGB(222, 142, 4)
+frame.BorderColor3 = Color3.fromRGB(255, 255, 255)
 frame.Active = true
 frame.Draggable = true
 frame.Parent = screenGui
