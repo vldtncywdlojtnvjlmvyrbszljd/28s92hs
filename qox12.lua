@@ -46,7 +46,7 @@ end)
 
 local label = Instance.new("TextLabel")
 label.Size = UDim2.new(1, 0, 0, 50)
-label.Position = UDim2.new(0, 0, 0, 100) --0,0,0,30
+label.Position = UDim2.new(0, 0, 0, 30) 
 label.Text = "PLEASE GET KEY FOR SUPPORT"
 label.Font = Enum.Font.SourceSansBold
 label.TextSize = 24
@@ -88,7 +88,7 @@ checkKeyButton.Parent = frame
 
 local validationLabel = Instance.new("TextLabel")
 validationLabel.Size = UDim2.new(0.8, 0, 0, 30)
-validationLabel.Position = UDim2.new(0.1, 0, 0.550, 0)
+validationLabel.Position = UDim2.new(0.1, 0, 1.00, 0) --0.1, 0, 0.550, 0
 validationLabel.Text = "Please Get Key"
 validationLabel.Font = Enum.Font.SourceSansBold
 validationLabel.TextSize = 18
