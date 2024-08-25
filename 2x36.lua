@@ -47,7 +47,7 @@ end)
 local label = Instance.new("TextLabel")
 label.Size = UDim2.new(1, 0, 0, 50)
 label.Position = UDim2.new(0, 0, 0, 30)
-label.Text = "Key System"
+label.Text = "PLEASE GET KEY FOR SUPPORT"
 label.Font = Enum.Font.SourceSansBold
 label.TextSize = 24
 label.TextColor3 = Color3.fromRGB(255, 255, 255)
