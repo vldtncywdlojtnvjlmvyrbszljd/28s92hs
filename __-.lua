@@ -1,4 +1,3 @@
---Fitur tab dan gui
 local ScreenGui1 = Instance.new("ScreenGui")
 local ImageButton1 = Instance.new("ImageButton")
 local UICorner = Instance.new("UICorner")
