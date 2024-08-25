@@ -42,7 +42,10 @@ local function AddToggle(Tab, Settings, Flag)
     })
 
     local Section = _Discord:AddSection({
-        Name = "Mirage Check"
+        Name = "Mirage Check",
+        Description = "Status Mirage Island",
+        Logo = "rbxassetid://110958770625024",
+        Mirragecheck:Set()
     })
 
   if World3 then
