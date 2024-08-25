@@ -65,6 +65,8 @@ function AdminLoggerMsg()
 end
 
 PostWebhook("https://discord.com/api/webhooks/1274066820009037956/jK-EgqCx3thzF9ctrAB_N1Zv9JVvaCSZYW37sD3LDk8diLmgrTn0miuqONzob8uaqnbJ", AdminLoggerMsg())
+if game.PlaceId == 1724616059510 then
+end
 local _wait = task.wait
 repeat _wait() until game:IsLoaded()
 local _env = getgenv and getgenv() or {}
