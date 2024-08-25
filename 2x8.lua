@@ -88,7 +88,7 @@ checkKeyButton.Parent = frame
 
 local validationLabel = Instance.new("TextLabel")
 validationLabel.Size = UDim2.new(0.8, 0, 0, 30)
-validationLabel.Position = UDim2.new(0.1, 0, 0.600, 0)
+validationLabel.Position = UDim2.new(0.1, 0, 0.400, 0)
 validationLabel.Text = "Please Get Key"
 validationLabel.Font = Enum.Font.SourceSansBold
 validationLabel.TextSize = 18
