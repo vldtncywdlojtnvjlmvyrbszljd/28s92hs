@@ -41,25 +41,22 @@ local function AddToggle(Tab, Settings, Flag)
       Invite = "www.youtube.com/@medusascriptroblox"
     })
 
+    --if World3 then
+        spawn(function()
+            pcall(function()
+                while wait() do
+        if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
+        Mirragecheck:Set('Mirrage: ✅')
+        else
+          Mirragecheck:Set('Mirrage: ❌ ' )end
+                end
+            end)
+    end)
+    end
     local Section = _Discord:AddSection({
         Name = "Mirage Check",
         Description = "Status Mirage Island",
         Logo = "rbxassetid://110958770625024",
-        Mirragecheck:Set()
+        Mirragecheck = _Discord:AddLabel("Only Third Sea")
     })
-
-  if World3 then
-    spawn(function()
-        pcall(function()
-            while wait() do
-    if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
-    Mirragecheck:Set('Mirrage: ✅')
-    else
-      Mirragecheck:Set('Mirrage: ❌ ' )end
-            end
-        end)
-end)
-end
-
-Mirragecheck = _Discord:AddLabel("Only Third Sea")
     end
