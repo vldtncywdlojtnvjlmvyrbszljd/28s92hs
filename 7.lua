@@ -2560,26 +2560,11 @@ local function AddToggle(Tab, Settings, Flag)
       Logo = "rbxassetid://110958770625024",
       Invite = "www.youtube.com/@medusascriptroblox"
     })
-
-    _Discord:AddDiscordInvite({
-        Name = "Mirage Check",
-        Description = "Please subscribe for get notify update script",
-        Logo = "rbxassetid://110958770625024",
-        Invite = "Miragecheck"
-    })
-
-    if World3 then
-        spawn(function()
-            pcall(function()
-                while wait() do
-        if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
-        Mirragecheck:Set('Mirrage: ✅')
-        else
-          Mirragecheck:Set('Mirrage: ❌ ' )end
-                end
-            end)
-    end)
     end
 
-    Mirragecheck= _Discord:AddLabel('Only Thirdsea')
+    local _MainFarm = Tabs.MainFarm do
+    _MainFarm:AddToggle("Auto Farm Level"), _G.AutoFarm function(Value)
+            _G.AutoFarm = Value
+            StopTween(_G.AutoFarm)
+        end    
     end
