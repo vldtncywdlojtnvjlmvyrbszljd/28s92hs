@@ -2196,7 +2196,7 @@ end)
 
     local WeaponList = {"Melee","Sword","Fruit","Gun"}
 _G.SelectWeapon = "Melee"
-_MainFarm:AddDropdown("Select Weapon",WeaponList,_G.SelectWeapon,function(value)
+:AddDropdown(_MainFarm,"Select Weapon",WeaponList,_G.SelectWeapon,function(value)
 _G.SelectWeapon = value
 end)
 
@@ -2242,10 +2242,10 @@ task.spawn(function()
     
 local WeaponList = {"Melee","Sword","Fruit","Gun"}
 _G.SelectWeapon = "Melee"
-_MainFarm:AddDropdown("Farm Mode", ListF,FarmMode,function(value)
+:AddDropdown(_MainFarm,"Farm Mode", ListF,FarmMode,function(value)
     _G.SelectWeapon = value
 end)
-:AddToggle({"Auto Farm Level"},_G.AutoFarm,function(value)
+_MainFarm:AddToggle({"Auto Farm Level"},_G.AutoFarm,function(value)
     _G.AutoFarm = value
 StopTween(_G.AutoFarm)
 end)
