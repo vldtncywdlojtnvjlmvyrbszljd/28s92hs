@@ -9,9 +9,10 @@ local frame = Instance.new("Frame")
 frame.Size = UDim2.new(0, 300, 0, 250)
 frame.Position = UDim2.new(0.2, -150, 0.5, -100)
 frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-frame.BorderSizePixel = 3
+frame.BorderSizePixel = 2
 frame.BorderColor3 = Color3.fromRGB(255, 255, 255)
 frame.Active = true
+frame.Shadow = true
 frame.Draggable = true
 frame.Parent = screenGui
 
