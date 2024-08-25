@@ -88,7 +88,7 @@ checkKeyButton.Parent = frame
 
 local DiscordButton = Instance.new("TextButton")
 DiscordButton.Size = UDim2.new(0.4, 0, 0, 30)
-DiscordButton.Position = UDim2.new(10, 0, 0.850, 0)
+DiscordButton.Position = UDim2.new(0.10, 0, 0.850, 0)
 DiscordButton.Text = "Join Discord"
 DiscordButton.Font = Enum.Font.SourceSansBold
 DiscordButton.TextSize = 18
