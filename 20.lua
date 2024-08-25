@@ -189,7 +189,7 @@ function Update:Window(text,logo,keybind)
     Tab.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
     Tab.BackgroundTransparency = 1.000
     Tab.Position = UDim2.new(0, 5, 0, 30)
-    Tab.Size = UDim2.new(0, 150, 0, 350)
+    Tab.Size = UDim2.new(0, 150, 0, 150) --0, 150, 0, 350
 
 local LogoHub = Instance.new("ImageLabel")
     LogoHub.Name = "LogoHub"
