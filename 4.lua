@@ -2573,10 +2573,10 @@ local function AddToggle(Tab, Settings, Flag)
             end)
     end)
     end
-    _Discord:AddSection({
+    _Discord:AddDiscordInvite({
         Name = "Mirage Check",
         Description = "Status Mirage Island",
         Logo = "rbxassetid://110958770625024",
-        Mirragecheck = _Discord:AddLabel("Only Third Sea")
+        Invite = Mirragecheck:AddLabel('Only Thirdsea'),
     })
     end
