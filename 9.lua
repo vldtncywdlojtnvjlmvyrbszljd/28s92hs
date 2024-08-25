@@ -2564,10 +2564,7 @@ local function AddToggle(Tab, Settings, Flag)
 
     local _MainFarm = Tabs.MainFarm do
         _MainFarm:AddSection("Farm")
-  AddToggle(_MainFarm, "Auto Farm Level"), _G.AutoFarm function(Value)
-        Default = false,
-        Flag = "LevelFarm",
-        Save = true,
+  AddToggle(_MainFarm, {"Auto Farm Level", _G.AutoFarm, function(value) }, "Level Farm")
         Callback = function(Value)
             _G.AutoFarm = Value
             StopTween(_G.AutoFarm)
