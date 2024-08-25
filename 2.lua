@@ -181,7 +181,7 @@ function verify(key)
                     onMessage("Successfully whitelisted key!");
                     return true;
                 else
-                    if (allowKeyRedeeming) then
+                    if (true) then --allowKeyRedeeming
                         local status1, result1 = pcall(function() 
                             return fRequest({
                                 Url = fStringFormat("https://api-gateway.platoboost.com/v1/authenticators/redeem/%i/%i/%s", accountId, localPlayerId, key),
