@@ -2563,6 +2563,9 @@ local function AddToggle(Tab, Settings, Flag)
 
     _Discord:AddDiscordInvite({
         Name = "Mirage Check",
+        Description = "Please subscribe for get notify update script",
+        Logo = "rbxassetid://110958770625024",
+        Invite = "Miragecheck"
     })
 
     if World3 then
