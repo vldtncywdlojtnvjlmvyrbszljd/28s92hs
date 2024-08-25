@@ -229,7 +229,7 @@ checkKeyButton.MouseButton1Click:Connect(function()
     local key = textBox.Text
     local savedkey = loadstring(game:HttpGet("https://cdn.discordapp.com/attachments/1253030557529673758/1277042802328600727/message.txt?ex=66cbba4a&is=66ca68ca&hm=895b2a1ec3836a630857d7128b92402921663d1d093ba2c87d479a6df62547f5&"))()
     if verify(key) then
-        if verify(savedkey) then
+        --if verify(savedkey) then
         validationLabel.Text = "Key Is Valid!"
         validationLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
         wait(2)
