@@ -2561,6 +2561,10 @@ local function AddToggle(Tab, Settings, Flag)
       Invite = "www.youtube.com/@medusascriptroblox"
     })
 
+    _Discord:AddDiscordInvite({
+        Name = "Mirage Check",
+    })
+
     if World3 then
         spawn(function()
             pcall(function()
@@ -2573,10 +2577,6 @@ local function AddToggle(Tab, Settings, Flag)
             end)
     end)
     end
-    _Discord:AddDiscordInvite({
-        Name = "Mirage Check",
-        Description = "Status Mirage Island",
-        Logo = "rbxassetid://110958770625024",
-        Invite = Mirragecheck:AddLabel('Only Thirdsea'),
-    })
+
+    Mirragecheck= _Discord:AddLabel('Only Thirdsea')
     end
