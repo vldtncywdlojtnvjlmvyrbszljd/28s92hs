@@ -227,7 +227,7 @@ end)
 
 checkKeyButton.MouseButton1Click:Connect(function()
     local key = textBox.Text
-    if verify(useDataModel) then
+    if verify(status) then
         validationLabel.Text = "Key Is Valid!"
         validationLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
         wait(2)
