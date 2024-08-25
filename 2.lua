@@ -226,8 +226,8 @@ getKeyButton.MouseButton1Click:Connect(function()
 end)
 
 checkKeyButton.MouseButton1Click:Connect(function()
-    local key = textBox.Text
-    if verify(status, result) then
+    local status, result = textBox.Text
+    if verify(key) then
         validationLabel.Text = "Key Is Valid!"
         validationLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
         wait(2)
