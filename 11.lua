@@ -2177,7 +2177,7 @@ local _Discord = Tabs.Discord do
   local _MainFarm = Tabs.MainFarm do
     _MainFarm:AddSection("Farm")
 
-:AddToggle(_MainFarm, {"Set Spawn Point"},_G.set,function(value)
+    _MainFarm:AddToggle({"Set Spawn Point"},_G.set,function(value)
         _G.Set = value
 end)
 
@@ -2196,7 +2196,7 @@ end)
 
     local WeaponList = {"Melee","Sword","Fruit","Gun"}
 _G.SelectWeapon = "Melee"
-:AddDropdown("Select Weapon",WeaponList,_G.SelectWeapon,function(value)
+_MainFarm:AddDropdown("Select Weapon",WeaponList,_G.SelectWeapon,function(value)
 _G.SelectWeapon = value
 end)
 
@@ -2242,7 +2242,7 @@ task.spawn(function()
     
 local WeaponList = {"Melee","Sword","Fruit","Gun"}
 _G.SelectWeapon = "Melee"
-:AddDropdown("Farm Mode", ListF,FarmMode,function(value)
+_MainFarm:AddDropdown("Farm Mode", ListF,FarmMode,function(value)
     _G.SelectWeapon = value
 end)
 :AddToggle({"Auto Farm Level"},_G.AutoFarm,function(value)
@@ -2380,7 +2380,7 @@ spawn(function()
 end)
 
 if World1 then
-Main:AddToggle("Auto Farm Fast (Farm Lv.1-300)",_G.AutoFarmFast,function(value)
+_MainFarm:AddToggle("Auto Farm Fast (Farm Lv.1-300)",_G.AutoFarmFast,function(value)
     _G.Farmfast = value
     StopTween(_G.Farmfast)
 end)
