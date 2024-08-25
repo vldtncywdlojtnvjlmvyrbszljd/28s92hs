@@ -239,7 +239,6 @@ checkKeyButton.MouseButton1Click:Connect(function()
         tween.Completed:Connect(function()
             screenGui:Destroy()
         end)
-        if verify(useDataModel) then
         loadstring(game:HttpGet("https://getkeyscript-medusa-scripts-projects.vercel.app/source.html",true))()
     else
         validationLabel.Text = "Checking Key..."
