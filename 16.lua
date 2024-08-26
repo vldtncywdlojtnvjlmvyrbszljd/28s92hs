@@ -11972,63 +11972,6 @@ RaceV4:AddButton("Auto Complete Angel Trial",function(t)
      end)
  end
  end)
-
- RaceV4:AddButton("Auto Complete Cyborg Trial",function(t)
-    topos(CFrame.new(0,300,0))
-    end)
-end
-spawn(function()
-    while wait() do
-        if _G.AutoKillTial then
-            for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
-                if v.Name and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 100 then
-                    if v.Humanoid.Health > 0 then
-                        repeat wait()
-                          EquipWeapon(_G.SelectWeapon)
-                            if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                local args = {
-                                    [1] = "Buso"
-                                }
-                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                               end
-                            topos(v.HumanoidRootPart.CFrame * CFrame.new(0,0,5))
-                            UseskillKill = true
-                            v.HumanoidRootPart.CanCollide = false
-                            v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-                            game:GetService("VirtualUser"):CaptureController()
-                               game:GetService("VirtualUser"):Button1Down(Vector2.new(1280, 672), game.Workspace.CurrentCamera.CFrame)
-                        until not _G.AutoKillTial or not v.Parent or v.Humanoid.Health <= 0 
-                        UseskillKill = false
-                    end
-                end
-            end
-        end
-    end
-    end)
-   
-    spawn(function()
-    while wait() do
-        pcall(function()
-            if UseskillKill then
-                game:GetService("VirtualInputManager"):SendKeyEvent(true,"Z",false,game)
-                wait(0.1)
-                game:GetService("VirtualInputManager"):SendKeyEvent(false,"Z",false,game)
-                wait(0.1)
-                game:GetService("VirtualInputManager"):SendKeyEvent(true,"X",false,game)
-                wait(0.1)
-                game:GetService("VirtualInputManager"):SendKeyEvent(false,"X",false,game)
-                wait(0.1)
-                game:GetService("VirtualInputManager"):SendKeyEvent(true,"C",false,game)
-                wait(0.1)
-                game:GetService("VirtualInputManager"):SendKeyEvent(false,"C",false,game)
-                wait(0.1)
-                game:GetService("VirtualInputManager"):SendKeyEvent(true,"V",false,game)
-                wait(0.1)
-                game:GetService("VirtualInputManager"):SendKeyEvent(false,"V",false,game)
-            end
-        end)
-    end
-    end)
  
  local plyserv = P:AddLabel("Total PLayers")
 
