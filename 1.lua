@@ -1101,6 +1101,16 @@ elseif game.PlaceId == 7449423635 then
     World3 = true
 end
 
+function MoonTextureId()
+    if World1 then
+        return game:GetService("Lighting").FantasySky.MoonTextureId
+    elseif World2 then
+        return game:GetService("Lighting").FantasySky.MoonTextureId
+    elseif World3 then
+        return game:GetService("Lighting").Sky.MoonTextureId
+    end
+end
+
 function CheckMoon()
     moon8 = "http://www.roblox.com/asset/?id=9709150401"
     moon7 = "http://www.roblox.com/asset/?id=9709150086"
