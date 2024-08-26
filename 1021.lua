@@ -1092,7 +1092,7 @@ local LogoToggle = Instance.new("ImageLabel")
     end
     return uitab
 end
---funcion fitur sc
+--fungsi sc
 if game.PlaceId == 2753915549 then
     World1 = true
 elseif game.PlaceId == 4442272183 then
@@ -1100,6 +1100,28 @@ elseif game.PlaceId == 4442272183 then
 elseif game.PlaceId == 7449423635 then
     World3 = true
 end
+
+spawn(function() 
+    repeat
+        task.wait()
+    until game:IsLoaded()
+    repeat
+        task.wait()
+    until game.Players
+    repeat
+        task.wait()
+    until game.Players.LocalPlayer and game.Players.LocalPlayer.Team ~= nil 
+    wait(1.5)
+    require(game.ReplicatedStorage.Notification).new("<Color=Red>BRUTALITY HUB V4<Color=/>"):Display()
+    wait(.5)
+    require(game.ReplicatedStorage.Notification).new("<Color=Yellow>THANKS FOR USE<Color=/>"):Display()
+    wait(.24)
+    require(game.ReplicatedStorage.Notification).new("<Color=Yellow>PLEASE SUBSCRIBE MY YOUTUBE CHANNEL<Color=/>"):Display()
+    wait(.29)
+    --require(game.ReplicatedStorage.Notification).new("<Color=Yellow>HAPPY AND FUN USE MY SCRIPT<Color=/>"):Display()
+    require(game.ReplicatedStorage.Notification).new("<Color=Yellow>You Executor : <Color=/> ".. identifyexecutor()):Display()
+    wait(.36)
+end)
 
 function CheckQuest() 
     MyLevel = game:GetService("Players").LocalPlayer.Data.Level.Value
@@ -3269,7 +3291,7 @@ H:AddButton("Website Script",function()
 setclipboard("https://www.medusascript.xyz")
 end)
 
-local Time1 = H:AddButton("Run Time Script")
+local Time1 = H:AddLabel("Run Time Script")
 
 function UpdateTime()
 local GameTime = math.floor(workspace.DistributedGameTime+0.5)
