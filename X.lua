@@ -3342,7 +3342,7 @@ local S = Library:AddTab("Shop","6031265976")
 local D = Library:AddTab("Devil Fruit","7044233235")
 local ESX = Library:AddTab("ESP","7044233235")
 local Ss = Library:AddTab("MISC","11156061121")
-local Dms = Library:AddTab("Sea E","11156061121")
+local Dms = Library:AddTab("M1SC","11156061121")
 
 --mulai masuk ke fitur sc
 
