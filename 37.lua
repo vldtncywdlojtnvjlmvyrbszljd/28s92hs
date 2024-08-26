@@ -3346,7 +3346,7 @@ local Dms = Library:AddTab("Sea Event","11156061121")
 --mulai masuk ke fitur sc
 
 H:AddSeperator("Status Server & Info Dev")
-
+if World3 then
     spawn(function()
         pcall(function()
             while wait() do
@@ -3358,7 +3358,7 @@ H:AddSeperator("Status Server & Info Dev")
         end)
    end)
 end
-   Mirragecheck = H:AddLabel("")
+   Mirragecheck = H:AddLabel("Only Third Sea")
 
 H:AddLine()
 
