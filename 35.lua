@@ -3351,9 +3351,9 @@ if World3 then
         pcall(function()
             while wait() do
     if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
-    Mirragecheck:Set('Mirrage : ✅')
+    Mirragecheck:Set('Mirage Island : ✅')
     else
-      Mirragecheck:Set('Mirrage : ❌ ' )end
+      Mirragecheck:Set('Mirage Island : ❌ ' )end
             end
         end)
     end)
@@ -3361,7 +3361,7 @@ if World3 then
     Mirragecheck = H:AddLabel("Only Third Sea")
 
 H:AddLine()
-
+if World3 then
 spawn(function()
     pcall(function()
     while wait() do
@@ -3373,6 +3373,7 @@ spawn(function()
     end
     end)
     end)
+end
     FrozenIsland = H:AddLabel("Only Third Sea")
 
 H:AddLine()
@@ -9329,7 +9330,7 @@ spawn(function()
             end
     end
       end)
-      
+--[[      
  spawn(function()
 pcall(function()
     while wait() do
@@ -9344,7 +9345,7 @@ end)
 
 
 FrozenIsland = M:AddLabel("")
- 
+ ]]
 M:AddToggle("Auto Tp Frozen Dimension",_G.AutoFrozenDimension,function(value)
 _G.AutoFrozenDimension = value
 StopTween(_G.AutoFrozenDimension)
