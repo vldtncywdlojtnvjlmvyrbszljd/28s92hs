@@ -3275,22 +3275,7 @@ local Dms = Library:AddTab("Sea Event","11156061121")
 
 H:AddSeperator("Status Server & Info Dev")
 
-H:AddButton("Buy Permanent Key",function()
-setclipboard("https://discord.gg/brutality-hub-1182005198206545941")
-end)
-
-H:AddButton("Free Webhook Notify",function()
-setclipboard("https://discord.gg/brutality-hub-1182005198206545941")
-end)
-
-H:AddButton("Join Server Discord",function()
-setclipboard("https://discord.gg/brutality-hub-1182005198206545941")
-end)
-
-H:AddButton("Youtube Brutality Hub",function()
-setclipboard("https://youtube.com/@medusascriptroblox/")
-end)
-
+local Elite_Hunter_Status = H:AddLabel("Status Elite")
 H:AddLine()
 local bL = H:AddLabel("Ancient One Status : " .. tostring(CheckAcientOneStatus()))
 H:AddLine()
@@ -3480,6 +3465,22 @@ spawn(function()
         end)
     end
 end)
+H:AddLine()
+H:AddButton("Buy Permanent Key",function()
+    setclipboard("https://discord.gg/brutality-hub-1182005198206545941")
+    end)
+    
+    H:AddButton("Free Webhook Notify",function()
+    setclipboard("https://discord.gg/brutality-hub-1182005198206545941")
+    end)
+    
+    H:AddButton("Join Server Discord",function()
+    setclipboard("https://discord.gg/brutality-hub-1182005198206545941")
+    end)
+    
+    H:AddButton("Youtube Brutality Hub",function()
+    setclipboard("https://youtube.com/@medusascriptroblox/")
+    end)
 
 Main:AddSeperator("Farm")
 
