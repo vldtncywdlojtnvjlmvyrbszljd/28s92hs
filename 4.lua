@@ -3348,6 +3348,21 @@ local Dms = Library:AddTab("Sea Event","11156061121")
 
 H:AddSeperator("Status Server & Info Dev")
 
+elseif World3 then
+    spawn(function()
+        pcall(function()
+            while wait() do
+    if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
+    Mirragecheck:Set('🌴 | Mirage Island is Spawning!!')
+    else
+      Mirragecheck:Set('❌ | Mirage Island Not Found' )end
+            end
+        end)
+   end)
+   Mirragecheck = H:AddLabel("")
+   
+h:AddLine()
+
 local FullM00n = H:AddLabel("Server Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
 
 spawn(function()
@@ -16292,20 +16307,8 @@ Ss:AddToggle("Remove Fog",RemoveFog,function(value)
  game.Players.LocalPlayer.Character.Animate.Disabled = true 
 end)
 
-ESX:AddSeperator("STATUS SERVER")
+ESX:AddSeperator("SEA EVENT & ESP")
  
-elseif World3 then
-    spawn(function()
-        pcall(function()
-            while wait() do
-    if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
-    Mirragecheck:Set('🌴 | Mirage Island is Spawning!!')
-    else
-      Mirragecheck:Set('❌ | Mirage Island Not Found' )end
-            end
-        end)
-   end)
-   Mirragecheck = ESX:AddLabel("")
    ESX:AddToggle("Teleport Mystic Island",_G.AutoMysticIsland,function(value)
         _G.AutoMysticIsland = value
         StopTween(_G.AutoMysticIsland)
