@@ -3351,14 +3351,14 @@ if World3 then
         pcall(function()
             while wait() do
     if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
-    Mirragecheck:Set('Mirage Island : ✅')
+    Mirragecheck:Set('Mirrage : ✅')
     else
-      Mirragecheck:Set('Mirage Island : ❌' )end
+      Mirragecheck:Set('Mirrage : ❌ ' )end
             end
         end)
-   end)
-end
-   Mirragecheck = H:AddLabel("Only Third Sea")
+    end)
+    end
+    Mirragecheck = H:AddLabel("Only Third Sea")
 
 H:AddLine()
 
@@ -3373,7 +3373,7 @@ spawn(function()
     end
     end)
     end)
-    FrozenIsland = H:AddLabel("")
+    FrozenIsland = H:AddLabel("Only Third Sea")
 
 H:AddLine()
 
