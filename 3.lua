@@ -3332,7 +3332,7 @@ local Library = Update:Window("                  PREMIUM","104397992902189",Enum
 
 local H = Library:AddTab("Status Server","6026568198")
 local Main = Library:AddTab("Level Farm","13075651575")
-local M = Library:AddTab("All Quest","13075622619")
+local M = Library:AddTab("ESP","13075622619")
 local ESX = Library:AddTab("Sea Event","7044233235")
 local RaceV4 = Library:AddTab("Trial V4","11162889532")
 local P = Library:AddTab("Player","7251993295")
