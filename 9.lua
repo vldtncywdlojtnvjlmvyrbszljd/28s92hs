@@ -1157,18 +1157,18 @@ function function8()
     local c = game.Lighting
     local ao = c.ClockTime
     if CheckMoon() == "Full Moon" and ao <= 5 then
-        return tostring(function6()) .. " ( Full Moon In " .. math.floor(5 - ao) .. " Minutes )"
+        return tostring(function6()) .. " ( Moon In " .. math.floor(5 - ao) .. " Minutes )"
     elseif CheckMoon() == "Full Moon" and (ao > 5 and ao < 12) then
         return tostring(function6()) .. " ( Fake Moon )"
     elseif CheckMoon() == "Full Moon" and (ao > 12 and ao < 18) then
-        return tostring(function6()) .. " ( Full Moon In " .. math.floor(18 - ao) .. " Minutes )"
+        return tostring(function6()) .. " ( Moon In " .. math.floor(18 - ao) .. " Minutes )"
     elseif CheckMoon() == "Full Moon" and (ao > 18 and ao <= 24) then
-        return tostring(function6()) .. " ( Full Moon In " .. math.floor(24 + 6 - ao) .. " Minutes )"
+        return tostring(function6()) .. " ( Moon In " .. math.floor(24 + 6 - ao) .. " Minutes )"
     end
     if CheckMoon() == "Next Night" and ao < 12 then
-        return tostring(function6()) .. " ( Full Moon In " .. math.floor(18 - ao) .. " Minutes )"
+        return tostring(function6()) .. " ( Moon In " .. math.floor(18 - ao) .. " Minutes )"
     elseif CheckMoon() == "Next Night" and ao > 12 then
-        return tostring(function6()) .. " ( Full Moon In " .. math.floor(18 + 12 - ao) .. " Minutes )"
+        return tostring(function6()) .. " ( Moon In " .. math.floor(18 + 12 - ao) .. " Minutes )"
     end
     return tostring(function6())
 end
@@ -3342,20 +3342,6 @@ local S = Library:AddTab("Shop","104397992902189")
 local D = Library:AddTab("Devil Fruit","104397992902189")
 local Ss = Library:AddTab("MISC","104397992902189")
 local Dms = Library:AddTab("Sea Event","104397992902189")
---[[
-local H = Library:AddTab("Home","6026568198")
-local Main = Library:AddTab("Level Farm","13075651575")
-local M = Library:AddTab("All Quest","13075622619")
-local ESX = Library:AddTab("ESP","7044233235")
-local RaceV4 = Library:AddTab("Trial V4","11162889532")
-local P = Library:AddTab("Player","7251993295")
-local R = Library:AddTab("Raid","11155986081")
-local T = Library:AddTab("Teleport","11155851001")
-local S = Library:AddTab("Shop","6031265976")
-local D = Library:AddTab("Devil Fruit","7044233235")
-local Ss = Library:AddTab("MISC","11156061121")
-local Dms = Library:AddTab("Sea Event","11156061121")
-]]
 
 --mulai masuk ke fitur sc
 
@@ -3425,16 +3411,16 @@ local FM = H:AddLabel('Third World')
  end)
 H:AddLine()
 
-local FullM00n = H:AddLabel("Full Moon Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
+local FullM00n = H:AddLabel("Moon Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
 
 spawn(function()
         while wait() do
-            H:Set("Full Moon Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
+            H:Set("Moon Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
                 end
             end)
 
 H:AddLine()
-H:AddLabel("Quest Train V4")
+H:AddSeperator("Quest Train V4")
 local bL = H:AddLabel("Ancient One Status : " .. tostring(CheckAcientOneStatus()))
 H:AddLine()
 local Time1 = H:AddLabel("Run Time Script")
@@ -3480,7 +3466,6 @@ while true do wait(.1)
 UpdateClient1()
 end
 end)
-
 
 H:AddSeperator("Quest")
 
