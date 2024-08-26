@@ -5462,7 +5462,6 @@ local Section = SV:AddSection({
     Name = "Kitsune Island Check"
 })
 
-elseif World3 then
     spawn(function()
         pcall(function()
             while wait() do
