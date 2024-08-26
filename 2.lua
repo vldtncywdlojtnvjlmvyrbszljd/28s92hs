@@ -3273,10 +3273,7 @@ local Dms = Library:AddTab("Sea Event","11156061121")
 
 --mulai masuk ke fitur sc
 
-H:AddSeperator("Made By Medusa Script")
-H:AddLabel("Click for copy link")
-H:AddLabel("Comingsoon New Update")
-H:AddLabel("Add Fitur Over Power")
+H:AddSeperator("Status Server & Info Dev")
 
 H:AddButton("Buy Permanent Key",function()
 setclipboard("https://discord.gg/brutality-hub-1182005198206545941")
@@ -3294,9 +3291,6 @@ H:AddButton("Youtube Brutality Hub",function()
 setclipboard("https://youtube.com/@medusascriptroblox/")
 end)
 
-H:AddButton("Website Script",function()
-setclipboard("https://www.medusascript.xyz")
-end)
 H:AddLine()
 local bL = H:AddLabel("Ancient One Status : " .. tostring(CheckAcientOneStatus()))
 H:AddLine()
@@ -3319,7 +3313,7 @@ end
 end)
 
 local Client = H:AddLabel("Client")
-
+H:AddLine()
 function UpdateClient()
 local Fps = workspace:GetRealPhysicsFPS()
 Client:Set("[Fps] : "..Fps)
@@ -3332,7 +3326,7 @@ end
 end)
 
 local Client1 = H:AddLabel("Client")
-
+H:AddLine()
 function UpdateClient1()
 local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
 Client1:Set("[Ping] : "..Ping)
