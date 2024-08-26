@@ -11973,6 +11973,11 @@ RaceV4:AddButton("Auto Complete Angel Trial",function(t)
  end
  end)
 
+ RaceV4:AddButton("Auto Complete Cyborg Trial",function(t)
+    topos(CFrame.new(0,300,0))
+    end)
+end
+
  
  local plyserv = P:AddLabel("Total PLayers")
 
