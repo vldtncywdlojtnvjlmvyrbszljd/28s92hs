@@ -7728,7 +7728,7 @@ end
  end)
  
  M:AddSeperator("Soul Guitar")
- 
+ --[[
  local FM = M:AddLabel('Third World')
  
  task.spawn(function()
@@ -7750,7 +7750,7 @@ end
              end)
          end
  end)
- 
+ ]]
  M:AddToggle("Auto Soul Guitar",_G.AutoNevaSoulGuitar,function(value)
 _G.AutoNevaSoulGuitar = value    
 StopTween(_G.AutoNevaSoulGuitar)
