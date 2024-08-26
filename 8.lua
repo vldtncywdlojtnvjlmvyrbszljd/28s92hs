@@ -2616,12 +2616,6 @@ local Wld = Window:MakeTab({
     PremiumOnly = false
 })
 
-local Bucat = Window:MakeTab({
-    Name = "Sea Event",
-    Icon = "rbxassetid://104397992902189",
-    PremiumOnly = false
-})
-
 local SV = Window:MakeTab({
     Name = "Status Server",
     Icon = "rbxassetid://104397992902189",
@@ -4592,7 +4586,7 @@ function UpdatePlayerChams()
     end
 end
 
-Bucat:AddToggle({
+E:AddToggle({
     Name = "ESP Fruits",
     Default = false,
     Flag = "ESP Fruits",
