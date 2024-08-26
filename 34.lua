@@ -3359,7 +3359,19 @@ if World3 then
     end)
     end
     Mirragecheck = H:AddLabel("Only Third Sea")
-
+H:AddLine()
+spawn(function()
+    pcall(function()
+        while wait() do
+            if game.Workspace._WorldOrigin.Locations:FindFirstChild('Kitsune Island') then
+                Kitsunecheck:Set('Kitsune Island : ✅')
+            else
+                Kitsunecheck:Set('Kitsune Island : ❌') 
+            end
+        end
+    end)
+end)
+Kitsunecheck = H:AddLabel("Only Third Sea")
 H:AddLine()
 if World3 then
 spawn(function()
