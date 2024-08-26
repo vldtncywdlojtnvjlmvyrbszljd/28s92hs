@@ -3355,19 +3355,6 @@ spawn(function()
                 end
             end)
 
-H:Addline()
-local El1te_Hunter_Status = H:AddLabel("Status")
-spawn(function()
-    while wait() do
-        pcall(function()
-            if game:GetService("ReplicatedStorage"):FindFirstChild("Diablo") or game:GetService("ReplicatedStorage"):FindFirstChild("Deandre") or game:GetService("ReplicatedStorage"):FindFirstChild("Urban") or game:GetService("Workspace").Enemies:FindFirstChild("Diablo") or game:GetService("Workspace").Enemies:FindFirstChild("Deandre") or game:GetService("Workspace").Enemies:FindFirstChild("Urban") then
-                El1te_Hunter_Status:Set("Elite Hunter : ✅")	
-            else
-                El1te_Hunter_Status:Set("Elite Hunter : ❌")	
-            end
-        end)
-    end
-end)
 H:AddLine()
 local bL = H:AddLabel("Ancient One Status : " .. tostring(CheckAcientOneStatus()))
 H:AddLine()
