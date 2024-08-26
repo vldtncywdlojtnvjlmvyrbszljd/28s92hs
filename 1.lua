@@ -4527,11 +4527,7 @@ S:AddSlider({
 })
 
 local Section = E:AddSection({
-    Name = "ESP MENU"
-})
-
-local Section = E:AddSection({
-    Name = "SEA EVENT"
+    Name = "SEA EVENT & ESP"
 })
 
 E:AddToggle({
@@ -4539,9 +4535,11 @@ E:AddToggle({
     Default = false,
     Flag = "Auto Drive Boat",
     Save = true,
-    Callback = function(qw)
-        _G.DomadicAutoDriveBoat = qw
+    Callback = function(value)
+        _G.DomadicAutoDriveBoat = value
     StopTween(_G.DomadicAutoDriveBoat)
+    end
+})
 
     spawn(function()
         while wait() do
@@ -4595,7 +4593,6 @@ E:AddToggle({
             end
         end)
     end)  
-end})
 
 local Section = E:AddSection({
     Name = "ESP MENU"
