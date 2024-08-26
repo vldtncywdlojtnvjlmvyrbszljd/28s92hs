@@ -129,8 +129,8 @@ getKeyButton.MouseButton1Click:Connect(function()
     validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 end)
 
-isfile("savedkey.txt", key)
 checkKeyButton.MouseButton1Click:Connect(function()
+    isfile("savedkey.txt", key)
     local key = textBox.Text
     readfile("savedkey.txt", key)
     validationLabel.Text = "Key Is Valid!"
@@ -154,10 +154,10 @@ else
 end
 end)
 
-writefile("savedkey.txt", key)
 checkKeyButton.MouseButton1Click:Connect(function()
     local key = textBox.Text
-if verify(key) then
+    writefile("savedkey.txt", key)
+--if verify(key) then
     validationLabel.Text = "Key Is Valid!"
     validationLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
     wait(2)
