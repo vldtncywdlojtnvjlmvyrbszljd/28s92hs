@@ -5424,7 +5424,7 @@ local Section = SV:AddSection({
     Name = "FullMoon Check"
 })
 
-local FM = SV:AddLabel("Server Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
+local FullMoon = SV:AddLabel("Server Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
 
 spawn(function()
         while wait() do
@@ -5435,7 +5435,7 @@ spawn(function()
     local Section = SV:AddSection({
          Name = "Full Moon V2 Check"
          })
-local FM2 = M:AddLabel('Third World')
+local FM = M:AddLabel('Third World')
  
  task.spawn(function()
          while task.wait() do
