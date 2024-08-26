@@ -5426,7 +5426,7 @@ local Section = SV:AddSection({
     Name = "Executor Check"
 })
 
-local Executor = SV:AddLabel("You Executor : " .. identifyexecutor())
+local identifyexecutor = SV:AddLabel("You Executor : " .. identifyexecutor())
 
 local Section = SV:AddSection({
     Name = "Mirage Check"
