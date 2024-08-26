@@ -3347,7 +3347,7 @@ local Dms = Library:AddTab("Sea Event","11156061121")
 
 H:AddSeperator("Status Server & Info Dev")
 
---elseif World3 then
+elseif World3 then
     spawn(function()
         pcall(function()
             while wait() do
@@ -3358,7 +3358,23 @@ H:AddSeperator("Status Server & Info Dev")
             end
         end)
    end)
+end
    Mirragecheck = H:AddLabel("")
+
+H:AddLine()
+
+spawn(function()
+    pcall(function()
+    while wait() do
+        if game.Workspace._WorldOrigin.Locations:FindFirstChild('Frozen Dimension') then
+            FrozenIsland:Set('Frozen Dimension : ✅')
+        else
+            FrozenIsland:Set('Frozen Dimension : ❌')
+        end
+    end
+    end)
+    end)
+    FrozenIsland = H:AddLabel("")
 
 H:AddLine()
 
@@ -5758,7 +5774,6 @@ end)
      end)
     elseif World3 then
      --tempat mystic island
-
  M:AddSeperator("Fighting Style")
  
  M:AddToggle("Auto Superhuman",_G.AutoSuperhuman,function(value)
