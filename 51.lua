@@ -3337,7 +3337,7 @@ local Dms = Library:AddTab("Sea Event","11156061121")
 
 H:AddSeperator("Status Server & Info Dev")
 
-local FullMoon = H:AddLabel("Server Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
+local FullM00n = H:AddLabel("Server Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
 
 spawn(function()
         while wait() do
