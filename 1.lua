@@ -5457,11 +5457,10 @@ end)
 end)
 
 FrozenIsland = SV:AddLabel("")
-
+--[[
 local Section = SV:AddSection({
     Name = "Kitsune Island Check"
 })
-
     spawn(function()
         pcall(function()
             while wait() do
@@ -5474,7 +5473,7 @@ local Section = SV:AddSection({
         end)
     end)
 Kitsunecheck = SV:AddLabel("")
-
+]]
 local Section = SV:AddSection({
     Name = "FullMoon Check"
 })
