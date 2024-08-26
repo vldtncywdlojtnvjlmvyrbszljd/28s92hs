@@ -3330,7 +3330,7 @@ print("Load Script")
 --Icon Tab
 local Library = Update:Window("                  PREMIUM","104397992902189",Enum.KeyCode.RightControl); --12523036534
 
-local H = Library:AddTab("Status Server","6026568198")
+local H = Library:AddTab("Home","6026568198")
 local Main = Library:AddTab("Level Farm","13075651575")
 local M = Library:AddTab("ESP","13075622619")
 local ESX = Library:AddTab("Sea Event","7044233235")
