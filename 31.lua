@@ -3392,22 +3392,22 @@ task.spawn(function()
     while task.wait() do
         pcall(function()
             if game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
-                FM:Set("Full Moon : 🌕 | 100%")
+                FML:Set("Full Moon : 🌕 | 100%")
             elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149052" then
-                FM:Set("Time Moon : 🌖 | 75%")
+                FML:Set("Time Moon : 🌖 | 75%")
             elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709143733" then
-                FM:Set("Time Moon : 🌗 | 50%")
+                FML:Set("Time Moon : 🌗 | 50%")
             elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150401" then
-                FM:Set("Time Moon : 🌘 | 25%")
+                FML:Set("Time Moon : 🌘 | 25%")
             elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" then
-                FM:Set("Time Moon : 🌘 | 15%")
+                FML:Set("Time Moon : 🌘 | 15%")
             else
-                FM:Set("Wait For Moon : 🌙 | 0%")
+                FML:Set("Wait For Moon : 🌙 | 0%")
             end
         end)
     end
 end)
-local FM = H:AddLabel("")
+local FML = H:AddLabel("")
 H:AddLine()
 
 local FullM00n = H:AddLabel("Server Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
