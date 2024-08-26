@@ -130,31 +130,6 @@ getKeyButton.MouseButton1Click:Connect(function()
 end)
 
 checkKeyButton.MouseButton1Click:Connect(function()
-    isfile("savedkey.txt", key)
-    local key = textBox.Text
-    readfile("savedkey.txt", key)
-    validationLabel.Text = "Key Is Valid!"
-    validationLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
-    wait(2)
-    validationLabel.Text = "Thanks For Use"
-    validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-    wait(2)
-    local tween = TweenService:Create(frame, TweenInfo.new(0.5), {Position = UDim2.new(0.5, -150, 1.5, -100)})
-    tween:Play()
-    tween.Completed:Connect(function()
-        screenGui:Destroy()
-    end)
-    loadstring(game:HttpGet("https://getkeyscript-medusa-scripts-projects.vercel.app/source.html",true))()
-else
-    validationLabel.Text = "Checking Key..."
-    validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-    wait(1.7)
-    validationLabel.Text = "Key Is Not Valid!"
-    validationLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
-end
-end)
-
-checkKeyButton.MouseButton1Click:Connect(function()
     local key = textBox.Text
     writefile("savedkey.txt", key)
 --if verify(key) then
@@ -181,7 +156,9 @@ end)
 
 checkKeyButton.MouseButton1Click:Connect(function()
     local key = textBox.Text
+    isfile('Savedkey.txt', key)
     if verify(key) then
+        readfile('Savedkey.txt', key)
         validationLabel.Text = "Key Is Valid!"
         validationLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
         wait(2)
