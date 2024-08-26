@@ -12484,6 +12484,49 @@ RaceV4:AddButton("Auto Complete Angel Trial",function(t)
  end
  end)
 
+ RaceV4:AddButton("Auto Complete Cyborg Trial",function(t)
+    topos(CFrame.new(0,300,0))
+    end)
+end
+
+ XeS:AddSeperator("SEA EVENT & ESP")
+ 
+   XeS:AddToggle("Teleport Mystic Island",_G.AutoMysticIsland,function(value)
+        _G.AutoMysticIsland = value
+        StopTween(_G.AutoMysticIsland)
+        end)
+    
+        spawn(function()
+            pcall(function()
+                while wait() do
+                    if _G.AutoMysticIsland then
+                        if game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
+                            topos(CFrame.new(game:GetService("Workspace").Map.MysticIsland.Center.Position.X,500,game:GetService("Workspace").Map.MysticIsland.Center.Position.Z))
+                        end
+                    end
+                end
+            end)
+        end)
+    XeS:AddToggle("Auto Drive Boat",AutoW,function(W)
+    AutoW = W
+    end)
+    spawn(function()
+    while wait() do
+   pcall(function()
+            if AutoW then
+                game:service('VirtualInputManager'):SendKeyEvent(true, "W", false, game)
+                wait(0.35)
+                game:service('VirtualInputManager'):SendKeyEvent(false, "W", false, game)
+                wait(1.5)
+                game:service('VirtualInputManager'):SendKeyEvent(true, "S", false, game)
+               wait(0.35)
+              game:service('VirtualInputManager'):SendKeyEvent(false, "S", false, game)
+                wait(1.5)
+            end
+        end)
+    end
+    end)
+
  
  local plyserv = P:AddLabel("Total PLayers")
 
@@ -16155,44 +16198,6 @@ Ss:AddToggle("Remove Fog",RemoveFog,function(value)
  game.Players.LocalPlayer.Character.Pants:Destroy()
  game.Players.LocalPlayer.Character.Animate.Disabled = true 
 end)
-
-XeS:AddSeperator("SEA EVENT & ESP")
- 
-   XeS:AddToggle("Teleport Mystic Island",_G.AutoMysticIsland,function(value)
-        _G.AutoMysticIsland = value
-        StopTween(_G.AutoMysticIsland)
-        end)
-    
-        spawn(function()
-            pcall(function()
-                while wait() do
-                    if _G.AutoMysticIsland then
-                        if game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
-                            topos(CFrame.new(game:GetService("Workspace").Map.MysticIsland.Center.Position.X,500,game:GetService("Workspace").Map.MysticIsland.Center.Position.Z))
-                        end
-                    end
-                end
-            end)
-        end)
-    XeS:AddToggle("Auto Drive Boat",AutoW,function(W)
-    AutoW = W
-    end)
-    spawn(function()
-    while wait() do
-   pcall(function()
-            if AutoW then
-                game:service('VirtualInputManager'):SendKeyEvent(true, "W", false, game)
-                wait(0.35)
-                game:service('VirtualInputManager'):SendKeyEvent(false, "W", false, game)
-                wait(1.5)
-                game:service('VirtualInputManager'):SendKeyEvent(true, "S", false, game)
-               wait(0.35)
-              game:service('VirtualInputManager'):SendKeyEvent(false, "S", false, game)
-                wait(1.5)
-            end
-        end)
-    end
-    end)
 
 ESX:AddSeperator("SEA EVENT & ESP")
  
