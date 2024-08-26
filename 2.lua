@@ -4538,7 +4538,7 @@ E:AddToggle({
     Callback = function(value)
         _G.DomadicAutoDriveBoat = value
     StopTween(_G.DomadicAutoDriveBoat)
-    end
+
 })
 
     spawn(function()
