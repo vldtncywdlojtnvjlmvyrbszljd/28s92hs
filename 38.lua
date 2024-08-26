@@ -5756,9 +5756,8 @@ end)
              end)
          end
      end)
+    elseif World3 then
      --tempat mystic island
- --elseif World3 then
- M:AddLine()
 
  M:AddSeperator("Fighting Style")
  
