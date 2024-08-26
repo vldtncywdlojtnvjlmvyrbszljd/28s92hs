@@ -3388,26 +3388,27 @@ spawn(function()
 end
     FrozenIsland = H:AddLabel("Only Third Sea")
 H:AddLine()
-task.spawn(function()
-    while task.wait() do
-        pcall(function()
-            if game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
-                FML:Set("Full Moon : 🌕 | 100%")
-            elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149052" then
-                FML:Set("Time Moon : 🌖 | 75%")
-            elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709143733" then
-                FML:Set("Time Moon : 🌗 | 50%")
-            elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150401" then
-                FML:Set("Time Moon : 🌘 | 25%")
-            elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" then
-                FML:Set("Time Moon : 🌘 | 15%")
-            else
-                FML:Set("Wait For Moon : 🌙 | 0%")
-            end
-        end)
-    end
-end)
-local FML = H:AddLabel("")
+local FM = H:AddLabel('Third World')
+ 
+ task.spawn(function()
+         while task.wait() do
+             pcall(function()
+                 if game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
+                     FM:Set("🌕 | Full Moon")
+                 elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149052" then
+                     FM:Set("🌖 | Time Moon")
+                 elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709143733" then
+                     FM:Set("🌗 | Time Moon")
+                 elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150401" then
+                     FM:Set("🌘 | Time Moon")
+                 elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" then
+                     FM:Set("🌘 | Time Moon")
+                 else
+                     FM:Set("🌙 | Wait For Moon")
+                 end
+             end)
+         end
+ end)
 H:AddLine()
 
 local FullM00n = H:AddLabel("Server Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
