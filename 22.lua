@@ -4526,8 +4526,9 @@ S:AddSlider({
     end    
 })
 
+
 local Section = E:AddSection({
-    Name = "SEA EVENT & ESP"
+    Name = "ESP MENU"
 })
 
 E:AddToggle({
@@ -4536,15 +4537,15 @@ E:AddToggle({
     Flag = "Auto Drive Boat",
     Save = true,
     Callback = function(value)
-        _G.DomadicAutoDriveBoat = value
-    StopTween(_G.DomadicAutoDriveBoat)
+        AutoDriveBoat = value
+    StopTween(AutoDriveBoat)
 
 })
 
     spawn(function()
         while wait() do
             pcall(function()
-                if _G.DomadicAutoDriveBoat then
+                if AutoDriveBoat then
                     if not game:GetService("Workspace").Enemies:FindFirstChild("Shark") or not game:GetService("Workspace").Enemies:FindFirstChild("Terrorshark") or not game:GetService("Workspace").Enemies:FindFirstChild("Piranha") or not game:GetService("Workspace").Enemies:FindFirstChild("Fish Crew Member") then
                         if not game:GetService("Workspace").Boats:FindFirstChild("PirateBrigade") then
                             buyb = TPP(CFrame.new(-16927.451171875, 9.0863618850708, 433.8642883300781))
@@ -4571,7 +4572,7 @@ E:AddToggle({
                                             elseif (CFrame.new(-37952.49609375, 10.96342945098877, -1324.12109375).Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 10 then
                                                 TPB(CFrame.new(-33163.1875, 10.964323997497559, -324.4842224121094))
                                             end 
-                                        until game:GetService("Workspace").Enemies:FindFirstChild("Shark") or game:GetService("Workspace").Enemies:FindFirstChild("Terrorshark") or game:GetService("Workspace").Enemies:FindFirstChild("Piranha") or game:GetService("Workspace").Enemies:FindFirstChild("Fish Crew Member") or _G.DomadicAutoDriveBoat == false
+                                        until game:GetService("Workspace").Enemies:FindFirstChild("Shark") or game:GetService("Workspace").Enemies:FindFirstChild("Terrorshark") or game:GetService("Workspace").Enemies:FindFirstChild("Piranha") or game:GetService("Workspace").Enemies:FindFirstChild("Fish Crew Member") or AutoDriveBoat == false
                                     end
                                 end
                             end
@@ -4585,18 +4586,14 @@ E:AddToggle({
     spawn(function()
         pcall(function()
             while wait() do
-                if _G.DomadicAutoDriveBoat then
+                if AutoDriveBoat then
                     if game:GetService("Workspace").Enemies:FindFirstChild("Shark") or game:GetService("Workspace").Enemies:FindFirstChild("Terrorshark") or game:GetService("Workspace").Enemies:FindFirstChild("Piranha") or game:GetService("Workspace").Enemies:FindFirstChild("Fish Crew Member") then
                         game.Players.LocalPlayer.Character.Humanoid.Sit = false
                     end
                 end
             end
         end)
-    end)  
-
-local Section = E:AddSection({
-    Name = "ESP MENU"
-})
+    end)
 
 E:AddToggle({
     Name = "ESP Players",
