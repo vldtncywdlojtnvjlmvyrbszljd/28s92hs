@@ -4539,9 +4539,9 @@ E:AddToggle({
     Default = false,
     Flag = "Auto Drive Boat",
     Save = true,
-    Callback = function(value)
-        _G.DomadicAutoDriveBoat = value
-    StopTween( _G.DomadicAutoDriveBoat)
+    Callback = function(qw)
+        _G.DomadicAutoDriveBoat = qw
+    StopTween(_G.DomadicAutoDriveBoat)
 
     spawn(function()
         while wait() do
@@ -4595,7 +4595,7 @@ E:AddToggle({
             end
         end)
     end)  
-})
+end})
 
 local Section = E:AddSection({
     Name = "ESP MENU"
