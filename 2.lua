@@ -5435,23 +5435,23 @@ spawn(function()
     local Section = SV:AddSection({
          Name = "Full Moon V2 Check"
          })
-local FM = M:AddLabel('Third World')
+local FM = SV:AddLabel('Third World')
  
  task.spawn(function()
          while task.wait() do
              pcall(function()
                  if game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
-                     FM:Set("🌕 | Full Moon")
+                     FM:Set("Full Moon : 🌕 | 100%")
                  elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149052" then
-                     FM:Set("🌖 | Time Moon")
+                     FM:Set("Time Moon : 🌖 | 75%")
                  elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709143733" then
-                     FM:Set("🌗 | Time Moon")
+                     FM:Set("Time Moon : 🌗 | 50%")
                  elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150401" then
-                     FM:Set("🌘 | Time Moon")
+                     FM:Set("Time Moon : 🌘 | 25%")
                  elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" then
-                     FM:Set("🌘 | Time Moon")
+                     FM:Set("Time Moon : 🌘 | 15%")
                  else
-                     FM:Set("🌙 | Wait For Moon")
+                     FM:Set("Wait For Moon : 🌙 | 0%")
                  end
              end)
          end
