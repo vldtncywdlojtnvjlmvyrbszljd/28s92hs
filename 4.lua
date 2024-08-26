@@ -5519,7 +5519,6 @@ local Section = SV:AddSection({
     Name = "Frozen Island Check"
 })
 
-if World3 then
 spawn(function()
     pcall(function()
         while wait() do
