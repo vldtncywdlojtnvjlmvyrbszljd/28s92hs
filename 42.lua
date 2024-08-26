@@ -3360,8 +3360,8 @@ elseif World3 then
         end)
    end)
    Mirragecheck = H:AddLabel("")
-   
-h:AddLine()
+
+H:AddLine()
 
 local FullM00n = H:AddLabel("Server Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
 
