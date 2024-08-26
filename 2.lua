@@ -3333,13 +3333,13 @@ local Library = Update:Window("                  PREMIUM","104397992902189",Enum
 local H = Library:AddTab("Status Server","6026568198")
 local Main = Library:AddTab("Level Farm","13075651575")
 local M = Library:AddTab("All Quest","13075622619")
+local ESX = Library:AddTab("Sea Event","7044233235")
 local RaceV4 = Library:AddTab("Trial V4","11162889532")
 local P = Library:AddTab("Player","7251993295")
 local R = Library:AddTab("Raid","11155986081")
 local T = Library:AddTab("Teleport","11155851001")
 local S = Library:AddTab("Shop","6031265976")
 local D = Library:AddTab("Devil Fruit","7044233235")
-local ESX = Library:AddTab("ESP","7044233235")
 local Ss = Library:AddTab("MISC","11156061121")
 local Dms = Library:AddTab("Sea Event","11156061121")
 
@@ -3411,16 +3411,16 @@ local FM = H:AddLabel('Third World')
  end)
 H:AddLine()
 
-local FullM00n = H:AddLabel("Moon Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
+local FullM00n = H:AddLabel("Full Moon Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
 
 spawn(function()
         while wait() do
-            H:Set("Moon Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
+            H:Set("Full Moon Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
                 end
             end)
 
 H:AddLine()
-H:AddSeperator("Quest Train V4")
+H:AddLabel("Quest Train V4")
 local bL = H:AddLabel("Ancient One Status : " .. tostring(CheckAcientOneStatus()))
 H:AddLine()
 local Time1 = H:AddLabel("Run Time Script")
@@ -12483,63 +12483,6 @@ RaceV4:AddButton("Auto Complete Angel Trial",function(t)
  end
  end)
 
- RaceV4:AddButton("Auto Complete Cyborg Trial",function(t)
-    topos(CFrame.new(0,300,0))
-    end)
-end
-
-spawn(function()
-    while wait() do
-        if _G.AutoKillTial then
-            for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
-                if v.Name and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 100 then
-                    if v.Humanoid.Health > 0 then
-                        repeat wait()
-                          EquipWeapon(_G.SelectWeapon)
-                            if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                local args = {
-                                    [1] = "Buso"
-                                }
-                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                               end
-                            topos(v.HumanoidRootPart.CFrame * CFrame.new(0,0,5))
-                            UseskillKill = true
-                            v.HumanoidRootPart.CanCollide = false
-                            v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-                            game:GetService("VirtualUser"):CaptureController()
-                               game:GetService("VirtualUser"):Button1Down(Vector2.new(1280, 672), game.Workspace.CurrentCamera.CFrame)
-                        until not _G.AutoKillTial or not v.Parent or v.Humanoid.Health <= 0 
-                        UseskillKill = false
-                    end
-                end
-            end
-        end
-    end
-    end)
-   
-    spawn(function()
-    while wait() do
-        pcall(function()
-            if UseskillKill then
-                game:GetService("VirtualInputManager"):SendKeyEvent(true,"Z",false,game)
-                wait(0.1)
-                game:GetService("VirtualInputManager"):SendKeyEvent(false,"Z",false,game)
-                wait(0.1)
-                game:GetService("VirtualInputManager"):SendKeyEvent(true,"X",false,game)
-                wait(0.1)
-                game:GetService("VirtualInputManager"):SendKeyEvent(false,"X",false,game)
-                wait(0.1)
-                game:GetService("VirtualInputManager"):SendKeyEvent(true,"C",false,game)
-                wait(0.1)
-                game:GetService("VirtualInputManager"):SendKeyEvent(false,"C",false,game)
-                wait(0.1)
-                game:GetService("VirtualInputManager"):SendKeyEvent(true,"V",false,game)
-                wait(0.1)
-                game:GetService("VirtualInputManager"):SendKeyEvent(false,"V",false,game)
-            end
-        end)
-    end
-    end)
  
  local plyserv = P:AddLabel("Total PLayers")
 
