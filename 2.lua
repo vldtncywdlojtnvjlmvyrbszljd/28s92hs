@@ -3334,6 +3334,7 @@ local H = Library:AddTab("Status Server","6026568198")
 local Main = Library:AddTab("Level Farm","13075651575")
 local M = Library:AddTab("All Quest","13075622619")
 local RaceV4 = Library:AddTab("Trial V4","11162889532")
+local XeS = Library:AddTab("Sea Event","7044233235")
 local P = Library:AddTab("Player","7251993295")
 local R = Library:AddTab("Raid","11155986081")
 local T = Library:AddTab("Teleport","11155851001")
@@ -16154,6 +16155,44 @@ Ss:AddToggle("Remove Fog",RemoveFog,function(value)
  game.Players.LocalPlayer.Character.Pants:Destroy()
  game.Players.LocalPlayer.Character.Animate.Disabled = true 
 end)
+
+XeS:AddSeperator("SEA EVENT & ESP")
+ 
+   XeS:AddToggle("Teleport Mystic Island",_G.AutoMysticIsland,function(value)
+        _G.AutoMysticIsland = value
+        StopTween(_G.AutoMysticIsland)
+        end)
+    
+        spawn(function()
+            pcall(function()
+                while wait() do
+                    if _G.AutoMysticIsland then
+                        if game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
+                            topos(CFrame.new(game:GetService("Workspace").Map.MysticIsland.Center.Position.X,500,game:GetService("Workspace").Map.MysticIsland.Center.Position.Z))
+                        end
+                    end
+                end
+            end)
+        end)
+    XeS:AddToggle("Auto Drive Boat",AutoW,function(W)
+    AutoW = W
+    end)
+    spawn(function()
+    while wait() do
+   pcall(function()
+            if AutoW then
+                game:service('VirtualInputManager'):SendKeyEvent(true, "W", false, game)
+                wait(0.35)
+                game:service('VirtualInputManager'):SendKeyEvent(false, "W", false, game)
+                wait(1.5)
+                game:service('VirtualInputManager'):SendKeyEvent(true, "S", false, game)
+               wait(0.35)
+              game:service('VirtualInputManager'):SendKeyEvent(false, "S", false, game)
+                wait(1.5)
+            end
+        end)
+    end
+    end)
 
 ESX:AddSeperator("SEA EVENT & ESP")
  
