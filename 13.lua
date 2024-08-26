@@ -15832,7 +15832,7 @@ ESX:AddSeperator("SEA EVENT")
     end)
     end)
    end
---[[
+
    ESX:AddSeperator("Frozen & Kitsune")
 
    ESX:AddToggle("Teleport Frozen Dimension",_G.AutoFrozenDimension,function(value)
@@ -15912,7 +15912,7 @@ ESX:AddSeperator("SEA EVENT")
                  end
              end
          end)
-]]
+
    ESX:AddSeperator("Rough Sea")
 
    ESX:AddToggle("Auto Drive Boat", _G.DomadicAutoDriveBoat,function(value)
