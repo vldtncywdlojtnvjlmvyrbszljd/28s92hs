@@ -1157,18 +1157,18 @@ function function8()
     local c = game.Lighting
     local ao = c.ClockTime
     if CheckMoon() == "Full Moon" and ao <= 5 then
-        return tostring(function6()) .. " ( Full Moon In " .. math.floor(5 - ao) .. " Minutes )"
+        return tostring(function6()) .. " ( Will End Moon In " .. math.floor(5 - ao) .. " Minutes )"
     elseif CheckMoon() == "Full Moon" and (ao > 5 and ao < 12) then
         return tostring(function6()) .. " ( Fake Moon )"
     elseif CheckMoon() == "Full Moon" and (ao > 12 and ao < 18) then
-        return tostring(function6()) .. " ( Full Moon In " .. math.floor(18 - ao) .. " Minutes )"
+        return tostring(function6()) .. " ( Will Full Moon In " .. math.floor(18 - ao) .. " Minutes )"
     elseif CheckMoon() == "Full Moon" and (ao > 18 and ao <= 24) then
-        return tostring(function6()) .. " ( Full Moon In " .. math.floor(24 + 6 - ao) .. " Minutes )"
+        return tostring(function6()) .. " ( Will End Moon In " .. math.floor(24 + 6 - ao) .. " Minutes )"
     end
     if CheckMoon() == "Next Night" and ao < 12 then
-        return tostring(function6()) .. " ( Full Moon In " .. math.floor(18 - ao) .. " Minutes )"
+        return tostring(function6()) .. " ( Will Full Moon In " .. math.floor(18 - ao) .. " Minutes )"
     elseif CheckMoon() == "Next Night" and ao > 12 then
-        return tostring(function6()) .. " ( Full Moon In " .. math.floor(18 + 12 - ao) .. " Minutes )"
+        return tostring(function6()) .. " ( Will Full Moon In " .. math.floor(18 + 12 - ao) .. " Minutes )"
     end
     return tostring(function6())
 end
@@ -3330,16 +3330,16 @@ print("Load Script")
 --Icon Tab
 local Library = Update:Window("                  PREMIUM","104397992902189",Enum.KeyCode.RightControl); --12523036534
 
-local H = Library:AddTab("Status Server","6026568198")
+local H = Library:AddTab("Home","6026568198")
 local Main = Library:AddTab("Level Farm","13075651575")
 local M = Library:AddTab("All Quest","13075622619")
-local RaceV4 = Library:AddTab("Trial V4","11162889532")
+local RaceV4 = Library:AddTab("RaceV4","11162889532")
 local P = Library:AddTab("Player","7251993295")
 local R = Library:AddTab("Raid","11155986081")
 local T = Library:AddTab("Teleport","11155851001")
 local S = Library:AddTab("Shop","6031265976")
 local D = Library:AddTab("Devil Fruit","7044233235")
-local ESX = Library:AddTab("Sea Event","7044233235")
+local ESX = Library:AddTab("ESP","7044233235")
 local Ss = Library:AddTab("MISC","11156061121")
 local Dms = Library:AddTab("Sea Event","11156061121")
 
@@ -3394,33 +3394,32 @@ local FM = H:AddLabel('Third World')
          while task.wait() do
              pcall(function()
                  if game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
-                     FM:Set("Full Moon Phase : 🌕 | 100%")
+                     FM:Set("🌕 | Full Moon")
                  elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149052" then
-                     FM:Set("Full Moon Phase : 🌖 | 75%")
+                     FM:Set("🌖 | Time Moon")
                  elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709143733" then
-                     FM:Set("Full Moon Phase : 🌗 | 50%")
+                     FM:Set("🌗 | Time Moon")
                  elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150401" then
-                     FM:Set("Full Moon Phase : 🌘 | 25%")
+                     FM:Set("🌘 | Time Moon")
                  elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" then
-                     FM:Set("Full Moon Phase : 🌘 | 15%")
+                     FM:Set("🌘 | Time Moon")
                  else
-                     FM:Set("Full Moon Phase : 🌙 | 0%")
+                     FM:Set("🌙 | Wait For Moon")
                  end
              end)
          end
  end)
 H:AddLine()
 
-local FullM00n = H:AddLabel("Moon Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
+local FullM00n = H:AddLabel("Server Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
 
 spawn(function()
         while wait() do
-            H:Set("Moon Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
+            H:Set("Server Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
                 end
             end)
 
 H:AddLine()
-H:AddSeperator("Quest Train V4")
 local bL = H:AddLabel("Ancient One Status : " .. tostring(CheckAcientOneStatus()))
 H:AddLine()
 local Time1 = H:AddLabel("Run Time Script")
@@ -3430,7 +3429,7 @@ local GameTime = math.floor(workspace.DistributedGameTime+0.5)
 local Hour = math.floor(GameTime/(60^2))%24
 local Minute = math.floor(GameTime/(60^1))%60
 local Second = math.floor(GameTime/(60^0))%60
-Time1:Set("GameTime : Hours : "..Hour.." Min : "..Minute.." Sec : "..Second)
+Time1:Set("[GameTime] : Hours : "..Hour.." Min : "..Minute.." Sec : "..Second)
 end
 
 spawn(function()
@@ -3445,7 +3444,7 @@ local Client = H:AddLabel("Client")
 H:AddLine()
 function UpdateClient()
 local Fps = workspace:GetRealPhysicsFPS()
-Client:Set("Fps : "..Fps)
+Client:Set("[Fps] : "..Fps)
 end
 
 spawn(function()
@@ -3458,7 +3457,7 @@ local Client1 = H:AddLabel("Client")
 H:AddLine()
 function UpdateClient1()
 local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
-Client1:Set("Ping : "..Ping)
+Client1:Set("[Ping] : "..Ping)
 end
 
 spawn(function()
