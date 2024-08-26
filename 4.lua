@@ -5423,12 +5423,6 @@ Wld:AddButton({
 
 --Batas status server
 local Section = SV:AddSection({
-    Name = "Executor Check"
-})
-
-local identifyexecutor = SV:AddLabel("You Executor : " .. identifyexecutor())
-
-local Section = SV:AddSection({
     Name = "Mirage Check"
 })
 
