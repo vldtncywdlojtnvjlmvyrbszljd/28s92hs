@@ -3269,7 +3269,7 @@ H:AddButton("Website Script",function()
 setclipboard("https://www.medusascript.xyz")
 end)
 
-local Time1 = H:AddLabel("Run Time Script")
+local Time1 = H:AddButton("Run Time Script")
 
 function UpdateTime()
 local GameTime = math.floor(workspace.DistributedGameTime+0.5)
