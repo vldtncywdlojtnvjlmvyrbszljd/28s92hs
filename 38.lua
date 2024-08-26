@@ -3347,7 +3347,6 @@ local Dms = Library:AddTab("Sea Event","11156061121")
 
 H:AddSeperator("Status Server & Info Dev")
 
-elseif World3 then
     spawn(function()
         pcall(function()
             while wait() do
