@@ -5742,6 +5742,8 @@ end)
              end)
          end
      end)
+     --tempat mystic island
+     --[[
  elseif World3 then
  spawn(function()
      pcall(function()
@@ -5770,7 +5772,7 @@ M:AddToggle("Teleport Mystic Island",_G.AutoMysticIsland,function(value)
              end
          end)
      end)
- Tyo:AddToggle("Auto Drive Boat",AutoW,function(W)
+ M:AddToggle("Auto Drive Boat",AutoW,function(W)
  AutoW = W
  end)
  spawn(function()
@@ -5939,7 +5941,7 @@ spawn(function()
  end)
  end)
 end
- 
+]] 
  M:AddLine()
 
  M:AddSeperator("Fighting Style")
@@ -16292,28 +16294,7 @@ end)
 
 ESX:AddSeperator("STATUS SERVER")
  
- task.spawn(function()
-         while task.wait() do
-             pcall(function()
-                 if game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
-                     FM:Set("🌕 | Full Moon")
-                 elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149052" then
-                     FM:Set("🌖 | Time Moon")
-                 elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709143733" then
-                     FM:Set("🌗 | Time Moon")
-                 elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150401" then
-                     FM:Set("🌘 | Time Moon")
-                 elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" then
-                     FM:Set("🌘 | Time Moon")
-                 else
-                     FM:Set("🌙 | Wait For Moon")
-                 end
-             end)
-         end
- end)
- local FM = ESX:AddLabel('Third World')
-
---[[elseif World3 then
+elseif World3 then
     spawn(function()
         pcall(function()
             while wait() do
@@ -16325,22 +16306,191 @@ ESX:AddSeperator("STATUS SERVER")
         end)
    end)
    Mirragecheck = ESX:AddLabel("")
-
-elseif World3 then
+   ESX:AddToggle("Teleport Mystic Island",_G.AutoMysticIsland,function(value)
+        _G.AutoMysticIsland = value
+        StopTween(_G.AutoMysticIsland)
+        end)
+    
+        spawn(function()
+            pcall(function()
+                while wait() do
+                    if _G.AutoMysticIsland then
+                        if game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
+                            topos(CFrame.new(game:GetService("Workspace").Map.MysticIsland.Center.Position.X,500,game:GetService("Workspace").Map.MysticIsland.Center.Position.Z))
+                        end
+                    end
+                end
+            end)
+        end)
+    ESX:AddToggle("Auto Drive Boat",AutoW,function(W)
+    AutoW = W
+    end)
+    spawn(function()
+    while wait() do
+   pcall(function()
+            if AutoW then
+                game:service('VirtualInputManager'):SendKeyEvent(true, "W", false, game)
+                wait(0.35)
+                game:service('VirtualInputManager'):SendKeyEvent(false, "W", false, game)
+                wait(1.5)
+                game:service('VirtualInputManager'):SendKeyEvent(true, "S", false, game)
+               wait(0.35)
+              game:service('VirtualInputManager'):SendKeyEvent(false, "S", false, game)
+                wait(1.5)
+            end
+        end)
+    end
+    end)
+    M:AddToggle("Auto Look Moon",false,function(v)
+        _G.AutoDooHee = v
+        end)
+      spawn(function()
+          while wait() do
+              pcall(function()
+                  if _G.AutoDooHee then
+                      wait(0.5)
+                      local moonDir = game.Lighting:GetMoonDirection()
+                      local lookAtPos = game.Workspace.CurrentCamera.CFrame.p + moonDir * 100
+                      game.Workspace.CurrentCamera.CFrame = CFrame.lookAt(game.Workspace.CurrentCamera.CFrame.p, lookAtPos)
+                  end
+              end)
+          end
+      end)
+    ESX:AddToggle("Auto Summon Mirage Island",_G.dao,function(state)
+    if state then
+        _G.dao = true
+    else
+        _G.dao = false
+    end
+   
+   
+   if _G.dao then
+   
+   game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+   wait(1)
+   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5411.22021, 778.609863, -2682.27759, 0.927179396, 0, 0.374617696, 0, 1, 0, -0.374617696, 0, 0.927179396)
+   wait(0)
+   
+   local args = {
+    [1] = "BuyBoat",
+    [2] = "PirateBrigade"
+   }
+   
+   game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+   
+   function two(gotoCFrame) --- Tween
+      pcall(function()
+          game.Players.LocalPlayer.Character.Humanoid.Sit = false
+          game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+      end)
+      if (game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - gotoCFrame.Position).Magnitude <= 200 then
+          pcall(function() 
+              tweenz:Cancel()
+          end)
+          game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.CFrame = gotoCFrame
+      else
+          local tween_s = game:service"TweenService"
+          local info = TweenInfo.new((game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - gotoCFrame.Position).Magnitude/325, Enum.EasingStyle.Linear)
+           tween, err = pcall(function()
+              tweenz = tween_s:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, {CFrame = gotoCFrame})
+              tweenz:Play()
+          end)
+          if not tween then return err end
+      end
+      function _TweenCanCle()
+          tweenz:Cancel()
+      end
+   
+   end
+   two(CFrame.new(-5100.7085, 29.968586, -6792.45459, -0.33648631, -0.0396691673, 0.940852463, -6.40461678e-07, 0.999112308, 0.0421253517, -0.941688359, 0.0141740013, -0.336187631))
+   
+   wait(13)
+   for _,v in next, workspace.Boats.PirateBrigade:GetDescendants() do
+    if v.Name:find("VehicleSeat") then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+     if game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
+                           topos(game:GetService("Workspace").Map:FindFirstChild("MysticIsland").HumanoidRootPart.CFrame * CFrame.new(0,500,-100))
+   
+    end
+    end
+   end
+   end
+   end) 
+   ESX:AddToggle("Auto Hop Server Mirage Island",_G.Hopfinddao,function(value)
+    _G.Hopfinddao = value
+   end)
+    spawn(function()
+        while wait() do
+        if _G.Hopfinddao then
+            if game:GetService("Workspace").Map:FindFirstChild("MysticIsland") or game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
+                if HighestPointRealCFrame and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - HighestPointRealCFrame.Position).Magnitude > 10 then
+                topos(getHighestPoint().CFrame * CFrame.new(0, 211.88, 0))
+                    end
+            elseif not game:GetService("Workspace").Map:FindFirstChild("MysticIsland") or not game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
+                Hop()
+                end
+            end
+        end
+    end)
+   ESX:AddToggle("Teleport Advanced Fruit Dealer",_G.TPNPC,function(value)
+             _G.Miragenpc = value
+             StopTween(_G.Miragenpc)
+        end)
+   
+   spawn(function()
+    pcall(function()
+    while wait() do
+        if _G.Miragenpc then
+            if game:GetService("Workspace").NPCs:FindFirstChild("Advanced Fruit Dealer") then
+                topos(CFrame.new(game:GetService("Workspace").NPCs["Advanced Fruit Dealer"].HumanoidRootPart.Position))
+                end
+            end
+        end
+    end)
+   end)
+   ESX:AddButton("Teleport Advanced Fruit Dealer", function()
+                TweenNpc()
+                end)
+   
+                function TweenNpc()
+                    repeat
+                        wait()
+                    until game:GetService("Workspace").Map:FindFirstChild("MysticIsland")
+                    if game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
+                        AllNPCS = getnilinstances()
+                        for r, v in pairs(game:GetService("Workspace").NPCs:GetChildren()) do
+                            table.insert(AllNPCS, v)
+                        end
+                        for r, v in pairs(AllNPCS) do
+                            if v.Name == "Advanced Fruit Dealer" then
+                                topos(v.HumanoidRootPart.CFrame)
+                                end
+                            end
+                        end
+                    end
+   ESX:AddToggle("Tween To Blue Gear",_G.TweenMGear,function(value)
+   _G.TweenMGear = value
+   StopTween(_G.TweenMGear)
+   end)
+   
    spawn(function()
     pcall(function()
         while wait() do
-            if game.Workspace._WorldOrigin.Locations:FindFirstChild('Frozen Dimension') then
-                FrozenIsland:Set('❄️ | Frozen Dimension Spawning!!')
-            else
-                FrozenIsland:Set('❌ | Frozen Dimension Not Found')
+            if _G.TweenMGear then
+                if game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
+                    for i,v in pairs(game:GetService("Workspace").Map.MysticIsland:GetChildren()) do 
+                        if v:IsA("MeshPart")then 
+                            if v.Material ==  Enum.Material.Neon then  
+                                topos(v.CFrame)
+                            end
+                        end
+                    end
+                end
             end
         end
     end)
     end)
-    
- FrozenIsland = M:AddLabel("")
-]]--
+   end
 
  ESX:AddSeperator("ESP MENU")
  ESX:AddToggle("ESP Player",false,function(a)
