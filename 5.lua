@@ -3332,7 +3332,7 @@ local Library = Update:Window("                  PREMIUM","104397992902189",Enum
 
 local H = Library:AddTab("Home","6026568198")
 local Main = Library:AddTab("Level Farm","13075651575")
-local M = Library:AddTab("ESP","13075622619")
+local M = Library:AddTab("All Quest","13075622619")
 local ESX = Library:AddTab("Sea Event","7044233235")
 local RaceV4 = Library:AddTab("Trial V4","11162889532")
 local P = Library:AddTab("Player","7251993295")
@@ -3341,7 +3341,7 @@ local T = Library:AddTab("Teleport","11155851001")
 local S = Library:AddTab("Shop","6031265976")
 local D = Library:AddTab("Devil Fruit","7044233235")
 local Ss = Library:AddTab("MISC","11156061121")
-local Dms = Library:AddTab("Sea Event","11156061121")
+local Dms = Library:AddTab("Setting","11156061121")
 
 --mulai masuk ke fitur sc
 
