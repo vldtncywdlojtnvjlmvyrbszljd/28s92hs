@@ -3411,16 +3411,16 @@ local FM = H:AddLabel('Third World')
  end)
 H:AddLine()
 
-local FullM00n = H:AddLabel("Full Moon Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
+local FullM00n = H:AddLabel("Moon Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
 
 spawn(function()
         while wait() do
-            H:Set("Full Moon Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
+            H:Set("Moon Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
                 end
             end)
 
 H:AddLine()
-H:AddLabel("Quest Train V4")
+H:AddSeperator("Quest Train V4")
 local bL = H:AddLabel("Ancient One Status : " .. tostring(CheckAcientOneStatus()))
 H:AddLine()
 local Time1 = H:AddLabel("Run Time Script")
