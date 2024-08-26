@@ -3297,11 +3297,11 @@ end)
 H:AddButton("Website Script",function()
 setclipboard("https://www.medusascript.xyz")
 end)
-
+H:AddLine()
 local bL = H:AddLabel("Ancient One Status : " .. tostring(CheckAcientOneStatus()))
-
+H:AddLine()
 local Time1 = H:AddLabel("Run Time Script")
-
+H:AddLine()
 function UpdateTime()
 local GameTime = math.floor(workspace.DistributedGameTime+0.5)
 local Hour = math.floor(GameTime/(60^2))%24
