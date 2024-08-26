@@ -3331,6 +3331,19 @@ print("Load Script")
 local Library = Update:Window("                  PREMIUM","104397992902189",Enum.KeyCode.RightControl); --12523036534
 
 local H = Library:AddTab("Home","6026568198")
+local Main = Library:AddTab("Level Farm","104397992902189")
+local M = Library:AddTab("All Quest","104397992902189")
+local ESX = Library:AddTab("ESP","104397992902189")
+local RaceV4 = Library:AddTab("Trial V4","104397992902189")
+local P = Library:AddTab("Player","104397992902189")
+local R = Library:AddTab("Raid","104397992902189")
+local T = Library:AddTab("Teleport","104397992902189")
+local S = Library:AddTab("Shop","104397992902189")
+local D = Library:AddTab("Devil Fruit","104397992902189")
+local Ss = Library:AddTab("MISC","104397992902189")
+local Dms = Library:AddTab("Sea Event","104397992902189")
+--[[
+local H = Library:AddTab("Home","6026568198")
 local Main = Library:AddTab("Level Farm","13075651575")
 local M = Library:AddTab("All Quest","13075622619")
 local ESX = Library:AddTab("ESP","7044233235")
@@ -3342,6 +3355,7 @@ local S = Library:AddTab("Shop","6031265976")
 local D = Library:AddTab("Devil Fruit","7044233235")
 local Ss = Library:AddTab("MISC","11156061121")
 local Dms = Library:AddTab("Sea Event","11156061121")
+]]
 
 --mulai masuk ke fitur sc
 
