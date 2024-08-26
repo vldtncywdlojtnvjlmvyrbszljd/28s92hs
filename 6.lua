@@ -3341,7 +3341,7 @@ local T = Library:AddTab("Teleport","11155851001")
 local S = Library:AddTab("Shop","6031265976")
 local D = Library:AddTab("Devil Fruit","7044233235")
 local Ss = Library:AddTab("MISC","11156061121")
-local Dms = Library:AddTab("Setting","11156061121")
+local Dms = Library:AddTab("Sea Event","11156061121")
 
 --mulai masuk ke fitur sc
 
