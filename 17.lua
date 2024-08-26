@@ -3625,6 +3625,10 @@ H:AddButton("Buy Permanent Key",function()
     setclipboard("https://youtube.com/@medusascriptroblox/")
     end)
 
+    H:AddButton("Youtube Brutality Hub",function()
+        setclipboard("https://youtube.com/@medusascriptroblox/")
+        end)
+
 Main:AddSeperator("Farm")
 
 
