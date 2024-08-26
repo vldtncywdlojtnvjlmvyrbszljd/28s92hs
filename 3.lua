@@ -5458,10 +5458,10 @@ local FM = SV:AddLabel('Third World')
  end)
 
             local Section = SV:AddSection({
-                Name = "Anclient One Check"
+                Name = "Ancient One Check"
             })
 
-            local bL = SV:AddLabel("Anclient One Status : " .. tostring(CheckAcientOneStatus()))
+            local bL = SV:AddLabel("Ancient One Status : " .. tostring(CheckAcientOneStatus()))
 
 local Section = SV:AddSection({
     Name = "Elite Check"
@@ -5505,15 +5505,34 @@ local Elite_Hunter_Status = SV:AddLabel("Only Third Sea")
             pcall(function()
                 while wait() do
         if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
-        Mirragecheck:Set('Mirrage: ✅')
+        Mirragecheck:Set('Mirrage : ✅')
         else
-          Mirragecheck:Set('Mirrage: ❌ ' )end
+          Mirragecheck:Set('Mirrage : ❌ ' )end
                 end
             end)
     end)
 end
 
 Mirragecheck = SV:AddLabel("Only Third Sea")
+
+local Section = SV:AddSection({
+    Name = "Frozen Island Check"
+})
+
+if World3 then
+spawn(function()
+    pcall(function()
+        while wait() do
+            if game.Workspace._WorldOrigin.Locations:FindFirstChild('Frozen Dimension') then
+                FrozenIsland:Set('Frozen Dimension : ❄️ | Spawning!!')
+            else
+                FrozenIsland:Set('Frozen Dimension : ❌ | Not Found')
+            end
+        end
+    end)
+    end)
+    
+FrozenIsland = SV:AddLabel("")
 
 local Section = SV:AddSection({
     Name = "Dough King Check"
