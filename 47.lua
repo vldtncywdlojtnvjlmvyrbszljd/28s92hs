@@ -1664,5 +1664,7 @@ Min = 36
 Max = 1000
 Main:AddSlider("Speed",1,1000,36,function(value)
 speedValue = Value
+Min = 36,
+Max = 1000,
 applySpeed()
 end)
