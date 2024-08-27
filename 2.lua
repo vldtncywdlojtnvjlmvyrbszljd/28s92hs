@@ -9169,7 +9169,7 @@ M:AddToggle("Auto Drive Boat",_G.SailBoat,function(value)
  
  M:AddSeperator("Dark Dagger")
  
- M:AddToggle("Auto Kill Admin Boss",_G.AutoDarkDagger,function(value)
+ M:AddToggle("Auto Kill Rip Indra",_G.AutoDarkDagger,function(value)
      _G.AutoDarkDagger = value
      StopTween(_G.AutoDarkDagger)
  end)
@@ -11924,7 +11924,7 @@ RaceV4:AddButton("Auto Complete Angel Trial",function(t)
      topos(CFrame.new(0,300,0))
      end)
     end
-    
+
  spawn(function()
  while wait() do
      if _G.AutoKillTial then
@@ -11977,7 +11977,10 @@ RaceV4:AddButton("Auto Complete Angel Trial",function(t)
      end)
  end
  end)
- 
+ RaceV4:AddButton("Auto Complete Angel Trial",function(t)
+    topos(game.Workspace.Map.SkyTrial.Model.FinishPart.CFrame)
+    end)
+
  local plyserv = P:AddLabel("Total PLayers")
 
  
