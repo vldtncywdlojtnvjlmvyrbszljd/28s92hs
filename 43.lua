@@ -5377,7 +5377,7 @@ end)
 		settings().Rendering.QualityLevel = "Level01"
 		for i, v in pairs(g:GetDescendants()) do
 			if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then 
-					v.Material = "Plastic"
+					v.Material = "none"
 					v.Reflectance = 0
 					--v.CanCollide = false
 			elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
@@ -5390,9 +5390,9 @@ end)
 			elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
 					v.Enabled = false
 			elseif v:IsA("MeshPart") then
-					v.Material = "Plastic"
+					v.Material = "none" --Plastic
 					v.Reflectance = 0
-					v.TextureID = 10385902758728957    
+					v.TextureID = 0 --10385902758728957    
 			end
 		end
 		for i, e in pairs(l:GetChildren()) do
@@ -5403,7 +5403,7 @@ end)
 		for i, v in pairs(game:GetService("Workspace").Camera:GetDescendants()) do
 			if v.Name == ("Water;") then
 				v.Transparency = 1
-				v.Material = "Plastic"
+				v.Material = "none"
 			end
 		end
 		end)
@@ -5416,7 +5416,7 @@ end)
 			local sda
 			sda = hookfunction(old, function(t, k, v)
 				if k == "Material" then
-					if v ~= Enum.Material.Neon and v ~= Enum.Material.Plastic and v ~= Enum.Material.ForceField then v = Enum.Material.Plastic end
+					if v ~= Enum.Material.Neon and v ~= Enum.Material.none and v ~= Enum.Material.ForceField then v = Enum.Material.none end
 				elseif k == "TopSurface" then v = "Smooth"
 				elseif k == "Reflectance" or k == "WaterWaveSize" or k == "WaterWaveSpeed" or k == "WaterReflectance" then v = 0
 				elseif k == "WaterTransparency" then v = 1
