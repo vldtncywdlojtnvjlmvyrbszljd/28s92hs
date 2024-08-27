@@ -1,10 +1,40 @@
 --Fitur tab dan gui
+spawn(function()
+    while wait() do
+        for i,v in pairs(game.Players.LocalPlayer:GetChildren()) do
+            if v.Name == "DataLoaded" or v.Name == "DataPreloaded" then
+                v:Destroy()
+            end
+        end
+    end
+end)
+
+spawn(function() 
+    repeat
+        task.wait()
+    until game:IsLoaded()
+    repeat
+        task.wait()
+    until game.Players
+    repeat
+        task.wait()
+    until game.Players.LocalPlayer and game.Players.LocalPlayer.Team ~= nil 
+    wait(1.5)
+    require(game.ReplicatedStorage.Notification).new("<Color=Red>BRUTALITY HUB V4<Color=/>"):Display()
+    wait(.5)
+    require(game.ReplicatedStorage.Notification).new("<Color=Yellow>THANKS FOR USE<Color=/>"):Display()
+    wait(.24)
+    require(game.ReplicatedStorage.Notification).new("<Color=Yellow>PLEASE SUBSCRIBE MY YOUTUBE CHANNEL<Color=/>"):Display()
+    wait(.29)
+    --require(game.ReplicatedStorage.Notification).new("<Color=Yellow>HAPPY AND FUN USE MY SCRIPT<Color=/>"):Display()
+    require(game.ReplicatedStorage.Notification).new("<Color=Yellow>You Name : <Color=/> ".. LocalPlayer.DisplayName()):Display()
+    wait(.36)
+end)
 local ScreenGui1 = Instance.new("ScreenGui")
 local ImageButton1 = Instance.new("ImageButton")
 local UICorner = Instance.new("UICorner")
 local LocalPlayer = game:GetService("Players").LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
-local HttpService = game:GetService("HttpService")
 
 ScreenGui1.Name = "ImageButton"
 ScreenGui1.Parent = game.CoreGui
