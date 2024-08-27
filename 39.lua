@@ -2404,7 +2404,7 @@ Tabs.Main:AddButton({
             
             for _, v in pairs(g:GetDescendants()) do
                 if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
-                    v.Material = Enum.Material.Plastic
+                    --v.Material = Enum.Material.Plastic
                     v.Reflectance = 0
                 elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
                     v.Transparency = 0 --1
@@ -2416,7 +2416,7 @@ Tabs.Main:AddButton({
                 elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
                     v.Enabled = false
                 elseif v:IsA("MeshPart") then
-                    v.Material = Enum.Material.Plastic
+                    --v.Material = Enum.Material.Plastic
                     v.Reflectance = 0
                     v.TextureID = 0 --10385902758728957 -- You might want to verify this TextureID
                 end
