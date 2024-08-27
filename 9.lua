@@ -11654,7 +11654,7 @@ RaceV4:AddToggle("Disabled Inf Stairs", nil, function(value)
  game.Players.LocalPlayer.Character.InfiniteStairs.Disabled = value
 end)
 
-RaceV4:AddToggle("Teleport Door All Race",function()
+RaceV4:AddButton("Teleport Door All Race",function()
     Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
     wait(.1)
     Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
