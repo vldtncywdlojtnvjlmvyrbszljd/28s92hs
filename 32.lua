@@ -11599,12 +11599,12 @@ spawn(function()
      game:GetService("Players").LocalPlayer.leaderstats["Bounty/Honor"].Value = value
  end)
  
- if World1 or World2 then
-RaceV4:AddLabel("Ummm 🧐 Go to Third Sea")
-end
+ --if World1 or World2 then
+--RaceV4:AddLabel("Ummm 🧐 Go to Third Sea")
+--end
 
 
---if World3 then
+if World3 or World2 or World3 then
  RaceV4:AddSeperator("Race V4")
 
 RaceV4:AddButton("Teleport To Top Of GreatTree",function()
