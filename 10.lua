@@ -11576,23 +11576,23 @@ end
 if World3 then
  RaceV4:AddSeperator("Race V4")
  
-RaceV4:AddToggle("Teleport To Top Of GreatTree",function()
+RaceV4:AddButton("Teleport To Top Of GreatTree",function()
 topos(CFrame.new(2947.556884765625, 2281.630615234375, -7213.54931640625))
  end)
  
- RaceV4:AddToggle("Teleport To Timple Of Time",function()
+ RaceV4:AddButton("Teleport To Timple Of Time",function()
 Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
  end)
  
-RaceV4:AddToggle("Teleport To Lever Pull",function()
+RaceV4:AddButton("Teleport To Lever Pull",function()
 topos(CFrame.new(28575.181640625, 14936.6279296875, 72.31636810302734))
 end)
 
-RaceV4:AddToggle("Teleport To Acient One",function()
+RaceV4:AddButton("Teleport To Acient One",function()
 topos(CFrame.new(28981.552734375, 14888.4267578125, -120.245849609375))
 end)
 
-RaceV4:AddToggle("Unlock Lever", function()
+RaceV4:AddButton("Unlock Lever", function()
 venyx:Notify("Unlocked")
 if game:GetService("Workspace").Map["Temple of Time"].Lever.Prompt:FindFirstChild("ProximityPrompt") then
  game:GetService("Workspace").Map["Temple of Time"].Lever.Prompt:FindFirstChild("ProximityPrompt"):Remove()
@@ -11645,7 +11645,7 @@ end
 ProximityPrompt.Triggered:Connect(onProximity)
 end)
 
-RaceV4:AddToggle("Clock Acces", function()
+RaceV4:AddButton("Clock Acces", function()
  game:GetService("Workspace").Map["Temple of Time"].DoNotEnter:Remove()
  game:GetService("Workspace").Map["Temple of Time"].ClockRoomExit:Remove()
 end)
