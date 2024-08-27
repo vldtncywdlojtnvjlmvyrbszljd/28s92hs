@@ -1,4 +1,11 @@
-local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/cracklua/cracks/m/sources/pitbull/Library/V5.lua"))()
+--[[
+local ArrayField = loadstring(game:HttpGet("https://raw.githubusercontent.com/cracklua/cracks/m/sources/pitbull/Library/Key%20System.lua"))()
+
+
+local Window = ArrayField:CreateWindow({
+    Name = "SpeedX Hub",
+    ]]
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/cracklua/cracks/m/sources/pitbull/Library/V4.lua"))()
 
 local Stats = game:GetService('Stats')
@@ -441,7 +448,7 @@ initializate('nurysium_temp')
 
 spawn(function()
     while true do
-        wait(0.01)
+        task.wait(0.01)
         if getgenv().ASC then
             game:GetService("ReplicatedStorage").Remote.RemoteFunction:InvokeServer("PromptPurchaseCrate", workspace.Spawn.Crates.NormalSwordCrate)
         end
@@ -450,7 +457,7 @@ end)
 
 spawn(function()
     while true do
-        wait(0.01)
+        task.wait(0.01)
         if getgenv().AEC then
             game:GetService("ReplicatedStorage").Remote.RemoteFunction:InvokeServer("PromptPurchaseCrate", workspace.Spawn.Crates.NormalExplosionCrate)
         end
@@ -464,7 +471,7 @@ spawn(function()
     local currentTween = nil
 
     while true do
-        wait(0.001)
+        task.wait(0.001)
         if getgenv().FB then
             local ball = Ball:FindFirstChildOfClass("Part")
             local char = plr.Character
@@ -502,8 +509,8 @@ local executorName = getExecutorName()
 
 if executorName == "Solara" then
     local Notify = Library:MakeNotify({
-        Title = "External Hub",
-        Text = "External Hub  has determined that your executor, " .. executorName .. ", is fully compatible, ensuring an optimal and satisfying experience with our product.",
+        Title = "SpeedX Hub ",
+        Text = "SpeedX hub has determined that your executor, " .. executorName .. ", is fully compatible, ensuring an optimal and satisfying experience with our product.",
         Time = 5
       })
 
@@ -514,7 +521,7 @@ if executorName == "Solara" then
         function(self, ...)
             local method = tostring(getnamecallmethod())
             if string.lower(method) == "kick" then
-                return wait(9e9)
+                return wait(9000000000)
             end
             return old(self, ...)
         end)
@@ -531,8 +538,8 @@ if executorName == "Solara" then
         coroutine.resume(AntiKick)
 else
     local Notify = Library:MakeNotify({
-        Title = "External Hub",
-        Text = "External Hub  has determined that your executor, " .. executorName .. ", is fully compatible, ensuring an optimal and satisfying experience with our product.",
+        Title = "SpeedX ",
+        Text = "I has determined that your executor, " .. executorName .. ", is fully compatible, ensuring an optimal and satisfying experience with our product.",
         Time = 5
       })
 
@@ -543,7 +550,7 @@ else
         function(self, ...)
             local method = tostring(getnamecallmethod())
             if string.lower(method) == "kick" then
-                return wait(9e9)
+                return wait(9000000000)
             end
             return old(self, ...)
         end)
@@ -587,9 +594,9 @@ local executorName = identifyexecutor and identifyexecutor() or "Unknown Executo
 
 redzlib.Themes.DarkRed = {
     ["Color Hub 1"] = ColorSequence.new({
-        ColorSequenceKeypoint.new(0.00, Color3.fromRGB(28, 23, 25.5)),
-        ColorSequenceKeypoint.new(0.50, Color3.fromRGB(30.5, 30.5, 30.5)),
-        ColorSequenceKeypoint.new(1.00, Color3.fromRGB(28, 23, 25.5))
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(28, 23, 25.5)),
+        ColorSequenceKeypoint.new(0.5, Color3.fromRGB(30.5, 30.5, 30.5)),
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(28, 23, 25.5))
     }),
     ["Color Hub 2"] = Color3.fromRGB(28, 28, 28),
     ["Color Stroke"] = Color3.fromRGB(38, 38, 38),
@@ -599,9 +606,9 @@ redzlib.Themes.DarkRed = {
 }  
 
 local Window = redzlib:MakeWindow({
-    Title = "External Hub  | " .. gameName,
-    SubTitle = "By Famzz And Botuna",
-    SaveFolder = "ExternalHub"
+    Title = "SpeedX Hub  | " .. gameName,
+    SubTitle = "By KitlerR and FriezGG",
+    SaveFolder = "SpeedX Rah "
 })
 
 redzlib:SetTheme("DarkRed")
@@ -617,16 +624,16 @@ local Tab5 = Window:MakeTab({"| Tools", "rbxassetid://18170704671"})
 Window:SelectTab(Tab1)
 
 Tab1:AddDiscordInvite({
-    Name = "External Hub Server Official",
-    Invite = "https://discord.gg/2ewQyEjPQk",
-    Image = "rbxassetid://116607987128538"
+    Name = "SpeedX Server",
+    Logo = "rbxassetid://18568712042",
+    Invite = "https://discord.com/invite/pD4xDUzhMg"
 })
 
-local Paragraph = Tab1:AddParagraph({"Join us discord for information about updates!", "​"})
+local Paragraph = Tab1:AddParagraph({"Join us discord for information about updates!", ""})
 
 Window:AddMinimizeButton({
     Button = {
-        Image = "rbxassetid://116607987128538"
+        Image = "rbxassetid://18568712042"
     },
     UICorner = {true,
     CornerRadius = UDim.new(0.5, 0)
@@ -824,7 +831,7 @@ local function detectExploiters()
 
                 if humanoid.WalkSpeed > 40 then
                     local Notify = Library:MakeNotify({
-                        Title = "External Hub ",
+                        Title = "SpeedX Hub ",
                         Text = player.Name .. " is using high speed (WalkSpeed: " .. humanoid.WalkSpeed .. ")!",
                         Time = 5
                     })
@@ -832,7 +839,7 @@ local function detectExploiters()
 
                 if humanoid.JumpPower > 100 then
                     local Notify = Library:MakeNotify({
-                        Title = "External Hub ",
+                        Title = "SpeedX Hub ",
                         Text = player.Name .. " is using high jump (JumpPower: " .. humanoid.JumpPower .. ")!",
                         Time = 5
                     })
@@ -840,7 +847,7 @@ local function detectExploiters()
 
                 if rootPart and rootPart.Anchored then
                     local Notify = Library:MakeNotify({
-                        Title = "External Hub ",
+                        Title = "SpeedX Hub ",
                         Text = player.Name .. " is using fly!",
                         Time = 5
                     })
@@ -851,7 +858,7 @@ local function detectExploiters()
                     local hit, position = workspace:FindPartOnRayWithIgnoreList(ray, {player.Character})
                     if not hit or (position - rootPart.Position).Magnitude > 10 then
                         local Notify = Library:MakeNotify({
-                            Title = "External Hub ",
+                            Title = "SpeedX Hub ",
                             Text = player.Name .. " is using noclip!",
                             Time = 5
                         })
@@ -862,7 +869,7 @@ local function detectExploiters()
                     local speedMagnitude = (rootPart.Velocity * Vector3.new(1, 0, 1)).Magnitude
                     if speedMagnitude > 100 then
                         local Notify = Library:MakeNotify({
-                            Title = "External Hub ",
+                            Title = "SpeedX Hub ",
                             Text = player.Name .. " is using speed glitch (Speed: " .. speedMagnitude .. ")!",
                             Time = 5
                         })
@@ -870,7 +877,7 @@ local function detectExploiters()
                 end
             end
         end
-        wait(1)
+        task.wait(1)
     end
 end
 
@@ -936,7 +943,7 @@ local ToggleLoopTP = Tab2:AddToggle({
             if LastSelectedPlayer then
                 TeleportToPlayer(LastSelectedPlayer)
             end
-            wait(0.05)
+            task.wait(0.05)
         end
     end
 })
@@ -993,7 +1000,7 @@ local Toggle4 = Tab7:AddToggle({
 local Section = Tab3:AddSection({"Combat"})
 
 local Toggle1 = Tab3:AddToggle({
-    Name = "Auto Parry AI",
+    Name = "Auto Parry ",
     Description = "Enables or disables automatic parry using AI.",
     Default = false,
     Callback = function(toggled)
@@ -1006,7 +1013,7 @@ local Toggle1 = Tab3:AddToggle({
 })
 
 local Toggle2 = Tab3:AddToggle({
-    Name = "Hit Effect AI",
+    Name = "Hit Effect ",
     Description = "Enables or disables AI-based hit effects.",
     Default = false,
     Callback = function(toggled)
@@ -1325,18 +1332,18 @@ local Dropdown = Tab3:AddDropdown({
     Description = "Select a combat mode.",
     Options = {"Basic", "Basic High", "Medium", "Medium High", "Pro", "Pro High", "Extreme", "Extreme [AI]"},
     Default = "Extreme [AI]",
-    Flag = "External Hub ",
+    Flag = "SpeedX flag ",
     Callback = function(currentOption)
         if autoParryAIEnabled then
             local Notify = Library:MakeNotify({
-                Title = "External Hub ",
-                Text = "External Hub  has applied the mode " .. currentOption .. " automatically successfully.",
+                Title = "SpeedX",
+                Text = "SpeedX Hub has applied the mode " .. currentOption .. " automatically successfully.",
                 Time = 5
               })
         else
             local Notify = Library:MakeNotify({
-                Title = "External Hub ",
-                Text = "External Hub  cannot activate mode " .. currentOption .. " since you do not have Auto Parry [AI] mode activated.",
+                Title = "SpeedX",
+                Text =  "SpeedX Hub cannot activate mode " .. currentOption .. " since you do not have Auto Parry [AI] mode activated.",
                 Time = 5
               })
         end
@@ -1516,8 +1523,8 @@ local detectionCooldowns = {}
 
 local function createNotification(player, deviceType)
     local Notify = Library:MakeNotify({
-        Title = "External Hub ",
-        Text = "External Hub  detected a rapid click on " .. player.Name .. "'s " .. deviceType,
+        Title = "SpeedX Hub ",
+        Text = "SpeedX Hub  detected a rapid click on " .. player.Name .. "'s " .. deviceType,
         Time = 5
     })
 end
@@ -1712,7 +1719,7 @@ Tab5:AddButton({
         Terrain.WaterTransparency = 0
         
         Lighting.GlobalShadows = false
-        Lighting.FogEnd = 9e9
+        Lighting.FogEnd = 9000000000
         Lighting.Brightness = 0
         
         for _, child in pairs(workspace:GetDescendants()) do
@@ -1764,7 +1771,7 @@ local Toggle1 = Tab5:AddToggle({
             Pingtext.TextStrokeTransparency = 0.5
             Pingtext.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
             Pingtext.TextScaled = true
-            Pingtext.TextSize = 14.000
+            Pingtext.TextSize = 14
             Pingtext.TextWrapped = true
 
             local RunService = game:GetService("RunService")
@@ -1773,7 +1780,7 @@ local Toggle1 = Tab5:AddToggle({
             local lastPing = -1
             local function updatePing()
                 while true do
-                    wait(0.1)
+                    task.wait(0.1)
                     local ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue()
                     local roundedPing = math.floor(ping + 0.5)
                     if roundedPing ~= lastPing then
@@ -1803,7 +1810,7 @@ local Toggle1 = Tab5:AddToggle({
             TextLabel.TextStrokeTransparency = 0.5
             TextLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
             TextLabel.TextScaled = true
-            TextLabel.TextSize = 18.000
+            TextLabel.TextSize = 18
             TextLabel.TextWrapped = true
 
             local function FormatFPS(fps)
@@ -1887,7 +1894,7 @@ Tab5:AddButton({
         game.Players.LocalPlayer.Character.Head:Destroy()
         if game.Players.LocalPlayer.Character.Humanoid.Health < 5 then 
             local deathmanok = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").position
-            wait(0.1)
+            task.wait(0.1)
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(deathmanok)
         end
     end
@@ -1905,7 +1912,7 @@ local Toggle2 = Tab5:AddToggle({
             
             LocalPlayer.Idled:Connect(function()
                 VirtualUser:Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
-                wait(1)
+                task.wait(1)
                 VirtualUser:Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
             end)
         else
@@ -1915,7 +1922,7 @@ local Toggle2 = Tab5:AddToggle({
             
             LocalPlayer.Idled:Connect(function()
                 VirtualUser:Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
-                wait(1)
+                task.wait(1)
                 VirtualUser:Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
             end)
         end
@@ -1992,7 +1999,7 @@ Tab5:AddButton({
                             if tonumber(actualHour) ~= tonumber(Existing) then
                                 local delFile = pcall(function()
                                     delfile("NotSameServers.json")
-                                    AllIDs = {}
+                         AllIDs = {}
                                     table.insert(AllIDs, actualHour)
                                 end)
                             end
@@ -2001,20 +2008,20 @@ Tab5:AddButton({
                     end
                     if Possible == true then
                         table.insert(AllIDs, ID)
-                        wait()
+                        task.wait()
                         pcall(function()
                             writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
                             wait()
                             game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
                         end)
-                        wait(4)
+                        task.wait(4)
                     end
                 end
             end
         end
         
         function Teleport()
-            while wait() do
+            while task.wait() do
                 pcall(function()
                     TPReturner()
                     if foundAnything ~= "" then
@@ -2054,8 +2061,31 @@ Tab5:AddButton({
     Description = "Opens the game console.",
     Callback = function()
         game.StarterGui:SetCore("DevConsoleVisible", true)
-        wait()
+        task.wait()
     end
 })
 
-setclipboard("https://discord.gg/2ewQyEjPQk")
+Tab5:AddButton({
+    Name = "Btools",
+    Description = "Opens the Btools menu.",
+    Callback = function()
+        local backpack = game:GetService("Players").LocalPlayer.Backpack
+    
+        local hammer = Instance.new("HopperBin")
+        hammer.Name = "Hammer"
+        hammer.BinType = Enum.BinType.Hammer
+        hammer.Parent = backpack
+        
+        local cloneTool = Instance.new("HopperBin")
+        cloneTool.Name = "Clone"
+        cloneTool.BinType = Enum.BinType.Clone
+        cloneTool.Parent = backpack
+        
+        local grabTool = Instance.new("HopperBin")
+        grabTool.Name = "Grab"
+        grabTool.BinType = Enum.BinType.Grab
+        grabTool.Parent = backpack
+    end
+})
+
+setclipboard("https://discord.com/invite/pD4xDUzhMg")
