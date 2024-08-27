@@ -277,14 +277,6 @@ local LogoHub = Instance.new("ImageLabel")
     
     function uitab:AddTab(text,image)
         local Image = image
-
-        TabButton.Name = "TextButton"
-        TabButton.Parent = text.."Server"
-        TabButton.BackgroundColor3 = _G.Color -- warna pinggiran tab kiri baru
-        TabButton.Size = UDim2.new(0, 150, 0, 26)
-            
-        UICorner.CornerRadius = UDim.new(0, 5)
-        UICorner.Parent = TabButton
         
         local TabButton = Instance.new("TextButton")
         TabButton.Parent = ScrollTab
