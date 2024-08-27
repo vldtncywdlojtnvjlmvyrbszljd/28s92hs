@@ -202,7 +202,7 @@ local LogoHub = Instance.new("ImageLabel")
     LogoHub.Position = UDim2.new(0, 5, 0, 1)
     LogoHub.Size = UDim2.new(0, 26, 0, 26)
     --LogoHub.Image = "http://www.roblox.com/asset/?id="..tostring(104397992902189) --logo didalam tab disini
-    LogoHub.Image = "https://www.roblox.com/headshot-thumbnail/image?userId=".. LocalPlayer.UserId 
+    LogoHub.Image = "https://www.roblox.com/headshot-thumbnail/image?userId="..LocalPlayer.UserId 
 
     local ScrollTab = Instance.new("ScrollingFrame")
     ScrollTab.Name = "ScrollTab"
