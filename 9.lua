@@ -11176,7 +11176,7 @@ end)
                              end
                          end
                      end
-                     if _G.AutoFarmGunMastery and StartMasteryGunMagnet then
+                     if _G.AutoFarmGunMastery1 and StartMasteryGunMagnet then
                          if v.Name == "Monkey" then
                              if (v.HumanoidRootPart.Position - PosMonMasteryGun.Position).Magnitude <= _G.BringMode and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                  v.HumanoidRootPart.Size = Vector3.new(50,50,50)
