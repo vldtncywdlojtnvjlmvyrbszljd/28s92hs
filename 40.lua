@@ -2401,24 +2401,24 @@ Tabs.Main:AddButton({
             l.Brightness = 0
             
             settings().Rendering.QualityLevel = Enum.QualityLevel.Level01
-            --[[
+            
             for _, v in pairs(g:GetDescendants()) do
                 if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
                     v.Material = Enum.Material.Plastic
                     v.Reflectance = 0
                 elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
-                    v.Transparency = 1
+                    v.Transparency = 0 --1
                 elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
                     v.Lifetime = NumberRange.new(0)
                 elseif v:IsA("Explosion") then
-                    v.BlastPressure = 1
-                    v.BlastRadius = 1
+                    v.BlastPressure = 0 --1
+                    v.BlastRadius = 0 --1
                 elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
                     v.Enabled = false
                 elseif v:IsA("MeshPart") then
                     v.Material = Enum.Material.Plastic
                     v.Reflectance = 0
-                    v.TextureID = 10385902758728957 -- You might want to verify this TextureID
+                    v.TextureID = 0 --10385902758728957 -- You might want to verify this TextureID
                 end
             end
             
@@ -2428,7 +2428,7 @@ Tabs.Main:AddButton({
                 end
             end
         end
-        ]]
+        
         FPSBooster()
     end
 
