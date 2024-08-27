@@ -2377,6 +2377,7 @@ do
 Window:SelectTab(1)
 
 Tabs.Main:AddSection("Main Farm Level")
+--[[
 Tabs.Main:AddButton({
     Title = "Fix Lag [Pro Max]",
     Description = "",
@@ -2433,6 +2434,7 @@ Tabs.Main:AddButton({
     end
 
 })
+]]
     local ToggleSkipLevelQuest = Tabs.Main:AddToggle("ToggleSkipLevelQuest", {
     Title = "Auto Kaitun",
     Description = "",
