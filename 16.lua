@@ -277,6 +277,14 @@ local LogoHub = Instance.new("ImageLabel")
     
     function uitab:AddTab(text,image)
         local Image = image
+
+        TabButton.Name = "TabButton"
+        TabButton.Parent = ScrollTab
+        TabButton.BackgroundColor3 = _G.Color -- warna pinggiran tab kiri baru
+        TabButton.Size = UDim2.new(0, 150, 0, 26)
+            
+        UICorner.CornerRadius = UDim.new(0, 5)
+        UICorner.Parent = Button
         
         local TabButton = Instance.new("TextButton")
         TabButton.Parent = ScrollTab
@@ -290,16 +298,8 @@ local LogoHub = Instance.new("ImageLabel")
         TabButton.TextSize = 15.000
         TabButton.TextTransparency = 0.500
 
-        --Toggle.Name = "Toggle"
-            --Toggle.Parent = MainFramePage
-            --Toggle.BackgroundColor3 = _G.Color
-            --Toggle.Size = UDim2.new(0, 470, 0, 31)
-
-            UICorner.CornerRadius = UDim.new(0, 5)
-            --UICorner.Parent = Toggle
 
         local UICorner = Instance.new("UICorner")
-        UICorner.CornerRadius = UDim.new(0, 5)
         UICorner.Parent = TabButton
 
             local PageImage = Instance.new("ImageLabel")
