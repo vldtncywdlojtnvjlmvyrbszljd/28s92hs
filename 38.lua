@@ -2190,7 +2190,7 @@ end
                                 AC.animator.anims.basic[1]:Play(0.01,0.01,0.01)
                                 game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(GetCurrentBlade()))
                                 game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(u12 / 1099511627776 * 16777215), u10)
-                                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, i, "")
+                                --game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, i, "")
                             end
                         end)
                     end
@@ -3240,9 +3240,9 @@ end)
                                 v.HumanoidRootPart.CFrame = PosMon
                                 v.HumanoidRootPart.CanCollide = false
                                 v.HumanoidRootPart.Size = Vector3.new(1, 1, 1)
-                                if v.Humanoid:FindFirstChild("Animator") then
-                                    v.Humanoid.Animator:Destroy()
-                                end
+                                --if v.Humanoid:FindFirstChild("Animator") then
+                                    --v.Humanoid.Animator:Destroy()
+                                --end
                                 task.wait(0.1) -- Thêm khoảng thời gian chờ 0.1 giây giữa mỗi lần di chuyển mob
                             end
                         end
@@ -3265,9 +3265,9 @@ spawn(function()
                         v.Humanoid:ChangeState(14)
                         v.HumanoidRootPart.CanCollide = false
                         v.Head.CanCollide = false
-                        if v.Humanoid:FindFirstChild("Animator") then
-                            v.Humanoid.Animator:Destroy()
-                        end
+                        --if v.Humanoid:FindFirstChild("Animator") then
+                            --v.Humanoid.Animator:Destroy()
+                        --end
                         sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRadius", math.huge)
                         task.wait(0.1) -- Thêm khoảng thời gian chờ 0.1 giây giữa mỗi lần di chuyển mob
                     elseif _G.AutoFarm and StartMagnet and v.Name == Mon and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= _G.BringMode then
@@ -3276,9 +3276,9 @@ spawn(function()
                         v.Humanoid:ChangeState(14)
                         v.HumanoidRootPart.CanCollide = false
                         v.Head.CanCollide = false
-                        if v.Humanoid:FindFirstChild("Animator") then
-                            v.Humanoid.Animator:Destroy()
-                        end
+                        --if v.Humanoid:FindFirstChild("Animator") then
+                            --v.Humanoid.Animator:Destroy()
+                        --end
                         sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRadius", math.huge)
                         task.wait(0.1) -- Thêm khoảng thời gian chờ 0.1 giây giữa mỗi lần di chuyển mob
                     end
@@ -3300,9 +3300,9 @@ spawn(function()
                                 v.HumanoidRootPart.CanCollide = false
                                 v.HumanoidRootPart.Size = Vector3.new(1, 1, 1)
                                 v.HumanoidRootPart.CFrame = FarmPos
-                                if v.Humanoid:FindFirstChild("Animator") then
-                                    v.Humanoid.Animator:Destroy()
-                                end
+                                --if v.Humanoid:FindFirstChild("Animator") then
+                                    --v.Humanoid.Animator:Destroy()
+                                --end
                                 sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
                                 task.wait(0.1) -- Thêm khoảng thời gian chờ 0.1 giây giữa mỗi lần di chuyển mob
                             end
@@ -3312,9 +3312,9 @@ spawn(function()
                                 v.HumanoidRootPart.CanCollide = false
                                 v.HumanoidRootPart.Size = Vector3.new(1, 1, 1)
                                 v.HumanoidRootPart.CFrame = FarmPos
-                                if v.Humanoid:FindFirstChild("Animator") then
-                                    v.Humanoid.Animator:Destroy()
-                                end
+                                --if v.Humanoid:FindFirstChild("Animator") then
+                                    --v.Humanoid.Animator:Destroy()
+                                --end
                                 sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
                                 task.wait(0.1) -- Thêm khoảng thời gian chờ 0.1 giây giữa mỗi lần di chuyển mob
                             end
@@ -3362,9 +3362,9 @@ task.spawn(function()
                         v.HumanoidRootPart.Transparency = 1
                         v.HumanoidRootPart.CanCollide = false
                         v.Head.CanCollide = false
-                        if v.Humanoid:FindFirstChild("Animator") then
-                            v.Humanoid.Animator:Destroy()
-                        end
+                        --if v.Humanoid:FindFirstChild("Animator") then
+                            --v.Humanoid.Animator:Destroy()
+                        --end
                         v.Humanoid:ChangeState(11)
                         v.Humanoid:ChangeState(14)
                         task.wait(0.1) -- Thêm khoảng thời gian chờ 0.1 giây giữa mỗi lần di chuyển mob
@@ -3445,9 +3445,9 @@ function tvk1308deptraiso1()
                     else
                         return
                     end
-                    if v.Humanoid:FindFirstChild("Animator") then
-                        v.Humanoid.Animator:Destroy()
-                    end
+                    --if v.Humanoid:FindFirstChild("Animator") then
+                        --v.Humanoid.Animator:Destroy()
+                    --end
                     v.Humanoid:ChangeState(11)
                     task.wait(0.1) -- Thêm khoảng thời gian chờ 0.1 giây giữa mỗi lần di chuyển mob
                 end
@@ -3568,9 +3568,9 @@ task.spawn(function()
 							v.HumanoidRootPart.Transparency = 1
 							v.HumanoidRootPart.CanCollide = false
 							v.Head.CanCollide = false
-							if v.Humanoid:FindFirstChild("Animator") then
-								v.Humanoid.Animator:Destroy()
-							end
+							--if v.Humanoid:FindFirstChild("Animator") then
+								--v.Humanoid.Animator:Destroy()
+							--end
 							v.Humanoid:ChangeState(11)
 							v.Humanoid:ChangeState(14)
 						end
@@ -4061,9 +4061,9 @@ local function bringMobsInGroup(mobs)
             v.HumanoidRootPart.CFrame = POSCAKE
             v.HumanoidRootPart.CanCollide = false
             v.HumanoidRootPart.Size = Vector3.new(70,70,70)
-            if v.Humanoid:FindFirstChild("Animator") then
-                v.Humanoid.Animator:Destroy()
-            end
+            --if v.Humanoid:FindFirstChild("Animator") then
+                --v.Humanoid.Animator:Destroy()
+            --end
             sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius",  math.huge)
         end
     end
@@ -4606,9 +4606,9 @@ spawn(function()
 			if StartMagnet then
 				for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 					if (v.HumanoidRootPart.Position-_G.PosMon.Position).Magnitude <= 300 then
-						if v.Humanoid:FindFirstChild("Animator") then
-							v.Humanoid.Animator:Destroy()
-						end
+						--if v.Humanoid:FindFirstChild("Animator") then
+							--v.Humanoid.Animator:Destroy()
+						--end
 						v.Humanoid:ChangeState(11)
 						v.Humanoid.JumpPower = 0
 						v.Humanoid.WalkSpeed = 0
@@ -6934,9 +6934,9 @@ spawn(function()
                                     PosMon = v.HumanoidRootPart.CFrame
                                     MonFarm = v.Name
                                     Click()
-                                    if v.Humanoid.Health <= 0 and v.Humanoid:FindFirstChild("Animator") then
-                                        v.Humanoid.Animator:Destroy()
-                                    end							
+                                    --if v.Humanoid.Health <= 0 and v.Humanoid:FindFirstChild("Animator") then
+                                        --v.Humanoid.Animator:Destroy()
+                                    --end							
                                 end      
                             until Auto_Cursed_Dual_Katana == false or Auto_Quest_Yama_2 == false or not v.Parent or v.Humanoid.Health <= 0 or not v:FindFirstChild("HazeESP")
                         else
@@ -6981,8 +6981,8 @@ spawn(function()
                                                 PosMon = v.HumanoidRootPart.CFrame
                                                 MonFarm = v.Name
                                                 Click()
-                                                if v.Humanoid.Health <= 0 and v.Humanoid:FindFirstChild("Animator") then
-                                                    v.Humanoid.Animator:Destroy()
+                                                if v.Humanoid.Health <= 0 then --v.Humanoid:FindFirstChild("Animator")
+                                                    --v.Humanoid.Animator:Destroy()
                                                 end
                                             until v.Humanoid.Health <= 0 or not v.Parent or Auto_Quest_Yama_3 == false
                                         end
@@ -7060,9 +7060,9 @@ spawn(function()
                                         PosMon = v.HumanoidRootPart.CFrame
                                         MonFarm = v.Name
                                         Click()
-                                        if v.Humanoid.Health <= 0 and v.Humanoid:FindFirstChild("Animator") then
-                                            v.Humanoid.Animator:Destroy()
-                                        end
+                                        --if v.Humanoid.Health <= 0 and v.Humanoid:FindFirstChild("Animator") then
+                                            --v.Humanoid.Animator:Destroy()
+                                        --end
                                     until v.Humanoid.Health <= 0 or not v.Parent or Auto_Quest_Tushita_2 == false
                                 end
                             end
@@ -7096,9 +7096,9 @@ spawn(function()
                                             PosMon = v.HumanoidRootPart.CFrame
                                             MonFarm = v.Name
                                             Click()
-                                            if v.Humanoid.Health <= 0 and v.Humanoid:FindFirstChild("Animator") then
-                                                v.Humanoid.Animator:Destroy()
-                                            end
+                                            --if v.Humanoid.Health <= 0 and v.Humanoid:FindFirstChild("Animator") then
+                                                --v.Humanoid.Animator:Destroy()
+                                            --end
                                         until Auto_Cursed_Dual_Katana == false or Auto_Quest_Tushita_3 == false or game:GetService("Workspace").Map:FindFirstChild("HeavenlyDimension")
                                     end
                                 end
@@ -7125,9 +7125,9 @@ spawn(function()
                                                 PosMon = v.HumanoidRootPart.CFrame
                                                 MonFarm = v.Name
                                                 Click()
-                                                if v.Humanoid.Health <= 0 and v.Humanoid:FindFirstChild("Animator") then
-                                                    v.Humanoid.Animator:Destroy()
-                                                end
+                                                --if v.Humanoid.Health <= 0 and v.Humanoid:FindFirstChild("Animator") then
+                                                    --v.Humanoid.Animator:Destroy()
+                                                --end
                                             until v.Humanoid.Health <= 0 or not v.Parent or Auto_Quest_Tushita_3 == false
                                         end
                                     end
