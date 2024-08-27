@@ -5697,7 +5697,7 @@ end)
  end)
  
 
- if World1 then
+ if World1 or World2 or World3 then
      M:AddToggle("Auto Second Sea",_G.AutoSecondSea,function(value)
          _G.AutoSecondSea = value
          StopTween(_G.AutoSecondSea)
