@@ -3361,6 +3361,7 @@ print("Load Script")
 local Library = Update:Window("                  PREMIUM","104397992902189",Enum.KeyCode.RightControl); --12523036534
 
 local H = Library:AddTab("Status","104397992902189")
+Library=AddLine()
 local Main = Library:AddTab("Level Farm","104397992902189")
 local M = Library:AddTab("All Quest","104397992902189")
 local ESX = Library:AddTab("ESP & Sea","104397992902189")
