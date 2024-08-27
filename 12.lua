@@ -3012,7 +3012,29 @@ function EquipWeapon(ToolSe)
         end
     end
 end
-
+--fitur tambahan
+spawn(function()
+    while wait() do
+        for i,v in pairs(game:GetService("Workspace")["_WorldOrigin"]:GetChildren()) do
+            pcall(function()
+                if v.Name == ("CurvedRing") or v.Name == ("SlashHit") or v.Name == ("SwordSlash") or v.Name == ("SlashTail") or v.Name == ("Sounds") then
+                    v:Destroy()
+                end
+            end)
+        end
+    end
+    end)
+    
+    function Check_Sword(Sword_Name)
+        for i, v in pairs(game:GetService("ReplicatedStorage").Remotes['CommF_']:InvokeServer("getInventory")) do
+            if (v.Type == "Sword") then
+                if v.Name == Sword_Name then
+                    return true
+                end
+            end
+        end
+    end
+--akhiran fitur tambahan
 
 function GetDistance(target)
     return math.floor((target.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude)
@@ -3053,13 +3075,30 @@ end
 
 function TP(Pos)
     Distance = (Pos.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
-    if Distance < 250 then
+    --if Distance < 250 then
+        --Speed = 600
+    --elseif Distance >= 1000 then
+        --Speed = 200
+    --end
+    --fitur tambahan 2
+    if Distance < 25 then
+        Speed = 10000
+    elseif Distance < 50 then
+        Speed = 2000
+    elseif Distance < 150 then
+        Speed = 800
+    elseif Distance < 250 then
         Speed = 600
+    elseif Distance < 500 then
+        Speed = 400
+    elseif Distance < 750 then
+        Speed = 250
     elseif Distance >= 1000 then
         Speed = 200
     end
+    --akhiran fitur tambahan 2
     game:GetService("TweenService"):Create(
-        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart,
+        --game:GetService("Players").LocalPlayer.Character.HumanoidRootPart,
         TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),
         {CFrame = Pos}
     ):Play()
@@ -5387,6 +5426,8 @@ spawn(function()
 end)
  local CamShake = require(game.ReplicatedStorage.Util.CameraShaker)
  CamShake:Stop()
+
+--stop
  local Client = game.Players.LocalPlayer
  local STOP = require(Client.PlayerScripts.CombatFramework.Particle)
  local STOPRL = require(game:GetService("ReplicatedStorage").CombatFramework.RigLib)
