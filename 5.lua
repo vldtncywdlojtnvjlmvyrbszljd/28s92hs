@@ -11923,7 +11923,6 @@ RaceV4:AddButton("Auto Complete Angel Trial",function(t)
      RaceV4:AddButton("Auto Complete Cyborg Trial",function(t)
      topos(CFrame.new(0,300,0))
      end)
- end
  
  spawn(function()
  while wait() do
@@ -11981,7 +11980,6 @@ RaceV4:AddButton("Auto Complete Angel Trial",function(t)
  RaceV4:AddButton("Auto Complete Cyborg Trial",function(t)
     topos(CFrame.new(0,300,0))
     end)
-end
 
 spawn(function()
     while wait() do
