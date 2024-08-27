@@ -14038,11 +14038,11 @@ end)
  S:AddButton("Buy God Human [ $5,000 Fragments $5,000,000 Beli ]",function()
      game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman")
  end)
- S:AddButton("Buy Sanguine Art | $5,000 Frag | $5,000,000  ",function()
+ S:AddButton("Buy Sanguine Art [ $5,000 Frag | $5,000,000 Beli ]  ",function()
      game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySanguineArt")
  end)
 
- S:AddButton("Buy DivineArt | $7,500 Frag | $7,500,000  ",function()
+ S:AddButton("Buy DivineArt [ $7,500 Frag | $7,500,000 Beli ] ",function()
      game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDivineArt")
  end)
  -----Shop----------------
@@ -14219,6 +14219,13 @@ end)
      }
      game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
  end)
+ S:AddButton("Swordsman Hat [ 150k Beli ]",function()
+    local args = {
+        [1] = "BuyItem",
+        [2] = "Swordsman Hat"
+    }
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+end)
  
  D:AddSeperator("Sniper")
  
@@ -14596,6 +14603,24 @@ spawn(function()
          end
      end
  end)
+
+ D:AddToggle("Bring All Fruit 75% Kick System",_G.BringFruitBF,function(value)
+    _G.BringFruitBF = value
+end)
+
+spawn(function()
+    while wait() do
+        if _G.BringFruitBF then
+            pcall(function()
+                for i,v in pairs(game.Workspace:GetChildren()) do
+                    if v:IsA("Tool") then
+                        v.Handle.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+                    end
+                end	
+            end)
+        end
+    end
+end)
 
 
  Ss:AddSeperator("Server") --AWALAN MISC DISINI
