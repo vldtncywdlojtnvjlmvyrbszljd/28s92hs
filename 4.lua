@@ -3362,7 +3362,7 @@ print("Load Script")
 --akhiran fitur sc
 --Icon Tab
 --local Library = Update:Window("                  PREMIUM","104397992902189",Enum.KeyCode.RightControl); --12523036534
-local Library = Update:Window("                  PREMIUM","https://www.roblox.com/headshot-thumbnail/image?userId=".. LocalPlayer.UserId .."&width=420&height=420&format=png",Enum.KeyCode.RightControl);
+local Library = Update:Window("https://www.roblox.com/headshot-thumbnail/image?userId=".. LocalPlayer.UserId .."&width=420&height=420&format=png",Enum.KeyCode.RightControl);
 
 local H = Library:AddTab("Status","104397992902189")
 local Main = Library:AddTab("Level Farm","104397992902189")
