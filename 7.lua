@@ -3358,7 +3358,7 @@ end)
 print("Load Script")
 --akhiran fitur sc
 --Icon Tab
-local Library = Update:Window("                  PREMIUM","104397992902189",Enum.KeyCode.RightControl); --12523036534
+local Library = Update:Window("                  ","104397992902189",Enum.KeyCode.RightControl); --12523036534
 
 local H = Library:AddTab("Status","104397992902189")
 Library=AddLine()
