@@ -3249,7 +3249,8 @@ local Slider = Tabs.Settings:AddSlider("Slider", {
         Content = "GENERAL FARM"
     })
 
-    local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Farm Level", Default = false })
+
+    local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Auto Farm Level", Default = false })
 
     Toggle:OnChanged(function(Value)
         _G.AutoFarm = Value
@@ -3358,6 +3359,69 @@ spawn(function()
     end)
     
     Tabs.Main:AddSection("Auto Complete Quest")
+
+    local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Auto Farm Kaitun", Default = false })
+    Toggle:OnChanged(function(Value)
+    _G.AutoFarm = value
+    _G.SelectWeapon = "Combat"
+    _G.Auto_Stats_Kaitun = value
+    _G.AutoSuperhuman = value
+    _G.AutoSecondSea = value
+    _G.AutoThirdSea = value
+    _G.AutoBuyLegendarySword = value
+    _G.AutoStoreFruit = value
+    _G.RandomFruit = value
+    _G.BuyAllAib = value
+    _G.BuyAllSword = value
+   StopTween(_G.AutoFarm)		
+    end)
+
+    spawn(function()
+        while wait() do
+            if _G.BuyAllSword then
+                pcall(function()
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Cutlass")
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Katana")
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Iron Mace")
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Duel Katana")
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Triple Katana")
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Pipe")
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Bisento")
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Dual-Headed Blade")
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Soul Cane")
+                    if _G.BuyHop then
+                        wait(10)
+                        Hop()
+                    end
+                end)
+            end 
+        end
+    end)
+    
+    spawn(function()
+        while wait() do
+            if _G.BuyAllAib then
+                pcall(function()
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("KenTalk","Buy")
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Geppo")
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Buso")
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Soru")
+                    if _G.HopBuy then
+                        wait(10)
+                        Hop()
+                    end
+                end)
+            end 
+        end
+    end)
+    
+   if World1 then
+    tableMon = {"Bandit","Monkey","Gorilla","Pirate","Brute","Desert Bandit","Desert Officer","Snow Bandit","Snowman","Chief Petty Officer","Sky Bandit","Dark Master","Toga Warrior","Gladiator","Military Soldier","Military Spy","Fishman Warrior","Fishman Commando","God's Guard","Shanda","Royal Squad","Royal Soldier","Galley Pirate","Galley Captain"}
+   elseif World2 then
+    tableMon = {"Raider","Mercenary","Swan Pirate","Factory Staff","Marine Lieutenant","Marine Captain","Zombie","Vampire","Snow Trooper","Winter Warrior","Lab Subordinate","Horned Warrior","Magma Ninja","Lava Pirate","Ship Deckhand","Ship Engineer","Ship Steward","Ship Officer","Arctic Warrior","Snow Lurker","Sea Soldier","Water Fighter"}
+   elseif World3 then
+    tableMon = {"Pirate Millionaire","Dragon Crew Warrior","Dragon Crew Archer","Female Islander","Giant Islander","Marine Commodore","Marine Rear Admiral","Fishman Raider","Fishman Captain","Forest Pirate","Mythological Pirate","Jungle Pirate","Musketeer Pirate","Reborn Skeleton","Living Zombie","Demonic Soul","Posessed Mummy","Peanut Scout","Peanut President","Ice Cream Chef","Ice Cream Commander","Cookie Crafter","Cake Guard","Baking Staff","Head Baker","Cocoa Warrior","Chocolate Bar Battler","Sweet Thief","Candy Rebel","Candy Pirate","Snow Demon","Isle Outlaw","Island Boy","Sun-kissed Warrior","Isle Champion"}
+   end
     
     local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Auto Quest Sea 2", Default = false })
 
@@ -3904,6 +3968,17 @@ end)
 			end
 		end
 	end)
+
+    Tabs.Main:AddSection("Auto Fighting Style")
+    Tabs.Main:AddParagraph({
+        Title = "Auto Get Fighting Style",
+        Content = "Please farm beli for use auto FS"
+    })
+
+    local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Auto God Human", Default = false })
+    Toggle:OnChanged(_G.AutoSuperhuman ,function(Value)
+        _G.AutoSuperhuman = value
+    end)
         
     Tabs.Ms:AddParagraph({
         Title = "Misc And Farm",
