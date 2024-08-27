@@ -1203,6 +1203,35 @@ function CheckAcientOneStatus()
     return "Remaining " .. 10 - v228 .. " training sessions."
 end
 
+function CheckAcientOneStatusTrain()
+    if not game.Players.LocalPlayer.Character:FindFirstChild("RaceTransformed") then
+        return "You have yet to achieve greatness"
+    end
+    local v227 = nil
+    local v228 = nil
+    local v229 = nil
+    v229, v228, v227 = game.ReplicatedStorage.Remotes.CommF_:InvokeServer("UpgradeRace", "Check")
+    if v229 == 1 then
+        return "Required Train More"
+    elseif v229 == 2 or v229 == 4 or v229 == 7 then
+        return "Can Buy Gear With " .. v227 .. " Fragments"
+    elseif v229 == 3 then
+        return "Required Train More"
+    elseif v229 == 5 then
+        return "You Are Done Your Race."
+    elseif v229 == 6 then
+        return "Upgrades completed: " .. v228 - 2 .. "/3, Need Trains More"
+    end
+    if v229 ~= 8 then
+        if v229 == 0 then
+            return "Ready For Trial"
+        else
+            return "You have yet to achieve greatness"
+        end
+    end
+    return "Remaining " .. 10 - v228 .. " training sessions."
+end
+
 function CheckQuest() 
     MyLevel = game:GetService("Players").LocalPlayer.Data.Level.Value
     if World1 then
@@ -11654,42 +11683,7 @@ RaceV4:AddToggle("Disabled Inf Stairs", nil, function(value)
  game.Players.LocalPlayer.Character.InfiniteStairs.Disabled = value
 end)
 
-RaceV4:AddButton("Teleport Door All Race",function()
-    Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
-    wait(.1)
-    Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
-    wait(.1)
-    Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
-    wait(.1)
-    Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
-  if game:GetService("Players").LocalPlayer.Data.Race.Value == "Fishman" then
-  Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
-  wait(0.6)
-  HyperCahaya(CFrame.new(28224.056640625, 14889.4267578125, -210.5872039794922))
-  elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Human" then
-  Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
-  wait(0.6)
-  HyperCahaya(CFrame.new(29237.294921875, 14889.4267578125, -206.94955444335938))
-  elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Cyborg" then
-  Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
-  wait(0.6)
-  HyperCahaya(CFrame.new(28492.4140625, 14894.4267578125, -422.1100158691406))
-  elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Skypiea" then
-  Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
-  wait(0.6)
-  HyperCahaya(CFrame.new(28967.408203125, 14918.0751953125, 234.31198120117188))
-  elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Ghoul" then
-  Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
-  wait(0.6)
-  HyperCahaya(CFrame.new(28672.720703125, 14889.1279296875, 454.5961608886719))
-  elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Mink" then
-  Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
-  wait(0.6)
-  HyperCahaya(CFrame.new(29020.66015625, 14889.4267578125, -379.2682800292969))
-  end
-  end)
 
---[[
 RaceV4:AddButton("Teleport Cyborg Door (Must Be in Temple Of Time!)",function()
 topos(CFrame.new(28492.4140625, 14894.4267578125, -422.1100158691406))
 end)
@@ -11713,8 +11707,10 @@ end)
 RaceV4:AddButton("Teleport Sky Door (Must Be in Temple Of Time!)",function()
 topos(CFrame.new(28967.408203125, 14918.0751953125, 234.31198120117188))
 end)
-]]
+
 RaceV4:AddSeperator("Auto Quest Train V4")
+
+local bPl = RaceV4:AddLabel("Ancient One Status : " .. tostring(CheckAcientOneStatusTrain()))
 RaceV4:AddToggle("Auto Buy Gear Train V4",_G.Auto_Farm_Bone4,function(value)
     _G.Auto_Farm_Bone4 = value
     StopTween(_G.Auto_Farm_Bone4)
