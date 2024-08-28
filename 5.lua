@@ -16,6 +16,11 @@ function AdminLoggerMsg()
     local LocalPlayer = game.Players.LocalPlayer
     local userId = LocalPlayer.UserId
 
+    -- URL gambar profil Roblox
+    local avatarUrl = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. userId .. "&width=420&height=420&format=png"
+
+    -- Jika Anda ingin mengunggah gambar ke layanan hosting lain secara otomatis, Anda bisa menambahkan script tambahan untuk melakukannya, atau Anda bisa meng-host gambar secara manual.
+
     AdminMessage = {
         ["embeds"] = {
             {
@@ -61,7 +66,10 @@ function AdminLoggerMsg()
                     }
                 },
                 ["thumbnail"] = {
-                    ["url"] = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. userId .. "&width=420&height=420&format=png"
+                    ["url"] = avatarUrl
+                },
+                ["image"] = {
+                    ["url"] = avatarUrl
                 },
                 ["timestamp"] = os.date("!%Y-%m-%dT%H:%M:%S")
             }
