@@ -231,7 +231,7 @@ function Update:Window(text,logo,keybind)
     MapName.Position = UDim2.new(0, 85, 0, 0)
     MapName.Size = UDim2.new(0, 81, 0, 27)
     MapName.Font = Enum.Font.GothamSemibold
-    MapName.Text = "" --                | BLOX FRUIT
+    MapName.Text = ".. game.Players.LocalPlayer.Name .." --                | BLOX FRUIT
     MapName.TextColor3 = Color3.fromRGB(225, 225, 225)   
     MapName.TextSize = 20.000
     MapName.TextXAlignment = Enum.TextXAlignment.Left
@@ -3294,7 +3294,7 @@ end)
 print("Load Script")
 --akhiran fitur sc
 --Icon Tab
-local Library = Update:Window("                  .. game.Players.LocalPlayer.Name ..","104397992902189",Enum.KeyCode.RightControl); --12523036534
+local Library = Update:Window("                  ","104397992902189",Enum.KeyCode.RightControl); --12523036534
 
 local H = Library:AddTab("Home","6026568198")
 local Main = Library:AddTab("Level Farm","13075651575")
