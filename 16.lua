@@ -57,7 +57,7 @@ label.Parent = frame
 
 local label = Instance.new("TextLabel")--baru ditambah
 label.Size = UDim2.new(1, 0, 0, 50)
-label.Position = UDim2.new(0, 0, 0, 35) 
+label.Position = UDim2.new(0, 0, 0, 37) 
 label.Text = "".. game.Players.LocalPlayer.Name
 label.Font = Enum.Font.SourceSansBold
 label.TextSize = 20
@@ -68,7 +68,7 @@ label.Parent = frame--sampai sini
 
 local label = Instance.new("TextLabel")--baru ditambah
 label.Size = UDim2.new(1, 0, 0, 50)
-label.Position = UDim2.new(0, 0, 0, 55) 
+label.Position = UDim2.new(0, 0, 0, 57) 
 label.Text = "".. identifyexecutor()
 label.Font = Enum.Font.SourceSansBold
 label.TextSize = 20
