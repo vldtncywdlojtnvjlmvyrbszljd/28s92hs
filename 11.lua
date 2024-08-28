@@ -231,7 +231,7 @@ function Update:Window(text,logo,keybind)
     MapName.Position = UDim2.new(0, 85, 0, 0)
     MapName.Size = UDim2.new(0, 81, 0, 27)
     MapName.Font = Enum.Font.GothamSemibold
-    MapName.Text = .. game.Players.LocalPlayer.Name --                | BLOX FRUIT
+    MapName.Text = "" .. game.Players.LocalPlayer.Name --                | BLOX FRUIT
     MapName.TextColor3 = Color3.fromRGB(225, 225, 225)   
     MapName.TextSize = 20.000
     MapName.TextXAlignment = Enum.TextXAlignment.Left
