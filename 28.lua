@@ -623,10 +623,11 @@ Tab1:AddDiscordInvite({
     Image = "rbxassetid://110958770625024"
 })
 
-_Discord:AddDiscordInvite({
+Tab1:AddDiscordInvite({
     Name = "Subscribe Youtube",
-    Invite = "www.youtube.com/@medusascriptroblox",
-    Image = "rbxassetid://110958770625024"
+    Description = "Please subscribe for get notify update script",
+    Logo = "rbxassetid://110958770625024",
+    Invite = "www.youtube.com/@medusascriptroblox"
   })
   end
 
