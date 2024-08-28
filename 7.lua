@@ -4036,7 +4036,7 @@ spawn(function()
  end
 end)
 
-Main:AddToggle("Stop Get Legendary Item (sea 2-3)",_G.StopChest ,function(value)
+Main:AddToggle("Auto Stop Legendary Item (sea 2-3)",true ,_G.StopChest ,function(value)
     _G.StopChest = value
 end)
 
