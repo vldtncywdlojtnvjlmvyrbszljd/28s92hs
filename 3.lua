@@ -3294,7 +3294,7 @@ end)
 print("Load Script")
 --akhiran fitur sc
 --Icon Tab
-local Library = Update:Window("                  SEA 2","104397992902189",Enum.KeyCode.RightControl); --12523036534
+local Library = Update:Window("                  SEA 2","https://www.roblox.com/headshot-thumbnail/image?userId=".. LocalPlayer.UserId .."&width=420&height=420&format=png",Enum.KeyCode.RightControl); --"104397992902189",Enum.KeyCode.RightControl); --12523036534
 
 local H = Library:AddTab("Home","6026568198")
 local Main = Library:AddTab("Level Farm","13075651575")
@@ -3312,11 +3312,7 @@ local Dms = Library:AddTab("Sea Event","11156061121")
 --mulai masuk ke fitur sc
 
 H:AddSeperator("Made By Medusa Script")
-H:AddLabel({
-    Name = "BRUTALITY HUB V4",
-    Description = "Join our discord community to receive information about the next update",
-    Logo = """https://www.roblox.com/headshot-thumbnail/image?userId=".. LocalPlayer.UserId .."&width=420&height=420&format=png",
-  })
+
 H:AddLabel("Executor : ".. identifyexecutor())
 H:AddLabel("Name : ".. game.Players.LocalPlayer.Name)
 
