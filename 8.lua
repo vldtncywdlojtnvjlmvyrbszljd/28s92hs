@@ -3312,9 +3312,9 @@ local Dms = Library:AddTab("Sea Event","11156061121")
 --mulai masuk ke fitur sc
 
 H:AddSeperator("Made By Medusa Script")
-H:AddLabel("Name: ".. game.Players.LocalPlayer.Name)
+H:AddLabel("Name : ".. game.Players.LocalPlayer.Name)
 
-local locallv = H:AddLabel("Level")
+local locallv = H:AddLabel("Level :")
     
     spawn(function()
         while wait() do
@@ -3324,7 +3324,7 @@ local locallv = H:AddLabel("Level")
         end
     end)
     
-    local localrace = H:AddLabel("Race")
+    local localrace = H:AddLabel("Race :")
     
     spawn(function()
         while wait() do
@@ -3334,7 +3334,7 @@ local locallv = H:AddLabel("Level")
         end
     end)
     
-    local localbeli = H:AddLabel("Beli")
+    local localbeli = H:AddLabel("Beli :")
     
     spawn(function()
         while wait() do
