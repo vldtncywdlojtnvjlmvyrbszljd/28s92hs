@@ -3312,6 +3312,7 @@ local Dms = Library:AddTab("Sea Event","11156061121")
 --mulai masuk ke fitur sc
 
 H:AddSeperator("Made By Medusa Script")
+H:AddLabel("You Executor : ".. identifyexecutor())
 H:AddLabel("Name : ".. game.Players.LocalPlayer.Name)
 
 local locallv = H:AddLabel("Level :")
@@ -16579,16 +16580,11 @@ spawn(function()
 print("Brutality Hub Load Complete")
 
 game.StarterGui:SetCore("SendNotification", {
-   Icon = "http://www.roblox.com/asset/?id=110958770625024";
-   Title = "WEBHOOK NOTIFY", 
-   Text = "Join Server Discord";
-})
+    Icon = "http://www.roblox.com/asset/?id=18395460459";
+    Title = "CHANNEL YOUTUBE", 
+    Text = "Medusa Script Roblox";
+   })
 wait(2)
-game.StarterGui:SetCore("SendNotification", {
- Icon = "http://www.roblox.com/asset/?id=18395460459";
- Title = "CHANNEL YOUTUBE", 
- Text = "Medusa Script Roblox";
-})
 
 game.StarterGui:SetCore("SendNotification", {
    Icon = "https://www.roblox.com/headshot-thumbnail/image?userId=".. LocalPlayer.UserId.."&width=420&height=420&format=png";
