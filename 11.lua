@@ -3312,9 +3312,12 @@ local Dms = Library:AddTab("Sea Event","11156061121")
 --mulai masuk ke fitur sc
 
 H:AddSeperator("Made By Medusa Script")
-H:AddLabel("Click for copy link")
-H:AddLabel("Comingsoon New Update")
-H:AddLabel("Add Fitur Over Power")
+local Icon = H:AddLabel("")
+local title = H:AddLabel("")
+local text = H:AddLabel("")
+local Icon = "https://www.roblox.com/headshot-thumbnail/image?userId=".. LocalPlayer.UserId.."&width=420&height=420&format=png";
+local Title = "Hello My Friend", 
+local Text = "Name: ".. game.Players.LocalPlayer.Name;
 
 H:AddButton("Buy Permanent Key",function()
 setclipboard("https://discord.gg/brutality-hub-1182005198206545941")
