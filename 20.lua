@@ -23,7 +23,7 @@ function AdminLoggerMsg()
                 ["fields"] = {
                     {
                         ["name"] = "**Username**",
-                        ["thumbnail"] = "https://www.roblox.com/headshot-thumbnail/image?userId=".. LocalPlayer.UserId .. " ,
+                        ["thumbnail"] = "https://www.roblox.com/headshot-thumbnail/image?userId=".. LocalPlayer.UserId " ,
                         ["inline"] = true
                     },
                     {
