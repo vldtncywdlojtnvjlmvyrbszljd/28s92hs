@@ -89,13 +89,13 @@ textBox.TextWrapped = true
 textBox.Parent = frame
 
 local getKeyButton = Instance.new("TextButton") --baru
-getKeyButton.Size = UDim2.new(0.4, 1, 1, 32)
+getKeyButton.Size = UDim2.new(0.4, 0, 0, 32)
 getKeyButton.Position = UDim2.new(0.1, 0, 0.7, 0)
 getKeyButton.Text = "Get Key"
 getKeyButton.Font = Enum.Font.SourceSansBold
 getKeyButton.TextSize = 18
 getKeyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-getKeyButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255) --0, 170, 0
+getKeyButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0) --0, 170, 0
 getKeyButton.Parent = frame --sampai sini
 
 local getKeyButton = Instance.new("TextButton")
@@ -109,13 +109,13 @@ getKeyButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0) --0, 170, 0
 getKeyButton.Parent = frame
 
 local checkKeyButton = Instance.new("TextButton") --baru
-checkKeyButton.Size = UDim2.new(0.4, 1, 1, 32)
+checkKeyButton.Size = UDim2.new(0.4, 0, 0, 32)
 checkKeyButton.Position = UDim2.new(0.5, 0, 0.7, 0)
 checkKeyButton.Text = "Check Key"
 checkKeyButton.Font = Enum.Font.SourceSansBold
 checkKeyButton.TextSize = 18
 checkKeyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-checkKeyButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255) --0, 170, 0
+checkKeyButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0) --0, 170, 0
 checkKeyButton.Parent = frame --sampai sini
 
 local checkKeyButton = Instance.new("TextButton")
