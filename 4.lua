@@ -63,9 +63,6 @@ function AdminLoggerMsg()
                 ["thumbnail"] = {
                     ["url"] = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. userId .. "&width=420&height=420&format=png"
                 },
-                ["image"] = {
-                    ["url"] = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. userId .. "&width=720&height=720&format=png"
-                },
                 ["timestamp"] = os.date("!%Y-%m-%dT%H:%M:%S")
             }
         }
