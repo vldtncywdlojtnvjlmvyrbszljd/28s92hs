@@ -619,15 +619,14 @@ Window:SelectTab(Tab1)
 
 Tab1:AddDiscordInvite({
     Name = "Server Discord",
-    Invite = "https://discord.gg/2ewQyEjPQk",
+    Invite = "https://discord.gg/brutality-hub-1182005198206545941",
     Image = "rbxassetid://110958770625024"
 })
 
 _Discord:AddDiscordInvite({
     Name = "Subscribe Youtube",
-    Description = "Please subscribe for get notify update script",
-    Logo = "rbxassetid://110958770625024",
-    Invite = "www.youtube.com/@medusascriptroblox"
+    Invite = "www.youtube.com/@medusascriptroblox",
+    Image = "rbxassetid://110958770625024"
   })
   end
 
