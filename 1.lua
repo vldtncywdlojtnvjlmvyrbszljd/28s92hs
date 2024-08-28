@@ -72,9 +72,9 @@ local UICorner = Instance.new("UICorner")
 local ReplicatedStorage = game:GetService("ReplicatedStorage") --tambahan sound klik
 local SoundService = game:GetService("SoundService")
 local TweenService = game:GetService("TweenService")
-local soundId = "rbxassetid://88697808373913" --130785805" 
+local soundId = "rbxassetid://130785805" 
 local sound = Instance.new("Sound")
-    sound.Name = "clickcoin" --"ButtonClickSound"
+    sound.Name = "ButtonClickSound"
     sound.SoundId = soundId
     sound.Parent = ReplicatedStorage --berakhir disini
 
