@@ -3488,6 +3488,15 @@ local locallv = H:AddLabel("Level :")
             end)
         end
     end)
+    local localfrag = H:AddLabel("Fragment")
+    
+    spawn(function()
+        while wait() do
+            pcall(function()
+                localfrag:Set("Fragments :".." "..game:GetService("Players").LocalPlayer.Data.Fragments.Value)
+            end)
+        end
+    end)
 H:AddLine()
 if World3 then
     spawn(function()
