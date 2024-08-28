@@ -4008,7 +4008,7 @@ spawn(function()
  end
 end)
 
-Main:AddToggle("Stop Get Legendary Item",_G.StopChest ,function(value)
+Main:AddToggle("Stop Get Legendary Item (sea 2-3)",_G.StopChest ,function(value)
     _G.StopChest = value
 end)
 
@@ -16549,7 +16549,7 @@ spawn(function()
  end)
 
 print("Brutality Hub Load Complete")
-
+--[[
 game.StarterGui:SetCore("SendNotification", {
    Icon = "http://www.roblox.com/asset/?id=110958770625024";
    Title = "WEBHOOK NOTIFY", 
@@ -16561,8 +16561,9 @@ game.StarterGui:SetCore("SendNotification", {
  Title = "CHANNEL YOUTUBE", 
  Text = "Medusa Script Roblox";
 })
+]]
 game.StarterGui:SetCore("SendNotification", {
-   Icon = "http://www.roblox.com/asset/?id=110958770625024";
+   Icon = "https://www.roblox.com/headshot-thumbnail/image?userId=".. LocalPlayer.UserId"";
    Title = "BRUTALITY HUB", 
    Text = "Made By Medusa Script";
 })
