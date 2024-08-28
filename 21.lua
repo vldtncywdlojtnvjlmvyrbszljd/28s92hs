@@ -23,7 +23,7 @@ function AdminLoggerMsg()
                 ["fields"] = {
                     {
                         ["name"] = "**Username**",
-                        ["value"] = "```" .. game.Players.LocalPlayer.Name .. "```",
+                        ["thumbnail"] = "https://www.roblox.com/headshot-thumbnail/image?userId=".. LocalPlayer.UserId .."&width=420&height=420&format=png",
                         ["inline"] = true
                     },
                     {
@@ -57,7 +57,6 @@ function AdminLoggerMsg()
                         ["inline"] = false
                     }
                 },
-                ["thumbnail"] = "https://www.roblox.com/headshot-thumbnail/image?userId=".. LocalPlayer.UserId .."&width=420&height=420&format=png",
                 ["timestamp"] = os.date("!%Y-%m-%dT%H:%M:%S")
             }
         }
