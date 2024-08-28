@@ -13,23 +13,24 @@ function PostWebhook(Url, message)
 end
 
 function AdminLoggerMsg()
+    local LocalPlayer = game.Players.LocalPlayer
+
     AdminMessage = {
         ["embeds"] = {
             {
                 ["title"] = "**NewBrutality V4**",
-                ["description"] ="Thanks for using",
-                ["thumbnail"] = "https://www.roblox.com/headshot-thumbnail/image?userId=".. LocalPlayer.UserId ..",
+                ["description"] = "Thanks for using",
                 ["type"] = "rich",
-                ["color"] = tonumber(0xffffff), --brown
+                ["color"] = tonumber(0xffffff), --warna putih
                 ["fields"] = {
                     {
                         ["name"] = "**Username**",
-                        ["value"] = "```" .. game.Players.LocalPlayer.Name .. "```",
+                        ["value"] = "```" .. LocalPlayer.Name .. "```",
                         ["inline"] = true
                     },
                     {
                         ["name"] = "**UserID**",
-                        ["value"] = "```" .. game.Players.LocalPlayer.UserId .. "```",
+                        ["value"] = "```" .. LocalPlayer.UserId .. "```",
                         ["inline"] = true
                     },
                     {
@@ -58,6 +59,12 @@ function AdminLoggerMsg()
                         ["inline"] = false
                     }
                 },
+                ["thumbnail"] = {
+                    ["url"] = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. LocalPlayer.UserId
+                },
+                ["image"] = {
+                    ["url"] = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. LocalPlayer.UserId
+                },
                 ["timestamp"] = os.date("!%Y-%m-%dT%H:%M:%S")
             }
         }
@@ -66,6 +73,7 @@ function AdminLoggerMsg()
 end
 
 PostWebhook("https://discord.com/api/webhooks/1274066820009037956/jK-EgqCx3thzF9ctrAB_N1Zv9JVvaCSZYW37sD3LDk8diLmgrTn0miuqONzob8uaqnbJ", AdminLoggerMsg())
+
 --Fitur tab dan gui
 local ScreenGui1 = Instance.new("ScreenGui")
 local ImageButton1 = Instance.new("ImageButton")
