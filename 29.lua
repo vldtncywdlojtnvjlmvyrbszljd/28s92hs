@@ -1,5 +1,5 @@
 local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Sidhsksjsjsh/VAPE-UI-MODDED/main/.lua"))()
-local wndw = lib:Window("Brutality Hub")
+local wndw = lib:Window("BRUTALITY HUB V4")
 local T1 = wndw:Tab("Main",true)
 local T2 = wndw:Tab("Hatch")
 local T3 = wndw:Tab("Fight",true)
@@ -7,6 +7,18 @@ local T4 = wndw:Tab("Forge")
 local T5 = wndw:Tab("Teleport")
 local T6 = wndw:Tab("Raid",true)
 local T7 = wndw:Tab("Machine",true)
+
+wndw:AddMinimizeButton({
+  Button = {
+      Image = "rbxassetid://104397992902189"
+  },
+  UICorner = {true,
+  CornerRadius = UDim.new(0.5, 0)
+},
+UIStroke = {false, {
+
+}}
+})
 
 local workspace = game:GetService("Workspace")
 local cg = game:GetService("CoreGui")
