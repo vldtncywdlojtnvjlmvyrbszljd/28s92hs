@@ -620,8 +620,16 @@ Window:SelectTab(Tab1)
 Tab1:AddDiscordInvite({
     Name = "Server Discord",
     Invite = "https://discord.gg/2ewQyEjPQk",
-    Image = "rbxassetid://104397992902189"
+    Image = "rbxassetid://110958770625024"
 })
+
+_Discord:AddDiscordInvite({
+    Name = "Subscribe Youtube",
+    Description = "Please subscribe for get notify update script",
+    Logo = "rbxassetid://110958770625024",
+    Invite = "www.youtube.com/@medusascriptroblox"
+  })
+  end
 
 local Paragraph = Tab1:AddParagraph({"Join us discord for information about updates!", "​"})
 
