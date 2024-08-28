@@ -3312,7 +3312,8 @@ local Dms = Library:AddTab("Sea Event","11156061121")
 --mulai masuk ke fitur sc
 
 H:AddSeperator("Made By Medusa Script")
-H:AddLabel("You Executor : ".. identifyexecutor())
+H:AddLabel("""https://www.roblox.com/headshot-thumbnail/image?userId=".. LocalPlayer.UserId .."&width=420&height=420&format=png")
+H:AddLabel("Executor : ".. identifyexecutor())
 H:AddLabel("Name : ".. game.Players.LocalPlayer.Name)
 
 local locallv = H:AddLabel("Level :")
