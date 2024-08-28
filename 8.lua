@@ -16563,7 +16563,7 @@ game.StarterGui:SetCore("SendNotification", {
 })
 ]]
 game.StarterGui:SetCore("SendNotification", {
-   Icon = "https://www.roblox.com/headshot-thumbnail/image?userId=".. LocalPlayer.UserId"";
+   Icon = "https://www.roblox.com/headshot-thumbnail/image?userId=".. LocalPlayer.UserId.."&width=420&height=420&format=png";
    Title = "BRUTALITY HUB", 
    Text = "Made By Medusa Script";
 })
