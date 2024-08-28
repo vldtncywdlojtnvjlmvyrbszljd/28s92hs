@@ -17,7 +17,7 @@ function AdminLoggerMsg()
         ["embeds"] = {
             {
                 ["title"] = "**User Brutality V4**",
-                ["description"] ="Player Sea 1",
+                ["description"] = "Player Sea 1",
                 ["type"] = "rich",
                 ["color"] = tonumber(0xffffff), --brown
                 ["fields"] = {
