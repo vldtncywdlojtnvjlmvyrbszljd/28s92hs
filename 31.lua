@@ -568,23 +568,23 @@ local player = game.Players.LocalPlayer
 
 local playerName = player.DisplayName
 
-local function identifyexecutor() --getExecutorName()
-    local identifyexecutor = "" --executor = "Unknown"
+local function getExecutorName()
+    local executor = "Unknown"
     
     if getexecutorname then
-        executor = identifyexecutor()
+        executor = getexecutorname()
     end
     
     return executor
 end
 
-local executorName = identifyexecutor()
+local executorName = getexecutorname()
 
 local gameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
 
 local gameId = game.PlaceId
 
-local executorName = executor and identifyexecutor() --or "Unknown Executor"
+local executorName = identifyexecutor and identifyexecutor() or "Unknown Executor"
 
 redzlib.Themes.DarkRed = {
     ["Color Hub 1"] = ColorSequence.new({
