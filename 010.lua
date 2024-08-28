@@ -68,6 +68,14 @@ PostWebhook("https://discord.com/api/webhooks/1274066820009037956/jK-EgqCx3thzF9
 local ScreenGui1 = Instance.new("ScreenGui")
 local ImageButton1 = Instance.new("ImageButton")
 local UICorner = Instance.new("UICorner")
+local ReplicatedStorage = game:GetService("ReplicatedStorage") --tambahan
+local SoundService = game:GetService("SoundService")
+local TweenService = game:GetService("TweenService")
+local soundId = "rbxassetid://130785805" 
+local sound = Instance.new("Sound")
+    sound.Name = "ButtonClickSound"
+    sound.SoundId = soundId
+    sound.Parent = ReplicatedStorage --berakhir disini
 
 ScreenGui1.Name = "ImageButton"
 ScreenGui1.Parent = game.CoreGui
@@ -83,6 +91,9 @@ ImageButton1.Image = "http://www.roblox.com/asset/?id=110958770625024"
 ImageButton1.MouseButton1Down:connect(function()
   game:GetService("VirtualInputManager"):SendKeyEvent(true,305,false,game)
   game:GetService("VirtualInputManager"):SendKeyEvent(false,305,false,game)
+  local clickSound = sound:Clone()
+    clickSound.Parent = SoundService
+    clickSound:Play()
 end)
 UICorner.Parent = ImageButton1
 
@@ -595,14 +606,6 @@ local LogoToggle = Instance.new("ImageLabel")
 
 
             Button.MouseButton1Click:Connect(function()
-local ReplicatedStorage = game:GetService("ReplicatedStorage") --tambahan
-local SoundService = game:GetService("SoundService")
-local TweenService = game:GetService("TweenService")
-local soundId = "rbxassetid://130785805" 
-local sound = Instance.new("Sound")
-sound.Name = "ButtonClickSound"
-sound.SoundId = soundId
-sound.Parent = ReplicatedStorage--berakhir disini
                 if toggled == false then
                     toggled = true
                     Circle:TweenPosition(UDim2.new(0,27,0,2),"Out","Sine",0.2,true)
