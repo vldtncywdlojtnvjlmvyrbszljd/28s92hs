@@ -625,9 +625,8 @@ Tab1:AddDiscordInvite({
 
 Tab1:AddDiscordInvite({
     Name = "Subscribe Youtube",
-    Description = "Please subscribe for get notify update script",
-    Logo = "rbxassetid://110958770625024",
-    Invite = "www.youtube.com/@medusascriptroblox"
+    Invite = "www.youtube.com/@medusascriptroblox",
+    Image = "rbxassetid://110958770625024"
   })
   end
 
@@ -635,7 +634,7 @@ local Paragraph = Tab1:AddParagraph({"Join us discord for information about upda
 
 Window:AddMinimizeButton({
     Button = {
-        Image = "rbxassetid://104397992902189"
+        Image = "rbxassetid://110958770625024"
     },
     UICorner = {true,
     CornerRadius = UDim.new(0.5, 0)
