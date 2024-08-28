@@ -562,7 +562,7 @@ else
 end
 
 
-local gameName = game:GetService("MarketplaceService"):GetProductInfo(13772394625).Name--game.PlaceId).Name
+local gameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
 
 local player = game.Players.LocalPlayer
 
@@ -580,11 +580,11 @@ end
 
 local executorName = identifyexecutor()
 
-local gameName = game:GetService("MarketplaceService"):GetProductInfo(13772394625).Name --game.PlaceId).Name
+local gameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
 
-local gameId = 13772394625 --game.PlaceId
+local gameId = game.PlaceId
 
-local executorName = identifyexecutor and identifyexecutor() --or "Unknown Executor"
+local executorName = executor and identifyexecutor() --or "Unknown Executor"
 
 redzlib.Themes.DarkRed = {
     ["Color Hub 1"] = ColorSequence.new({
@@ -1956,7 +1956,7 @@ Tab5:AddButton({
     Name = "Serverhop",
     Description = "Changes to a different game server.",
     Callback = function()
-        local PlaceID = 13772394625 --game.PlaceId
+        local PlaceID = game.PlaceId
         local AllIDs = {}
         local foundAnything = ""
         local actualHour = os.date("!*t").hour
