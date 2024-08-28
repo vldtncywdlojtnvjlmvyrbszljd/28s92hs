@@ -1,6 +1,7 @@
 local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/cracklua/cracks/m/sources/pitbull/Library/V5.lua"))()
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/cracklua/cracks/m/sources/pitbull/Library/V4.lua"))()
-
+if game.PlaceId == 13772394625 then
+end
 local Stats = game:GetService('Stats')
 
 local Players = game:GetService('Players')
@@ -489,7 +490,7 @@ spawn(function()
 end)
 
 local function getExecutorName()
-    local executor = "Unknown"
+    local executor = ""
     
     if getexecutorname then
         executor = getexecutorname()
@@ -502,8 +503,8 @@ local executorName = getExecutorName()
 
 if executorName == "Solara" then
     local Notify = Library:MakeNotify({
-        Title = "External Hub",
-        Text = "External Hub  has determined that your executor, " .. executorName .. ", is fully compatible, ensuring an optimal and satisfying experience with our product.",
+        Title = "Brutality Hub V4",
+        Text = "Brutality Hub V4 has determined that your executor, " .. executorName .. ", is fully compatible, ensuring an optimal and satisfying experience with our product.",
         Time = 5
       })
 
@@ -531,8 +532,8 @@ if executorName == "Solara" then
         coroutine.resume(AntiKick)
 else
     local Notify = Library:MakeNotify({
-        Title = "External Hub",
-        Text = "External Hub  has determined that your executor, " .. executorName .. ", is fully compatible, ensuring an optimal and satisfying experience with our product.",
+        Title = "Brutality Hub V4",
+        Text = "Brutality Hub V4 has determined that your executor, " .. executorName .. ", is fully compatible, ensuring an optimal and satisfying experience with our product.",
         Time = 5
       })
 
@@ -577,7 +578,7 @@ local function getExecutorName()
     return executor
 end
 
-local executorName = getExecutorName()
+local executorName = getexecutorname()
 
 local gameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
 
@@ -599,9 +600,9 @@ redzlib.Themes.DarkRed = {
 }  
 
 local Window = redzlib:MakeWindow({
-    Title = "External Hub  | " .. gameName,
-    SubTitle = "By Famzz And Botuna",
-    SaveFolder = "ExternalHub"
+    Title = "Brutality Hub V4  | " .. gameName,
+    SubTitle = "Made by Medusa Script",
+    SaveFolder = "BrutalityHubV4"
 })
 
 redzlib:SetTheme("DarkRed")
@@ -617,16 +618,23 @@ local Tab5 = Window:MakeTab({"| Tools", "rbxassetid://18170704671"})
 Window:SelectTab(Tab1)
 
 Tab1:AddDiscordInvite({
-    Name = "External Hub Server Official",
-    Invite = "https://discord.gg/2ewQyEjPQk",
-    Image = "rbxassetid://116607987128538"
+    Name = "Server Discord",
+    Invite = "https://discord.gg/brutality-hub-1182005198206545941",
+    Image = "rbxassetid://110958770625024"
 })
+
+Tab1:AddDiscordInvite({
+    Name = "Subscribe Youtube",
+    Invite = "www.youtube.com/@medusascriptroblox",
+    Image = "rbxassetid://110958770625024"
+  })
+  end
 
 local Paragraph = Tab1:AddParagraph({"Join us discord for information about updates!", "​"})
 
 Window:AddMinimizeButton({
     Button = {
-        Image = "rbxassetid://116607987128538"
+        Image = "rbxassetid://110958770625024"
     },
     UICorner = {true,
     CornerRadius = UDim.new(0.5, 0)
@@ -824,7 +832,7 @@ local function detectExploiters()
 
                 if humanoid.WalkSpeed > 40 then
                     local Notify = Library:MakeNotify({
-                        Title = "External Hub ",
+                        Title = "Brutality Hub V4",
                         Text = player.Name .. " is using high speed (WalkSpeed: " .. humanoid.WalkSpeed .. ")!",
                         Time = 5
                     })
@@ -832,7 +840,7 @@ local function detectExploiters()
 
                 if humanoid.JumpPower > 100 then
                     local Notify = Library:MakeNotify({
-                        Title = "External Hub ",
+                        Title = "Brutality Hub V4",
                         Text = player.Name .. " is using high jump (JumpPower: " .. humanoid.JumpPower .. ")!",
                         Time = 5
                     })
@@ -840,7 +848,7 @@ local function detectExploiters()
 
                 if rootPart and rootPart.Anchored then
                     local Notify = Library:MakeNotify({
-                        Title = "External Hub ",
+                        Title = "Brutality Hub V4",
                         Text = player.Name .. " is using fly!",
                         Time = 5
                     })
@@ -851,7 +859,7 @@ local function detectExploiters()
                     local hit, position = workspace:FindPartOnRayWithIgnoreList(ray, {player.Character})
                     if not hit or (position - rootPart.Position).Magnitude > 10 then
                         local Notify = Library:MakeNotify({
-                            Title = "External Hub ",
+                            Title = "Brutality Hub V4",
                             Text = player.Name .. " is using noclip!",
                             Time = 5
                         })
@@ -862,7 +870,7 @@ local function detectExploiters()
                     local speedMagnitude = (rootPart.Velocity * Vector3.new(1, 0, 1)).Magnitude
                     if speedMagnitude > 100 then
                         local Notify = Library:MakeNotify({
-                            Title = "External Hub ",
+                            Title = "Brutality Hub V4",
                             Text = player.Name .. " is using speed glitch (Speed: " .. speedMagnitude .. ")!",
                             Time = 5
                         })
@@ -1325,18 +1333,18 @@ local Dropdown = Tab3:AddDropdown({
     Description = "Select a combat mode.",
     Options = {"Basic", "Basic High", "Medium", "Medium High", "Pro", "Pro High", "Extreme", "Extreme [AI]"},
     Default = "Extreme [AI]",
-    Flag = "External Hub ",
+    Flag = "Brutality Hub V4",
     Callback = function(currentOption)
         if autoParryAIEnabled then
             local Notify = Library:MakeNotify({
-                Title = "External Hub ",
-                Text = "External Hub  has applied the mode " .. currentOption .. " automatically successfully.",
+                Title = "Brutality Hub v4",
+                Text = "Brutality Hub V4  has applied the mode " .. currentOption .. " automatically successfully.",
                 Time = 5
               })
         else
             local Notify = Library:MakeNotify({
-                Title = "External Hub ",
-                Text = "External Hub  cannot activate mode " .. currentOption .. " since you do not have Auto Parry [AI] mode activated.",
+                Title = "Brutality Hub V4",
+                Text = "Brutality Hub V4 cannot activate mode " .. currentOption .. " since you do not have Auto Parry [AI] mode activated.",
                 Time = 5
               })
         end
@@ -1516,8 +1524,8 @@ local detectionCooldowns = {}
 
 local function createNotification(player, deviceType)
     local Notify = Library:MakeNotify({
-        Title = "External Hub ",
-        Text = "External Hub  detected a rapid click on " .. player.Name .. "'s " .. deviceType,
+        Title = "Brutality Hub V4",
+        Text = "Brutality Hub V4 detected a rapid click on " .. player.Name .. "'s " .. deviceType,
         Time = 5
     })
 end
