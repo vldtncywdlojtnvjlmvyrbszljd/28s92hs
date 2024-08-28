@@ -3454,7 +3454,41 @@ local Dms = Library:AddTab("Sea Event","104397992902189")
 
 --mulai masuk ke fitur sc
 
-H:AddSeperator("Status Server & Info Dev")
+H:AddSeperator("Made By Medusa Script Roblox")
+H:AddLine()
+H:AddLabel("Executor : ".. identifyexecutor())
+H:AddLabel("Name : ".. game.Players.LocalPlayer.Name)
+
+local locallv = H:AddLabel("Level :")
+    
+    spawn(function()
+        while wait() do
+            pcall(function()
+                locallv:Set("Level :".." "..game:GetService("Players").LocalPlayer.Data.Level.Value)
+            end)
+        end
+    end)
+    
+    local localrace = H:AddLabel("Race :")
+    
+    spawn(function()
+        while wait() do
+            pcall(function()
+                localrace:Set("Race :".." "..game:GetService("Players").LocalPlayer.Data.Race.Value)
+            end)
+        end
+    end)
+    
+    local localbeli = H:AddLabel("Beli :")
+    
+    spawn(function()
+        while wait() do
+            pcall(function()
+                localbeli:Set("Beli :".." "..game:GetService("Players").LocalPlayer.Data.Beli.Value)
+            end)
+        end
+    end)
+H:AddLine()
 if World3 then
     spawn(function()
         pcall(function()
@@ -3462,7 +3496,7 @@ if World3 then
     if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     Mirragecheck:Set('Mirage Island : ✅')
     else
-      Mirragecheck:Set('Mirage Island : ❌ ' )end
+      Mirragecheck:Set('Mirage Island : ❌' )end
             end
         end)
     end)
@@ -16075,7 +16109,7 @@ ESX:AddSeperator("SEA EVENT")
 
    ESX:AddSeperator("Rough Sea")
 
-   ESX:AddToggle("Auto Drive Boat", _G.DomadicAutoDriveBoat,function(value)
+   ESX:AddToggle("Auto Drive & Farm Material", _G.DomadicAutoDriveBoat,function(value)
        _G.DomadicAutoDriveBoat = value
       StopTween( _G.DomadicAutoDriveBoat)
   end)
