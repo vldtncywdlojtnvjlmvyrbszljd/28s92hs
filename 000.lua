@@ -583,14 +583,6 @@ local LogoToggle = Instance.new("ImageLabel")
     LogoToggle.Position = UDim2.new(0, 6, 0, 2)
     LogoToggle.Size = UDim2.new(0, 26, 0, 26)
     LogoToggle.Image = "http://www.roblox.com/asset/?id="..tostring(104397992902189) --logo toggle
-local ReplicatedStorage = game:GetService("ReplicatedStorage") --tambahan
-local SoundService = game:GetService("SoundService")
-local TweenService = game:GetService("TweenService")
-local soundId = "rbxassetid://130785805" 
-local sound = Instance.new("Sound")
-    sound.Name = "ButtonClickSound"
-    sound.SoundId = soundId
-    sound.Parent = ReplicatedStorage -- tambahan berakhir disini
 
             Circle.Name = "Circle"
             Circle.Parent = ToggleImage
@@ -603,6 +595,14 @@ local sound = Instance.new("Sound")
 
 
             Button.MouseButton1Click:Connect(function()
+local ReplicatedStorage = game:GetService("ReplicatedStorage") --tambahan
+local SoundService = game:GetService("SoundService")
+local TweenService = game:GetService("TweenService")
+local soundId = "rbxassetid://130785805" 
+local sound = Instance.new("Sound")
+sound.Name = "ButtonClickSound"
+sound.SoundId = soundId
+sound.Parent = ReplicatedStorage--berakhir disini
                 if toggled == false then
                     toggled = true
                     Circle:TweenPosition(UDim2.new(0,27,0,2),"Out","Sine",0.2,true)
