@@ -228,7 +228,7 @@ function Update:Window(text,logo,keybind)
     MapName.Parent = Top
     MapName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     MapName.BackgroundTransparency = 1.000
-    MapName.Position = UDim2.new(0, 85, 0, 0)
+    MapName.Position = UDim2.new(0, 50, 0, 0)
     MapName.Size = UDim2.new(0, 81, 0, 27)
     MapName.Font = Enum.Font.GothamSemibold
     MapName.Text = "" .. game.Players.LocalPlayer.Name --                | BLOX FRUIT
