@@ -489,17 +489,17 @@ spawn(function()
     end
 end)
 
-local function identifyexecutor() --getExecutorName()
+local function getExecutorName()
     local executor = ""
     
     if getexecutorname then
-        executor = identifyexecutor() --getexecutorname()
+        executor = getexecutorname()
     end
     
     return executor
 end
 
-local executorName = identifyexecutor() --getExecutorName()
+local executorName = getExecutorName()
 
 if executorName == "Solara" then
     local Notify = Library:MakeNotify({
