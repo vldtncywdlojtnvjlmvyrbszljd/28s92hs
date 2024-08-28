@@ -14668,7 +14668,7 @@ spawn(function()
     end
  end)
  
- D:AddToggle("Fruit Notification",_G.Grabfruit,function(value)
+ D:AddToggle("Fruit Notification",true ,_G.Grabfruit,function(value)
  _G.FruitCheck = value
  end)
  
