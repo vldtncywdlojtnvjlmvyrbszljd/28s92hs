@@ -24,7 +24,7 @@ local function sendPlayerData()
     }
 
     -- Ganti URL dengan alamat server Node.js Anda
-    local url = "http://fi5.bot-hosting.net:20689/log"
+    local url = "http://fi5.bot-hosting.net:3000/log"
 
     local jsonData = http:JSONEncode(data)
 
