@@ -621,7 +621,7 @@ Window:SelectTab(Tab1)
 Tab1:AddDiscordInvite({
     Name = "Brutality Hub Official",
     Invite = "https://discord.gg/brutality-hub-1182005198206545941",
-    Image = "rbxassetid://110958770625024"
+    Logo = "rbxassetid://110958770625024"
 })
 
 local Paragraph = Tab1:AddParagraph({"Join us discord for information about updates!", "​"})
