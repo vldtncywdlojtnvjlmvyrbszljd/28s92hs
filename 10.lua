@@ -16549,7 +16549,7 @@ spawn(function()
  end)
 
 print("Brutality Hub Load Complete")
---[[
+
 game.StarterGui:SetCore("SendNotification", {
    Icon = "http://www.roblox.com/asset/?id=110958770625024";
    Title = "WEBHOOK NOTIFY", 
@@ -16561,9 +16561,9 @@ game.StarterGui:SetCore("SendNotification", {
  Title = "CHANNEL YOUTUBE", 
  Text = "Medusa Script Roblox";
 })
-]]
+
 game.StarterGui:SetCore("SendNotification", {
    Icon = "https://www.roblox.com/headshot-thumbnail/image?userId=".. LocalPlayer.UserId.."&width=420&height=420&format=png";
    Title = "Hello My Friend", 
-   Text = "Name: ".. game.Players.LocalPlayer.Name";
+   Text = "Name: ".. game.Players.LocalPlayer.Name;
 })
