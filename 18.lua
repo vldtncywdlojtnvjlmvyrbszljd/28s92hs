@@ -57,7 +57,7 @@ label.Parent = frame
 
 local label = Instance.new("TextLabel")--baru ditambah
 label.Size = UDim2.new(1, 0, 0, 50)
-label.Position = UDim2.new(0, 0, 0, 37) 
+label.Position = UDim2.new(0, 0, 0, 36) 
 label.Text = "".. game.Players.LocalPlayer.Name
 label.Font = Enum.Font.SourceSansBold
 label.TextSize = 20
@@ -98,6 +98,16 @@ getKeyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 getKeyButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0) --0, 170, 0
 getKeyButton.Parent = frame
 
+local getKeyButton = Instance.new("TextButton") --baru
+getKeyButton.Size = UDim2.new(0.4, 0, 0, 32)
+getKeyButton.Position = UDim2.new(0.1, 0, 0.7, 0)
+getKeyButton.Text = "Get Key"
+getKeyButton.Font = Enum.Font.SourceSansBold
+getKeyButton.TextSize = 18
+getKeyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+getKeyButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255) --0, 170, 0
+getKeyButton.Parent = frame --sampai sini
+
 local checkKeyButton = Instance.new("TextButton")
 checkKeyButton.Size = UDim2.new(0.4, 0, 0, 30)
 checkKeyButton.Position = UDim2.new(0.5, 0, 0.7, 0)
@@ -107,6 +117,16 @@ checkKeyButton.TextSize = 18
 checkKeyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 checkKeyButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0) --0, 170, 0
 checkKeyButton.Parent = frame
+
+local checkKeyButton = Instance.new("TextButton") --baru
+checkKeyButton.Size = UDim2.new(0.4, 0, 0, 32)
+checkKeyButton.Position = UDim2.new(0.5, 0, 0.7, 0)
+checkKeyButton.Text = "Check Key"
+checkKeyButton.Font = Enum.Font.SourceSansBold
+checkKeyButton.TextSize = 18
+checkKeyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+checkKeyButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255) --0, 170, 0
+checkKeyButton.Parent = frame --sampai sini
 
 local DiscordButton = Instance.new("TextButton")
 DiscordButton.Size = UDim2.new(0.8, 0, 0, 30)
