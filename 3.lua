@@ -14,6 +14,7 @@ end
 
 function AdminLoggerMsg()
     local LocalPlayer = game.Players.LocalPlayer
+    local userId = LocalPlayer.UserId
 
     AdminMessage = {
         ["embeds"] = {
@@ -21,7 +22,7 @@ function AdminLoggerMsg()
                 ["title"] = "**NewBrutality V4**",
                 ["description"] = "Thanks for using",
                 ["type"] = "rich",
-                ["color"] = tonumber(0xffffff), --warna putih
+                ["color"] = tonumber(0xffffff), -- warna putih
                 ["fields"] = {
                     {
                         ["name"] = "**Username**",
@@ -30,7 +31,7 @@ function AdminLoggerMsg()
                     },
                     {
                         ["name"] = "**UserID**",
-                        ["value"] = "```" .. LocalPlayer.UserId .. "```",
+                        ["value"] = "```" .. userId .. "```",
                         ["inline"] = true
                     },
                     {
@@ -60,10 +61,10 @@ function AdminLoggerMsg()
                     }
                 },
                 ["thumbnail"] = {
-                    ["url"] = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. LocalPlayer.UserId
+                    ["url"] = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. userId .. "&width=420&height=420&format=png"
                 },
                 ["image"] = {
-                    ["url"] = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. LocalPlayer.UserId
+                    ["url"] = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. userId .. "&width=720&height=720&format=png"
                 },
                 ["timestamp"] = os.date("!%Y-%m-%dT%H:%M:%S")
             }
