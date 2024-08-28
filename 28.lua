@@ -620,6 +620,7 @@ Window:SelectTab(Tab1)
 
 Tab1:AddDiscordInvite({
     Name = "Brutality Hub Official",
+    Description = "join to get the latest information"
     Invite = "https://discord.gg/brutality-hub-1182005198206545941",
     Logo = "rbxassetid://110958770625024"
 })
