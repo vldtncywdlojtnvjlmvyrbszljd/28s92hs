@@ -46,7 +46,7 @@ end)
 
 local label = Instance.new("TextLabel")
 label.Size = UDim2.new(1, 0, 0, 50)
-label.Position = UDim2.new(0, 0, 0, 30) 
+label.Position = UDim2.new(0, 0, 0, 25) 
 label.Text = "HELLO MY FRIEND "
 label.Font = Enum.Font.SourceSansBold
 label.TextSize = 24
@@ -55,12 +55,23 @@ label.BackgroundTransparency = 1
 label.TextWrapped = true
 label.Parent = frame
 
-local label = Instance.new("TextLabel")--baru edit
+local label = Instance.new("TextLabel")--baru ditambah
 label.Size = UDim2.new(1, 0, 0, 50)
-label.Position = UDim2.new(0, 0, 0, 50) 
-label.Text = "Welcome: ".. game.Players.LocalPlayer.Name
+label.Position = UDim2.new(0, 0, 0, 35) 
+label.Text = "Name: ".. game.Players.LocalPlayer.Name
 label.Font = Enum.Font.SourceSansBold
-label.TextSize = 24
+label.TextSize = 20
+label.TextColor3 = Color3.fromRGB(255, 255, 255)
+label.BackgroundTransparency = 1
+label.TextWrapped = true
+label.Parent = frame--sampai sini
+
+local label = Instance.new("TextLabel")--baru ditambah
+label.Size = UDim2.new(1, 0, 0, 50)
+label.Position = UDim2.new(0, 0, 0, 55) 
+label.Text = "Executor: ".. identifyexecutor()
+label.Font = Enum.Font.SourceSansBold
+label.TextSize = 20
 label.TextColor3 = Color3.fromRGB(255, 255, 255)
 label.BackgroundTransparency = 1
 label.TextWrapped = true
