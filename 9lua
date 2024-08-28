@@ -228,10 +228,10 @@ function Update:Window(text,logo,keybind)
     MapName.Parent = Top
     MapName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     MapName.BackgroundTransparency = 1.000
-    MapName.Position = UDim2.new(0, 50, 0, 0)
+    MapName.Position = UDim2.new(0, 85, 0, 0)
     MapName.Size = UDim2.new(0, 81, 0, 27)
     MapName.Font = Enum.Font.GothamSemibold
-    MapName.Text = "" .. game.Players.LocalPlayer.Name --                | BLOX FRUIT
+    MapName.Text = "" --                | BLOX FRUIT
     MapName.TextColor3 = Color3.fromRGB(225, 225, 225)   
     MapName.TextSize = 20.000
     MapName.TextXAlignment = Enum.TextXAlignment.Left
@@ -3294,7 +3294,7 @@ end)
 print("Load Script")
 --akhiran fitur sc
 --Icon Tab
-local Library = Update:Window("                  ","104397992902189",Enum.KeyCode.RightControl); --12523036534
+local Library = Update:Window("                  SEA 2","104397992902189",Enum.KeyCode.RightControl); --12523036534
 
 local H = Library:AddTab("Home","6026568198")
 local Main = Library:AddTab("Level Farm","13075651575")
@@ -3312,8 +3312,8 @@ local Dms = Library:AddTab("Sea Event","11156061121")
 --mulai masuk ke fitur sc
 
 H:AddSeperator("Made By Medusa Script")
-H:AddLabel("")
-H:AddLabel("")
+H:AddLabel("Name: ".. game.Players.LocalPlayer.Name)
+H:AddLabel("https://www.roblox.com/headshot-thumbnail/image?userId=".. LocalPlayer.UserId.."&width=420&height=420&format=png")
 H:AddLabel("")
 
 H:AddButton("Buy Permanent Key",function()
