@@ -47,13 +47,24 @@ end)
 local label = Instance.new("TextLabel")
 label.Size = UDim2.new(1, 0, 0, 50)
 label.Position = UDim2.new(0, 0, 0, 30) 
-label.Text = "Welcome: ".. game.Players.LocalPlayer.Name
+label.Text = "HELLO MY FRIEND "
 label.Font = Enum.Font.SourceSansBold
 label.TextSize = 24
 label.TextColor3 = Color3.fromRGB(255, 255, 255)
 label.BackgroundTransparency = 1
 label.TextWrapped = true
 label.Parent = frame
+
+local label = Instance.new("TextLabel")--baru edit
+label.Size = UDim2.new(1, 0, 0, 50)
+label.Position = UDim2.new(0, 0, 0, 10) 
+label.Text = "Welcome: ".. game.Players.LocalPlayer.Name
+label.Font = Enum.Font.SourceSansBold
+label.TextSize = 24
+label.TextColor3 = Color3.fromRGB(255, 255, 255)
+label.BackgroundTransparency = 1
+label.TextWrapped = true
+label.Parent = frame--sampai sini
 
 local textBox = Instance.new("TextBox")
 textBox.Size = UDim2.new(0.8, 0, 0, 30)
