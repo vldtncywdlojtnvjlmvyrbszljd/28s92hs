@@ -3294,7 +3294,7 @@ end)
 print("Load Script")
 --akhiran fitur sc
 --Icon Tab
-local Library = Update:Window("                  SEA 2","104397992902189",Enum.KeyCode.RightControl); --12523036534
+local Library = Update:Window("                  .. game.Players.LocalPlayer.Name ..","104397992902189",Enum.KeyCode.RightControl); --12523036534
 
 local H = Library:AddTab("Home","6026568198")
 local Main = Library:AddTab("Level Farm","13075651575")
@@ -3312,12 +3312,9 @@ local Dms = Library:AddTab("Sea Event","11156061121")
 --mulai masuk ke fitur sc
 
 H:AddSeperator("Made By Medusa Script")
-local Icon = H:AddLabel("")
-local title = H:AddLabel("")
-local text = H:AddLabel("")
-Icon = "https://www.roblox.com/headshot-thumbnail/image?userId=".. LocalPlayer.UserId.."&width=420&height=420&format=png";
-Title = "Hello My Friend", 
-Text = "Name: ".. game.Players.LocalPlayer.Name;
+H:AddLabel("")
+H:AddLabel("")
+H:AddLabel("")
 
 H:AddButton("Buy Permanent Key",function()
 setclipboard("https://discord.gg/brutality-hub-1182005198206545941")
