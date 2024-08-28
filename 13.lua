@@ -46,10 +46,10 @@ end)
 
 local label = Instance.new("TextLabel")
 label.Size = UDim2.new(1, 0, 0, 50)
-label.Position = UDim2.new(0, 0, 0, 15) 
+label.Position = UDim2.new(0, 0, 0, 10) 
 label.Text = "HELLO MY FRIEND "
 label.Font = Enum.Font.SourceSansBold
-label.TextSize = 24
+label.TextSize = 30
 label.TextColor3 = Color3.fromRGB(255, 255, 255)
 label.BackgroundTransparency = 1
 label.TextWrapped = true
