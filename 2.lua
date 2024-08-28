@@ -230,7 +230,7 @@ function Update:Window(text,logo,keybind)
     Hub.Position = UDim2.new(0, 100, 0, 0) --0, 85, 0, 0
     Hub.Size = UDim2.new(0, 81, 0, 27)
     Hub.Font = Enum.Font.GothamSemibold
-    Hub.Text = "                               | BRUTALITY HUB V4 |" 
+    Hub.Text = "             | BRUTALITY HUB V4" 
     Hub.TextColor3 = Color3.fromRGB(252, 239, 0)   --warna text atas
     Hub.TextSize = 20.000
     Hub.TextXAlignment = Enum.TextXAlignment.Left
@@ -3437,7 +3437,7 @@ end)
 print("Load Script")
 --akhiran fitur sc
 --Icon Tab
-local Library = Update:Window("                  ","",Enum.KeyCode.RightControl); --12523036534
+local Library = Update:Window("                  SEA 3","",Enum.KeyCode.RightControl); --12523036534
 
 local H = Library:AddTab("Status","104397992902189")
 local Main = Library:AddTab("Level Farm","104397992902189")
@@ -4222,6 +4222,22 @@ spawn(function()
      end
  end
 end)
+
+Main:AddToggle("Auto Stop Legendary Item (sea 2-3)",true ,_G.StopChest ,function(value)
+    _G.StopChest = value
+end)
+
+    spawn(function()
+        while wait() do
+        if _G.StopChest then
+            if game.Players.LocalPlayer.Backpack:FindFirstChild("Fist of Darkness") or game.Players.LocalPlayer.Character:FindFirstChild("Fist of Darkness") or game.Players.LocalPlayer.Backpack:FindFirstChild("God's Chalice") or game.Players.LocalPlayer.Character:FindFirstChild("God's Chalice") then
+                AutoFarmChest = false
+                StopTween(AutoFarmChest)
+                TweenChest:Set(false)
+            end
+        end
+    end
+    end)
 
 Main:AddToggle("Auto Farm Chest Mirage island",false,function(value)
 _G.AutoChestMirage = value
@@ -16759,18 +16775,14 @@ spawn(function()
 print("Brutality Hub Load Complete")
 
 game.StarterGui:SetCore("SendNotification", {
-   Icon = "http://www.roblox.com/asset/?id=110958770625024";
-   Title = "WEBHOOK NOTIFY", 
-   Text = "Join Server Discord";
-})
-wait(3)
+    Icon = "http://www.roblox.com/asset/?id=18395460459";
+    Title = "CHANNEL YOUTUBE", 
+    Text = "Medusa Script Roblox";
+   })
+wait(2)
+
 game.StarterGui:SetCore("SendNotification", {
- Icon = "http://www.roblox.com/asset/?id=18395460459";
- Title = "CHANNEL YOUTUBE", 
- Text = "Medusa Script Roblox";
-})
-game.StarterGui:SetCore("SendNotification", {
-   Icon = "http://www.roblox.com/asset/?id=110958770625024";
-   Title = "BRUTALITY HUB", 
-   Text = "Made By Medusa Script";
+   Icon = "https://www.roblox.com/headshot-thumbnail/image?userId=".. LocalPlayer.UserId.."&width=420&height=420&format=png";
+   Title = "Hello My Friend", 
+   Text = "Name: ".. game.Players.LocalPlayer.Name;
 })
