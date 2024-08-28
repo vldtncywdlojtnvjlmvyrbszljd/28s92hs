@@ -2,4 +2,4 @@ local NotificationLibrary = loadstring(game:HttpGet("https://raw.githubuserconte
 
 NotificationLibrary:SendNotification("Warning", "Script Loading ...", 10)
 NotificationLibrary:SendNotification("Warning", "YouTube: Medusa Script Roblox", 10)
-NotificationLibrary:SendNotification("Warning", "Made By: Medusa Script", 10)
+NotificationLibrary:SendNotification("Warning", "Executor: ".. identifyexecutor(), 10)
