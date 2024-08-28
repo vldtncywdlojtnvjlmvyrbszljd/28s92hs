@@ -3313,8 +3313,6 @@ local Dms = Library:AddTab("Sea Event","11156061121")
 
 H:AddSeperator("Made By Medusa Script")
 H:AddLabel("Name: ".. game.Players.LocalPlayer.Name)
-H:AddLabel("https://www.roblox.com/headshot-thumbnail/image?userId=".. LocalPlayer.UserId.."&width=420&height=420&format=png")
-H:AddLabel("")
 
 H:AddButton("Buy Permanent Key",function()
 setclipboard("https://discord.gg/brutality-hub-1182005198206545941")
