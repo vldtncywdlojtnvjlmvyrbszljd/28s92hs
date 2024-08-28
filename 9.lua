@@ -57,7 +57,7 @@ label.Parent = frame
 
 local label = Instance.new("TextLabel")--baru edit
 label.Size = UDim2.new(1, 0, 0, 50)
-label.Position = UDim2.new(0, 0, 0, 10) 
+label.Position = UDim2.new(0, 0, 0, 50) 
 label.Text = "Welcome: ".. game.Players.LocalPlayer.Name
 label.Font = Enum.Font.SourceSansBold
 label.TextSize = 24
