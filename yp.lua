@@ -1,14 +1,24 @@
-local http = game:GetService("HttpService")
-local datastore = game:GetService("DataStoreService"):GetDataStore("KeyStore")
+-- Modifikasi Script untuk Executor
+
+local http = syn.request or http_request -- Menggunakan metode HTTP alternatif jika tidak mendukung HttpService
 local player = game.Players.LocalPlayer
 
-local keyUrl = "https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/28s92hs/main/key.txt" -- Ganti dengan URL GitHub Anda
+local keyUrl = "https://raw.githubusercontent.com/username/repository/main/key.txt" -- Ganti dengan URL GitHub Anda
 
 -- Fungsi untuk mengambil key dari GitHub
 local function fetchKeyFromGithub()
-    local success, result = pcall(function()
-        return http:GetAsync(keyUrl)
-    end)
+    local success, result
+    if http then
+        success, result = pcall(function()
+            local response = http({
+                Url = keyUrl,
+                Method = "GET"
+            })
+            return response.Body
+        end)
+    else
+        success, result = false, "HTTP method not supported"
+    end
 
     if success then
         return result
@@ -18,51 +28,7 @@ local function fetchKeyFromGithub()
     end
 end
 
--- Fungsi untuk menyimpan key ke DataStore
-local function saveKey(key)
-    local userId = player.UserId
-    local success, errorMessage = pcall(function()
-        datastore:SetAsync(userId, {key = key, timestamp = os.time()})
-    end)
-
-    if not success then
-        warn("Failed to save key: " .. errorMessage)
-    end
-end
-
--- Fungsi untuk memeriksa apakah key perlu diinput ulang
-local function checkKeyExpiration()
-    local userId = player.UserId
-    local data = datastore:GetAsync(userId)
-
-    if data then
-        local currentTime = os.time()
-        if currentTime - data.timestamp >= 86400 then -- 86400 detik = 24 jam
-            return true
-        else
-            return false
-        end
-    else
-        return true
-    end
-end
-
--- Fungsi utama untuk memvalidasi key
-local function validateKey(inputKey)
-    local storedKey = fetchKeyFromGithub()
-
-    if storedKey and inputKey == storedKey then
-        saveKey(inputKey)
-        print("Key validated and saved for player: " .. player.Name)
-        -- Menutup GUI setelah validasi
-        script.Parent.Parent:Destroy()
-    else
-        warn("Invalid key for player: " .. player.Name)
-        errorMessage.Text = "Invalid Key. Please try again."
-    end
-end
-
--- GUI setup
+-- GUI sederhana untuk executor
 local screenGui = Instance.new("ScreenGui")
 local frame = Instance.new("Frame")
 local titleLabel = Instance.new("TextLabel")
@@ -122,14 +88,20 @@ errorMessage.TextColor3 = Color3.fromRGB(255, 0, 0)
 errorMessage.BackgroundTransparency = 1
 errorMessage.AnchorPoint = Vector2.new(0.5, 0)
 
+-- Fungsi validasi key
+local function validateKey(inputKey)
+    local storedKey = fetchKeyFromGithub()
+
+    if storedKey and inputKey == storedKey then
+        print("Key validated for player: " .. player.Name)
+        -- Menutup GUI setelah validasi
+        screenGui:Destroy()
+    else
+        warn("Invalid key for player: " .. player.Name)
+        errorMessage.Text = "Invalid Key. Please try again."
+    end
+end
+
 submitButton.MouseButton1Click:Connect(function()
     validateKey(keyInput.Text)
 end)
-
--- Event ketika player join
-if checkKeyExpiration() then
-    screenGui.Enabled = true
-else
-    -- Jika key masih valid, GUI tidak akan muncul
-    screenGui:Destroy()
-end
