@@ -28,7 +28,7 @@ local function verifyKey(userInputKey)
     end
 end
 
--- GUI Setup
+-- GUI Setup for Key Input
 local screenGui = Instance.new("ScreenGui")
 screenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
 
@@ -79,7 +79,37 @@ submitButton.MouseButton1Click:Connect(function()
         keyLabel.Text = "Key Verified!"
         wait(2)
         screenGui:Destroy()
-        -- Lanjutkan dengan script utama di sini
+
+        -- GUI Setup for Player Profile
+        local profileGui = Instance.new("ScreenGui")
+        profileGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
+
+        local profileFrame = Instance.new("Frame")
+        profileFrame.Size = UDim2.new(0, 300, 0, 150)
+        profileFrame.Position = UDim2.new(0.5, -150, 0.5, -75)
+        profileFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+        profileFrame.BorderSizePixel = 2
+        profileFrame.BorderColor3 = Color3.fromRGB(255, 255, 255)
+        profileFrame.Parent = profileGui
+
+        local nameLabel = Instance.new("TextLabel")
+        nameLabel.Size = UDim2.new(1, 0, 0, 50)
+        nameLabel.Position = UDim2.new(0, 0, 0, 0)
+        nameLabel.Text = LocalPlayer.Name
+        nameLabel.Font = Enum.Font.SourceSansBold
+        nameLabel.TextSize = 24
+        nameLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+        nameLabel.BackgroundTransparency = 1
+        nameLabel.TextWrapped = true
+        nameLabel.Parent = profileFrame
+
+        local avatarImage = Instance.new("ImageLabel")
+        avatarImage.Size = UDim2.new(0, 100, 0, 100)
+        avatarImage.Position = UDim2.new(0.5, -50, 0.5, -25)
+        avatarImage.BackgroundTransparency = 1
+        avatarImage.Image = "http://www.roblox.com/Thumbs/Avatar.ashx?x=100&y=100&format=png&userid=" .. LocalPlayer.UserId
+        avatarImage.Parent = profileFrame
+
     else
         keyLabel.Text = "Invalid Key, Try Again."
     end
