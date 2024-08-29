@@ -8,7 +8,7 @@ local lastKeyTimeStore = DataStoreService:GetDataStore("LastKeyTimeStore")
 
 local function getKeyFromGitHub()
     -- Ganti dengan URL raw dari file key.txt di GitHub
-    local url = "https://raw.githubusercontent.com/username/repository/branch/key.txt"
+    local url = "https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/28s92hs/main/key.txt"
     
     local success, response = pcall(function()
         return HttpService:GetAsync(url)
@@ -161,7 +161,7 @@ else
             avatarImage.BackgroundTransparency = 1
             avatarImage.Image = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. LocalPlayer.UserId .. "&width=420&height=420&format=png"
             avatarImage.Parent = profileFrame
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/MedusaScript/Botuna/main/BrutalityHubV4.lua",true))()
         else
             keyLabel.Text = "Invalid Key, Try Again."
         end
