@@ -296,7 +296,8 @@ if checkKeyValidity() then
     checkKeyButton.MouseButton1Click:Connect(function()
         local key = textBox.Text
         if key and #key > 0 then
-            saveKey(key)
+        if verify(key) then
+           saveKey(key)
         validationLabel.Text = "Key Is Valid!"
         validationLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
         wait(2)
@@ -314,21 +315,7 @@ if checkKeyValidity() then
         end
     end)
 end
-checkKeyButton.MouseButton1Click:Connect(function()
-    local key = textBox.Text
-    if verify(key) then
-        validationLabel.Text = "Key Is Valid!"
-        validationLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
-        wait(2)
-        validationLabel.Text = "Thanks For Use"
-        validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-        wait(2)
-        local tween = TweenService:Create(frame, TweenInfo.new(0.5), {Position = UDim2.new(0.5, -150, 1.5, -100)})
-        tween:Play()
-        tween.Completed:Connect(function()
-            screenGui:Destroy()
-        end)
-    end)
+end
 wait(3)
 local tween = TweenService:Create(frame, TweenInfo.new(0.5), {Position = UDim2.new(0.5, -150, 0.5, -100)})
 tween:Play()
