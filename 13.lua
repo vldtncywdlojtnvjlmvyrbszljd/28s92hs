@@ -70,6 +70,13 @@ if checkKeyValidity() then
     nameLabel.BackgroundTransparency = 1
     nameLabel.TextWrapped = true
     nameLabel.Parent = profileFrame
+
+    local avatarImage = Instance.new("ImageLabel")
+    avatarImage.Size = UDim2.new(0, 100, 0, 100)
+    avatarImage.Position = UDim2.new(0.5, -50, 0.5, -25)
+    avatarImage.BackgroundTransparency = 1
+    avatarImage.Image = "http://www.roblox.com/Thumbs/Avatar.ashx?x=100&y=100&format=png&userid=" .. LocalPlayer.UserId
+    avatarImage.Parent = profileFrame
 else
     -- GUI Setup for Key Input
     local screenGui = Instance.new("ScreenGui")
@@ -147,6 +154,13 @@ else
             nameLabel.BackgroundTransparency = 1
             nameLabel.TextWrapped = true
             nameLabel.Parent = profileFrame
+
+            local avatarImage = Instance.new("ImageLabel")
+            avatarImage.Size = UDim2.new(0, 100, 0, 100)
+            avatarImage.Position = UDim2.new(0.5, -50, 0.5, -25)
+            avatarImage.BackgroundTransparency = 1
+            avatarImage.Image = "http://www.roblox.com/Thumbs/Avatar.ashx?x=100&y=100&format=png&userid=" .. LocalPlayer.UserId
+            avatarImage.Parent = profileFrame
 
         else
             keyLabel.Text = "Invalid Key, Try Again."
