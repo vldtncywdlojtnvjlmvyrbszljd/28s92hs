@@ -128,7 +128,13 @@ validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 validationLabel.BackgroundTransparency = 1
 validationLabel.Parent = frame
 
+local DataStoreService = game:GetService("DataStoreService")
+local KeyStore = DataStoreService:GetDataStore("KeyStore")
+local player = game.Players.LocalPlayer
 local keyFileUrl = "https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/28s92hs/main/key.txt"
+local keyExpirationTime = 24 * 60 * 60 -- 24 jam dalam detik
+local keyInputTimeKey = "KeyInputTime_" .. player.UserId
+local keyStoredKey = "StoredKey_" .. player.UserId -- Untuk menyimpan key yang telah valid
 local allowPassThrough = false
 local rateLimit = false
 local rateLimitCountdown = 0
@@ -152,67 +158,93 @@ function verify(key)
         return false
     end
 
-    onMessage("Checking key...")
+    local currentTime = os.time()
+    local lastKeyInputTime = KeyStore:GetAsync(keyInputTimeKey)
+    local storedKey = KeyStore:GetAsync(keyStoredKey)
 
-    local status, result
+    -- Jika pengguna sudah memiliki key valid yang belum kedaluwarsa
+    if storedKey and storedKey == key and (currentTime - lastKeyInputTime) < keyExpirationTime then
+        onMessage("You already have a valid key, loading...")
+        return true
+    end
 
-    if useDataModel then
-        status, result = pcall(function() 
-            return game:HttpGetAsync(keyFileUrl)
-        end)
-        
-        if status then
-            if string.find(result, key) then
-                onMessage("Key is valid!")
-                return true
-            else
-                onMessage("Key is invalid!")
-                return false
-            end
-        else
-            onMessage("An error occurred while contacting the server!")
-            return allowPassThrough
-        end
-    else
-        status, result = pcall(function() 
-            return game:HttpGetAsync(keyFileUrl)
-        end)
+    -- Jika pengguna belum pernah memasukkan key atau sudah lebih dari 24 jam
+    if not lastKeyInputTime or (currentTime - lastKeyInputTime) >= keyExpirationTime then
+        onMessage("Checking key...")
 
-        if status then
-            if result.StatusCode == 200 then
-                if string.find(result.Body, key) then
-                    onMessage("Key is valid!")
+        local status, result
+
+        if useDataModel then
+            status, result = pcall(function() 
+                return game:HttpGetAsync(keyFileUrl)
+            end)
+
+            if status then
+                if string.find(result, key) then
+                    -- Simpan waktu dan key yang valid
+                    KeyStore:SetAsync(keyInputTimeKey, currentTime)
+                    KeyStore:SetAsync(keyStoredKey, key)
+                    onMessage("Key is valid! Loading your content...")
                     return true
                 else
                     onMessage("Key is invalid!")
                     return false
                 end
-            elseif result.StatusCode == 429 then
-                if not rateLimit then 
-                    rateLimit = true
-                    rateLimitCountdown = 10
-                    fSpawn(function() 
-                        while rateLimit do
-                            onMessage(string.format("You are being rate-limited, please slow down. Try again in %i second(s).", rateLimitCountdown))
-                            fWait(1)
-                            rateLimitCountdown = rateLimitCountdown - 1
-                            if rateLimitCountdown < 0 then
-                                rateLimit = false
-                                rateLimitCountdown = 0
-                                onMessage("Rate limit is over, please try again.")
+            else
+                onMessage("An error occurred while contacting the server!")
+                return allowPassThrough
+            end
+        else
+            status, result = pcall(function() 
+                return game:HttpGetAsync(keyFileUrl)
+            end)
+
+            if status then
+                if result.StatusCode == 200 then
+                    if string.find(result.Body, key) then
+                        -- Simpan waktu dan key yang valid
+                        KeyStore:SetAsync(keyInputTimeKey, currentTime)
+                        KeyStore:SetAsync(keyStoredKey, key)
+                        onMessage("Key is valid! Loading your content...")
+                        return true
+                    else
+                        onMessage("Key is invalid!")
+                        return false
+                    end
+                elseif result.StatusCode == 429 then
+                    if not rateLimit then 
+                        rateLimit = true
+                        rateLimitCountdown = 10
+                        fSpawn(function() 
+                            while rateLimit do
+                                onMessage(string.format("You are being rate-limited, please slow down. Try again in %i second(s).", rateLimitCountdown))
+                                fWait(1)
+                                rateLimitCountdown = rateLimitCountdown - 1
+                                if rateLimitCountdown < 0 then
+                                    rateLimit = false
+                                    rateLimitCountdown = 0
+                                    onMessage("Rate limit is over, please try again.")
+                                end
                             end
-                        end
-                    end)
-                end
+                        end)
+                    end
+                else
+                    return allowPassThrough
+                end    
             else
                 return allowPassThrough
-            end    
-        else
-            return allowPassThrough
+            end
         end
+    else
+        local remainingTime = keyExpirationTime - (currentTime - lastKeyInputTime)
+        onMessage("You already entered a valid key. Loading content...")
+        return true
     end
 end
 
+function loadContent()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/asedesa/main/zxcv.lua", true))()
+end
 
 getKeyButton.MouseButton1Click:Connect(function()
     setclipboard('https://discord.com/invite/brutality-hub-1182005198206545941')
@@ -239,8 +271,8 @@ checkKeyButton.MouseButton1Click:Connect(function()
         tween:Play()
         tween.Completed:Connect(function()
             screenGui:Destroy()
+            loadContent() -- Load content setelah validasi key
         end)
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/asedesa/main/zxcv.lua",true))()
     else
         validationLabel.Text = "Checking Key..."
         validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -249,6 +281,12 @@ checkKeyButton.MouseButton1Click:Connect(function()
         validationLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
     end
 end)
+
+-- Jika pengguna sudah memiliki key yang valid, langsung load content
+local storedKey = KeyStore:GetAsync(keyStoredKey)
+if storedKey and verify(storedKey) then
+    loadContent()
+end
 
 wait(3)
 local tween = TweenService:Create(frame, TweenInfo.new(0.5), {Position = UDim2.new(0.5, -150, 0.5, -100)})
