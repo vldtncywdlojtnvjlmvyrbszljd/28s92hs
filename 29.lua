@@ -1,7 +1,6 @@
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local TweenService = game:GetService("TweenService")
-local DataStoreService = game:GetService("DataStoreService")
 
 local screenGui = Instance.new("ScreenGui")
 screenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
@@ -253,31 +252,6 @@ function verify(key)
     end;
 end;
 
-local keyDataStore = DataStoreService:GetDataStore("KeyStore")
-local lastKeyTimeStore = DataStoreService:GetDataStore("LastKeyTimeStore")
-
--- Fungsi untuk mendapatkan perbedaan waktu dalam jam
-local function getTimeDifferenceHours(oldTime)
-    return (os.time() - oldTime) / 3600
-end
--- Fungsi untuk mengecek apakah kunci masih valid
-local function checkKeyValidity()
-    local storedKey = keyDataStore:GetAsync(LocalPlayer.UserId)
-    local lastKeyTime = lastKeyTimeStore:GetAsync(LocalPlayer.UserId)
-    if storedKey and lastKeyTime then
-        if getTimeDifferenceHours(lastKeyTime) < 24 then
-            return true
-        end
-    end
-    return false
-end
-
--- Fungsi untuk menyimpan kunci
-local function saveKey(key)
-    keyDataStore:SetAsync(LocalPlayer.UserId, key)
-    lastKeyTimeStore:SetAsync(LocalPlayer.UserId, os.time())
-end
-
 getKeyButton.MouseButton1Click:Connect(function()
     setclipboard(getLink())
     validationLabel.Text = "Link Key Copied!"
@@ -290,12 +264,9 @@ DiscordButton.MouseButton1Click:Connect(function()
     validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 end)
 
--- Jika kunci valid, lanjutkan ke script utama
-if checkKeyValidity() then
-
-    checkKeyButton.MouseButton1Click:Connect(function()
-        local key = textBox.Text
-        if verify(key) then
+checkKeyButton.MouseButton1Click:Connect(function()
+    local key = textBox.Text
+    if verify(key) then
         validationLabel.Text = "Key Is Valid!"
         validationLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
         wait(2)
@@ -307,12 +278,16 @@ if checkKeyValidity() then
         tween.Completed:Connect(function()
             screenGui:Destroy()
         end)
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/asedesa/main/zxcv.lua",true))()
-        else
-            keyLabel.Text = "Invalid Key, Try Again."
-        end
-    end)
-end
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/asedesa/main/zxcv.lua",true))()
+    else
+        validationLabel.Text = "Checking Key..."
+        validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+        wait(1.7)
+        validationLabel.Text = "Key Is Not Valid!"
+        validationLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+    end
+end)
+
 wait(3)
 local tween = TweenService:Create(frame, TweenInfo.new(0.5), {Position = UDim2.new(0.5, -150, 0.5, -100)})
 tween:Play()
