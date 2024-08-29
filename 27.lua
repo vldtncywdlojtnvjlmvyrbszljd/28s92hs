@@ -295,7 +295,6 @@ if checkKeyValidity() then
 
     checkKeyButton.MouseButton1Click:Connect(function()
         local key = textBox.Text
-        if key and #key > 0 then
         if verify(key) then
            saveKey(key)
         validationLabel.Text = "Key Is Valid!"
@@ -314,7 +313,6 @@ if checkKeyValidity() then
             keyLabel.Text = "Invalid Key, Try Again."
         end
     end)
-end
 end
 wait(3)
 local tween = TweenService:Create(frame, TweenInfo.new(0.5), {Position = UDim2.new(0.5, -150, 0.5, -100)})
