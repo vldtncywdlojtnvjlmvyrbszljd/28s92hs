@@ -2332,8 +2332,8 @@ local Window = Fluent:CreateWindow({
 
 -- Fluent provides Lucide Icons https://lucide.dev/icons/ for the tabs, icons are optional
 local Tabs = {
-    Main = Window:AddTab({ Title = "Tab Farm", Icon = "" }),
-    stack = Window:AddTab({ Title = "Tab Quest ", Icon = "" }),
+    Main = Window:AddTab({ Title = "Tab Farm", Icon = "house" }),
+    stack = Window:AddTab({ Title = "Tab Quest ", Icon = "book-check" }),
     Qs = Window:AddTab({ Title = "Tab Misc", Icon = "" }),
     Sh = Window:AddTab({ Title = "Tab Shop", Icon = "" }),     
     Se = Window:AddTab({ Title = "Tab Sea Event", Icon = "" }),   
