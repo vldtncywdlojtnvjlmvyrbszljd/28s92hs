@@ -2,14 +2,28 @@ local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local TweenService = game:GetService("TweenService")
 local HttpService = game:GetService("HttpService")
-
--- Load key from storage
-local storedKeyFile = "stored_key.json"
-local storedKeyData = isfile(storedKeyFile) and HttpService:JSONDecode(readfile(storedKeyFile)) or {}
+local DataStoreService = game:GetService("DataStoreService")
+local DataStore = DataStoreService:GetDataStore("PlayerKeyStore")
 
 local function saveKey(key)
-    storedKeyData[LocalPlayer.UserId] = key
-    writefile(storedKeyFile, HttpService:JSONEncode(storedKeyData))
+    local success, errorMessage = pcall(function()
+        DataStore:SetAsync(tostring(LocalPlayer.UserId), key)
+    end)
+    if not success then
+        warn("Failed to save key: " .. errorMessage)
+    end
+end
+
+local function loadKey()
+    local success, key = pcall(function()
+        return DataStore:GetAsync(tostring(LocalPlayer.UserId))
+    end)
+    if success then
+        return key
+    else
+        warn("Failed to load key")
+        return nil
+    end
 end
 
 local function verify(key)
@@ -178,18 +192,25 @@ checkKeyButton.MouseButton1Click:Connect(function()
         tween.Completed:Connect(function()
             screenGui:Destroy()
         end)
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/asedesa/main/gamehub.lua"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/asedesa/main/zxcv.lua", true))()
     else
-        validationLabel.Text = "Key Invalid"
+        validationLabel.Text = "Checking Key..."
+        validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+        wait(1.7)
+        validationLabel.Text = "Key Is Not Valid!"
         validationLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
     end
 end)
 
--- Check for stored key on startup
-local savedKey = storedKeyData[LocalPlayer.UserId]
+-- Check if a valid key is already stored
+local savedKey = loadKey()
 if savedKey and verify(savedKey) then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/asedesa/main/gamehub.lua"))()
 else
     -- Show GUI if no valid key is stored
     screenGui.Enabled = true
 end
+
+wait(3)
+local tween = TweenService:Create(frame, TweenInfo.new(0.5), {Position = UDim2.new(0.5, -150, 0.5, -100)})
+tween:Play()
