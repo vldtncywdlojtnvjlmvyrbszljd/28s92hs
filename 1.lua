@@ -133,7 +133,7 @@ local allowPassThrough = false
 local rateLimit = false
 local rateLimitCountdown = 0
 local errorWait = false
-local useDataModel = false -- Set ke true jika Anda ingin menggunakan DataModel
+local useDataModel = true -- Set ke true jika Anda ingin menggunakan DataModel
 
 function onMessage(msg)
     print(msg)
