@@ -1993,11 +1993,11 @@ spawn(function()
     end
 end)
 
-if game.PlaceId == 2753915549 then
+if game.PlaceId == 2753915 then
         World1 = true
-    elseif game.PlaceId == 4442272183 then
+    elseif game.PlaceId == 44422721 then
         World2 = true
-    elseif game.PlaceId == 7449423635 then
+    elseif game.PlaceId == 74494236 then
         World3 = true
     end
 
