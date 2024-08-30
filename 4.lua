@@ -2321,9 +2321,9 @@ local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 local Window = Fluent:CreateWindow({
-    Title = "Mini Hub ┃ Turbo Lite",
-    SubTitle = "discord.gg/zKA8VNHzME",
-    TabWidth = 100,
+    Title = "Brutality Hub V4",
+    SubTitle = "Version Mini Tab",
+    TabWidth = 150,
     Size = UDim2.fromOffset(400, 280),
     Acrylic = false, -- The blur may be detectable, setting this to false disables blur entirely
     Theme = "Darker",
@@ -2332,8 +2332,8 @@ local Window = Fluent:CreateWindow({
 
 -- Fluent provides Lucide Icons https://lucide.dev/icons/ for the tabs, icons are optional
 local Tabs = {
-    Main = Window:AddTab({ Title = "Tab Farm", Icon = "house" }),
-    stack = Window:AddTab({ Title = "Tab Quest ", Icon = "book-check" }),
+    Main = Window:AddTab({ Title = "Tab Farm", Icon = "home" }),
+    stack = Window:AddTab({ Title = "Tab Quest ", Icon = "" }),
     Qs = Window:AddTab({ Title = "Tab Misc", Icon = "" }),
     Sh = Window:AddTab({ Title = "Tab Shop", Icon = "" }),     
     Se = Window:AddTab({ Title = "Tab Sea Event", Icon = "" }),   
