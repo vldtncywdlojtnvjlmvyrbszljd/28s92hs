@@ -1,6 +1,7 @@
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local TweenService = game:GetService("TweenService")
+local HttpService = game:GetService("HttpService") -- Digunakan untuk penyimpanan lokal
 
 local screenGui = Instance.new("ScreenGui")
 screenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
@@ -46,8 +47,8 @@ end)
 
 local label = Instance.new("TextLabel")
 label.Size = UDim2.new(1, 0, 0, 50)
-label.Position = UDim2.new(0, 0, 0, 12) 
-label.Text = "HELLO MY FRIEND "
+label.Position = UDim2.new(0, 0, 0, 12)
+label.Text = "HELLO MY FRIEND"
 label.Font = Enum.Font.SourceSansBold
 label.TextSize = 30
 label.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -55,27 +56,27 @@ label.BackgroundTransparency = 1
 label.TextWrapped = true
 label.Parent = frame
 
-local label = Instance.new("TextLabel")--baru ditambah
-label.Size = UDim2.new(1, 0, 0, 50)
-label.Position = UDim2.new(0, 0, 0, 35) 
-label.Text = "".. game.Players.LocalPlayer.Name
-label.Font = Enum.Font.SourceSansBold
-label.TextSize = 20
-label.TextColor3 = Color3.fromRGB(255, 255, 255)
-label.BackgroundTransparency = 1
-label.TextWrapped = true
-label.Parent = frame--sampai sini
+local playerNameLabel = Instance.new("TextLabel")
+playerNameLabel.Size = UDim2.new(1, 0, 0, 50)
+playerNameLabel.Position = UDim2.new(0, 0, 0, 35)
+playerNameLabel.Text = LocalPlayer.Name
+playerNameLabel.Font = Enum.Font.SourceSansBold
+playerNameLabel.TextSize = 20
+playerNameLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+playerNameLabel.BackgroundTransparency = 1
+playerNameLabel.TextWrapped = true
+playerNameLabel.Parent = frame
 
-local label = Instance.new("TextLabel")--baru ditambah
-label.Size = UDim2.new(1, 0, 0, 50)
-label.Position = UDim2.new(0, 0, 0, 55) 
-label.Text = "".. identifyexecutor()
-label.Font = Enum.Font.SourceSansBold
-label.TextSize = 20
-label.TextColor3 = Color3.fromRGB(255, 255, 255)
-label.BackgroundTransparency = 1
-label.TextWrapped = true
-label.Parent = frame--sampai sini
+local executorLabel = Instance.new("TextLabel")
+executorLabel.Size = UDim2.new(1, 0, 0, 50)
+executorLabel.Position = UDim2.new(0, 0, 0, 55)
+executorLabel.Text = identifyexecutor()
+executorLabel.Font = Enum.Font.SourceSansBold
+executorLabel.TextSize = 20
+executorLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+executorLabel.BackgroundTransparency = 1
+executorLabel.TextWrapped = true
+executorLabel.Parent = frame
 
 local textBox = Instance.new("TextBox")
 textBox.Size = UDim2.new(0.8, 0, 0, 30)
@@ -95,7 +96,7 @@ getKeyButton.Text = "Get Key"
 getKeyButton.Font = Enum.Font.SourceSansBold
 getKeyButton.TextSize = 18
 getKeyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-getKeyButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0) --0, 170, 0
+getKeyButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 getKeyButton.Parent = frame
 
 local checkKeyButton = Instance.new("TextButton")
@@ -105,7 +106,7 @@ checkKeyButton.Text = "Check Key"
 checkKeyButton.Font = Enum.Font.SourceSansBold
 checkKeyButton.TextSize = 18
 checkKeyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-checkKeyButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0) --0, 170, 0
+checkKeyButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 checkKeyButton.Parent = frame
 
 local DiscordButton = Instance.new("TextButton")
@@ -120,45 +121,27 @@ DiscordButton.Parent = frame
 
 local validationLabel = Instance.new("TextLabel")
 validationLabel.Size = UDim2.new(0.8, 0, 0, 30)
-validationLabel.Position = UDim2.new(0.1, 0, 0.550, 0) --0.1, 0, 0.850, 0
+validationLabel.Position = UDim2.new(0.1, 0, 0.550, 0)
 validationLabel.Text = "Please Get Key"
 validationLabel.Font = Enum.Font.SourceSansBold
 validationLabel.TextSize = 18
 validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 validationLabel.BackgroundTransparency = 1
 validationLabel.Parent = frame
+
 local keyFileUrl = "https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/28s92hs/main/key.txt"
 local allowPassThrough = false
-local rateLimit = false
-local rateLimitCountdown = 0
-local errorWait = false
-local useDataModel = true -- Set ke true jika Anda ingin menggunakan DataModel
 
 function onMessage(msg)
     print(msg)
 end
 
-function fWait(seconds)
-    wait(seconds)
-end
-
-function fSpawn(func)
-    spawn(func)
-end
-
 function verify(key)
-    if errorWait or rateLimit then 
-        return false
-    end
-
-    onMessage("Checking key...")
-
-    local status, result = pcall(function() 
-        return game:HttpGetAsync(keyFileUrl)
+    local status, result = pcall(function()
+        return game:HttpGet(keyFileUrl)
     end)
     
     if status then
-        -- Verify if the key is present in the result
         if string.find(result, key) then
             onMessage("Key is valid!")
             return true
@@ -172,23 +155,36 @@ function verify(key)
     end
 end
 
-getKeyButton.MouseButton1Click:Connect(function()
-    setclipboard('https://getkey-sigma.vercel.app/')
-    validationLabel.Text = "Link Get Key Copied!"
-    validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-end)
+-- Fungsi untuk menyimpan kunci ke penyimpanan lokal
+function saveKey(key)
+    local data = {
+        key = key
+    }
+    writefile("BrutalityHubKey.json", HttpService:JSONEncode(data))
+end
 
-DiscordButton.MouseButton1Click:Connect(function()
-    setclipboard('https://discord.com/invite/brutality-hub-1182005198206545941')
-    validationLabel.Text = "Link Discord Copied!"
-    validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-end)
+-- Fungsi untuk memuat kunci dari penyimpanan lokal
+function loadKey()
+    if isfile("BrutalityHubKey.json") then
+        local data = HttpService:JSONDecode(readfile("BrutalityHubKey.json"))
+        return data.key
+    end
+    return nil
+end
+
+local savedKey = loadKey()
 
 checkKeyButton.MouseButton1Click:Connect(function()
     local key = textBox.Text
+
+    if savedKey then
+        key = savedKey
+    end
+
     if verify(key) then
         validationLabel.Text = "Key Is Valid!"
         validationLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
+        saveKey(key)
         wait(2)
         validationLabel.Text = "Thanks For Using"
         validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -206,6 +202,18 @@ checkKeyButton.MouseButton1Click:Connect(function()
         validationLabel.Text = "Key Is Not Valid!"
         validationLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
     end
+end)
+
+getKeyButton.MouseButton1Click:Connect(function()
+    setclipboard('https://getkey-sigma.vercel.app/')
+    validationLabel.Text = "Link Get Key Copied!"
+    validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+end)
+
+DiscordButton.MouseButton1Click:Connect(function()
+    setclipboard('https://discord.com/invite/brutality-hub-1182005198206545941')
+    validationLabel.Text = "Link Discord Copied!"
+    validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 end)
 
 wait(3)
