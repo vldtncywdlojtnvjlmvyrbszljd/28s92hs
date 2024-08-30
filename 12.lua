@@ -3900,12 +3900,7 @@ local D = Library:AddTab("Devil Fruit","18477363100")
 local Mh = Library:AddTab("Mod Hack","18797339934")
 local Misc = Library:AddTab("MISC","18477908150")
 --- Nama toggle ui
-NguyenTien:AddSeperator("Information Developer")
-NguyenTien:AddLabel("Owner: Medusa Script Roblox")
-NguyenTien:AddLabel("Support Code: BOTUNA ")
-NguyenTien:AddLabel("Design: Bocah Tua Nakal")
-NguyenTien:AddLabel("Language: English")
-NguyenTien:AddLabel("If you like script brutality V3\n please subscribe to my YouTube channel")
+NguyenTien:AddLabel("🚨 Alert : Mohon bersabar script Brutality Hub V4\n sedang dalam tahap perbaikan sementara fitur diminimalis\n gunakan terus script Brutality Hub V4 dengan developer asli orang KARAWANG")
 
 NguyenTien:AddSeperator("Join Community")
 NguyenTien:AddButton("Discord Server",function()
