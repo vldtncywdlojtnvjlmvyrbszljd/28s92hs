@@ -126,7 +126,7 @@ function _G.WebhookGG_ALX(a,b)
     print(a)
     print(b)
 end
---[[
+
 local AlchemyHubKeySystem = Instance.new("ScreenGui")
 local ShadowFrame = Instance.new("Frame")
 local ShadowCorner = Instance.new("UICorner")
@@ -191,7 +191,7 @@ Logo.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Logo.BorderSizePixel = 0
 Logo.Position = UDim2.new(0.217777774, 0, -0.0949999988, 0)
 Logo.Size = UDim2.new(0, 250, 0, 250)
-Logo.Image = "rbxassetid://16058297648"
+Logo.Image = "rbxassetid://104397992902189"
 Logo.ImageTransparency = 0.300
 Name.Name = "Name"
 Name.Parent = MainFrame
@@ -240,7 +240,7 @@ Credit.ClipsDescendants = true
 Credit.Position = UDim2.new(0.0222222228, 0, 0.894999981, 0)
 Credit.Size = UDim2.new(0, 432, 0, 21)
 Credit.Font = Enum.Font.GothamBold
-Credit.Text = "UI By Medusa"
+Credit.Text = "Made By Medusa"
 Credit.TextColor3 = Color3.fromRGB(255, 255, 255)
 Credit.TextSize = 16.000
 Credit.TextTransparency = 0.500
@@ -345,7 +345,7 @@ Premium.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Premium.BorderSizePixel = 0
 Premium.Position = UDim2.new(0.200000003, 0, 0.200000003, 0)
 Premium.Size = UDim2.new(0, 30, 0, 30)
-Premium.Image = "rbxassetid://16058297648"
+Premium.Image = "rbxassetid://104397992902189"
 
 -- Panda Authenticating System
 local LibVersion = "v2" -- ( v3 & v4 )
@@ -366,7 +366,7 @@ spawn(function()
 		while wait(1) do
             Name.Text = "Brutality Hub"
             Description.Text = "Free Script Hub Support PC/Mobile with Many Function Smooth High Perfomance And Anit Detection !"
-            Credit.Text = " UI By MedusaScript"
+            Credit.Text = "Made By MedusaScript"
             Logo.Image = LOGOAlchemyLOL
 		end
 	end)
@@ -467,7 +467,7 @@ if getgenv().Continue == true then
     end
 end
 repeat wait(1) until KeyAuth_CheckingPassing == true
-]]
+--]]
 print("SUCCESS EPIC")
 local Plr = game.Players.LocalPlayer
 wait()
@@ -484,6 +484,7 @@ else
     _G.WebhookGG_ALX("Game","Not Support")
     game.Players.LocalPlayer:Kick("Game Not Support")
 end
+--[[
 local Plr = game.Players.LocalPlayer
 local Connection = {}
 local Highlight_Folder = Instance.new("Folder")
@@ -505,6 +506,7 @@ local Highlight = function(Target)
     end)
 end
 Highlight(Plr)
+]]
 wait(0.1)
 AlchemyNotify("Thanks for using Medusa Script!",5)
 wait(0.1)
