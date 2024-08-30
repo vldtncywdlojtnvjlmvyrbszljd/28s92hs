@@ -3885,7 +3885,7 @@ getgenv().HyperCahayas = function(p)
     end)
     
 
-local Library = Update:Window("Brutality Hub V3","Made by Medusa Script",Enum.KeyCode.RightControl);
+local Library = Update:Window("Brutality Hub V4","WAIT UPDATE | IS UNDER CONSTRUCTION",Enum.KeyCode.RightControl);
 
 local NguyenTien = Library:AddTab("Information","16058297648")
 local Main = Library:AddTab("Farming","18477352665")
@@ -3900,7 +3900,8 @@ local D = Library:AddTab("Devil Fruit","18477363100")
 local Mh = Library:AddTab("Mod Hack","18797339934")
 local Misc = Library:AddTab("MISC","18477908150")
 --- Nama toggle ui
-NguyenTien:AddLabel("🚨 Alert : Mohon bersabar script Brutality Hub V4\n sedang dalam tahap perbaikan sementara fitur diminimalis\n gunakan terus script Brutality Hub V4 dengan developer asli orang JAWA BARAT")
+NguyenTien:AddLabel("🚨Peringatan : Mohon bersabar script Brutality Hub V4\n sedang dalam tahap perbaikan sementara fitur diminimalis\n developer asli orang JAWA BARAT :v")
+NguyenTien:AddLabel("🚨Alert : Please be patient, the Brutality Hub V4\n script is currently under maintenance due to an error.")
 
 NguyenTien:AddSeperator("Join Community")
 NguyenTien:AddButton("Discord Server",function()
