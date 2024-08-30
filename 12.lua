@@ -256,7 +256,7 @@ ImageButton1.BorderSizePixel = 0
 ImageButton1.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
 ImageButton1.Size = UDim2.new(0, 50, 0, 50)
 ImageButton1.Draggable = true
-ImageButton1.Image = "rbxassetid://16058297648" --disini2
+ImageButton1.Image = "rbxassetid://110958770625024" --logo button close open
 ImageButton1.MouseButton1Down:connect(function()
 game:GetService("VirtualInputManager"):SendKeyEvent(true,305,false,game)
 game:GetService("VirtualInputManager"):SendKeyEvent(false,305,false,game)
@@ -434,7 +434,7 @@ function Update:Window(text,logo,keybind)
     Ping.Position = UDim2.new(0.28, 0,0.074, 0)
     Ping.Size = UDim2.new(0, 225, 0, 25)
     Ping.Font = Enum.Font.GothamSemibold
-    Ping.Text = "BRUTALITY HUB V3 | Made by Medusa Script"
+    Ping.Text = "BRUTALITY HUB V4 | Made by Medusa Script"
     Ping.TextColor3 = Color3.fromRGB(9, 255, 0)
     Ping.TextSize = 14.000
     Ping.TextXAlignment = Enum.TextXAlignment.Left
@@ -3892,6 +3892,7 @@ local Main = Library:AddTab("Farming","18477352665")
 local M = Library:AddTab("Quest Item","18477473610")
 local Ss = Library:AddTab("Statistic","18630736310")
 local RaceV4 = Library:AddTab("Trial V4","18477916271")
+local Sts = Library:AddTab("Status","18477916271")
 local P = Library:AddTab("Bounty","18492098759")
 local R = Library:AddTab("Auto Raid","18491947999")
 local T = Library:AddTab("Teleport","18477347703")
@@ -3900,10 +3901,11 @@ local D = Library:AddTab("Devil Fruit","18477363100")
 local Mh = Library:AddTab("Mod Hack","18797339934")
 local Misc = Library:AddTab("MISC","18477908150")
 --- Nama toggle ui
-NguyenTien:AddLabel("🚨Peringatan : Mohon bersabar script Brutality Hub V4\n sedang dalam tahap perbaikan sementara fitur diminimalis\n developer asli orang JAWA BARAT :v")
-NguyenTien:AddLabel("🚨Alert : Please be patient, the Brutality Hub V4\n script is currently under maintenance due to an error.")
-NguyenTien:AddLabel("Use Game : Blox Fruit\n Blade Ball\n Slap Battle\n Prison Life\n MemeSea\n ")
-NguyenTien:AddSeperator("Join Community")
+NguyenTien:AddSeperator("Information")
+
+NguyenTien:AddLabel("🚨Alert : Please be patient, the Brutality Hub V4 script\n is currently under maintenance due to an error.")
+NguyenTien:AddLabel("Use Game : Blox Fruit| Blade Ball \n|Slap Battle |Prison Life |MemeSea ")
+NguyenTien:AddSeperator("Information")
 NguyenTien:AddButton("Discord Server",function()
 setclipboard("https://discord.gg/brutalityhub")
 Notif.New("Copying To Clipboard Done", 3)
