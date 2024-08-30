@@ -4,12 +4,25 @@ local TweenService = game:GetService("TweenService")
 local HttpService = game:GetService("HttpService")
 
 -- Load key from storage
-local storedKey = getsynasset("stored_key.json")
-local storedKeyData = storedKey and HttpService:JSONDecode(readfile(storedKey)) or {}
+local storedKeyFile = "stored_key.json"
+local storedKeyData = isfile(storedKeyFile) and HttpService:JSONDecode(readfile(storedKeyFile)) or {}
 
 local function saveKey(key)
     storedKeyData[LocalPlayer.UserId] = key
-    writefile("stored_key.json", HttpService:JSONEncode(storedKeyData))
+    writefile(storedKeyFile, HttpService:JSONEncode(storedKeyData))
+end
+
+local function verify(key)
+    local status, result = pcall(function()
+        return game:HttpGet("https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/28s92hs/main/key.txt")
+    end)
+
+    if status then
+        if string.find(result, key) then
+            return true
+        end
+    end
+    return false
 end
 
 local screenGui = Instance.new("ScreenGui")
@@ -56,7 +69,7 @@ end)
 
 local label = Instance.new("TextLabel")
 label.Size = UDim2.new(1, 0, 0, 50)
-label.Position = UDim2.new(0, 0, 0, 12) 
+label.Position = UDim2.new(0, 0, 0, 12)
 label.Text = "HELLO MY FRIEND "
 label.Font = Enum.Font.SourceSansBold
 label.TextSize = 30
@@ -67,8 +80,8 @@ label.Parent = frame
 
 local userNameLabel = Instance.new("TextLabel")
 userNameLabel.Size = UDim2.new(1, 0, 0, 50)
-userNameLabel.Position = UDim2.new(0, 0, 0, 35) 
-userNameLabel.Text = "".. game.Players.LocalPlayer.Name
+userNameLabel.Position = UDim2.new(0, 0, 0, 35)
+userNameLabel.Text = "" .. game.Players.LocalPlayer.Name
 userNameLabel.Font = Enum.Font.SourceSansBold
 userNameLabel.TextSize = 20
 userNameLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -78,8 +91,8 @@ userNameLabel.Parent = frame
 
 local executorLabel = Instance.new("TextLabel")
 executorLabel.Size = UDim2.new(1, 0, 0, 50)
-executorLabel.Position = UDim2.new(0, 0, 0, 55) 
-executorLabel.Text = "".. identifyexecutor()
+executorLabel.Position = UDim2.new(0, 0, 0, 55)
+executorLabel.Text = identifyexecutor and identifyexecutor() or "Unknown Executor"
 executorLabel.Font = Enum.Font.SourceSansBold
 executorLabel.TextSize = 20
 executorLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -137,22 +150,6 @@ validationLabel.TextSize = 18
 validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 validationLabel.BackgroundTransparency = 1
 validationLabel.Parent = frame
-
-local keyFileUrl = "https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/28s92hs/main/key.txt"
-local allowPassThrough = false
-
-function verify(key)
-    local status, result = pcall(function() 
-        return game:HttpGetAsync(keyFileUrl)
-    end)
-
-    if status then
-        if string.find(result, key) then
-            return true
-        end
-    end
-    return false
-end
 
 getKeyButton.MouseButton1Click:Connect(function()
     setclipboard('https://getkey-sigma.vercel.app/')
