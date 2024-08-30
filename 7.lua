@@ -126,7 +126,7 @@ function _G.WebhookGG_ALX(a,b)
     print(a)
     print(b)
 end
-
+--[[
 local AlchemyHubKeySystem = Instance.new("ScreenGui")
 local ShadowFrame = Instance.new("Frame")
 local ShadowCorner = Instance.new("UICorner")
@@ -467,7 +467,7 @@ if getgenv().Continue == true then
     end
 end
 repeat wait(1) until KeyAuth_CheckingPassing == true
---]]
+]]
 print("SUCCESS EPIC")
 local Plr = game.Players.LocalPlayer
 wait()
