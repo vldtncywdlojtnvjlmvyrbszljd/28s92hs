@@ -173,7 +173,7 @@ function verify(key)
 end
 
 getKeyButton.MouseButton1Click:Connect(function()
-    setclipboard('https://getkey-sigma.vercel.app/')
+    setclipboard('https://getkey-sigma.vercel.app/'.. LocalPlayer.UserId)
     validationLabel.Text = "Link Get Key Copied!"
     validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 end)
