@@ -133,7 +133,7 @@ local allowPassThrough = false
 local rateLimit = false
 local rateLimitCountdown = 0
 local errorWait = false
-local useDataModel = true -- Set ke true jika Anda ingin menggunakan DataModel
+local useDataModel = false -- Set ke true jika Anda ingin menggunakan DataModel
 
 function onMessage(msg)
     print(msg)
@@ -215,8 +215,8 @@ end
 
 
 getKeyButton.MouseButton1Click:Connect(function()
-    setclipboard('https://discord.com/invite/brutality-hub-1182005198206545941')
-    validationLabel.Text = "Link Key Copied!"
+    setclipboard('https://getkey-sigma.vercel.app/')
+    validationLabel.Text = "Link Get Key Copied!"
     validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 end)
 
