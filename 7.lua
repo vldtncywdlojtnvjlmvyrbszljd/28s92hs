@@ -490,13 +490,13 @@ function Update:Window(text,logo,keybind)
 	Logo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	Logo.BackgroundTransparency = 1.000
 	Logo.Position = UDim2.new(0, -5, 0, -5)
-	Logo.Size = UDim2.new(0, 135, 0, 135)
+	Logo.Size = UDim2.new(0, 130, 0, 130)
 	Logo.Image = "rbxassetid://107679910024355" --logo didalam tab
     local Tab = Instance.new("Frame")
     Tab.Name = "Tab"
     Tab.Parent = Main
     Tab.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
-    Tab.Position = UDim2.new(0, 4, 0, 135)
+    Tab.Position = UDim2.new(0, 5, 0, 130)
     Tab.Size = UDim2.new(0, 0, 0, 0)
 
     local TabCorner = Instance.new("UIListLayout")
