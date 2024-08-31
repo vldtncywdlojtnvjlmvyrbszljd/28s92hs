@@ -434,7 +434,7 @@ function Update:Window(text,logo,keybind)
     Ping.Position = UDim2.new(0.28, 0,0.074, 0)
     Ping.Size = UDim2.new(0, 225, 0, 25)
     Ping.Font = Enum.Font.GothamSemibold
-    Ping.Text = "BRUTALITY HUB V4 | Made by Medusa Script "" .. identifyexecutor()"
+    Ping.Text = "BRUTALITY HUB V4 | Made by Medusa Script "
     Ping.TextColor3 = Color3.fromRGB(9, 255, 0)
     Ping.TextSize = 14.000
     Ping.TextXAlignment = Enum.TextXAlignment.Left
@@ -7553,7 +7553,85 @@ spawn(function()
     end
 end)
 
+SNt:AddSeperator("Frozen & Kitsune")
 
+   SNt:AddToggle("Teleport Frozen Dimension",_G.AutoFrozenDimension,function(value)
+    _G.AutoFrozenDimension = value
+    StopTween(_G.AutoFrozenDimension)
+    end)
+    
+    SNt:AddToggle("Teleport Kitsune Island",_G.TeleportKitsune,function(value)
+     _G.TeleportKitsune = value
+             StopTween(_G.TeleportKitsune)
+         end) 
+          spawn(function()
+            while wait() do
+                if _G.AutoFrozenDimension then
+                    pcall(function()
+                        if game.Workspace._WorldOrigin.Locations:FindFirstChild('Frozen Dimension') then
+                            topos(game.Workspace._WorldOrigin.Locations:FindFirstChild('Frozen Dimension').HumanoidRootPart.CFrame * CFrame.new(0,500,-100))
+                        end
+                    end)
+                end
+            end
+        end)
+        
+        spawn(function()
+         while wait() do
+             if _G.TeleportKitsune then
+                 if game:GetService("Workspace").Map:FindFirstChild("KitsuneIsland") then
+                     topos(game.Workspace.Map.KitsuneIsland.ShrineActive.NeonShrinePart.CFrame * CFrame.new(0,0,10))
+                 end
+             end
+         end
+     end)
+    
+     SNt:AddToggle("Auto Collect Azure Ember",_G.CollectAzure,function(value)
+         _G.CollectAzure = value
+         end)
+    
+         spawn(function()
+             while wait() do
+                 if _G.CollectAzure then
+                     pcall(function()
+                         if game:GetService("Workspace"):FindFirstChild("AttachedAzureEmber") then
+                             fastpos(game:GetService("Workspace"):WaitForChild("EmberTemplate"):FindFirstChild("Part").CFrame)
+                         end
+                     end)
+                 end
+             end
+         end)
+    
+     _G.SetToTradeAureEmber = 20
+     SNt:AddSlider("Set Trade Azure Ember", 10, 25, _G.SetToTradeAureEmber, function(v)
+         _G.SetToTradeAureEmber = v
+     end)
+    
+     SNt:AddToggle("Auto Trade Azure Ember", _G.TradeAureEmber, function(state)
+         _G.TradeAureEmber = state
+         end)
+         function GetCountMaterials(MaterialName)
+             local Inventory = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("getInventory")
+             for i, v in pairs(Inventory) do
+                 if v.Name == MaterialName then
+                     return v["Count"]
+                 end
+             end
+         end
+    
+         spawn(function()
+             while wait() do
+                 if _G.TradeAureEmber then
+                     pcall(function()
+                         local AzureAvilable = GetCountMaterials("Azure Ember")
+                         if AzureAvilable >= _G.SetToTradeAureEmber then
+                             game:GetService("ReplicatedStorage").Modules.Net:FindFirstChild("RF/KitsuneStatuePray"):InvokeServer()
+                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("KitsuneStatuePray")
+                         end
+                     end)
+                 end
+             end
+         end)
 
 
 
