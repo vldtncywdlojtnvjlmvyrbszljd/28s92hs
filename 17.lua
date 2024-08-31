@@ -4046,7 +4046,7 @@ local Misc = Library:AddTab("MISC","18477908150")
 --- Nama toggle ui
 NguyenTien:AddSeperator("Information")
 
-
+--[[
 Time = NguyenTien:AddLabel("Executor Time")
 
 function UpdateTime()
@@ -4090,7 +4090,7 @@ while true do wait(.1)
 UpdateClient1()
 end
 end)
-
+]]
 NguyenTien:AddLabel("🚨Alert : Please be patient, the Brutality Hub V4 script\n is currently under maintenance due to an error.")
 NguyenTien:AddLabel("Use Game : Blox Fruit| Blade Ball \n|Slap Battle |Prison Life |MemeSea ")
 NguyenTien:AddSeperator("Information")
