@@ -2012,6 +2012,136 @@ if game.PlaceId == 2753915549 then
         World3 = true
     end
 
+    function MoonTextureId()
+        if World1 then
+            return game:GetService("Lighting").FantasySky.MoonTextureId
+        elseif World2 then
+            return game:GetService("Lighting").FantasySky.MoonTextureId
+        elseif World3 then
+            return game:GetService("Lighting").Sky.MoonTextureId
+        end
+    end
+    
+    function CheckMoon()
+        moon8 = "http://www.roblox.com/asset/?id=9709150401"
+        moon7 = "http://www.roblox.com/asset/?id=9709150086"
+        moon6 = "http://www.roblox.com/asset/?id=9709149680"
+        moon5 = "http://www.roblox.com/asset/?id=9709149431"
+        moon4 = "http://www.roblox.com/asset/?id=9709149052"
+        moon3 = "http://www.roblox.com/asset/?id=9709143733"
+        moon2 = "http://www.roblox.com/asset/?id=9709139597"
+        moon1 = "http://www.roblox.com/asset/?id=9709135895"
+        moonreal = MoonTextureId()
+        cofullmoonkothangbeo = "Bad Moon"
+        if moonreal == moon5 or moonreal == moon4 then
+            if moonreal == moon5 then
+                cofullmoonkothangbeo = "Full Moon"
+            elseif moonreal == moon4 then
+                cofullmoonkothangbeo = "Next Night"
+            end
+        end
+        return cofullmoonkothangbeo
+    end
+    
+    function function7()
+        GameTime = "Error"
+        local c = game.Lighting
+        local ao = c.ClockTime
+        if ao >= 18 or ao < 5 then
+            GameTime = "Night"
+        else
+            GameTime = "Day"
+        end
+        return GameTime
+    end
+    function function6()
+        return math.floor(game.Lighting.ClockTime)
+    end
+    function getServerTime()
+        RealTime = tostring(math.floor(game.Lighting.ClockTime * 100) / 100)
+        RealTime = tostring(game.Lighting.ClockTime)
+        RealTimeTable = RealTime:split(".")
+        Minute, Second = RealTimeTable[1], tonumber(0 + tonumber(RealTimeTable[2] / 100)) * 60
+        return Minute, Second
+    end
+    function function8()
+        local c = game.Lighting
+        local ao = c.ClockTime
+        if CheckMoon() == "Full Moon" and ao <= 5 then
+            return tostring(function6()) .. " ( Moon In " .. math.floor(5 - ao) .. " Minutes )"
+        elseif CheckMoon() == "Full Moon" and (ao > 5 and ao < 12) then
+            return tostring(function6()) .. " ( Fake Moon )"
+        elseif CheckMoon() == "Full Moon" and (ao > 12 and ao < 18) then
+            return tostring(function6()) .. " ( Moon In " .. math.floor(18 - ao) .. " Minutes )"
+        elseif CheckMoon() == "Full Moon" and (ao > 18 and ao <= 24) then
+            return tostring(function6()) .. " ( Moon In " .. math.floor(24 + 6 - ao) .. " Minutes )"
+        end
+        if CheckMoon() == "Next Night" and ao < 12 then
+            return tostring(function6()) .. " ( Moon In " .. math.floor(18 - ao) .. " Minutes )"
+        elseif CheckMoon() == "Next Night" and ao > 12 then
+            return tostring(function6()) .. " ( Moon In " .. math.floor(18 + 12 - ao) .. " Minutes )"
+        end
+        return tostring(function6())
+    end
+    
+    function CheckAcientOneStatus()
+        if not game.Players.LocalPlayer.Character:FindFirstChild("RaceTransformed") then
+            return "You have yet to achieve greatness"
+        end
+        local v227 = nil
+        local v228 = nil
+        local v229 = nil
+        v229, v228, v227 = game.ReplicatedStorage.Remotes.CommF_:InvokeServer("UpgradeRace", "Check")
+        if v229 == 1 then
+            return "Required Train More"
+        elseif v229 == 2 or v229 == 4 or v229 == 7 then
+            return "Can Buy Gear With " .. v227 .. " Fragments"
+        elseif v229 == 3 then
+            return "Required Train More"
+        elseif v229 == 5 then
+            return "You Are Done Your Race."
+        elseif v229 == 6 then
+            return "Upgrades completed: " .. v228 - 2 .. "/3, Need Trains More"
+        end
+        if v229 ~= 8 then
+            if v229 == 0 then
+                return "Ready For Trial"
+            else
+                return "You have yet to achieve greatness"
+            end
+        end
+        return "Remaining " .. 10 - v228 .. " training sessions."
+    end
+    
+    function CheckAcientOneStatusTrain()
+        if not game.Players.LocalPlayer.Character:FindFirstChild("RaceTransformed") then
+            return "You have yet to achieve greatness"
+        end
+        local v227 = nil
+        local v228 = nil
+        local v229 = nil
+        v229, v228, v227 = game.ReplicatedStorage.Remotes.CommF_:InvokeServer("UpgradeRace", "Check")
+        if v229 == 1 then
+            return "Required Train More"
+        elseif v229 == 2 or v229 == 4 or v229 == 7 then
+            return "Can Buy Gear With " .. v227 .. " Fragments"
+        elseif v229 == 3 then
+            return "Required Train More"
+        elseif v229 == 5 then
+            return "You Are Done Your Race."
+        elseif v229 == 6 then
+            return "Upgrades completed: " .. v228 - 2 .. "/3, Need Trains More"
+        end
+        if v229 ~= 8 then
+            if v229 == 0 then
+                return "Ready For Trial"
+            else
+                return "You have yet to achieve greatness"
+            end
+        end
+        return "Remaining " .. 10 - v228 .. " training sessions."
+    end
+
 	function CheckQuest() 
         MyLevel = game:GetService("Players").LocalPlayer.Data.Level.Value
         if World1 then
@@ -3898,7 +4028,8 @@ getgenv().HyperCahayas = function(p)
 
 local Library = Update:Window("Brutality Hub V4","WAIT UPDATE | IS UNDER CONSTRUCTION",Enum.KeyCode.RightControl);
 
-local NguyenTien = Library:AddTab("Information","16058297648")
+local NguyenTien = Library:AddTab("Home","18797343654")
+local bTeam = Library:AddTab("Home","18797343654")
 local Main = Library:AddTab("Farming","18477352665")
 local M = Library:AddTab("Quest Item","18477473610")
 local Ss = Library:AddTab("Statistic","18630736310")
@@ -3979,6 +4110,176 @@ NguyenTien:AddButton("Instagram Official Owner",function()
 setclipboard("https://www.instagram.com/medusafrzly/")
 Notif.New("Copying To Clipboard Done", 3)
 end)
+
+bTeam:AddSeperator("Status Server")
+
+Bteam:addline()
+local Client = bTeam:AddLabel("Client")
+bTeam:AddLine()
+function UpdateClient()
+local Fps = workspace:GetRealPhysicsFPS()
+Client:Set("Fps : "..Fps)
+end
+
+spawn(function()
+while true do wait(.1)
+UpdateClient()
+end
+end)
+
+local Client1 = bTeam:AddLabel("Client")
+
+function UpdateClient1()
+local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+Client1:Set("Ping : "..Ping)
+end
+
+spawn(function()
+while true do wait(.1)
+UpdateClient1()
+end
+end)
+
+bTeam:AddLabel("Executor : ".. identifyexecutor())
+bTeam:AddLabel("Name : ".. game.Players.LocalPlayer.Name)
+
+local locallv = bTeam:AddLabel("Level :")
+    
+    spawn(function()
+        while wait() do
+            pcall(function()
+                locallv:Set("Level :".." "..game:GetService("Players").LocalPlayer.Data.Level.Value)
+            end)
+        end
+    end)
+    
+    local localrace = bTeam:AddLabel("Race :")
+    
+    spawn(function()
+        while wait() do
+            pcall(function()
+                localrace:Set("Race :".." "..game:GetService("Players").LocalPlayer.Data.Race.Value)
+            end)
+        end
+    end)
+    
+    local localbeli = bTeam:AddLabel("Beli :")
+    
+    spawn(function()
+        while wait() do
+            pcall(function()
+                localbeli:Set("Beli :".." "..game:GetService("Players").LocalPlayer.Data.Beli.Value)
+            end)
+        end
+    end)
+    local localfrag = bTeam:AddLabel("Fragment")
+    
+    spawn(function()
+        while wait() do
+            pcall(function()
+                localfrag:Set("Fragments :".." "..game:GetService("Players").LocalPlayer.Data.Fragments.Value)
+            end)
+        end
+    end)
+
+bTeam:AddSeperator("Quest Train V4")
+local bL = bTeam:AddLabel("Ancient One Status : " .. tostring(CheckAcientOneStatus()))
+
+bTeam:AddLine()
+if World3 then
+    spawn(function()
+        pcall(function()
+            while wait() do
+    if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
+    Mirragecheck:Set('Mirage Island : ✅')
+    else
+      Mirragecheck:Set('Mirage Island : ❌' )end
+            end
+        end)
+    end)
+    end
+    Mirragecheck = bTeam:AddLabel("Only Third Sea")
+
+if World3 then
+spawn(function()
+    pcall(function()
+        while wait() do
+            if game.Workspace._WorldOrigin.Locations:FindFirstChild('Kitsune Island') then
+                Kitsunecheck:Set('Kitsune Island : ✅')
+            else
+                Kitsunecheck:Set('Kitsune Island : ❌') 
+            end
+        end
+    end)
+end)
+end
+Kitsunecheck = bTeam:AddLabel("Only Third Sea")
+
+if World3 then
+spawn(function()
+    pcall(function()
+    while wait() do
+        if game.Workspace._WorldOrigin.Locations:FindFirstChild('Frozen Dimension') then
+            FrozenIsland:Set('Frozen Dimension : ✅')
+        else
+            FrozenIsland:Set('Frozen Dimension : ❌')
+        end
+    end
+    end)
+    end)
+end
+    FrozenIsland = bTeam:AddLabel("Only Third Sea")
+
+bTeam:AddLine()
+local FMz = bTeam:AddLabel("")
+ 
+ task.spawn(function()
+         while task.wait() do
+             pcall(function()
+                 if game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
+                     FMz:Set("Full Moon Phase : 🌕 | 100%")
+                 elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149052" then
+                     FMz:Set("Full Moon Phase : 🌖 | 75%")
+                 elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709143733" then
+                     FMz:Set("Full Moon Phase : 🌗 | 50%")
+                 elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150401" then
+                     FMz:Set("Full Moon Phase : 🌘 | 25%")
+                 elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" then
+                     FMz:Set("Full Moon Phase : 🌘 | 15%")
+                 else
+                     FMz:Set("Full Moon Phase : 🌙 | 0%")
+                 end
+             end)
+         end
+ end)
+bTeam:AddLine()
+
+local FullM00n = bTeam:AddLabel("Moon Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
+
+spawn(function()
+        while wait() do
+            H:Set("Moon Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
+                end
+            end)
+
+bTeam:AddLine()
+local Time1 = bTeam:AddLabel("Run Time Script")
+function UpdateTime()
+local GameTime = math.floor(workspace.DistributedGameTime+0.5)
+local Hour = math.floor(GameTime/(60^2))%24
+local Minute = math.floor(GameTime/(60^1))%60
+local Second = math.floor(GameTime/(60^0))%60
+Time1:Set("GameTime : Hours : "..Hour.." Min : "..Minute.." Sec : "..Second)
+end
+
+spawn(function()
+while task.wait() do
+pcall(function()
+UpdateTime()
+end)
+end
+end)
+
 ---- Teks halaman utama
 Main:AddSeperator("Farm Settings")
 
@@ -5624,21 +5925,24 @@ SNt:AddToggle("Auto Drive Boat",AutoW,function(W)
         end)
     end
     end)
-    SNt:AddToggle("Auto Look Moon",false,function(v)
-        _G.AutoDooHee = v
-        end)
-      spawn(function()
-          while wait() do
-              pcall(function()
-                  if _G.AutoDooHee then
-                      wait(0.5)
-                      local moonDir = game.Lighting:GetMoonDirection()
-                      local lookAtPos = game.Workspace.CurrentCamera.CFrame.p + moonDir * 100
-                      game.Workspace.CurrentCamera.CFrame = CFrame.lookAt(game.Workspace.CurrentCamera.CFrame.p, lookAtPos)
-                  end
-              end)
-          end
-      end)
+    SNt:AddToggle("Auto Lock Moon",_G.LockCamToMoon,function(value)
+        _G.LockCamToMoon = value
+    end)
+    
+    function CamToMoon()
+    workspace.CurrentCamera.CFrame = CFrame.new(workspace.CurrentCamera.CFrame.Position,game:GetService("Lighting"):GetMoonDirection() + workspace.CurrentCamera.CFrame.Position)
+    end
+    
+    spawn(function()
+    pcall(function()
+    while wait() do
+    if _G.LockCamToMoon then
+       CamToMoon()
+    end
+    end
+    end)
+    end)
+        
 
 SNt:AddToggle("Teleport Blue Gear",_G.TweenMGear,function(value)
 _G.TweenMGear = value
@@ -5679,8 +5983,9 @@ spawn(function()
                 end
             end
         end)
-    
+if World1 or world2 then
     M:AddLine()
+end
 
     M:AddSeperator("Fighting Style")
     
@@ -9483,7 +9788,7 @@ end)
         end
     end)
     
-    local BoneFarm = M:AddToggle("Farm Bone",_G.Auto_Bone,function(value)
+    local BoneFarm = M:AddToggle("Auto Farm Bone",_G.Auto_Bone,function(value)
         _G.Auto_Bone = value
         StopTween(_G.Auto_Bone)
     end)
@@ -11183,7 +11488,7 @@ RaceV4:AddButton("Clock Acces", function()
     game:GetService("Workspace").Map["Temple of Time"].DoNotEnter:Remove()
     game:GetService("Workspace").Map["Temple of Time"].ClockRoomExit:Remove()
 end)
-
+--[[
 RaceV4:AddToggle("Auto Buy Gear",_G.Auto_Farm_Bone4,function(value)
  _G.Auto_Farm_Bone4 = value
  StopTween(_G.Auto_Farm_Bone4)
@@ -11206,7 +11511,7 @@ game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF
 end 
 end)  
 end)
-
+]]
 RaceV4:AddToggle("Disabled Inf Stairs", nil, function(value)
 	game.Players.LocalPlayer.Character.InfiniteStairs.Disabled = value
 end)
@@ -11368,23 +11673,6 @@ spawn(function()
     end)
 end)
 
-RaceV4:AddToggle("Auto Lock Moon",_G.LockCamToMoon,function(value)
-    _G.LockCamToMoon = value
-end)
-
-function CamToMoon()
-workspace.CurrentCamera.CFrame = CFrame.new(workspace.CurrentCamera.CFrame.Position,game:GetService("Lighting"):GetMoonDirection() + workspace.CurrentCamera.CFrame.Position)
-end
-
-spawn(function()
-pcall(function()
-while wait() do
-if _G.LockCamToMoon then
-   CamToMoon()
-end
-end
-end)
-end)
 
 RaceV4:AddToggle("Kill Player After Trial!",false,function(value)
     _G.KillAfterTrials = value
@@ -11415,6 +11703,32 @@ spawn(function()
         end)
     end
 end)
+
+RaceV4:AddSeperator("Auto Quest Train V4")
+
+local bPl = RaceV4:AddLabel("Ancient One Status : " .. tostring(CheckAcientOneStatusTrain()))
+RaceV4:AddToggle("Auto Buy Gear Train V4",_G.Auto_Bone,function(value)
+    _G.Auto_Bone = value
+    StopTween(_G.Auto_Bone)
+    end)
+    spawn(function()
+     pcall(function()
+         while wait(0.1) do
+             if _G.Auto_Bone then
+     local args = {
+     [1] = true
+    }
+    
+    local args = {
+     [1] = "UpgradeRace",
+     [2] = "Buy"
+    }
+    
+    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+             end
+    end 
+    end)  
+    end)
   
   RaceV4:AddButton("Buy Ancient One Quest",function(t)
   game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer('UpgradeRace','Buy')
