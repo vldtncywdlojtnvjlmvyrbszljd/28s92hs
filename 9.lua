@@ -434,7 +434,7 @@ function Update:Window(text,logo,keybind)
     Ping.Position = UDim2.new(0.28, 0,0.074, 0)
     Ping.Size = UDim2.new(0, 225, 0, 25)
     Ping.Font = Enum.Font.GothamSemibold
-    Ping.Text = "BRUTALITY HUB V4 | Made by Medusa Script".. identifyexecutor()
+    Ping.Text = "BRUTALITY HUB V4 | Made by Medusa Script".. identifyexecutor()"
     Ping.TextColor3 = Color3.fromRGB(9, 255, 0)
     Ping.TextSize = 14.000
     Ping.TextXAlignment = Enum.TextXAlignment.Left
