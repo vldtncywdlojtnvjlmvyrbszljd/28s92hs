@@ -5018,7 +5018,9 @@ end)
 
     STg:AddSeperator("Setting Skill Gun")
     
+    if World1 or World2 then
     M:AddSeperator("World")
+    end
 
     if World1 then
         M:AddToggle("Quest Second Sea",_G.AutoSecondSea,function(value)
