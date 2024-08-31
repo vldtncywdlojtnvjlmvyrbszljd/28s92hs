@@ -4205,30 +4205,30 @@ spawn(function()
     pcall(function()
         while wait() do
             if game.Workspace._WorldOrigin.Locations:FindFirstChild('Kitsune Island') then
-                Kitsunecheck:Set('Kitsune Island : ✅')
+                Kitsunech3ck:Set('Kitsune Island : ✅')
             else
-                Kitsunecheck:Set('Kitsune Island : ❌') 
+                Kitsunech3ck:Set('Kitsune Island : ❌') 
             end
         end
     end)
 end)
 end
-Kitsunecheck = bTeam:AddLabel("Only Third Sea")
+Kitsunech3ck = bTeam:AddLabel("Only Third Sea")
 
 if World3 then
 spawn(function()
     pcall(function()
     while wait() do
         if game.Workspace._WorldOrigin.Locations:FindFirstChild('Frozen Dimension') then
-            FrozenIsland:Set('Frozen Dimension : ✅')
+            Froz3nIsland:Set('Frozen Dimension : ✅')
         else
-            FrozenIsland:Set('Frozen Dimension : ❌')
+            Froz3nIsland:Set('Frozen Dimension : ❌')
         end
     end
     end)
     end)
 end
-    FrozenIsland = bTeam:AddLabel("Only Third Sea")
+    Froz3nIsland = bTeam:AddLabel("Only Third Sea")
 
 bTeam:AddLine()
 local FMz = bTeam:AddLabel("")
