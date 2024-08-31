@@ -4111,7 +4111,25 @@ setclipboard("https://www.instagram.com/medusafrzly/")
 Notif.New("Copying To Clipboard Done", 3)
 end)
 
-Qwe:AddSeperator("Status Server")
+Qwe:AddSeperator("Status Server & Player")
+
+Qwe:AddLine()
+local Time1 = Qwe:AddLabel("Run Time Script")
+function UpdateTime()
+local GameTime = math.floor(workspace.DistributedGameTime+0.5)
+local Hour = math.floor(GameTime/(60^2))%24
+local Minute = math.floor(GameTime/(60^1))%60
+local Second = math.floor(GameTime/(60^0))%60
+Time1:Set("GameTime : Hours : "..Hour.." Min : "..Minute.." Sec : "..Second)
+end
+
+spawn(function()
+while task.wait() do
+pcall(function()
+UpdateTime()
+end)
+end
+end)
 
 local Client = Qwe:AddLabel("Client")
 
@@ -4262,23 +4280,6 @@ spawn(function()
                 end
             end)
 
-Qwe:AddLine()
-local Time1 = Qwe:AddLabel("Run Time Script")
-function UpdateTime()
-local GameTime = math.floor(workspace.DistributedGameTime+0.5)
-local Hour = math.floor(GameTime/(60^2))%24
-local Minute = math.floor(GameTime/(60^1))%60
-local Second = math.floor(GameTime/(60^0))%60
-Time1:Set("GameTime : Hours : "..Hour.." Min : "..Minute.." Sec : "..Second)
-end
-
-spawn(function()
-while task.wait() do
-pcall(function()
-UpdateTime()
-end)
-end
-end)
 
 ---- Teks halaman utama
 Main:AddSeperator("Farm Settings")
@@ -14750,7 +14751,7 @@ function INGENG()
     end)
 end
 
-Mh:AddToggle("Infinite Ability",_G.InfiniteAbility,function(value)
+Mh:AddToggle("Infinite Ability",true,_G.InfiniteAbility,function(value)
     InfiniteAbility = value
 end)
     
