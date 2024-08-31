@@ -182,8 +182,8 @@ function Notif.New(text, timee)
     uicorner_2.CornerRadius = UDim.new(0, 5)
     uicorner_2.Parent = text_button
 
-    local image_button = Instance.new("ImageButton") --disini1
-    image_button.Image = "rbxassetid://16058297648"
+    local image_button = Instance.new("ImageButton") --logo button,toggle disini
+    image_button.Image = "rbxassetid://84601195456960"
     image_button.ImageColor3 = Color3.new(0.784314, 0.784314, 0.784314)
     image_button.ImageRectOffset = Vector2.new(924, 724)
     image_button.ImageRectSize = Vector2.new(36, 36)
@@ -445,7 +445,7 @@ function Update:Window(text,logo,keybind)
     Ping.Position = UDim2.new(0.28, 0,0.074, 0)
     Ping.Size = UDim2.new(0, 225, 0, 25)
     Ping.Font = Enum.Font.GothamSemibold
-    Ping.Text = "BRUTALITY HUB V4 | Made by Medusa Script"
+    Ping.Text = "WAIT UPDATE | IS UNDER CONSTRUCTION"
     Ping.TextColor3 = Color3.fromRGB(0, 255, 221) --9, 255, 0 ijo
     Ping.TextSize = 14.000
     Ping.TextXAlignment = Enum.TextXAlignment.Left
