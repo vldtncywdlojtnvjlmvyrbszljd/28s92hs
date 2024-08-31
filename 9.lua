@@ -298,7 +298,7 @@ pcall(function()
     userinfo = HttpService:JSONDecode(readfile(""));
 end)
  
-pfp = userinfo["pfp"] or "https://create.roblox.com/store/asset/18395460493/medusascript2"
+pfp = userinfo["pfp"] or "https://www.roblox.com/headshot-thumbnail/image?userId=".. game.Players.LocalPlayer.UserId .."&width=420&height=420&format=png"
 user =  userinfo["user"] or game.Players.LocalPlayer.Name
 tag = userinfo["tag"] or tostring(math.random(1,10))
 
@@ -367,7 +367,7 @@ local function MakeDraggable(topbarobject, object)
 end
 
 local Update = {}
-local pfp = "https://create.roblox.com/store/asset/18395460493/medusascript2"
+local pfp = "https://www.roblox.com/headshot-thumbnail/image?userId=".. game.Players.LocalPlayer.UserId .."&width=420&height=420&format=png"
 
 function Update:Window(text,logo,keybind)
     local osfunc = {}
@@ -377,14 +377,14 @@ function Update:Window(text,logo,keybind)
     local keybind = keybind or Enum.KeyCode.RightControl
     local yoo = string.gsub(tostring(keybind),"Enum.KeyCode.","")
 
-    local THUNDERZHUB = Instance.new("ScreenGui")
-    THUNDERZHUB.Name = "BrutalityHUB"
-    THUNDERZHUB.Parent = game.CoreGui
-    THUNDERZHUB.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    local BRUTALITYHUB = Instance.new("ScreenGui")
+    BRUTALITYHUB.Name = "BRUTALITYHUB"
+    BRUTALITYHUB.Parent = game.CoreGui
+    BRUTALITYHUB.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
     local Main = Instance.new("Frame")
     Main.Name = "Main"
-    Main.Parent = THUNDERZHUB
+    Main.Parent = BRUTALITYHUB
     Main.ClipsDescendants = true
     Main.AnchorPoint = Vector2.new(0.5,0.5)
     Main.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -11163,7 +11163,7 @@ tween:Play()
 
 local SoundSFX = Instance.new("Sound")
 SoundSFX.Parent = workspace
-SoundSFX.SoundId = "rbxassetid://16058297648"
+SoundSFX.SoundId = "rbxassetid://1904813041"
 SoundSFX:Play()
 SoundSFX.Name = "POwfpxzxzfFfFF"
 game:GetService("Workspace").Map["Temple of Time"].Lever.Prompt:FindFirstChild("ProximityPrompt"):Remove()
