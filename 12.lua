@@ -3892,7 +3892,7 @@ local Main = Library:AddTab("Farming","18477352665")
 local M = Library:AddTab("Quest Item","18477473610")
 local Ss = Library:AddTab("Statistic","18630736310")
 local RaceV4 = Library:AddTab("Trial V4","18477916271")
-local Sts = Library:AddTab("Status","18477916271")
+local SNt = Library:AddTab("Sea Event","18477916271")
 local P = Library:AddTab("Bounty","18492098759")
 local R = Library:AddTab("Auto Raid","18491947999")
 local T = Library:AddTab("Teleport","18477347703")
@@ -5364,8 +5364,8 @@ end)
         end)
 end)
 
-Mirragecheck = M:AddLabel("")
-M:AddToggle("Teleport Mystic Island",_G.AutoMysticIsland,function(value)
+Mirragecheck = SNt:AddLabel("")
+SNt:AddToggle("Teleport Mystic Island",_G.AutoMysticIsland,function(value)
         _G.AutoMysticIsland = value
         StopTween(_G.AutoMysticIsland)
         end)
@@ -5385,7 +5385,7 @@ M:AddToggle("Teleport Mystic Island",_G.AutoMysticIsland,function(value)
                 end)
             end
 
-            M:AddButton("Teleport Advanced Fruit Dealer", function()
+            SNt:AddButton("Teleport Advanced Fruit Dealer", function()
                 TweenNpc()
                 end)
 
@@ -5407,7 +5407,7 @@ M:AddToggle("Teleport Mystic Island",_G.AutoMysticIsland,function(value)
                     end
 
 
-    M:AddToggle("Summon Mystic Island",_G.dao,function(state)
+    SNt:AddToggle("Summon Mystic Island",_G.dao,function(state)
     if state then
         _G.dao = true
     else
@@ -5545,7 +5545,7 @@ spawn(function()
 end)
 
 
-M:AddToggle("Teleport Blue Gear",_G.TweenMGear,function(value)
+SNt:AddToggle("Teleport Blue Gear",_G.TweenMGear,function(value)
 _G.TweenMGear = value
 StopTween(_G.TweenMGear)
 end)
@@ -6679,9 +6679,9 @@ spawn(function()
     _G.StardHop = value
     end)
     
-    M:AddSeperator(" Sea Beast ")
+    SNt:AddSeperator(" Sea Beast ")
  
-    M:AddToggle('Kill Sea Beast', false, function(value)
+    SNt:AddToggle('Kill Sea Beast', false, function(value)
     _G.AutoSeaBest = value
     StopTween(_G.AutoFarmSeabaest)
     end)
@@ -6770,7 +6770,7 @@ spawn(function()
         end
           end)
 
-        M:AddToggle('Kill PirateShips', _G.KillGhostShip, function(value)
+        SNt:AddToggle('Kill PirateShips', _G.KillGhostShip, function(value)
             _G.KillGhostShip = value
             StopTween(_G.KillGhostShip) 
         end)
@@ -6810,11 +6810,11 @@ end)
 
 
 
-M:AddToggle('Kill Sea Beast Hop', false, function(value)
+SNt:AddToggle('Kill Sea Beast Hop', false, function(value)
     _G.AutoSeaBestHop = value
     end)
     
-M:AddSeperator(" Sea Event ")
+SNt:AddSeperator(" Sea Event ")
 
 spawn(function()
     pcall(function()
@@ -6829,9 +6829,9 @@ spawn(function()
 end)
 
 
-FrozenIsland = M:AddLabel("")
+FrozenIsland = SNt:AddLabel("")
 
-M:AddToggle('Teleport Frozen Dimension [ NEED SPAWN ]', false, function(value)
+SNt:AddToggle('Teleport Frozen Dimension [ NEED SPAWN ]', false, function(value)
 _G.Frozen = value
 StopTween(_G.Frozen) 
 end)
@@ -6850,7 +6850,7 @@ spawn(function()
 end)
 
     
-M:AddToggle("Auto Kill Terrorshark",_G.Makori_gay,function(value)
+SNt:AddToggle("Auto Kill Terrorshark",_G.Makori_gay,function(value)
 _G.Terrorshark = value
 StopTween(_G.Terrorshark)
 end)
@@ -6893,7 +6893,7 @@ spawn(function()
         end
     end)
     
-M:AddToggle("Auto Kill Shark",_G.Makori_gay,function(value)
+SNt:AddToggle("Auto Kill Shark",_G.Makori_gay,function(value)
 _G.Shark = value
 StopTween(_G.Shark)
 end)
@@ -6936,7 +6936,7 @@ spawn(function()
         end
     end)
     
-    M:AddToggle("Auto Kill Piranha",_G.Makori_gay,function(value)
+    SNt:AddToggle("Auto Kill Piranha",_G.Makori_gay,function(value)
 _G.Piranha = value
 StopTween(_G.Piranha)
 end)
@@ -6979,7 +6979,7 @@ spawn(function()
         end
     end)
     
-        M:AddToggle('Auto Kill GhostShip', _G.FishBoat, function(value)
+        SNt:AddToggle('Auto Kill GhostShip', _G.FishBoat, function(value)
             _G.FishBoat = value
             StopTween(_G.FishBoat) 
         end)
@@ -7100,7 +7100,7 @@ end)
         end
           end)
 
-M:AddToggle('Auto Get Anchor [ Need Material ]', _G.Anchor, function(state)
+SNt:AddToggle('Auto Get Anchor [ Need Material ]', _G.Anchor, function(state)
 local function findItem(name, amount)
     for _, item in pairs(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("getInventory")) do
         if item["Type"] == "Material" and item["Name"] == name and item["Count"] >= amount then
@@ -7320,7 +7320,7 @@ M:AddToggle("Auto Finish Zone 5 (fix bug)",_G.dao,function(state)
             end
         end)
 ]]
-M:AddToggle("Speed Boat (semi work)",_G.Speed,function(value) -- state
+SNt:AddToggle("Speed Boat (semi work)",_G.Speed,function(value) -- state
 _G.Speed = Value
 end)
             
@@ -7338,7 +7338,7 @@ end
 end)
 end)
 
-    M:AddToggle("Auto Rough Sea (auto kill all)",_G.BiirTrax,function(state)
+    SNt:AddToggle("Auto Sail Rough Sea",_G.BiirTrax,function(state)
     if state then
         _G.BiirTrax = true
     else
