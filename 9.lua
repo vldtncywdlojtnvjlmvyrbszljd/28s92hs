@@ -489,7 +489,7 @@ function Update:Window(text,logo,keybind)
 	Logo.Parent = Main
 	Logo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	Logo.BackgroundTransparency = 1.000
-	Logo.Position = UDim2.new(0, -5, 0, -5)
+	Logo.Position = UDim2.new(0, -5, 0, -4)
 	Logo.Size = UDim2.new(0, 135, 0, 135)
 	Logo.Image = "rbxassetid://107679910024355" --logo didalam tab
     local Tab = Instance.new("Frame")
@@ -1357,7 +1357,7 @@ function Update:Window(text,logo,keybind)
         ImageLabel.BorderSizePixel = 0
         ImageLabel.Position = UDim2.new(0, 7.5, 0, 7.5)
         ImageLabel.Size = UDim2.new(0, 30, 0, 30)
-        ImageLabel.Image = "rbxassetid://107679910024355" --gambar ceklis setelah di klik
+        ImageLabel.Image = "rbxassetid://107679910024355" --gambar slider
             
         Title.Parent = SliderFrame_2
         Title.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
