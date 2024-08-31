@@ -888,7 +888,7 @@ function Update:Window(text,logo,keybind)
 
         ImageButton.Name = "ImageButton"
         ImageButton.Parent = Button
-        ImageButton.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
+        ImageButton.BackgroundColor3 = Color3.fromRGB(150, 150, 150) -- warna ketika di klik
         ImageButton.BackgroundTransparency = 1.000
         ImageButton.BorderSizePixel = 0
         ImageButton.Position = UDim2.new(0, 350, 0, 6)
@@ -901,7 +901,7 @@ function Update:Window(text,logo,keybind)
 
         Space.Name = "Space"
         Space.Parent = Button
-        Space.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
+        Space.BackgroundColor3 = Color3.fromRGB(150, 150, 150) --sepasi text
         Space.BackgroundTransparency = 1.000
         Space.Position = UDim2.new(0, 330, 0, 0)
         Space.Size = UDim2.new(0, 15, 0, 30)
@@ -913,7 +913,7 @@ function Update:Window(text,logo,keybind)
 
         Black.Name = "Black"
         Black.Parent = Button
-        Black.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Black.BackgroundColor3 = Color3.fromRGB(0, 170, 255) --warna tombol
         Black.BackgroundTransparency = 1.000
         Black.BorderSizePixel = 0
         Black.Position = UDim2.new(0, 1, 0, 1)
@@ -2872,7 +2872,7 @@ function UpdateFlowerChams()
 						name.TextYAlignment = 'Top'
 						name.BackgroundTransparency = 1
 						name.TextStrokeTransparency = 0.5
-						name.TextColor3 = Color3.fromRGB(255, 0, 0)
+						name.TextColor3 = Color3.fromRGB(0, 94, 255)
 						if v.Name == "Flower1" then 
 							name.Text = ("Blue Flower" ..' \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' Distance')
 							name.TextColor3 = Color3.fromRGB(0, 0, 255)
@@ -3165,7 +3165,7 @@ function UpdateFlowerChams()
 						name.TextYAlignment = 'Top'
 						name.BackgroundTransparency = 1
 						name.TextStrokeTransparency = 0.5
-						name.TextColor3 = Color3.fromRGB(255, 0, 0)
+						name.TextColor3 = Color3.fromRGB(0, 94, 255)
 						if v.Name == "Flower1" then 
 							name.Text = ("Blue Flower" ..' \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' Distance')
 							name.TextColor3 = Color3.fromRGB(0, 0, 255)
