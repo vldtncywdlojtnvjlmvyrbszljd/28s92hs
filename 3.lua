@@ -440,13 +440,13 @@ function Update:Window(text,logo,keybind)
     local Ping = Instance.new("TextLabel")
     Ping.Name = "Ping"
     Ping.Parent = Top
-    Ping.BackgroundColor3 = Color3.fromRGB(9, 255, 0)
+    Ping.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
     Ping.BackgroundTransparency = 1.000
     Ping.Position = UDim2.new(0.28, 0,0.074, 0)
     Ping.Size = UDim2.new(0, 225, 0, 25)
     Ping.Font = Enum.Font.GothamSemibold
     Ping.Text = "BRUTALITY HUB V4 | Made by Medusa Script "
-    Ping.TextColor3 = Color3.fromRGB(9, 255, 0)
+    Ping.TextColor3 = Color3.fromRGB(0, 174, 255) --9, 255, 0 ijo
     Ping.TextSize = 14.000
     Ping.TextXAlignment = Enum.TextXAlignment.Left
 
