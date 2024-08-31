@@ -445,8 +445,8 @@ function Update:Window(text,logo,keybind)
     Ping.Position = UDim2.new(0.28, 0,0.074, 0)
     Ping.Size = UDim2.new(0, 225, 0, 25)
     Ping.Font = Enum.Font.GothamSemibold
-    Ping.Text = "BRUTALITY HUB V4 | Made by Medusa Script "
-    Ping.TextColor3 = Color3.fromRGB(0, 174, 255) --9, 255, 0 ijo
+    Ping.Text = "BRUTALITY HUB V4 | Made by Medusa Script"
+    Ping.TextColor3 = Color3.fromRGB(0, 255, 221) --9, 255, 0 ijo
     Ping.TextSize = 14.000
     Ping.TextXAlignment = Enum.TextXAlignment.Left
 
@@ -600,7 +600,7 @@ function Update:Window(text,logo,keybind)
         TabButton.TextTransparency = 0.5
 
         Title.Parent = TabButton
-        Title.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
+        Title.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
         Title.BackgroundTransparency = 1.000
         Title.Position = UDim2.new(0, 25, 0, 0)
         Title.Size = UDim2.new(0, 100, 0, 25)
