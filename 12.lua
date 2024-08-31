@@ -3903,6 +3903,52 @@ local Misc = Library:AddTab("MISC","18477908150")
 --- Nama toggle ui
 NguyenTien:AddSeperator("Information")
 
+NguyenTien:Seperator("Main")
+
+Time = NguyenTien:Label("Executor Time")
+
+function UpdateTime()
+local GameTime = math.floor(workspace.DistributedGameTime+0.5)
+local Hour = math.floor(GameTime/(60^2))%24
+local Minute = math.floor(GameTime/(60^1))%60
+local Second = math.floor(GameTime/(60^0))%60
+Time:Set("[GameTime] : Hours : "..Hour.." Min : "..Minute.." Sec : "..Second)
+end
+
+spawn(function()
+while task.wait() do
+pcall(function()
+UpdateTime()
+end)
+end
+end)
+
+Client = NguyenTien:Label("Client")
+
+function UpdateClient()
+local Fps = workspace:GetRealPhysicsFPS()
+Client:Set("[Fps] : "..Fps)
+end
+
+spawn(function()
+while true do wait(.1)
+UpdateClient()
+end
+end)
+
+Client1 = NguyenTien:Label("Client")
+
+function UpdateClient1()
+local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+Client1:Set("[Ping] : "..Ping)
+end
+
+spawn(function()
+while true do wait(.1)
+UpdateClient1()
+end
+end)
+
 NguyenTien:AddLabel("🚨Alert : Please be patient, the Brutality Hub V4 script\n is currently under maintenance due to an error.")
 NguyenTien:AddLabel("Use Game : Blox Fruit| Blade Ball \n|Slap Battle |Prison Life |MemeSea ")
 NguyenTien:AddSeperator("Information")
@@ -7320,22 +7366,30 @@ M:AddToggle("Auto Finish Zone 5 (fix bug)",_G.dao,function(state)
             end
         end)
 ]]
-SNt:AddToggle("Speed Boat (semi work)",_G.Speed,function(value) -- state
-_G.Speed = Value
+SNt:AddToggle("Speed Boat",_G.IncreaseBoatSpeed,function(value) -- state
+    _G.IncreaseBoatSpeed = value
 end)
-            
+
 spawn(function()
-game:GetService("RunService").RenderStepped:Connect(function()
-if _G.Speed then
-pcall(function()
-for _,v in next, game.Workspace.Boats.PirateBrigade:GetDescendants() do
-if v.Name:find("VehicleSeat") then
-v.MaxSpeed = 300
-end
-end
-end)
-end
-end)
+    while wait() do 
+        pcall(function()
+            local vehicleSeats = {}
+            for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                if v:IsA("VehicleSeat") then
+                    table.insert(vehicleSeats, v)
+                end
+            end
+            if _G.IncreaseBoatSpeed then
+                for _, v in pairs(vehicleSeats) do
+                    v.MaxSpeed = 350
+                end
+            else
+                for _, v in pairs(vehicleSeats) do
+                    v.MaxSpeed = 150
+                end
+            end
+        end)
+    end
 end)
 
     SNt:AddToggle("Auto Sail Rough Sea",_G.BiirTrax,function(state)
