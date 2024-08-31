@@ -3899,6 +3899,7 @@ local T = Library:AddTab("Teleport","18477347703")
 local S = Library:AddTab("Shop","18477410455")
 local D = Library:AddTab("Devil Fruit","18477363100")
 local Mh = Library:AddTab("Mod Hack","18797339934")
+local STg = Library:AddTab("Setting","18797339934")
 local Misc = Library:AddTab("MISC","18477908150")
 --- Nama toggle ui
 NguyenTien:AddSeperator("Information")
@@ -4955,52 +4956,52 @@ end)
       end
     end)
     
-    Main:AddSeperator("Setting Farm Mode")
+    STg:AddSeperator("Setting Farm Mode")
 
-    Main:AddLabel("Pos X Front")
-    Main:AddLabel("Pos Y High and low")
-    Main:AddLabel("Pos Z Behind")
+    STg:AddLabel("Pos X Front")
+    STg:AddLabel("Pos Y High and low")
+    STg:AddLabel("Pos Z Behind")
 
     PosX = 1
-    Main:AddSlider("Pos X",0,50,1,function(value)
+    STg:AddSlider("Pos X",0,50,1,function(value)
     PosX = value
     end)
 
     PosY = 30
-    Main:AddSlider("Pos Y",0,50,45,function(value)
+    STg:AddSlider("Pos Y",0,50,45,function(value)
     PosY = value
     end)
 
     PosZ = 10
-    Main:AddSlider("Pos Z",0,50,40,function(value)
+    STg:AddSlider("Pos Z",0,50,40,function(value)
     PosZ = value
     end)
     
 
-    Main:AddSeperator("Misc Setting Mastery")
+    STg:AddSeperator("Misc Setting Mastery")
     
     _G.Kill_At = 50
 
-    Main:AddSlider("Kill At %",1,100,25,function(value)
+    STg:AddSlider("Kill At %",1,100,25,function(value)
 
         _G.Kill_At = value
     end)
     
  
-    Main:AddToggle("Skill Z",true,function(value)
+    STg:AddToggle("Skill Z",true,function(value)
         _G.SkillZ = value
     end)
  
     
-    Main:AddToggle("Skill X",true,function(value)
+    STg:AddToggle("Skill X",true,function(value)
         _G.SkillX = value
     end)
     
-    Main:AddToggle("Skill C",true,function(value)
+    STg:AddToggle("Skill C",true,function(value)
         _G.SkillC = value
     end)
     
-     Main:AddToggle("Skill V",true,function(value)
+     STg:AddToggle("Skill V",true,function(value)
         _G.SkillV = value
     end)
     
