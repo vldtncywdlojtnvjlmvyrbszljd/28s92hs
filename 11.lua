@@ -4029,11 +4029,11 @@ getgenv().HyperCahayas = function(p)
 local Library = Update:Window("Brutality Hub V4","WAIT UPDATE | IS UNDER CONSTRUCTION",Enum.KeyCode.RightControl);
 
 local NguyenTien = Library:AddTab("Home","18797343654")
-local Qwe = Library:AddTab("Status","18797345795")
+local Qwe = Library:AddTab("Status","127616365677424")
 local Main = Library:AddTab("Farming","18477352665")
 local M = Library:AddTab("Quest Item","18477473610")
 local Ss = Library:AddTab("Statistic","18630736310")
-local RaceV4 = Library:AddTab("Trial V4","18477916271")
+local RaceV4 = Library:AddTab("Race V4","18477916271")
 local SNt = Library:AddTab("Sea Event","18630756931")
 local P = Library:AddTab("Bounty","18492098759")
 local R = Library:AddTab("Auto Raid","18491947999")
@@ -4041,7 +4041,7 @@ local T = Library:AddTab("Teleport","18477347703")
 local S = Library:AddTab("Shop","18477410455")
 local D = Library:AddTab("Devil Fruit","18477363100")
 local Mh = Library:AddTab("Mod Hack","18797339934")
-local STg = Library:AddTab("Setting","18477556155")
+local STg = Library:AddTab("Setting","134210609072137")
 local Misc = Library:AddTab("MISC","18477908150")
 --- Nama toggle ui
 NguyenTien:AddSeperator("Information")
@@ -4181,8 +4181,10 @@ local locallv = Qwe:AddLabel("Level :")
         end
     end)
 
-Qwe:AddSeperator("Quest Train V4")
+Qwe:AddSeperator("Status Train V4")
+
 local bL = Qwe:AddLabel("Ancient One Status : " .. tostring(CheckAcientOneStatus()))
+local bPl = Qwe:AddLabel("Train v4 Status : " .. tostring(CheckAcientOneStatusTrain()))
 
 Qwe:AddLine()
 if World3 then
@@ -11704,8 +11706,9 @@ end)
 
 RaceV4:AddSeperator("Auto Quest Train V4")
 
-local bPl = RaceV4:AddLabel("Ancient One Status : " .. tostring(CheckAcientOneStatusTrain()))
-RaceV4:AddToggle("Auto Buy Gear Train V4",_G.Auto_Bone,function(value)
+RaceV4:AddLabel("Check Tab Status")
+
+RaceV4:AddToggle("Auto Train & Buy Gear",_G.Auto_Bone,function(value)
     _G.Auto_Bone = value
     StopTween(_G.Auto_Bone)
     end)
