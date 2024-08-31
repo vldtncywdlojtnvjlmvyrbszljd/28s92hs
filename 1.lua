@@ -4029,7 +4029,7 @@ getgenv().HyperCahayas = function(p)
 local Library = Update:Window("Brutality Hub V4","WAIT UPDATE | IS UNDER CONSTRUCTION",Enum.KeyCode.RightControl);
 
 local NguyenTien = Library:AddTab("Home","18797343654")
-local bTeam = Library:AddTab("Status","18797343654")
+local Qwe = Library:AddTab("Status","18797343654")
 local Main = Library:AddTab("Farming","18477352665")
 local M = Library:AddTab("Quest Item","18477473610")
 local Ss = Library:AddTab("Statistic","18630736310")
@@ -4111,11 +4111,10 @@ setclipboard("https://www.instagram.com/medusafrzly/")
 Notif.New("Copying To Clipboard Done", 3)
 end)
 
-bTeam:AddSeperator("Status Server")
+Qwe:AddSeperator("Status Server")
 
-bteam:addline()
-local Client = bTeam:AddLabel("Client")
-bTeam:AddLine()
+local Client = Qwe:AddLabel("Client")
+
 function UpdateClient()
 local Fps = workspace:GetRealPhysicsFPS()
 Client:Set("Fps : "..Fps)
@@ -4127,7 +4126,7 @@ UpdateClient()
 end
 end)
 
-local Client1 = bTeam:AddLabel("Client")
+local Client1 = Qwe:AddLabel("Client")
 
 function UpdateClient1()
 local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
@@ -4140,10 +4139,10 @@ UpdateClient1()
 end
 end)
 
-bTeam:AddLabel("Executor : ".. identifyexecutor())
-bTeam:AddLabel("Name : ".. game.Players.LocalPlayer.Name)
+Qwe:AddLabel("Executor : ".. identifyexecutor())
+Qwe:AddLabel("Name : ".. game.Players.LocalPlayer.Name)
 
-local locallv = bTeam:AddLabel("Level :")
+local locallv = Qwe:AddLabel("Level :")
     
     spawn(function()
         while wait() do
@@ -4153,7 +4152,7 @@ local locallv = bTeam:AddLabel("Level :")
         end
     end)
     
-    local localrace = bTeam:AddLabel("Race :")
+    local localrace = Qwe:AddLabel("Race :")
     
     spawn(function()
         while wait() do
@@ -4163,7 +4162,7 @@ local locallv = bTeam:AddLabel("Level :")
         end
     end)
     
-    local localbeli = bTeam:AddLabel("Beli :")
+    local localbeli = Qwe:AddLabel("Beli :")
     
     spawn(function()
         while wait() do
@@ -4172,7 +4171,7 @@ local locallv = bTeam:AddLabel("Level :")
             end)
         end
     end)
-    local localfrag = bTeam:AddLabel("Fragment")
+    local localfrag = Qwe:AddLabel("Fragment")
     
     spawn(function()
         while wait() do
@@ -4182,10 +4181,10 @@ local locallv = bTeam:AddLabel("Level :")
         end
     end)
 
-bTeam:AddSeperator("Quest Train V4")
-local bL = bTeam:AddLabel("Ancient One Status : " .. tostring(CheckAcientOneStatus()))
+Qwe:AddSeperator("Quest Train V4")
+local bL = Qwe:AddLabel("Ancient One Status : " .. tostring(CheckAcientOneStatus()))
 
-bTeam:AddLine()
+Qwe:AddLine()
 if World3 then
     spawn(function()
         pcall(function()
@@ -4198,7 +4197,7 @@ if World3 then
         end)
     end)
     end
-    Mirragech3ck = bTeam:AddLabel("Only Third Sea")
+    Mirragech3ck = Qwe:AddLabel("Only Third Sea")
 
 if World3 then
 spawn(function()
@@ -4213,7 +4212,7 @@ spawn(function()
     end)
 end)
 end
-Kitsunech3ck = bTeam:AddLabel("Only Third Sea")
+Kitsunech3ck = Qwe:AddLabel("Only Third Sea")
 
 if World3 then
 spawn(function()
@@ -4228,10 +4227,10 @@ spawn(function()
     end)
     end)
 end
-    Froz3nIsland = bTeam:AddLabel("Only Third Sea")
+    Froz3nIsland = Qwe:AddLabel("Only Third Sea")
 
-bTeam:AddLine()
-local FMz = bTeam:AddLabel("")
+Qwe:AddLine()
+local FMz = Qwe:AddLabel("")
  
  task.spawn(function()
          while task.wait() do
@@ -4252,18 +4251,17 @@ local FMz = bTeam:AddLabel("")
              end)
          end
  end)
-bTeam:AddLine()
 
-local FullM00n = bTeam:AddLabel("Moon Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
+local FullM00n = Qwe:AddLabel("Moon Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
 
 spawn(function()
         while wait() do
-            H:Set("Moon Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
+            FullM00n:Set("Moon Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
                 end
             end)
 
-bTeam:AddLine()
-local Time1 = bTeam:AddLabel("Run Time Script")
+Qwe:AddLine()
+local Time1 = Qwe:AddLabel("Run Time Script")
 function UpdateTime()
 local GameTime = math.floor(workspace.DistributedGameTime+0.5)
 local Hour = math.floor(GameTime/(60^2))%24
