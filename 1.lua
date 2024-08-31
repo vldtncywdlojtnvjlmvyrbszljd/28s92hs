@@ -246,6 +246,14 @@ local ImageButton1 = Instance.new("ImageButton")
 local UICorner = Instance.new("UICorner")
 local UIGradient = Instance.new("UIGradient")
 local UIStroke = Instance.new("UIStroke")
+local ReplicatedStorage = game:GetService("ReplicatedStorage") --tambahan sound klik
+local SoundService = game:GetService("SoundService")
+local TweenService = game:GetService("TweenService")
+local soundId = "rbxassetid://130785805" 
+local sound = Instance.new("Sound")
+    sound.Name = "ButtonClickSound"
+    sound.SoundId = soundId
+    sound.Parent = ReplicatedStorage
 ScreenGui1.Name = "ImageButton"
 ScreenGui1.Parent = game.CoreGui
 ScreenGui1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
@@ -260,6 +268,9 @@ ImageButton1.Image = "rbxassetid://107679910024355" --logo button close open
 ImageButton1.MouseButton1Down:connect(function()
 game:GetService("VirtualInputManager"):SendKeyEvent(true,305,false,game)
 game:GetService("VirtualInputManager"):SendKeyEvent(false,305,false,game)
+local clickSound = sound:Clone()
+    clickSound.Parent = SoundService
+    clickSound:Play()
 end)
 UICorner.Parent = ImageButton1
 UIStroke.Color = Color3.fromRGB(232, 0, 2)
