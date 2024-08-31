@@ -4280,6 +4280,147 @@ spawn(function()
                 end
             end)
 
+            Qwe:AddSeperator("Status Quest")
+
+            local Bartilo_Quest = Qwe:AddLabel("Bartilo Quest : 🔴")
+            local Don_Swan_Quest = Qwe:AddLabel("Don Swan Quest : 🔴")
+            local Kill_Don_Swan = Qwe:AddLabel("Kill Don Swan : 🔴")
+            local Flamingo_Access = Qwe:AddLabel("FlamingoAccess : 🔴")
+            
+            spawn(function()
+                while task.wait() do
+                    if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BartiloQuestProgress","Bartilo") == 3 then
+                        Bartilo_Quest:Set("Bartilo Quest : 🟢")
+                    end
+            
+                    if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("GetUnlockables").FlamingoAccess == 1 then --nil
+                        Flamingo_Access:Set("Flamingo Quest : 🟢")
+                    else
+                        Don_Swan_Quest:Set("Don Swan Quest : 🟢")
+                    end
+            
+                    if game:GetService("ReplicatedStorage").Remotes["CommF_"]:InvokeServer("ZQuestProgress", "Check") == 1 then
+                        Kill_Don_Swan:Set("Kill Don Swan : 🟢")
+                    end
+                end
+            end)
+            
+            Qwe:AddSeperator("Sword Legendary")
+            
+            local Shisui = Qwe:AddLabel("Shisui : 🔴")
+            local Saddi = Qwe:AddLabel("Saddi : 🔴")
+            local Wando = Qwe:AddLabel("Wando : 🔴")
+            local True_Triple_Katana = Qwe:AddLabel("True Triple Katana : 🔴")
+            
+            spawn(function()
+                while task.wait() do
+                    pcall(function()
+                        for i,v in pairs(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("getInventoryWeapons")) do
+                            if v.Name == "Shisui" then
+                                Shisui:Set("Shisui : 🟢")
+                            end
+                            if v.Name == "Saddi" then
+                                Saddi:Set("Saddi : 🟢")
+                            end
+                            if v.Name == "Wando" then
+                                Wando:Set("Wando : 🟢")
+                            end
+                            if v.Name == "True Triple Katana" then
+                                True_Triple_Katana:Set("True Triple Katana : 🟢")
+                            end
+                        end
+                    end)
+                end
+            end)
+            
+            Qwe:AddSeperator("Melee")
+            
+            local Superhuman = Qwe:AddLabel("Superhuman : 🔴")
+            local Death_Step = Qwe:AddLabel("Death Step : 🔴")
+            local Sharkman_Karate = Qwe:AddLabel("Sharkman Karate : 🔴")
+            local Electric_Claw = Qwe:AddLabel("Electric Claw : 🔴")
+            local Dragon_Talon = Qwe:AddLabel("Dragon Talon : 🔴")
+            local God_Human = Qwe:AddLabel("God Human : 🔴")
+            
+            spawn(function()
+                while task.wait() do
+                    if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySuperhuman",true) == 1 then
+                        Superhuman:Set("Superhuman : 🟢")
+                    end
+                    if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDeathStep",true) == 1 then
+                        Death_Step:Set("Death Step : 🟢")
+                    end
+                    if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate",true) == 1 then
+                        Sharkman_Karate:Set("Sharkman Karate : 🟢")
+                    end
+                    if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectricClaw",true) == 1 then
+                        Electric_Claw:Set("Electric Claw : 🟢")
+                    end
+                    if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDragonTalon",true) == 1 then
+                        Dragon_Talon:Set("Dragon Talon : 🟢")
+                    end
+                end
+            end)
+            
+            Qwe:AddSeperator("Gun")
+            
+            local Kabu_cha = Qwe:AddLabel("Kabucha : 🔴")
+            local Acidum_Rifle = Qwe:AddLabel("Acidum Rifle : 🔴")
+            local Bizarre_Rifle = Qwe:AddLabel("Bizarre Rifle : 🔴")
+            
+            spawn(function()
+                while task.wait() do
+                    pcall(function()
+                        for i,v in pairs(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("getInventoryWeapons")) do
+                            if v.Name == "Kabucha" then
+                                Kabu_cha:Set("Kabucha : 🟢")
+                            end
+                            if v.Name == "Acidum Rifle" then
+                                Acidum_Rifle:Set("Acidum Rifle : 🟢")
+                            end
+                            if v.Name == "Bizarre Rifle" then
+                                Bizarre_Rifle:Set("Bizarre Rifle : 🟢")
+                            end
+                        end
+                    end)
+                end
+            end)
+            
+            
+            
+            Qwe:AddSeperator("Accessory")
+            
+            local Dark_Coat = Qwe:AddLabel("Dark Coat : 🔴")
+            local Ghoul_Mask = Qwe:AddLabel("Ghoul Mask : 🔴")
+            local Swan_Glass = Qwe:AddLabel("Swan Glass : 🔴")
+            local Pale_Scarf = Qwe:AddLabel("Pale Scarf : 🔴")
+            local Valkyrie_Helm = Qwe:AddLabel("Valkyrie Helm : 🔴")
+            local Valkyrie_Helm = Qwe:AddLabel("Valkyrie Helm : 🔴")
+            
+            
+            spawn(function()
+                while task.wait() do
+                    pcall(function()
+                        for i,v in pairs(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("getInventoryWeapons")) do
+                            if v.Name == "Saber" then
+                                Dark_Coat:Set("Dark Coat : 🟢")
+                            end
+                            if v.Name == "Ghoul Mask" then
+                                Ghoul_Mask:Set("Ghoul Mask : 🟢")
+                            end
+                            if v.Name == "Swan Glasses" then
+                                Swan_Glass:Set("Swan Glass : 🟢")
+                            end
+                            if v.Name == "Pale Scarf" then
+                                Pale_Scarf:Set("Pale Scarf : 🟢")
+                            end
+                            if v.Name == "Valkyrie Helmet" then
+                                Valkyrie_Helm:Set("Valkyrie Helmet : 🟢")
+                            end
+                        end
+                    end)
+                end
+            end)
 
 ---- Teks halaman utama
 Main:AddSeperator("Farm Settings")
