@@ -4192,9 +4192,9 @@ if World3 then
         pcall(function()
             while wait() do
     if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
-    Mirragech3ck:Set('Mirage Island : ✅')
+    Mirragech3ck:Set('Mirage Island : 🟢')
     else
-      Mirragech3ck:Set('Mirage Island : ❌' )end
+      Mirragech3ck:Set('Mirage Island : 🔴' )end
             end
         end)
     end)
@@ -4206,9 +4206,9 @@ spawn(function()
     pcall(function()
         while wait() do
             if game.Workspace._WorldOrigin.Locations:FindFirstChild('Kitsune Island') then
-                Kitsunech3ck:Set('Kitsune Island : ✅')
+                Kitsunech3ck:Set('Kitsune Island : 🟢')
             else
-                Kitsunech3ck:Set('Kitsune Island : ❌') 
+                Kitsunech3ck:Set('Kitsune Island : 🔴') 
             end
         end
     end)
@@ -4221,9 +4221,9 @@ spawn(function()
     pcall(function()
     while wait() do
         if game.Workspace._WorldOrigin.Locations:FindFirstChild('Frozen Dimension') then
-            Froz3nIsland:Set('Frozen Dimension : ✅')
+            Froz3nIsland:Set('Frozen Dimension : 🟢')
         else
-            Froz3nIsland:Set('Frozen Dimension : ❌')
+            Froz3nIsland:Set('Frozen Dimension : 🔴')
         end
     end
     end)
@@ -4232,7 +4232,7 @@ end
     Froz3nIsland = Qwe:AddLabel("Frozen Island : Only Third Sea")
 
 Qwe:AddLine()
-local FMz = Qwe:AddLabel("Only Third Sea")
+local FMz = Qwe:AddLabel("Full Moon Phase : Only Third Sea")
  if World3 then
  task.spawn(function()
          while task.wait() do
@@ -4253,7 +4253,7 @@ local FMz = Qwe:AddLabel("Only Third Sea")
              end)
          end
  end)
-then
+end
 local FullM00n = Qwe:AddLabel("Moon Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
 
 spawn(function()
@@ -10231,6 +10231,24 @@ end)
         end)
     
     M:AddSeperator("Legendary Sword")
+
+    spawn(function()
+        pcall(function()
+            while wait() do
+                if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "1") then
+                    LegendSwords:Set("Sword Ready : Shisui")
+                elseif game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer","2") then
+                    LegendSwords:Set("Sword Ready : Wando")
+                elseif game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer","3") then
+                    LegendSwords:Set("Sword Ready : Saddi")
+                else
+                    LegendSwords:Set("Sword Not Ready : 🔴")
+                end
+            end
+        end)
+       end)
+       
+       LegendSwords = M:AddLabel("StatusCheck")
     
     M:AddToggle("Buy Legendary Sword",_G.AutoBuyLegendarySword,function(value)
         _G.AutoBuyLegendarySword = value
