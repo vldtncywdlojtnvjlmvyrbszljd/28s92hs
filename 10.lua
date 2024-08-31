@@ -3903,9 +3903,8 @@ local Misc = Library:AddTab("MISC","18477908150")
 --- Nama toggle ui
 NguyenTien:AddSeperator("Information")
 
-NguyenTien:Seperator("Main")
 
-local Time = NguyenTien:Label("Executor Time")
+Time = NguyenTien:AddLabel("Executor Time")
 
 function UpdateTime()
 local GameTime = math.floor(workspace.DistributedGameTime+0.5)
@@ -3923,7 +3922,7 @@ end)
 end
 end)
 
-local Client = NguyenTien:Label("Client")
+Client = NguyenTien:AddLabel("Client")
 
 function UpdateClient()
 local Fps = workspace:GetRealPhysicsFPS()
@@ -3936,7 +3935,7 @@ UpdateClient()
 end
 end)
 
-local Client1 = NguyenTien:Label("Client")
+Client1 = NguyenTien:AddLabel("Client")
 
 function UpdateClient1()
 local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
