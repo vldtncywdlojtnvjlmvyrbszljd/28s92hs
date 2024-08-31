@@ -893,7 +893,7 @@ function Update:Window(text,logo,keybind)
         ImageButton.BorderSizePixel = 0
         ImageButton.Position = UDim2.new(0, 350, 0, 6)
         ImageButton.Size = UDim2.new(0, 20, 0, 20)
-        ImageButton.Image = "rbxassetid://16058297648"
+        ImageButton.Image = "rbxassetid://84601195456960"
         ImageButton.ImageColor3 = Color3.fromRGB(255, 255, 255)
 
         UICorner_2.CornerRadius = UDim.new(0, 5)
@@ -1003,7 +1003,7 @@ function Update:Window(text,logo,keybind)
         ImageLabel.BorderSizePixel = 0
         ImageLabel.Position = UDim2.new(0, 5, 0, 6)
         ImageLabel.Size = UDim2.new(0, 20, 0, 20)
-        ImageLabel.Image = "rbxassetid://16058297648"
+        ImageLabel.Image = "rbxassetid://84601195456960"
         ImageLabel.ImageColor3 = Color3.fromRGB(255, 255, 255)
 
         Space.Name = "Space"
@@ -1155,7 +1155,7 @@ function Update:Window(text,logo,keybind)
         DropImage.Position = UDim2.new(0, 350, 0, 6)
         DropImage.Rotation = 180.000
         DropImage.Size = UDim2.new(0, 20, 0, 20)
-        DropImage.Image = "rbxassetid://16058297648"
+        DropImage.Image = "rbxassetid://84601195456960"
 
         for i,v in next,option do
             local Item = Instance.new("TextButton")
@@ -1357,7 +1357,7 @@ function Update:Window(text,logo,keybind)
         ImageLabel.BorderSizePixel = 0
         ImageLabel.Position = UDim2.new(0, 7.5, 0, 7.5)
         ImageLabel.Size = UDim2.new(0, 30, 0, 30)
-        ImageLabel.Image = "rbxassetid://16058297648"
+        ImageLabel.Image = "rbxassetid://84601195456960"
             
         Title.Parent = SliderFrame_2
         Title.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
