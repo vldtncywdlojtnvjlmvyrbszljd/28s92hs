@@ -3905,7 +3905,7 @@ NguyenTien:AddSeperator("Information")
 
 NguyenTien:Seperator("Main")
 
-Time = NguyenTien:Label("Executor Time")
+local Time = NguyenTien:Label("Executor Time")
 
 function UpdateTime()
 local GameTime = math.floor(workspace.DistributedGameTime+0.5)
@@ -3923,7 +3923,7 @@ end)
 end
 end)
 
-Client = NguyenTien:Label("Client")
+local Client = NguyenTien:Label("Client")
 
 function UpdateClient()
 local Fps = workspace:GetRealPhysicsFPS()
@@ -3936,7 +3936,7 @@ UpdateClient()
 end
 end)
 
-Client1 = NguyenTien:Label("Client")
+local Client1 = NguyenTien:Label("Client")
 
 function UpdateClient1()
 local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
