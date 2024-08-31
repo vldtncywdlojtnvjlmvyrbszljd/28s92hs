@@ -4029,7 +4029,7 @@ getgenv().HyperCahayas = function(p)
 local Library = Update:Window("Brutality Hub V4","WAIT UPDATE | IS UNDER CONSTRUCTION",Enum.KeyCode.RightControl);
 
 local NguyenTien = Library:AddTab("Home","18797343654")
-local Qwe = Library:AddTab("Status","127616365677424")
+local Qwe = Library:AddTab("Status","78118444078057")
 local Main = Library:AddTab("Farming","18477352665")
 local M = Library:AddTab("Quest Item","18477473610")
 local Ss = Library:AddTab("Statistic","18630736310")
