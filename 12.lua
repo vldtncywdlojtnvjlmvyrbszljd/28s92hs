@@ -4199,7 +4199,7 @@ if World3 then
         end)
     end)
     end
-    Mirragech3ck = Qwe:AddLabel("Only Third Sea")
+    Mirragech3ck = Qwe:AddLabel("Mirage Island : Only Third Sea")
 
 if World3 then
 spawn(function()
@@ -4214,7 +4214,7 @@ spawn(function()
     end)
 end)
 end
-Kitsunech3ck = Qwe:AddLabel("Only Third Sea")
+Kitsunech3ck = Qwe:AddLabel("Kitsune Island : Only Third Sea")
 
 if World3 then
 spawn(function()
@@ -4229,11 +4229,11 @@ spawn(function()
     end)
     end)
 end
-    Froz3nIsland = Qwe:AddLabel("Only Third Sea")
+    Froz3nIsland = Qwe:AddLabel("Frozen Island : Only Third Sea")
 
 Qwe:AddLine()
-local FMz = Qwe:AddLabel("")
- 
+local FMz = Qwe:AddLabel("Only Third Sea")
+ if World3 then
  task.spawn(function()
          while task.wait() do
              pcall(function()
@@ -4253,7 +4253,7 @@ local FMz = Qwe:AddLabel("")
              end)
          end
  end)
-
+then
 local FullM00n = Qwe:AddLabel("Moon Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
 
 spawn(function()
