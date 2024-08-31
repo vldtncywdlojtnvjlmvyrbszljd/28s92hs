@@ -259,7 +259,7 @@ ScreenGui1.Parent = game.CoreGui
 ScreenGui1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 ImageButton1.Parent = ScreenGui1
-ImageButton1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ImageButton1.BackgroundColor3 = Color3.fromRGB(0, 255, 221)
 ImageButton1.BorderSizePixel = 0
 ImageButton1.Position = UDim2.new(0.001833337, 0, 0.1952890813, 0) --0.120833337, 0, 0.0952890813, 0
 ImageButton1.Size = UDim2.new(0, 50, 0, 50)
@@ -4394,7 +4394,6 @@ spawn(function()
             local Ghoul_Mask = Qwe:AddLabel("Ghoul Mask : 🔴")
             local Swan_Glass = Qwe:AddLabel("Swan Glass : 🔴")
             local Pale_Scarf = Qwe:AddLabel("Pale Scarf : 🔴")
-            local Valkyrie_Helm = Qwe:AddLabel("Valkyrie Helm : 🔴")
             local Valkyrie_Helm = Qwe:AddLabel("Valkyrie Helm : 🔴")
             
             
