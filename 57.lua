@@ -4113,7 +4113,7 @@ end)
 
 bTeam:AddSeperator("Status Server")
 
-Bteam:addline()
+bteam:addline()
 local Client = bTeam:AddLabel("Client")
 bTeam:AddLine()
 function UpdateClient()
