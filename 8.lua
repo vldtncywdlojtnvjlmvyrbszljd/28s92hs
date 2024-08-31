@@ -496,7 +496,7 @@ function Update:Window(text,logo,keybind)
     Tab.Name = "Tab"
     Tab.Parent = Main
     Tab.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
-    Tab.Position = UDim2.new(0, 5, 0, 130)
+    Tab.Position = UDim2.new(0, 5, 0, 135)
     Tab.Size = UDim2.new(0, 0, 0, 0)
 
     local TabCorner = Instance.new("UIListLayout")
