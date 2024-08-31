@@ -5408,6 +5408,72 @@ end)
         end
       end
     end)
+
+    STg:AddSeperator("ESP MENU")
+    
+    STg:AddToggle("ESP Player",false,function(a)
+        ESPPlayer = a
+	UpdatePlayerChams()
+    end)
+    
+    STg:AddToggle("ESP Chest",false,function(a)
+        ChestESP = a
+	UpdateChestChams() 
+    end)
+    
+    STg:AddToggle("ESP Fruit",false,function(a)
+        DevilFruitESP = a
+        while DevilFruitESP do wait()
+            UpdateDevilChams() 
+        end
+    end)
+    
+    STg:AddToggle("ESP Real Fruit",RealFruitESP,function(a)
+        RealFruitESP = a
+	UpdateRealFruitChams() 
+    end)
+    
+    STg:AddToggle("ESP Flower",false,function(a)
+        FlowerESP = a
+	UpdateFlowerChams() 
+    end)
+    spawn(function()
+	    while wait(2) do
+		    if FlowerESP then
+			    UpdateFlowerChams() 
+		    end
+		    if DevilFruitESP then
+			    UpdateDevilChams() 
+		    end
+		    if ChestESP then
+			    UpdateChestChams() 
+		    end
+		    if ESPPlayer then
+			    UpdatePlayerChams()
+		    end
+		    if RealFruitESP then
+			    UpdateRealFruitChams()
+		    end
+	    end
+    end)
+STg:AddToggle("ESP Island",IslandESP,function(value)
+        IslandESP = value
+        while IslandESP do wait()
+            UpdateIslandESP() 
+        end
+    end)
+    STg:AddToggle("Esp Npc", false, function(nec)
+    NpcESP = nec
+end)
+
+STg:AddToggle("Esp Sea Beast", false, function(nec)
+    SeaESP = nec
+end)
+
+
+STg:AddToggle("Esp Mob", false, function(nec)
+    MobESP = nec
+end)
     
     STg:AddSeperator("Setting Farm Mode")
 
@@ -8614,7 +8680,7 @@ end)
     end)
     
     M:AddSeperator("Soul Guitar")
-    
+--[[    
     local FM = M:AddLabel('Third World')
     
     task.spawn(function()
@@ -8636,7 +8702,7 @@ end)
                 end)
             end
     end)
-    
+    ]]
     M:AddToggle("Taken Soul Guitar",_G.AutoNevaSoulGuitar,function(value)
   _G.AutoNevaSoulGuitar = value    
  StopTween(_G.AutoNevaSoulGuitar)
@@ -10377,11 +10443,11 @@ end)
         pcall(function()
             while wait() do
                 if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "1") then
-                    LegendSwords:Set("Sword Ready : Shisui")
+                    LegendSwords:Set("Legend Sword : Shisui")
                 elseif game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer","2") then
-                    LegendSwords:Set("Sword Ready : Wando")
+                    LegendSwords:Set("Legend Sword : Wando")
                 elseif game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer","3") then
-                    LegendSwords:Set("Sword Ready : Saddi")
+                    LegendSwords:Set("Legend Sword : Saddi")
                 else
                     LegendSwords:Set("Sword Not Ready : 🔴")
                 end
@@ -14763,72 +14829,6 @@ end)
     end)
 
 
-Misc:AddSeperator("ESP MENU")
-    
-    Misc:AddToggle("ESP Player",false,function(a)
-        ESPPlayer = a
-	UpdatePlayerChams()
-    end)
-    
-    Misc:AddToggle("ESP Chest",false,function(a)
-        ChestESP = a
-	UpdateChestChams() 
-    end)
-    
-    Misc:AddToggle("ESP Fruit",false,function(a)
-        DevilFruitESP = a
-        while DevilFruitESP do wait()
-            UpdateDevilChams() 
-        end
-    end)
-    
-    Misc:AddToggle("ESP Real Fruit",RealFruitESP,function(a)
-        RealFruitESP = a
-	UpdateRealFruitChams() 
-    end)
-    
-    Misc:AddToggle("ESP Flower",false,function(a)
-        FlowerESP = a
-	UpdateFlowerChams() 
-    end)
-    spawn(function()
-	    while wait(2) do
-		    if FlowerESP then
-			    UpdateFlowerChams() 
-		    end
-		    if DevilFruitESP then
-			    UpdateDevilChams() 
-		    end
-		    if ChestESP then
-			    UpdateChestChams() 
-		    end
-		    if ESPPlayer then
-			    UpdatePlayerChams()
-		    end
-		    if RealFruitESP then
-			    UpdateRealFruitChams()
-		    end
-	    end
-    end)
-Misc:AddToggle("ESP Island",IslandESP,function(value)
-        IslandESP = value
-        while IslandESP do wait()
-            UpdateIslandESP() 
-        end
-    end)
-    Misc:AddToggle("Esp Npc", false, function(nec)
-    NpcESP = nec
-end)
-
-Misc:AddToggle("Esp Sea Beast", false, function(nec)
-    SeaESP = nec
-end)
-
-
-Misc:AddToggle("Esp Mob", false, function(nec)
-    MobESP = nec
-end)
-
     Mh:AddSeperator("Mod Hack By Medusa")
     
     Mh:AddToggle("Dodge No Cooldown",false,function(value)
@@ -14891,7 +14891,7 @@ function INGENG()
     end)
 end
 
-Mh:AddToggle("Infinite Ability",true,_G.InfiniteAbility,function(value)
+Mh:AddToggle("Infinite Ability",InfiniteAbility,function(value)
     InfiniteAbility = value
 end)
     
