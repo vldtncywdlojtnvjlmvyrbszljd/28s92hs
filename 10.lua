@@ -4489,6 +4489,47 @@ spawn(function()
             end)
 
 ---- Teks halaman utama
+Main:AddSeperator("Codes")
+    
+    local x2Code = {
+        "KITTGAMING",
+        "ENYU_IS_PRO",
+        "FUDD10",
+        "BIGNEWS",
+        "THEGREATACE",
+        "SUB2GAMERROBOT_EXP1",
+        "STRAWHATMAIME",
+        "SUB2OFFICIALNOOBIE",
+        "SUB2NOOBMASTER123",
+        "SUB2DAIGROCK",
+        "AXIORE",
+        "TANTAIGAMIMG",
+        "STRAWHATMAINE",
+        "JCWK",
+        "FUDD10_V2",
+        "SUB2FER999",
+        "MAGICBIS",
+        "TY_FOR_WATCHING",
+        "STARCODEHEO"
+    }
+    
+    Main:AddButton("Redeem All Codes",function()
+        function RedeemCode(value)
+            game:GetService("ReplicatedStorage").Remotes.Redeem:InvokeServer(value)
+        end
+        for i,v in pairs(x2Code) do
+            RedeemCode(v)
+        end
+    end)
+    
+    Main:AddDropdown("Selected Codes Reset stat",{"NOOB_REFUND","SUB2GAMERROBOT_RESET1","Sub2UncleKizaru"},function(value)
+        _G.CodeSelect = value
+    end)
+    
+    Main:AddButton("Redeem Code (Selected Codes)",function()
+        game:GetService("ReplicatedStorage").Remotes.Redeem:InvokeServer(_G.CodeSelect)
+    end)
+
 Main:AddSeperator("Farm Settings")
 
 local WeaponList = {"Melee","Sword","Fruit","Gun"}
@@ -14877,47 +14918,6 @@ Misc:AddButton("Inventory List", function(value)
         _G.Clip = false
     end)
     
-    Misc:AddSeperator("Codes")
-    
-    local x2Code = {
-        "KITTGAMING",
-        "ENYU_IS_PRO",
-        "FUDD10",
-        "BIGNEWS",
-        "THEGREATACE",
-        "SUB2GAMERROBOT_EXP1",
-        "STRAWHATMAIME",
-        "SUB2OFFICIALNOOBIE",
-        "SUB2NOOBMASTER123",
-        "SUB2DAIGROCK",
-        "AXIORE",
-        "TANTAIGAMIMG",
-        "STRAWHATMAINE",
-        "JCWK",
-        "FUDD10_V2",
-        "SUB2FER999",
-        "MAGICBIS",
-        "TY_FOR_WATCHING",
-        "STARCODEHEO"
-    }
-    
-    Misc:AddButton("Redeem All Codes",function()
-        function RedeemCode(value)
-            game:GetService("ReplicatedStorage").Remotes.Redeem:InvokeServer(value)
-        end
-        for i,v in pairs(x2Code) do
-            RedeemCode(v)
-        end
-    end)
-    
-    Misc:AddDropdown("Selected Codes Reset stat",{"NOOB_REFUND","SUB2GAMERROBOT_RESET1","Sub2UncleKizaru"},function(value)
-        _G.CodeSelect = value
-    end)
-    
-    Misc:AddButton("Redeem Code (Selected Codes)",function()
-        game:GetService("ReplicatedStorage").Remotes.Redeem:InvokeServer(_G.CodeSelect)
-    end)
-    
     Misc:AddSeperator("State")
     
     Misc:AddDropdown("Select Haki State",{"State 0","State 1","State 2","State 3","State 4","State 5"},function(value)
@@ -14942,6 +14942,7 @@ Misc:AddButton("Inventory List", function(value)
 
 
     Mh:AddSeperator("Auto Hop Server")
+    Mh:AddLabel("Click And Wait 5 Second")
 
     Mh:AddToggle("Auto Hop Server Mirage Island",_G.Hopfinddao,function(value)
         _G.Hopfinddao = value
@@ -15043,11 +15044,11 @@ Misc:AddButton("Inventory List", function(value)
                    end
                end
            end)
-    Mh:AddToggle("Hop Server Legendary Sword",_G.AutoBuyLegendarySword_Hop,function(value)
+    Mh:AddToggle("Buy Legendary Sword Hop",_G.AutoBuyLegendarySword_Hop,function(value)
         _G.AutoBuyLegendarySword_Hop = value
     end)
 
-    Mh:AddToggle("Buy Enchancement Hop",_G.AutoBuyEnchancementColour_H0p,function(value)
+    Mh:AddToggle("Buy Enchancement Hop Server",_G.AutoBuyEnchancementColour_H0p,function(value)
         _G.AutoBuyEnchancementColour_H0p = value
     end)
     
