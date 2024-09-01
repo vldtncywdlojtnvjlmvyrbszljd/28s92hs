@@ -4953,9 +4953,9 @@ spawn(function()
   
     Main:AddLabel("Chest Farm")
     
-Main:AddToggle("Auto Farm Chest | Tween",false,function(value)
- AutoFarmChest = value
- StopTween(AutoFarmChest)
+Main:AddToggle("Auto Farm Chest | Tween",false,function(vu)
+ AutoFarmChest = vu
+ StopTween(AutoFarmChest or _G.StopItemsChest)
  end)
  
  _G.MagnitudeAdd = 0
@@ -4985,7 +4985,7 @@ end)
 Main:AddToggle("Auto Farm Chest Bypass | 75% Kick",false,function(vu)
 	_G.ChestBypass = vu
 end)
---[[
+
 spawn(function()
 while wait() do
 if _G.ChestBypass then
@@ -4994,7 +4994,7 @@ for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
       if string.find(v.Name, "Chest") then
           print(v.Name)
           game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-          wait(.15)
+          wait(.20) --.15
       end
   end
   game.Players.LocalPlayer.Character.Head:Destroy()
@@ -5002,7 +5002,7 @@ for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
    if string.find(v.Name, "Chest") and v:IsA("TouchTransmitter") then
    firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 0) --0 is touch
    wait()
-   firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 0) -- 1 is untouch
+   firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 1) -- 1 is untouch
    end
    end
   end)
@@ -5019,7 +5019,7 @@ if _G.ChestBypass then
      end
 end
 end)
-]]
+
 Main:AddToggle("Auto Stop Legendary Items",_G.StopItemsChest,function(vu)
 	_G.StopItemsChest = vu
 end)
