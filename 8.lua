@@ -14031,8 +14031,29 @@ closeButton.MouseButton1Click:Connect(closeGUI)
             end
         end)
     end)
+
+    D:AddButton("Rain Fruit", function()
+        for h, i in pairs(game:GetObjects("rbxassetid://14759368201")[1]:GetChildren()) do
+            i.Parent = game.Workspace.Map
+            i:MoveTo(
+                game.Players.LocalPlayer.Character.PrimaryPart.Position +
+                    Vector3.new(math.random(-50, 50), 100, math.random(-50, 50))
+            )
+            if i.Fruit:FindFirstChild("AnimationController") then
+                i.Fruit:FindFirstChild("AnimationController"):LoadAnimation(i.Fruit:FindFirstChild("Idle")):Play()
+            end
+            i.Handle.Touched:Connect(
+                function(cR)
+                    if cR.Parent == game.Players.LocalPlayer.Character then
+                        i.Parent = game.Players.LocalPlayer.Backpack
+                        game.Players.LocalPlayer.Character.Humanoid:EquipTool(i)
+                    end
+                end
+            )
+        end
+    end)
     
-    D:AddToggle("Auto Gacha Fruit",_G.Random_Auto,function(value)
+    D:AddToggle("Auto Random Fruit",_G.Random_Auto,function(value)
         _G.Random_Auto = value
     end)
     
@@ -14862,8 +14883,8 @@ Misc:AddButton("Kaitun Cap", function(value)
                          wait(2.0)
                          game.StarterGui:SetCore("SendNotification", {
                              Title = "BRUTALITY HUB", 
-                             Text = "Full Moon" ,
-                             Icon = "http://www.roblox.com/asset/?id=110958770625024",
+                             Text = "You Server Full Moon" ,
+                             Icon = "http://www.roblox.com/asset/?id=107679910024355",
                              Duration = 2.5
                          })
                      elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709143733" then
@@ -14871,7 +14892,7 @@ Misc:AddButton("Kaitun Cap", function(value)
                          game.StarterGui:SetCore("SendNotification", {
                              Title = "BRUTALITY HUB", 
                              Text = "Wait New Server" ,
-                             Icon = "http://www.roblox.com/asset/?id=110958770625024",
+                             Icon = "http://www.roblox.com/asset/?id=107679910024355",
                              Duration = 2.5
                          })
                      elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150401" then
@@ -14879,7 +14900,7 @@ Misc:AddButton("Kaitun Cap", function(value)
                          game.StarterGui:SetCore("SendNotification", {
                              Title = "BRUTALITY HUB", 
                              Text = "Wait New Server" ,
-                             Icon = "http://www.roblox.com/asset/?id=110958770625024",
+                             Icon = "http://www.roblox.com/asset/?id=107679910024355",
                              Duration = 2.5
                          })
                      elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" then
@@ -14887,7 +14908,7 @@ Misc:AddButton("Kaitun Cap", function(value)
                          game.StarterGui:SetCore("SendNotification", {
                              Title = "BRUTALITY HUB", 
                              Text = "Wait New Server" ,
-                             Icon = "http://www.roblox.com/asset/?id=110958770625024",
+                             Icon = "http://www.roblox.com/asset/?id=107679910024355",
                              Duration = 2.5
                          })
                      else
