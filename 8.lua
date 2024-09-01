@@ -8534,7 +8534,7 @@ SNt:AddSeperator("Sail Rough Sea V2")
     end)
 
     BoatSpeed1 = 300
-    SNt:Slider("Boat Tween Speed", 100, 350, BoatSpeed1, function(v)
+    SNt:AddSlider("Boat Tween Speed", 100, 350, BoatSpeed1, function(v)
         BoatSpeed1 = v
     end)
 
@@ -8560,7 +8560,7 @@ SNt:AddSeperator("Sail Rough Sea V2")
         end)
     end)
 
-    SNt:AddToggle("Auto Sail Boat", _G.SailBoat1,function(state)
+    SNt:AddToggle("Auto Sail Boat V2", _G.SailBoat1,function(state)
         _G.SailBoat1 = state
         StopTween(_G.SailBoat1)
         stopboat:Stop()
