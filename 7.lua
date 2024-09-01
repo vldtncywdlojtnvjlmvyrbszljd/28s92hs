@@ -5926,14 +5926,14 @@ end)
         pcall(function()
             while wait() do
     if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
-    Mirragecheck:Set('✅: Mystic Island Spawning')
+    Mirragecheck:Set('Mirage Island : 🟢')
     else
-      Mirragecheck:Set('❌: Mystic Island Not Found ' )end
+      Mirragecheck:Set('Mirage Island : 🔴')end
             end
         end)
 end)
-end
-Mirragecheck = SNt:AddLabel("")
+end --1 masalah done
+Mirragecheck = SNt:AddLabel("Mirage Island : Only Third Sea")
 SNt:AddToggle("Teleport Mystic Island",_G.AutoMysticIsland,function(value)
         _G.AutoMysticIsland = value
         StopTween(_G.AutoMysticIsland)
@@ -5953,6 +5953,59 @@ SNt:AddToggle("Teleport Mystic Island",_G.AutoMysticIsland,function(value)
                     end)
                 end)
             --end
+SNt:AddToggle("Auto Farm Chest Mirage island",_G.AutoChestMirage,function(value)
+    _G.AutoChestMirage = value
+    StopTween(_G.AutoChestMirage)
+        end)  
+    --ByOakkXHub
+        _G.MagnitudeAdd = 0
+        spawn(function()
+                   while wait() do 
+                       if _G.AutoChestMirage then
+                           for i,v in pairs(game:GetService("Workspace"):GetChildren()) do 
+                               if v.Name:find("FragChest") then
+                                   if game:GetService("Workspace"):FindFirstChild(v.Name) then
+                                       if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5000+_G.MagnitudeAdd then
+                                           repeat wait()
+                                               if game:GetService("Workspace"):FindFirstChild(v.Name) then
+                                                   topos(v.CFrame)
+                                               end
+                                           until _G.AutoChestMirage == false or not v.Parent
+                                           topos(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+                                           _G.MagnitudeAdd = _G.MagnitudeAdd+1500
+                                           break
+                                       end
+                                   end
+                               end
+                           end
+                       end
+                   end
+               end)
+               
+               
+               _G.MagnitudeAdd = 0
+               spawn(function()
+                   while wait() do 
+                       if _G.ChestBypass then
+                           for i,v in pairs(game:GetService("Workspace"):GetChildren()) do 
+                               if v.Name:find("Chest") then
+                                   if game:GetService("Workspace"):FindFirstChild(v.Name) then
+                                       if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5000+_G.MagnitudeAdd then
+                                           repeat wait()
+                                               if game:GetService("Workspace"):FindFirstChild(v.Name) then
+                                                   TP3(v.CFrame)
+                                               end
+                                           until AutoFarmChest == false or not v.Parent
+                                           topos(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+                                           _G.MagnitudeAdd = _G.MagnitudeAdd+1500
+                                           break
+                                       end
+                                   end
+                               end
+                           end
+                       end
+                   end
+               end)
 
             SNt:AddButton("Teleport Advanced Fruit Dealer", function()
                 TweenNpc()
