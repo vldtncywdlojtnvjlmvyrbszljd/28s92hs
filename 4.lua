@@ -4950,6 +4950,97 @@ spawn(function()
 		end
 	end
     end)
+Main:AddToggle("Attack Aura",true,function(value)
+        _G.AttackMob = value
+    end)
+
+    spawn(function()
+        while wait(_G.FastAttackDelay) do
+            if _G.AttackMob and not _G.AutoFarmGunMastery then
+                pcall(function()
+                    AttackNoCD()
+                end)
+            end
+        end
+    end)
+    
+
+local PBlade = game.Players.LocalPlayer
+local QBlade = getupvalues(require(PBlade.PlayerScripts.CombatFramework))
+local RBlade = QBlade[2]
+function GetCurrentBlade()
+    local S = RBlade.activeController
+    local T = S.blades[1]
+    if not T then
+        return
+    end
+    while T.Parent ~= game.Players.LocalPlayer.Character do
+        T = T.Parent
+    end
+    return T
+end
+
+function AttackNoCD()
+    if _G.AutoFarmGunMastery then
+        if _G.FastAttack then
+            local U = RBlade.activeController
+            for h = 1, 1 do
+                local V =
+                    require(game.ReplicatedStorage.CombatFramework.RigLib).getBladeHits(
+                    PBlade.Character,
+                    {PBlade.Character.HumanoidRootPart},
+                    60
+                )
+                local W = {}
+                local X = {}
+                for k, i in pairs(V) do
+                    if i.Parent:FindFirstChild("HumanoidRootPart") and not X[i.Parent] then
+                        table.insert(W, i.Parent.HumanoidRootPart)
+                        X[i.Parent] = true
+                    end
+                end
+                V = W
+                if #V > 0 then
+                    local Y = debug.getupvalue(U.attack, 5)
+                    local Z = debug.getupvalue(U.attack, 6)
+                    local _ = debug.getupvalue(U.attack, 4)
+                    local a0 = debug.getupvalue(U.attack, 7)
+                    local a1 = (Y * 798405 + _ * 727595) % Z
+                    local a2 = _ * 798405
+                    (function()
+                        a1 = (a1 * Z + a2) % 1099511627776
+                        Y = math.floor(a1 / Z)
+                        _ = a1 - Y * Z
+                    end)()
+                    a0 = a0 + 1
+                    debug.setupvalue(U.attack, 5, Y)
+                    debug.setupvalue(U.attack, 6, Z)
+                    debug.setupvalue(U.attack, 4, _)
+                    debug.setupvalue(U.attack, 7, a0)
+                    pcall(
+                        function()
+                            if PBlade.Character:FindFirstChildOfClass("Tool") and U.blades and U.blades[1] then
+                                U.animator.anims.basic[1]:Play(0.01, 0.01, 0.01)
+                                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer(
+                                    "weaponChange",
+                                    tostring(GetCurrentBlade())
+                                )
+                                game.ReplicatedStorage.Remotes.Validator:FireServer(
+                                    math.floor(a1 / 1099511627776 * 16777215),
+                                    a0
+                                )
+                                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", V, h, "")
+                            end
+                        end
+                    )
+                end
+            end
+        else
+            game:GetService'VirtualUser':CaptureController()
+            game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+        end
+    end
+end
   
     Main:AddLabel("Chest Farm")
     
@@ -8912,6 +9003,13 @@ spawn(function()
             end
         end)
     end)
+    if World1 then
+        tableMon = {"Bandit","Monkey","Gorilla","Pirate","Brute","Desert Bandit","Desert Officer","Snow Bandit","Snowman","Chief Petty Officer","Sky Bandit","Dark Master","Toga Warrior","Gladiator","Military Soldier","Military Spy","Fishman Warrior","Fishman Commando","God's Guard","Shanda","Royal Squad","Royal Soldier","Galley Pirate","Galley Captain"}
+    elseif World2 then
+        tableMon = {"Raider","Mercenary","Swan Pirate","Factory Staff","Marine Lieutenant","Marine Captain","Zombie","Vampire","Snow Trooper","Winter Warrior","Lab Subordinate","Horned Warrior","Magma Ninja","Lava Pirate","Ship Deckhand","Ship Engineer","Ship Steward","Ship Officer","Arctic Warrior","Snow Lurker","Sea Soldier","Water Fighter"}
+    elseif World3 then
+        tableMon = {"Pirate Millionaire","Dragon Crew Warrior","Dragon Crew Archer","Female Islander","Giant Islander","Marine Commodore","Marine Rear Admiral","Fishman Raider","Fishman Captain","Forest Pirate","Mythological Pirate","Jungle Pirate","Musketeer Pirate","Reborn Skeleton","Living Zombie","Demonic Soul","Posessed Mummy","Peanut Scout","Peanut President","Ice Cream Chef","Ice Cream Commander","Cookie Crafter","Cake Guard","Baking Staff","Head Baker","Cocoa Warrior","Chocolate Bar Battler","Sweet Thief","Candy Rebel","Candy Pirate","Snow Demon","Isle Outlaw","Island Boy","Sun-kissed Warrior","Isle Champion"}
+    end
 --[[    
     spawn(function()
         pcall(function()
