@@ -5634,17 +5634,8 @@ end)
 
     STg:AddSeperator("Setting Skill Gun & Sword")
 
-    STg:Label("[ Skill Sword & Gun ]")
+    STg:Label("[ Wait For Update ]")
 
-    STg:Toggle("Skill Z", true, "Auto Skill Z", function(value)
-    _G.SkillSwordZ = value
-    _G.SkillGunZ = value
-    end)
-
-    STg:Toggle("Skill X", true, "Auto Skill X", function(value)
-    _G.SkillSwordX = value
-    _G.SkillGunX = value
-    end)
     
     if World1 or World2 then
     M:AddSeperator("World")
