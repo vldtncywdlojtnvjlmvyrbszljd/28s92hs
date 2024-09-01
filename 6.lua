@@ -4109,6 +4109,7 @@ local T = Library:AddTab("Teleport","18477347703")
 local S = Library:AddTab("Shop","18477410455")
 local D = Library:AddTab("Devil Fruit","18477363100")
 local Mh = Library:AddTab("Mod Hack","18797339934")
+local Hps = Library:AddTab("Hop Server","18981844082")
 local STg = Library:AddTab("Setting","134210609072137")
 local Misc = Library:AddTab("MISC","18477908150")
 --- Nama toggle ui
@@ -6204,6 +6205,7 @@ end)
                 end)
             end
         end)
+--[[
     elseif World3 then
     spawn(function()
         pcall(function()
@@ -6217,7 +6219,8 @@ end)
 end)
 
 Mirragecheck = SNt:AddLabel("")
-SNt:AddToggle("Teleport Mystic Island",_G.AutoMysticIsland,function(value)
+]]
+SNt:AddToggle("Teleport Mirage Island",_G.AutoMysticIsland,function(value)
         _G.AutoMysticIsland = value
         StopTween(_G.AutoMysticIsland)
         end)
@@ -6456,7 +6459,7 @@ spawn(function()
         end
     end)
     end)
-
+--[[
     SNt:AddToggle("Auto Hop Server Mirage Island",_G.Hopfinddao,function(value)
         _G.Hopfinddao = value
        end)
@@ -6473,6 +6476,7 @@ spawn(function()
                 end
             end
         end)
+        ]]
 if World1 or world2 then
     M:AddLine()
 end
@@ -7722,7 +7726,7 @@ SNt:AddToggle('Kill Sea Beast Hop', false, function(value)
     end)
     
 SNt:AddSeperator(" Sea Event ")
-
+--[[
 spawn(function()
     pcall(function()
         while wait() do
@@ -7737,7 +7741,7 @@ end)
 
 
 FrozenIsland = SNt:AddLabel("")
-
+]]
 SNt:AddToggle('Teleport Frozen Dimension [ NEED SPAWN ]', false, function(value)
 _G.Frozen = value
 StopTween(_G.Frozen) 
@@ -15148,4 +15152,71 @@ spawn(function()
             end
         end
     end)
+    end)
+
+Hps:AddToggle("Auto Hop Server Mirage Island",_G.Hopfinddao,function(value)
+        _G.Hopfinddao = value
+       end)
+        spawn(function()
+            while wait() do
+            if _G.Hopfinddao then
+                if game:GetService("Workspace").Map:FindFirstChild("MysticIsland") or game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
+                    if HighestPointRealCFrame and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - HighestPointRealCFrame.Position).Magnitude > 10 then
+                    topos(getHighestPoint().CFrame * CFrame.new(0, 211.88, 0))
+                        end
+                elseif not game:GetService("Workspace").Map:FindFirstChild("MysticIsland") or not game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
+                    Hop()
+                    end
+                end
+            end
+        end)
+
+Hps:AddToggle("Auto Hop Server FM 3/4 & 4/4",_G.Hopfindmoon,function(value)
+    _G.Hopfindmoon = value
+    end)
+
+    spawn(function()
+        while wait() do
+            if _G.Hopfindmoon then
+            if game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149052" or game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
+                wait(2.0)
+                --[[OrionLib:MakeNotification({]]
+                game.StarterGui:SetCore("SendNotification", {
+                    Title = "Brutality Hub V4",
+                    Text = "You Server Full Moon!!",
+                    Icon = "rbxassetid://104397992902189",
+                    Time = 5
+                })
+            elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709143733" then
+                Hop()
+                --OrionLib:MakeNotification({
+                    game.StarterGui:SetCore("SendNotification", {
+                    Title = "Brutality Hub V4",
+                    Text = "Hop Server",
+                    Icon = "rbxassetid://104397992902189",
+                    Time = 5
+                })
+            elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150401" then
+                Hop()
+                --OrionLib:MakeNotification({
+                    game.StarterGui:SetCore("SendNotification", {
+                    Title = "Brutality Hub V4",
+                    Text = "Hop Server",
+                    Icon = "rbxassetid://104397992902189",
+                    Time = 5
+                })
+            elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" then
+                Hop()
+                --OrionLib:MakeNotification({
+                    game.StarterGui:SetCore("SendNotification", {
+                    Title = "Brutality Hub V4",
+                    Text = "Hop Server",
+                    Icon = "rbxassetid://104397992902189",
+                    Time = 5
+                })
+            else
+                Hop()
+                end
+            end
+        end
     end)
