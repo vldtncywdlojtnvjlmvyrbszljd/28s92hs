@@ -5544,53 +5544,6 @@ end)
         end
       end
     end)
-    Hzr:AddSeperator("HOP SERVER")
-
-Hzr:AddToggle("Auto Hop Server Full Moon",_G.AutoFindFullmoon,function(value)
-    _G.AutoFindFullmoon = value    
-    end)
-    
-    spawn(function()
-         while wait() do
-             if _G.AutoFindFullmoon then
-             if game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149052" or game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
-                 wait(2.0)
-                 game.StarterGui:SetCore("SendNotification", {
-                     Title = "BRUTALITY HUB", 
-                     Text = "Full Moon" ,
-                     Icon = "http://www.roblox.com/asset/?id=110958770625024",
-                     Duration = 2.5
-                 })
-             elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709143733" then
-                 Hop()
-                 game.StarterGui:SetCore("SendNotification", {
-                     Title = "BRUTALITY HUB", 
-                     Text = "Wait New Server" ,
-                     Icon = "http://www.roblox.com/asset/?id=110958770625024",
-                     Duration = 2.5
-                 })
-             elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150401" then
-                 Hop()
-                 game.StarterGui:SetCore("SendNotification", {
-                     Title = "BRUTALITY HUB", 
-                     Text = "Wait New Server" ,
-                     Icon = "http://www.roblox.com/asset/?id=110958770625024",
-                     Duration = 2.5
-                 })
-             elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" then
-                 Hop()
-                 game.StarterGui:SetCore("SendNotification", {
-                     Title = "BRUTALITY HUB", 
-                     Text = "Wait New Server" ,
-                     Icon = "http://www.roblox.com/asset/?id=110958770625024",
-                     Duration = 2.5
-                 })
-             else
-                 Hop()
-                 end
-             end
-         end
-     end)
 
     STg:AddSeperator("ESP MENU")
 
@@ -15029,7 +14982,7 @@ Misc:AddButton("Inventory List", function(value)
     end)
 
 
-    Mh:AddSeperator("Mod Hack By Medusa")
+    Mh:AddSeperator("Auto Hop Server")
 
     Mh:AddToggle("Auto Hop Server Mirage Island",_G.Hopfinddao,function(value)
         _G.Hopfinddao = value
@@ -15047,6 +15000,53 @@ Misc:AddButton("Inventory List", function(value)
                 end
             end
         end)
+        Mh:AddToggle("Auto Hop Server Full Moon",_G.AutoFindFullmoon,function(value)
+            _G.AutoFindFullmoon = value    
+            end)
+            
+            spawn(function()
+                 while wait() do
+                     if _G.AutoFindFullmoon then
+                     if game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149052" or game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
+                         wait(2.0)
+                         game.StarterGui:SetCore("SendNotification", {
+                             Title = "BRUTALITY HUB", 
+                             Text = "Full Moon" ,
+                             Icon = "http://www.roblox.com/asset/?id=110958770625024",
+                             Duration = 2.5
+                         })
+                     elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709143733" then
+                         Hop()
+                         game.StarterGui:SetCore("SendNotification", {
+                             Title = "BRUTALITY HUB", 
+                             Text = "Wait New Server" ,
+                             Icon = "http://www.roblox.com/asset/?id=110958770625024",
+                             Duration = 2.5
+                         })
+                     elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150401" then
+                         Hop()
+                         game.StarterGui:SetCore("SendNotification", {
+                             Title = "BRUTALITY HUB", 
+                             Text = "Wait New Server" ,
+                             Icon = "http://www.roblox.com/asset/?id=110958770625024",
+                             Duration = 2.5
+                         })
+                     elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" then
+                         Hop()
+                         game.StarterGui:SetCore("SendNotification", {
+                             Title = "BRUTALITY HUB", 
+                             Text = "Wait New Server" ,
+                             Icon = "http://www.roblox.com/asset/?id=110958770625024",
+                             Duration = 2.5
+                         })
+                     else
+                         Hop()
+                         end
+                     end
+                 end
+             end)
+
+    Mh:AddSeperator("Mod Hack By Medusa")
     
     Mh:AddToggle("Dodge No Cooldown",false,function(value)
         nododgecool = value
