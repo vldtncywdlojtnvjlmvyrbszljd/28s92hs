@@ -4984,6 +4984,7 @@ end)
 
 Main:AddToggle("Auto Farm Chest Bypass | 75% Kick",false,function(vu)
 	_G.ChestBypass = vu
+StopTween(_G.ChestBypass or _G.StopItemsChest)
 end)
 
 _G.MagnitudeAdd = 0
@@ -5011,6 +5012,7 @@ for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
   end
 end)
 
+_G.MagnitudeAdd = 0
 spawn(function()
 while task.wait() do
 if _G.ChestBypass then
