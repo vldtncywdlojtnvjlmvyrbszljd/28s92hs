@@ -6449,7 +6449,7 @@ SNt:AddToggle("Teleport Mirage Island",_G.AutoMysticIsland,function(value) --per
                 end)
             end
 ]]
-SNt:AddToggle("Teleport To Mirage Island",_G.AutoMysticIsland,"Tween To Mirage Island",function(value)
+SNt:AddToggle("Teleport To Mirage Island",_G.AutoMysticIsland,function(value)
     _G.AutoMysticIsland = value
     StopTween(_G.AutoMysticIsland)
 end)
