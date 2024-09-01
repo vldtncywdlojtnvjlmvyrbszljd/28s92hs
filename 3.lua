@@ -8973,6 +8973,7 @@ SNt:AddSeperator("Frozen & Kitsune")
         UseGunSkill = value
         StopTween(_G.AutoFarmGunMastery)
     end)
+--[[
 spawn(function()
         pcall(function()
             while wait() do
@@ -9042,8 +9043,8 @@ spawn(function()
     elseif World3 then
         tableMon = {"Pirate Millionaire","Dragon Crew Warrior","Dragon Crew Archer","Female Islander","Giant Islander","Marine Commodore","Marine Rear Admiral","Fishman Raider","Fishman Captain","Forest Pirate","Mythological Pirate","Jungle Pirate","Musketeer Pirate","Reborn Skeleton","Living Zombie","Demonic Soul","Posessed Mummy","Peanut Scout","Peanut President","Ice Cream Chef","Ice Cream Commander","Cookie Crafter","Cake Guard","Baking Staff","Head Baker","Cocoa Warrior","Chocolate Bar Battler","Sweet Thief","Candy Rebel","Candy Pirate","Snow Demon","Isle Outlaw","Island Boy","Sun-kissed Warrior","Isle Champion"}
     end
+]]
 
---[[
     spawn(function()
         pcall(function()
             while wait() do
@@ -9127,6 +9128,8 @@ spawn(function()
                         else
                            TP1(CFrameMon)
                             StartMasteryGunMagnet = false
+                            UseGunSkill = false --tambahan
+                            Skillaimbot = false --tambahan
                             local Mob = game:GetService("ReplicatedStorage"):FindFirstChild(Mon) 
                             if Mob then
                                 TP1(Mob.HumanoidRootPart.CFrame * CFrame.new(0,0,10))
@@ -9143,7 +9146,6 @@ spawn(function()
             end
         end)
     end)
-]]
 
     
     M:AddSeperator("Buddy Sword")
