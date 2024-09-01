@@ -10586,6 +10586,22 @@ end)
     end)
     
     M:AddSeperator("Enchancement Colour")
+
+    local KuyKoben = game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer("ColorsDealer", "1")
+ 
+spawn(function()
+ pcall(function()
+     while wait() do
+         if game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer("ColorsDealer", "1") then
+             ColorHaki:Set(KuyKoben)
+         else
+             ColorHaki:Set("Haki Dealer Not Found")
+         end
+     end
+ end)
+end)
+
+ColorHaki = M:AddLabel("Dealer Haki")
     
     M:AddToggle("Buy Enchancement Colour",_G.AutoBuyEnchancementColour,function(value)
         _G.AutoBuyEnchancementColour = value
