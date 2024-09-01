@@ -4091,9 +4091,9 @@ UpdateClient1()
 end
 end)
 ]]
-NguyenTien:AddLabel("🚨Alert : Please be patient, the Brutality Hub V4 script\n is currently under maintenance due to an error.")
-NguyenTien:AddLabel("Use Game : Blox Fruit| Blade Ball \n|Slap Battle |Prison Life |MemeSea ")
-NguyenTien:AddSeperator("Information")
+
+NguyenTien:AddLabel("Support Games : Blox Fruit| Blade Ball | Slap Battle \n| Prison Life | MemeSea ")
+NguyenTien:AddSeperator("Information Dev")
 NguyenTien:AddButton("Discord Server",function()
 setclipboard("https://discord.gg/brutalityhub")
 Notif.New("Copying To Clipboard Done", 3)
@@ -4113,7 +4113,6 @@ end)
 
 Qwe:AddSeperator("Status Server & Player")
 
-Qwe:AddLine()
 local Time1 = Qwe:AddLabel("Run Time Script")
 function UpdateTime()
 local GameTime = math.floor(workspace.DistributedGameTime+0.5)
@@ -4204,7 +4203,7 @@ Qwe:AddSeperator("Status Train V4")
 local bL = Qwe:AddLabel("Ancient One : " .. tostring(CheckAcientOneStatus()))
 local bPl = Qwe:AddLabel("Train v4 Status : " .. tostring(CheckAcientOneStatusTrain()))
 
-Qwe:AddLine()
+Qwe:AddSeperator("Status Island")
 if World3 then
     spawn(function()
         pcall(function()
@@ -4249,9 +4248,9 @@ spawn(function()
 end
     Froz3nIsland = Qwe:AddLabel("Frozen Island : Only Third Sea")
 
-Qwe:AddLine()
-local FMz = Qwe:AddLabel("Full Moon Phase : Only Third Sea")
- if World3 then
+    Qwe:AddSeperator("Status Moon")
+local FMz = Qwe:AddLabel("Full Moon Phase : ")
+ if World3 or world2 or world2 then
  task.spawn(function()
          while task.wait() do
              pcall(function()
@@ -4272,11 +4271,11 @@ local FMz = Qwe:AddLabel("Full Moon Phase : Only Third Sea")
          end
  end)
 end
-local FullM00n = Qwe:AddLabel("Moon Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
+local FullM00n = Qwe:AddLabel("Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
 
 spawn(function()
         while wait() do
-            FullM00n:Set("Moon Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
+            FullM00n:Set("Time : " .. function8() .. " | ".. CheckMoon() .. " | " .. function7())
                 end
             end)
 
@@ -4422,6 +4421,46 @@ spawn(function()
             end)
 
 ---- Teks halaman utama
+Main:AddSeperator("Redeem Codes")
+    
+    local x2Code = {
+        "KITTGAMING",
+        "ENYU_IS_PRO",
+        "FUDD10",
+        "BIGNEWS",
+        "THEGREATACE",
+        "SUB2GAMERROBOT_EXP1",
+        "STRAWHATMAIME",
+        "SUB2OFFICIALNOOBIE",
+        "SUB2NOOBMASTER123",
+        "SUB2DAIGROCK",
+        "AXIORE",
+        "TANTAIGAMIMG",
+        "STRAWHATMAINE",
+        "JCWK",
+        "FUDD10_V2",
+        "SUB2FER999",
+        "MAGICBIS",
+        "TY_FOR_WATCHING",
+        "STARCODEHEO"
+    }
+    
+    Main:AddButton("Redeem All Codes",function()
+        function RedeemCode(value)
+            game:GetService("ReplicatedStorage").Remotes.Redeem:InvokeServer(value)
+        end
+        for i,v in pairs(x2Code) do
+            RedeemCode(v)
+        end
+    end)
+    
+    Main:AddDropdown("Selected Codes Reset stat",{"NOOB_REFUND","SUB2GAMERROBOT_RESET1","Sub2UncleKizaru"},function(value)
+        _G.CodeSelect = value
+    end)
+    
+    Main:AddButton("Redeem Code (Selected Codes)",function()
+        game:GetService("ReplicatedStorage").Remotes.Redeem:InvokeServer(_G.CodeSelect)
+    end)
 Main:AddSeperator("Farm Settings")
 
 local WeaponList = {"Melee","Sword","Fruit","Gun"}
@@ -6166,7 +6205,7 @@ spawn(function()
     end
 end)
 
-SNt:AddToggle("Auto Drive Boat",AutoW,function(W)
+SNt:AddToggle("Auto Drive Press W",AutoW,function(W)
     AutoW = W
     end)
     spawn(function()
@@ -14683,47 +14722,7 @@ Misc:AddButton("Kaitun Cap", function(value)
         HyperCahaya(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
         _G.Clip = false
     end)
-    
-    Misc:AddSeperator("Codes")
-    
-    local x2Code = {
-        "KITTGAMING",
-        "ENYU_IS_PRO",
-        "FUDD10",
-        "BIGNEWS",
-        "THEGREATACE",
-        "SUB2GAMERROBOT_EXP1",
-        "STRAWHATMAIME",
-        "SUB2OFFICIALNOOBIE",
-        "SUB2NOOBMASTER123",
-        "SUB2DAIGROCK",
-        "AXIORE",
-        "TANTAIGAMIMG",
-        "STRAWHATMAINE",
-        "JCWK",
-        "FUDD10_V2",
-        "SUB2FER999",
-        "MAGICBIS",
-        "TY_FOR_WATCHING",
-        "STARCODEHEO"
-    }
-    
-    Misc:AddButton("Redeem All Codes",function()
-        function RedeemCode(value)
-            game:GetService("ReplicatedStorage").Remotes.Redeem:InvokeServer(value)
-        end
-        for i,v in pairs(x2Code) do
-            RedeemCode(v)
-        end
-    end)
-    
-    Misc:AddDropdown("Selected Codes Reset stat",{"NOOB_REFUND","SUB2GAMERROBOT_RESET1","Sub2UncleKizaru"},function(value)
-        _G.CodeSelect = value
-    end)
-    
-    Misc:AddButton("Redeem Code (Selected Codes)",function()
-        game:GetService("ReplicatedStorage").Remotes.Redeem:InvokeServer(_G.CodeSelect)
-    end)
+--tadinya tempat redeem code
     
     Misc:AddSeperator("State")
     
