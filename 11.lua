@@ -4109,7 +4109,6 @@ local T = Library:AddTab("Teleport","18477347703")
 local S = Library:AddTab("Shop","18477410455")
 local D = Library:AddTab("Devil Fruit","18477363100")
 local Mh = Library:AddTab("Mod Hack","18797339934")
-local Hzr = Library:AddTab("Hop Server","18981844082")
 local STg = Library:AddTab("Setting","134210609072137")
 local Misc = Library:AddTab("MISC","18477908150")
 --- Nama toggle ui
@@ -5125,46 +5124,6 @@ end)
         StopTween( _G.Autodoughking)
     end)
     
-    Main:AddToggle("Farm Dough King Hop", _G.AutodoughkingHop,function(value)
-         _G.AutodoughkingHop = value
-    end)
-    
-    spawn(function()
-        while wait() do
-            if  _G.Autodoughking and World3 then
-                pcall(function()
-                    if game:GetService("Workspace").Enemies:FindFirstChild("Dough King") then
-                        for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                            if v.Name == "Dough King" then
-                                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                                    repeat task.wait()
-                                        AutoHaki()
-                                        EquipWeapon(_G.SelectWeapon)
-                                        v.HumanoidRootPart.CanCollide = false
-                                        v.Humanoid.WalkSpeed = 2
-                                        v.HumanoidRootPart.Size = Vector3.new(50,50,50)
-                                        HyperCahaya(v.HumanoidRootPart.CFrame * CFrame.new(PosX,PosY,PosZ))
-                                        game:GetService("VirtualUser"):CaptureController()
-                                        game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
-                                        sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
-                                    until not  _G.Autodoughking or not v.Parent or v.Humanoid.Health <= 0
-                                end
-                            end
-                        end
-                    else
-                    HyperCahaya(CFrame.new(-2662.818603515625, 1062.3480224609375, -11853.6953125))
-                        if game:GetService("ReplicatedStorage"):FindFirstChild("Dough King") then
-                            HyperCahaya(game:GetService("ReplicatedStorage"):FindFirstChild("Dough King").HumanoidRootPart.CFrame * CFrame.new(2,20,2))
-                        else
-                            if  _G.AutodoughkingHop then
-                                Hop()
-                            end
-                        end
-                    end
-                end)
-            end
-        end
-    end)
    
     
     Main:AddSeperator("Boss")
@@ -10780,9 +10739,9 @@ end)
         _G.AutoBuyLegendarySword_Hop = value
     end)
     
-    M:AddSeperator("Enchancement Colour")
+    M:AddSeperator("Enchancement Colour Haki")
     
-    M:AddToggle("Buy Enchancement Colour",_G.AutoBuyEnchancementColour,function(value)
+    M:AddToggle("Buy Enchancement Colour Haki",_G.AutoBuyEnchancementColour,function(value)
         _G.AutoBuyEnchancementColour = value
     end)
     
@@ -15045,6 +15004,68 @@ Misc:AddButton("Inventory List", function(value)
                      end
                  end
              end)
+    Mh:AddToggle("Farm Dough King Hop", _G.AutodoughkingHop,function(value)
+        _G.AutodoughkingHop = value
+    end)
+    spawn(function()
+        while wait() do
+         if  _G.Autodoughking and World3 then
+                pcall(function()
+                    if game:GetService("Workspace").Enemies:FindFirstChild("Dough King") then
+                               for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                   if v.Name == "Dough King" then
+                                       if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                           repeat task.wait()
+                                               AutoHaki()
+                                               EquipWeapon(_G.SelectWeapon)
+                                               v.HumanoidRootPart.CanCollide = false
+                                               v.Humanoid.WalkSpeed = 2
+                                               v.HumanoidRootPart.Size = Vector3.new(50,50,50)
+                                               HyperCahaya(v.HumanoidRootPart.CFrame * CFrame.new(PosX,PosY,PosZ))
+                                               game:GetService("VirtualUser"):CaptureController()
+                                               game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+                                               sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
+                                           until not  _G.Autodoughking or not v.Parent or v.Humanoid.Health <= 0
+                                       end
+                                   end
+                               end
+                           else
+                           HyperCahaya(CFrame.new(-2662.818603515625, 1062.3480224609375, -11853.6953125))
+                               if game:GetService("ReplicatedStorage"):FindFirstChild("Dough King") then
+                                   HyperCahaya(game:GetService("ReplicatedStorage"):FindFirstChild("Dough King").HumanoidRootPart.CFrame * CFrame.new(2,20,2))
+                               else
+                                   if  _G.AutodoughkingHop then
+                                       Hop()
+                                   end
+                               end
+                           end
+                       end)
+                   end
+               end
+           end)
+    Mh:AddToggle("Hop Server Legendary Sword",_G.AutoBuyLegendarySword_Hop,function(value)
+        _G.AutoBuyLegendarySword_Hop = value
+    end)
+
+    Mh:AddToggle("Buy Enchancement Hop",_G.AutoBuyEnchancementColour_H0p,function(value)
+        _G.AutoBuyEnchancementColour_H0p = value
+    end)
+    
+    spawn(function()
+        while wait() do
+            if _G.AutoBuyEnchancementColour then
+                local args = {
+                    [1] = "ColorsDealer",
+                    [2] = "2"
+                }
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                if _G.AutoBuyEnchancementColour_H0p and _G.AutoBuyEnchancementColour and not World1 then
+                    wait(10)
+                    Hop()
+                end
+            end 
+        end
+    end)
 
     Mh:AddSeperator("Mod Hack By Medusa")
     
