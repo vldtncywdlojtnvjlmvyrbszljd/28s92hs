@@ -5985,6 +5985,38 @@ end)
     end)
 
     STg:AddSeperator("Setting Skill Gun")
+
+    STg:AddToggle("Skill Z",true,function(value)
+        _G.SkillZ = value
+    end)
+ 
+    
+    STg:AddToggle("Skill X",true,function(value)
+        _G.SkillX = value
+    end)
+
+    spawn(function()
+        while wait() do
+            pcall(function()
+                if UseGunSkill then
+                    for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                    if v.Name == MonFarm and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health <= v.Humanoid.MaxHealth * _G.Kill_At / 100 then
+                    if _G.SkillZ then
+                        game:service('VirtualInputManager'):SendKeyEvent(true, "Z", false, game)
+                        wait(0.5)
+                        game:service('VirtualInputManager'):SendKeyEvent(false, "Z", false, game)
+                    end
+                    if _G.SkillX then
+                        game:service('VirtualInputManager'):SendKeyEvent(true, "X", false, game)
+                        wait(0.5)
+                        game:service('VirtualInputManager'):SendKeyEvent(false, "X", false, game)
+                    end
+                end
+                end
+                end
+            end)
+        end
+    end)
     
     if World1 or World2 then
     M:AddSeperator("World")
@@ -8936,11 +8968,11 @@ SNt:AddSeperator("Frozen & Kitsune")
         end)
     end)
     
-    M:AddToggle("Auto Gun Mastery",_G.AutoFarmGunMastery,function(value)
+    M:AddToggle("Auto Gun Mastery",false,function(value)
         _G.AutoFarmGunMastery = value
+        UseGunSkill = value
         StopTween(_G.AutoFarmGunMastery)
     end)
-
 spawn(function()
         pcall(function()
             while wait() do
@@ -9010,7 +9042,8 @@ spawn(function()
     elseif World3 then
         tableMon = {"Pirate Millionaire","Dragon Crew Warrior","Dragon Crew Archer","Female Islander","Giant Islander","Marine Commodore","Marine Rear Admiral","Fishman Raider","Fishman Captain","Forest Pirate","Mythological Pirate","Jungle Pirate","Musketeer Pirate","Reborn Skeleton","Living Zombie","Demonic Soul","Posessed Mummy","Peanut Scout","Peanut President","Ice Cream Chef","Ice Cream Commander","Cookie Crafter","Cake Guard","Baking Staff","Head Baker","Cocoa Warrior","Chocolate Bar Battler","Sweet Thief","Candy Rebel","Candy Pirate","Snow Demon","Isle Outlaw","Island Boy","Sun-kissed Warrior","Isle Champion"}
     end
---[[    
+
+--[[
     spawn(function()
         pcall(function()
             while wait() do
@@ -9047,8 +9080,11 @@ spawn(function()
                                         repeat task.wait()
                                             if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) then
                                                 HealthMin = v.Humanoid.MaxHealth * _G.Kill_At/100
+                                                ShootPosition = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, -15, 0) --tambahan
                                                 if v.Humanoid.Health <= HealthMin then                                                
                                                     EquipWeapon(SelectWeaponGun)
+                                                    UseGunSkill = true --tambahan
+                                                    Skillaimbot = true --tambahan
                                                     TP1(v.HumanoidRootPart.CFrame * CFrame.new(0,0,10))
                                                     v.Humanoid.WalkSpeed = 2
                                                     v.HumanoidRootPart.CanCollide = false
@@ -9059,6 +9095,7 @@ spawn(function()
                                                         [2] = v.HumanoidRootPart
                                                     }
                                                     game:GetService("Players").LocalPlayer.Character[SelectWeaponGun].RemoteFunctionShoot:InvokeServer(unpack(args))
+                                                    game:GetService("Players").LocalPlayer.Character.Humanoid:FindFirstChild(""):InvokeServer("TAP", Vector3.new(ShootPosition.Position)) --tambahan
                                                 else
                                                     AutoHaki()
                                                     EquipWeapon(_G.SelectWeapon)
@@ -9066,16 +9103,24 @@ spawn(function()
                                                     v.HumanoidRootPart.CanCollide = false
                                                     v.Head.CanCollide = false               
                                                     v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+                                                AimBotSkillPosition = v.HumanoidRootPart.Position --tambahan
+                                                UseGunSkill = true --tambahan
+                                                Skillaimbot = true --tambahan
                                                     TP1(v.HumanoidRootPart.CFrame * CFrame.new(PosX,PosY,PosZ))
                                                 end
                                                 StartMasteryGunMagnet = true 
+                                                UseGunSkill = true --tambahan
+                                                Skillaimbot = true --tambahan
                                                 PosMonMasteryGun = v.HumanoidRootPart.CFrame
                                             else
                                                 StartMasteryGunMagnet = false
+                                                game:GetService("Players").LocalPlayer.Character.Humanoid:FindFirstChild(""):InvokeServer("TAP", Vector3.new(ShootPosition.Position)) --tambahan
                                                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
                                             end
                                         until v.Humanoid.Health <= 0 or not _G.AutoFarmGunMastery or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
                                         StartMasteryGunMagnet = false
+                                        UseGunSkill = false --tambahan
+                                        Skillaimbot = false --tambahan
                                     end
                                 end
                             end)
@@ -9098,7 +9143,7 @@ spawn(function()
             end
         end)
     end)
-    ]]
+]]
 
     
     M:AddSeperator("Buddy Sword")
