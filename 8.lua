@@ -6413,7 +6413,7 @@ end)
             end
         end)
 
-    --elseif World3 then
+    elseif World1 or world2 or World3 then
     spawn(function()
         pcall(function()
             while wait() do
@@ -6446,7 +6446,7 @@ SNt:AddToggle("Teleport Mirage Island",_G.AutoMysticIsland,function(value)
                         end
                     end)
                 end)
-            --end
+            end
 
             SNt:AddButton("Teleport Advanced Fruit Dealer", function()
                 TweenNpc()
