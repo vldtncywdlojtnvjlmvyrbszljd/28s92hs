@@ -5571,30 +5571,27 @@ Hzr:AddToggle("Auto Hop Server FM 3/4 & 4/4",_G.Hopfindmoon,function(value)
             if _G.Hopfindmoon then
             if game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149052" or game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
                 wait(2.0)
-                --[[OrionLib:MakeNotification({]]
                 game.StarterGui:SetCore("SendNotification", {
                     Title = "Brutality Hub V4",
                     Text = "You Server Full Moon!!",
                     Icon = "rbxassetid://104397992902189",
-                    Time = 5
+                    Time = 2.5
                 })
             elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709143733" then
                 Hop()
-                --OrionLib:MakeNotification({
                     game.StarterGui:SetCore("SendNotification", {
                     Title = "Brutality Hub V4",
                     Text = "Hop Server",
                     Icon = "rbxassetid://104397992902189",
-                    Time = 5
+                    Time = 2.5
                 })
             elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150401" then
                 Hop()
-                --OrionLib:MakeNotification({
                     game.StarterGui:SetCore("SendNotification", {
                     Title = "Brutality Hub V4",
                     Text = "Hop Server",
                     Icon = "rbxassetid://104397992902189",
-                    Time = 5
+                    Time = 2.5
                 })
             elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" then
                 Hop()
@@ -5603,7 +5600,7 @@ Hzr:AddToggle("Auto Hop Server FM 3/4 & 4/4",_G.Hopfindmoon,function(value)
                     Title = "Brutality Hub V4",
                     Text = "Hop Server",
                     Icon = "rbxassetid://104397992902189",
-                    Time = 5
+                    Time = 2.5
                 })
             else
                 Hop()
