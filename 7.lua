@@ -4994,7 +4994,7 @@ for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
       if string.find(v.Name, "Chest") then
           print(v.Name)
           game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-          wait(.20) --.15
+          wait(1) --.15
       end
   end
   game.Players.LocalPlayer.Character.Head:Destroy()
@@ -5002,7 +5002,7 @@ for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
    if string.find(v.Name, "Chest") and v:IsA("TouchTransmitter") then
    firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 0) --0 is touch
    wait()
-   firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 1) -- 1 is untouch
+   firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 0.1) -- 1 is untouch
    end
    end
   end)
