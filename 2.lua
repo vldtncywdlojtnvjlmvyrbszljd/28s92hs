@@ -6424,7 +6424,7 @@ end)
             end
         end)
 end)
-end
+
 Mirragecheck = SNt:AddLabel("Only Third Sea")
 
 SNt:AddSection("Mirage Island")
