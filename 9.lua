@@ -5545,22 +5545,6 @@ end)
       end
     end)
     Hzr:AddSeperator("HOP SERVER")
-    Hzr:AddToggle("Auto Hop Server Mirage Island",_G.Hopfinddao,function(value)
-        _G.Hopfinddao = value
-       end)
-        spawn(function()
-            while wait() do
-            if _G.Hopfinddao then
-                if game:GetService("Workspace").Map:FindFirstChild("MysticIsland") or game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
-                    if HighestPointRealCFrame and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - HighestPointRealCFrame.Position).Magnitude > 10 then
-                    topos(getHighestPoint().CFrame * CFrame.new(0, 211.88, 0))
-                        end
-                elseif not game:GetService("Workspace").Map:FindFirstChild("MysticIsland") or not game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
-                    Hop()
-                    end
-                end
-            end
-        end)
 
 Hzr:AddToggle("Auto Hop Server Full Moon",_G.AutoFindFullmoon,function(value)
     _G.AutoFindFullmoon = value    
@@ -15046,6 +15030,23 @@ Misc:AddButton("Inventory List", function(value)
 
 
     Mh:AddSeperator("Mod Hack By Medusa")
+
+    Mh:AddToggle("Auto Hop Server Mirage Island",_G.Hopfinddao,function(value)
+        _G.Hopfinddao = value
+       end)
+        spawn(function()
+            while wait() do
+            if _G.Hopfinddao then
+                if game:GetService("Workspace").Map:FindFirstChild("MysticIsland") or game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
+                    if HighestPointRealCFrame and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - HighestPointRealCFrame.Position).Magnitude > 10 then
+                    topos(getHighestPoint().CFrame * CFrame.new(0, 211.88, 0))
+                        end
+                elseif not game:GetService("Workspace").Map:FindFirstChild("MysticIsland") or not game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
+                    Hop()
+                    end
+                end
+            end
+        end)
     
     Mh:AddToggle("Dodge No Cooldown",false,function(value)
         nododgecool = value
