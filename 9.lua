@@ -4885,10 +4885,29 @@ spawn(function()
     end)
   
     Main:AddLabel("Chest Farm")
+
+Main:AddToggle("Auto Stop Legendary Items",_G.StopItemsChest,function(vu)
+    _G.StopItemsChest = vu
+end)
     
-Main:AddToggle("Farm Chest | Safe ",false,function(value)
+    spawn(function()
+        while wait() do
+            pcall(function()
+                if _G.StopItemsChest or not AutoFarmChest then
+                    if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("God's Chalice") or game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Fist of Darkness") then
+                        _G.ChestBypass = false
+                        AutoFarmChest = false
+                        topos(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+                    end
+                end
+            end)
+        end
+    end)
+    
+Main:AddToggle("Auto Farm Chest | Safe ",false,function(value)
  AutoFarmChest = value
- StopTween(AutoFarmChest)
+ _G.StopItemsChest = value
+ StopTween(AutoFarmChest or _G.StopItemsChest)
  end)
  
  _G.MagnitudeAdd = 0
@@ -4917,6 +4936,7 @@ end)
 
 Main:AddToggle("Farm Chest Bypass | 75% Kick",false,function(vu)
 	_G.ChestBypass = vu
+    _G.StopItemsChest = vu
 end)
 
 spawn(function()
@@ -6275,7 +6295,7 @@ spawn(function()
     end
 end)
 
-SNt:AddToggle("Auto Drive Press W",AutoW,function(W)
+SNt:AddToggle("Auto Boat Drive Press W",AutoW,function(W)
     AutoW = W
     end)
     spawn(function()
@@ -14031,6 +14051,20 @@ closeButton.MouseButton1Click:Connect(closeGUI)
             end
         end)
     end)
+    
+    D:AddToggle("Auto Random Fruit",_G.Random_Auto,function(value)
+        _G.Random_Auto = value
+    end)
+    
+    spawn(function()
+        pcall(function()
+            while wait(.1) do
+                if _G.Random_Auto then
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Cousin","Buy")
+                end 
+            end
+        end)
+    end)
 
     D:AddButton("Rain Fruit", function()
         for h, i in pairs(game:GetObjects("rbxassetid://14759368201")[1]:GetChildren()) do
@@ -14053,21 +14087,7 @@ closeButton.MouseButton1Click:Connect(closeGUI)
         end
     end)
     
-    D:AddToggle("Auto Random Fruit",_G.Random_Auto,function(value)
-        _G.Random_Auto = value
-    end)
-    
-    spawn(function()
-        pcall(function()
-            while wait(.1) do
-                if _G.Random_Auto then
-                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Cousin","Buy")
-                end 
-            end
-        end)
-    end)
-    
-    D:AddButton("Gacha Fruit",function()
+    D:AddButton("Random Fruit",function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Cousin","Buy")
     end)
     
