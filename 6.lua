@@ -8845,7 +8845,7 @@ SNt:AddSeperator("Frozen & Kitsune")
         end)
     end)
     
-    M:AddToggle("Auto Gun Mastery (manual skill)",_G.AutoFarmGunMastery,function(value)
+    M:AddToggle("Auto Gun Mastery",_G.AutoFarmGunMastery,function(value)
         _G.AutoFarmGunMastery = value
         --_G.AutoClick = value
         StopTween(_G.AutoFarmGunMastery)
@@ -8890,7 +8890,7 @@ SNt:AddSeperator("Frozen & Kitsune")
                                                     EquipWeapon(game:GetService("Players").LocalPlayer.Data.DevilFruit.Value)
                                                     TP1(v.HumanoidRootPart.CFrame * CFrame.new(0,10,0))
                                                     v.HumanoidRootPart.CanCollide = false
-                                                    PosMonMasteryFruit = v.HumanoidRootPart.CFrame
+                                                    PosMonMasteryGun = v.HumanoidRootPart.CFrame
                                                     v.Humanoid.WalkSpeed = 2
                                                     v.Head.CanCollide = false
                                                     UseSkill = true
@@ -8901,11 +8901,11 @@ SNt:AddSeperator("Frozen & Kitsune")
                                                     TP1(v.HumanoidRootPart.CFrame * CFrame.new(PosX,PosY,PosZ))
                                                     v.HumanoidRootPart.CanCollide = false
                                                     v.HumanoidRootPart.Size = Vector3.new(50,50,50)
-                                                    PosMonMasteryFruit = v.HumanoidRootPart.CFrame
+                                                    PosMonMasteryGun = v.HumanoidRootPart.CFrame
                                                     v.Humanoid.WalkSpeed = 2
                                                     v.Head.CanCollide = false
                                                 end
-                                                StartMasteryFruitMagnet = true
+                                                StartMasteryGunMagnet = true
                                                 game:GetService'VirtualUser':CaptureController()
                                                 game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                             until not _G.AutoFarmGunMastery or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
@@ -8944,10 +8944,10 @@ SNt:AddSeperator("Frozen & Kitsune")
                 pcall(function()
                     CheckQuest()
                     for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                        if game:GetService("Players").LocalPlayer.Character:FindFirstChild(game:GetService("Players").LocalPlayer.Data.DevilFruit.Value) then
-                            MasBF = game:GetService("Players").LocalPlayer.Character[game:GetService("Players").LocalPlayer.Data.DevilFruit.Value].Level.Value
-                        elseif game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(game:GetService("Players").LocalPlayer.Data.DevilFruit.Value) then
-                            MasBF = game:GetService("Players").LocalPlayer.Backpack[game:GetService("Players").LocalPlayer.Data.DevilFruit.Value].Level.Value
+                        if game:GetService("Players").LocalPlayer.Character:FindFirstChild(game:GetService("Players").LocalPlayer.Data.Gun.Value) then
+                            MasGun = game:GetService("Players").LocalPlayer.Character[game:GetService("Players").LocalPlayer.Data.Gun.Value].Level.Value
+                        elseif game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(game:GetService("Players").LocalPlayer.Data.Gun.Value) then
+                            MasGun = game:GetService("Players").LocalPlayer.Backpack[game:GetService("Players").LocalPlayer.Data.Gun.Value].Level.Value
                         end
                         if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Gun") then                      
                             if _G.SkillZ then
@@ -8966,7 +8966,7 @@ SNt:AddSeperator("Frozen & Kitsune")
                                 game:GetService("VirtualInputManager"):SendKeyEvent(true,"X",false,game)
                                 game:GetService("VirtualInputManager"):SendKeyEvent(false,"X",false,game)
                             end
-                        elseif game:GetService("Players").LocalPlayer.Character:FindFirstChild(game:GetService("Players").LocalPlayer.Data.DevilFruit.Value) then
+                        elseif game:GetService("Players").LocalPlayer.Character:FindFirstChild(game:GetService("Players").LocalPlayer.Data.Gun.Value) then
                             if _G.SkillZ then 
                                 local args = {
                                     [1] = PosMonMasteryGun.Position
@@ -9013,11 +9013,75 @@ SNt:AddSeperator("Frozen & Kitsune")
                     local args = {
                         [1] = PosMonMasteryGun.Position
                     }
-                    game:GetService("Players").LocalPlayer.Character[game:GetService("Players").LocalPlayer.Data.DevilFruit.Value].RemoteEvent:FireServer(unpack(args))
+                    game:GetService("Players").LocalPlayer.Character[game:GetService("Players").LocalPlayer.Data.Gun.Value].RemoteEvent:FireServer(unpack(args))
                 end
             end)
         end)
     end)
+--[[ Gun dari relzhub
+spawn(function()
+        pcall(function()
+            while wait() do
+                if _G.AutoFarmGunMastery then
+                    CheckQuest()
+                    local QuestTitle = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text
+                    if not string.find(QuestTitle, NameMon) then
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
+                    end
+                    if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
+                        TP1(CFrameQuest)
+                        if (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest", NameQuest, LevelQuest)
+                        end
+                    elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
+                        if game:GetService("Workspace").Enemies:FindFirstChild(Mon) then
+                            pcall(function()
+                                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                    if v.Name == Mon then
+                                        if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) then
+                                            repeat task.wait()
+                                                HealthMin = v.Humanoid.MaxHealth * _G.Kill_At/100
+                                                ShootPosition = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, -15, 0)
+                                                if v.Humanoid.Health <= HealthMin then
+                                                    EquipWeapon(SelectWeaponGun)
+                                                    TP1(v.HumanoidRootPart.CFrame * CFrame.new(0, 15, 0))
+                                                    game:GetService("Players").LocalPlayer.Character.Humanoid:FindFirstChild(""):InvokeServer("TAP", Vector3.new(ShootPosition.Position))
+                                                    UseGunSkill = true
+                                                    Skillaimbot = true
+                                                else
+                                                    EquipWeapon(_G.SelectWeapon)
+                                                    TP1(v.HumanoidRootPart.CFrame * Pos)
+                                                    UseGunSkill = false
+                                                    Skillaimbot = false
+                                                end
+                                                NormalAttack()
+                                                AutoHaki()
+                                                v.Humanoid.WalkSpeed = 0
+                                                v.HumanoidRootPart.CanCollide = false
+                                                v.HumanoidRootPart.Size = Vector3.new(50,50,50)
+                                                v.Head.CanCollide = false
+                                                AimBotSkillPosition = v.HumanoidRootPart.Position
+                                                StartBring = true 
+                                                PosMon = v.HumanoidRootPart.CFrame
+                                                MonFarm = v.Name
+                                            until v.Humanoid.Health <= 0 or _G.AutoFarmGunMastery == false or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
+                                            UseGunSkill = false
+                                            Skillaimbot = false
+                                            StartBring = false
+                                        end
+                                    end
+                                end
+                            end)
+                        else
+                           TP1(CFrameMon)
+                           UnEquipWeapon(_G.SelectWeapon)
+                        end 
+                    end
+                end
+            end
+        end)
+    end)
+    ]]    
 --[[    
     spawn(function()
         pcall(function()
