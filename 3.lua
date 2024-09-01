@@ -8968,7 +8968,7 @@ SNt:AddSeperator("Frozen & Kitsune")
         end)
     end)
     
-    M:AddToggle("Auto Gun Mastery",_G.AutoFarmGunMastery or UseGunSkill,function(value)
+    M:AddToggle("Auto Gun Mastery [Beta]",_G.AutoFarmGunMastery or UseGunSkill,function(value)
         _G.AutoFarmGunMastery = value
         UseGunSkill = value
         StopTween(_G.AutoFarmGunMastery)
@@ -9098,7 +9098,7 @@ spawn(function()
                                                         [1] = v.HumanoidRootPart.Position,
                                                         [2] = v.HumanoidRootPart
                                                     }
-                                                    --game:GetService("Players").LocalPlayer.Character[SelectWeaponGun].RemoteFunctionShoot:InvokeServer(unpack(args))
+                                                    game:GetService("Players").LocalPlayer.Character[SelectWeaponGun and UseGunSkill and ShootPosition].RemoteFunctionShoot:InvokeServer(unpack(args))
                                                     game:GetService("Players").LocalPlayer.Character.Humanoid:FindFirstChild(""):InvokeServer("TAP", Vector3.new(ShootPosition.Position))
                                                 else
                                                     AutoHaki()
@@ -9120,12 +9120,16 @@ spawn(function()
                                             end
                                         until v.Humanoid.Health <= 0 or not _G.AutoFarmGunMastery or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
                                         StartMasteryGunMagnet = false
+                                        UseGunSkill = false --tambahan
+                                        Skillaimbot = false -- tambahan 
                                     end
                                 end
                             end)
                         else
                            TP1(CFrameMon)
                             StartMasteryGunMagnet = false
+                            UseGunSkill = false --tambahan
+                            Skillaimbot = false -- tambahan 
                             local Mob = game:GetService("ReplicatedStorage"):FindFirstChild(Mon) 
                             if Mob then
                                 TP1(Mob.HumanoidRootPart.CFrame * CFrame.new(0,0,10))
