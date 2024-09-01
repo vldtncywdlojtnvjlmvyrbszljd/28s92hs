@@ -6413,7 +6413,7 @@ end)
             end
         end)
 
-    elseif World3 then
+    --elseif World3 then
     spawn(function()
         pcall(function()
             while wait() do
