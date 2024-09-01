@@ -4986,6 +4986,7 @@ Main:AddToggle("Auto Farm Chest Bypass | 75% Kick",false,function(vu)
 	_G.ChestBypass = vu
 end)
 
+_G.MagnitudeAdd = 0
 spawn(function()
 while wait() do
 if _G.ChestBypass then
@@ -4994,7 +4995,7 @@ for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
       if string.find(v.Name, "Chest") then
           print(v.Name)
           game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-          wait(1) --.15
+          wait(3) --.15
       end
   end
   game.Players.LocalPlayer.Character.Head:Destroy()
@@ -5002,7 +5003,7 @@ for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
    if string.find(v.Name, "Chest") and v:IsA("TouchTransmitter") then
    firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 0) --0 is touch
    wait()
-   firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 0.1) -- 1 is untouch
+   firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 0) -- 1 is untouch
    end
    end
   end)
