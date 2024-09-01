@@ -6446,7 +6446,7 @@ SNt:AddToggle("Teleport Mirage Island",_G.AutoMysticIsland,function(value)
                         end
                     end)
                 end)
-            end
+            --end
 
             SNt:AddButton("Teleport Advanced Fruit Dealer", function()
                 TweenNpc()
