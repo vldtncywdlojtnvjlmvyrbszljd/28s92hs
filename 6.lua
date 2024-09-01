@@ -6413,7 +6413,7 @@ end)
             end
         end)
 
-    elseif World1 or world2 or World3 then
+    --elseif World1 or world2 or World3 then
     spawn(function()
         pcall(function()
             while wait() do
@@ -6424,7 +6424,7 @@ end)
             end
         end)
 end)
-end
+
 Mirragecheck = SNt:AddLabel("Only Third Sea")
 
 SNt:AddSection("Mirage Island")
