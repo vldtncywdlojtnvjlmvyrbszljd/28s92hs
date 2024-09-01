@@ -8560,7 +8560,7 @@ SNt:AddSeperator("Sail Rough Sea V2")
         end)
     end)
 
-    SNt:AddToggle("Auto Sail Boat", _G.SailBoat1,"Sail Boat", function(state)
+    SNt:AddToggle("Auto Sail Boat", _G.SailBoat1,function(state)
         _G.SailBoat1 = state
         StopTween(_G.SailBoat1)
         stopboat:Stop()
