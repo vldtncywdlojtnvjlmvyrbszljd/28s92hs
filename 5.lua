@@ -4097,7 +4097,7 @@ NguyenTien:AddLabel("Status Script : Blox Fruit Wait For Update Or Upgrade")
 NguyenTien:AddLabel("Subscribe YouTube : Medusa Script Roblox")
 NguyenTien:AddSeperator("Information Dev")
 NguyenTien:AddButton("Discord Server",function()
-setclipboard("https://discord.gg/brutalityhub")
+setclipboard("https://discord.gg/regK5fkR")
 Notif.New("Copying To Clipboard Done", 3)
 end)
 NguyenTien:AddButton("YouTube Medusa Script",function()
@@ -14829,6 +14829,133 @@ Misc:AddButton("Kaitun Cap", function(value)
             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ChangeBusoStage",4)
         elseif _G.SelectStateHaki == "State 5" then
             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ChangeBusoStage",5)
+        end
+    end)
+
+    Mh:AddSeperator("Auto Hop Server")
+    Mh:AddLabel("Click And Wait 5 Second")
+
+    Mh:AddToggle("Auto Hop Server Mirage Island",_G.Hopfinddao,function(value)
+        _G.Hopfinddao = value
+       end)
+        spawn(function()
+            while wait() do
+            if _G.Hopfinddao then
+                if game:GetService("Workspace").Map:FindFirstChild("MysticIsland") or game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
+                    if HighestPointRealCFrame and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - HighestPointRealCFrame.Position).Magnitude > 10 then
+                    topos(getHighestPoint().CFrame * CFrame.new(0, 211.88, 0))
+                        end
+                elseif not game:GetService("Workspace").Map:FindFirstChild("MysticIsland") or not game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
+                    Hop()
+                    end
+                end
+            end
+        end)
+        Mh:AddToggle("Auto Hop Server Full Moon",_G.AutoFindFullmoon,function(value)
+            _G.AutoFindFullmoon = value    
+            end)
+            
+            spawn(function()
+                 while wait() do
+                     if _G.AutoFindFullmoon then
+                     if game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149052" or game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
+                         wait(2.0)
+                         game.StarterGui:SetCore("SendNotification", {
+                             Title = "BRUTALITY HUB", 
+                             Text = "Full Moon" ,
+                             Icon = "http://www.roblox.com/asset/?id=110958770625024",
+                             Duration = 2.5
+                         })
+                     elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709143733" then
+                         Hop()
+                         game.StarterGui:SetCore("SendNotification", {
+                             Title = "BRUTALITY HUB", 
+                             Text = "Wait New Server" ,
+                             Icon = "http://www.roblox.com/asset/?id=110958770625024",
+                             Duration = 2.5
+                         })
+                     elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150401" then
+                         Hop()
+                         game.StarterGui:SetCore("SendNotification", {
+                             Title = "BRUTALITY HUB", 
+                             Text = "Wait New Server" ,
+                             Icon = "http://www.roblox.com/asset/?id=110958770625024",
+                             Duration = 2.5
+                         })
+                     elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" then
+                         Hop()
+                         game.StarterGui:SetCore("SendNotification", {
+                             Title = "BRUTALITY HUB", 
+                             Text = "Wait New Server" ,
+                             Icon = "http://www.roblox.com/asset/?id=110958770625024",
+                             Duration = 2.5
+                         })
+                     else
+                         Hop()
+                         end
+                     end
+                 end
+             end)
+    Mh:AddToggle("Farm Dough King Hop", _G.AutodoughkingHop,function(value)
+        _G.AutodoughkingHop = value
+    end)
+    spawn(function()
+        while wait() do
+         if  _G.Autodoughking and World3 then
+                pcall(function()
+                    if game:GetService("Workspace").Enemies:FindFirstChild("Dough King") then
+                               for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                   if v.Name == "Dough King" then
+                                       if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                           repeat task.wait()
+                                               AutoHaki()
+                                               EquipWeapon(_G.SelectWeapon)
+                                               v.HumanoidRootPart.CanCollide = false
+                                               v.Humanoid.WalkSpeed = 2
+                                               v.HumanoidRootPart.Size = Vector3.new(50,50,50)
+                                               HyperCahaya(v.HumanoidRootPart.CFrame * CFrame.new(PosX,PosY,PosZ))
+                                               game:GetService("VirtualUser"):CaptureController()
+                                               game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+                                               sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
+                                           until not  _G.Autodoughking or not v.Parent or v.Humanoid.Health <= 0
+                                       end
+                                   end
+                               end
+                           else
+                           HyperCahaya(CFrame.new(-2662.818603515625, 1062.3480224609375, -11853.6953125))
+                               if game:GetService("ReplicatedStorage"):FindFirstChild("Dough King") then
+                                   HyperCahaya(game:GetService("ReplicatedStorage"):FindFirstChild("Dough King").HumanoidRootPart.CFrame * CFrame.new(2,20,2))
+                               else
+                                   if  _G.AutodoughkingHop then
+                                       Hop()
+                                   end
+                               end
+                           end
+                       end)
+                   end
+               end
+           end)
+    Mh:AddToggle("Buy Legendary Sword Hop",_G.AutoBuyLegendarySword_Hop,function(value)
+        _G.AutoBuyLegendarySword_Hop = value
+    end)
+
+    Mh:AddToggle("Buy Enchancement Hop Server",_G.AutoBuyEnchancementColour_H0p,function(value)
+        _G.AutoBuyEnchancementColour_H0p = value
+    end)
+    
+    spawn(function()
+        while wait() do
+            if _G.AutoBuyEnchancementColour then
+                local args = {
+                    [1] = "ColorsDealer",
+                    [2] = "2"
+                }
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                if _G.AutoBuyEnchancementColour_H0p and _G.AutoBuyEnchancementColour and not World1 then
+                    wait(10)
+                    Hop()
+                end
+            end 
         end
     end)
     
