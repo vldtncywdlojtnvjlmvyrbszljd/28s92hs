@@ -445,7 +445,7 @@ function Update:Window(text,logo,keybind)
     Ping.Position = UDim2.new(0.28, 0,0.074, 0)
     Ping.Size = UDim2.new(0, 225, 0, 25)
     Ping.Font = Enum.Font.GothamSemibold
-    Ping.Text = "WAIT UPDATE | IS UNDER CONSTRUCTION"
+    Ping.Text = "BRUTALITY HUB V4 | Made by Medusa Script"
     Ping.TextColor3 = Color3.fromRGB(0, 255, 221) --9, 255, 0 ijo
     Ping.TextSize = 14.000
     Ping.TextXAlignment = Enum.TextXAlignment.Left
@@ -4108,7 +4108,7 @@ local R = Library:AddTab("Auto Raid","18491947999")
 local T = Library:AddTab("Teleport","18477347703")
 local S = Library:AddTab("Shop","18477410455")
 local D = Library:AddTab("Devil Fruit","18477363100")
-local Mh = Library:AddTab("Mod Hack","18797339934")
+local Mh = Library:AddTab("Priority","18797339934")
 local STg = Library:AddTab("Setting","134210609072137")
 local Misc = Library:AddTab("MISC","18477908150")
 --- Nama toggle ui
@@ -4159,8 +4159,7 @@ UpdateClient1()
 end
 end)
 ]]
-NguyenTien:AddLabel("🚨Alert : Please be patient, the Brutality Hub V4 script\n is currently under maintenance due to an error.")
-NguyenTien:AddLabel("Use Game : Blox Fruit| Blade Ball \n|Slap Battle |Prison Life |MemeSea ")
+NguyenTien:AddLabel("Support Game : Blox Fruit | Blade Ball | Slap Battle \n| Prison Life | MemeSea ")
 NguyenTien:AddSeperator("Information")
 NguyenTien:AddButton("Discord Server",function()
 setclipboard("https://discord.gg/brutalityhub")
@@ -6428,6 +6427,7 @@ end)
 
 Mirragecheck = SNt:AddLabel("")
 ]]
+SNt:AddSection("Mirage Island")
 SNt:AddToggle("Teleport Mirage Island",_G.AutoMysticIsland,function(value)
         _G.AutoMysticIsland = value
         StopTween(_G.AutoMysticIsland)
@@ -8968,7 +8968,7 @@ SNt:AddSeperator("Frozen & Kitsune")
         end)
     end)
     
-    M:AddToggle("Auto Gun Mastery [Beta]",_G.AutoFarmGunMastery or UseGunSkill,function(value)
+    M:AddToggle("Auto Gun Mastery [Beta]",false,function(value)
         _G.AutoFarmGunMastery = value
         UseGunSkill = value
         StopTween(_G.AutoFarmGunMastery)
