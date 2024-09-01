@@ -4201,7 +4201,7 @@ local locallv = Qwe:AddLabel("Level :")
 
 Qwe:AddSeperator("Status Train V4")
 
-local bL = Qwe:AddLabel("Ancient One Status : " .. tostring(CheckAcientOneStatus()))
+local bL = Qwe:AddLabel("Ancient One : " .. tostring(CheckAcientOneStatus()))
 local bPl = Qwe:AddLabel("Train v4 Status : " .. tostring(CheckAcientOneStatusTrain()))
 
 Qwe:AddLine()
@@ -5932,7 +5932,7 @@ end)
             end
         end)
 end)
-
+end
 Mirragecheck = SNt:AddLabel("")
 SNt:AddToggle("Teleport Mystic Island",_G.AutoMysticIsland,function(value)
         _G.AutoMysticIsland = value
@@ -5952,7 +5952,7 @@ SNt:AddToggle("Teleport Mystic Island",_G.AutoMysticIsland,function(value)
                         end
                     end)
                 end)
-            end
+            --end
 
             SNt:AddButton("Teleport Advanced Fruit Dealer", function()
                 TweenNpc()
