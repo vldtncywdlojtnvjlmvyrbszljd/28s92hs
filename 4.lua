@@ -6412,7 +6412,7 @@ end)
                 end)
             end
         end)
---[[
+
     elseif World3 then
     spawn(function()
         pcall(function()
@@ -6424,9 +6424,9 @@ end)
             end
         end)
 end)
+end
+Mirragecheck = SNt:AddLabel("Only Third Sea")
 
-Mirragecheck = SNt:AddLabel("")
-]]
 SNt:AddSection("Mirage Island")
 SNt:AddToggle("Teleport Mirage Island",_G.AutoMysticIsland,function(value)
         _G.AutoMysticIsland = value
