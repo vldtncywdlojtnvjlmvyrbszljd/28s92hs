@@ -624,7 +624,7 @@ function Update:Window(text,logo,keybind)
         BtnStroke.Name = "BtnStroke"
         BtnStroke.Parent = TabButton
         BtnStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-        BtnStroke.Color = Color3.fromRGB(255, 0, 0)
+        BtnStroke.Color = Color3.fromRGB(255, 0, 0) --warna tab dibawah gambar
         BtnStroke.LineJoinMode = Enum.LineJoinMode.Round
         BtnStroke.Thickness = 1
         BtnStroke.Transparency = 0
@@ -4116,7 +4116,7 @@ NguyenTien:AddSeperator("Nice To Meet You")
 
 NguyenTien:AddLabel("Webhook Notify : Join My Discord Server")
 NguyenTien:AddLabel("Ready Bot Bypass : Bypass Executor And Link")
-NguyenTien:AddLabel("Support Games : Blox Fruit| Blade Ball | Slap Battle \n                   | Prison Life | MemeSea ")
+NguyenTien:AddLabel("Support Games : Blox Fruit| Blade Ball | Slap Battle \n                             | Prison Life | MemeSea ")
 
 NguyenTien:AddSeperator("Developer")
 
