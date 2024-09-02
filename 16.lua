@@ -14939,7 +14939,7 @@ end)
                 currentSound:Stop()
             end
         end
-    end
+    --end
 end)
 
     Mh:AddButton("Repeat Music",function()
@@ -14947,18 +14947,18 @@ end)
             currentSound.TimePosition = 0
             currentSound:Play()
         end
-    end
+    --end
 end)
 
 Mh:AddButton("Phonk Music",function()
         MusicId = "14145624031"
         playMusic()
-    end
+    --end
 end)
 
 Mh:AddButton("Copy Id Music",function()
     setclipboard("14145624031")
-    end
+    --end
 end)
 
 
