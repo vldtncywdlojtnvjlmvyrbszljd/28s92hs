@@ -725,7 +725,7 @@ function Update:Window(text,logo,keybind)
 
         NotificationHold.Name = "NotificationHold"
         NotificationHold.Parent = Main
-        NotificationHold.BackgroundColor3 = Color3.new(0, 255, 221)
+        NotificationHold.BackgroundColor3 = Color3.new(255, 0, 0)
         NotificationHold.BackgroundTransparency = 1
         NotificationHold.BorderSizePixel = 0
         NotificationHold.Size = UDim2.new(0, 589, 0, 378)
@@ -869,7 +869,7 @@ function Update:Window(text,logo,keybind)
 
         Button.Name = "Button"
         Button.Parent = MainFramePage
-        Button.BackgroundColor3 = Color3.fromRGB(0, 255, 221)
+        Button.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
         Button.Size = UDim2.new(0, 387, 0, 31)
 
         UICorner.CornerRadius = UDim.new(0, 5)
@@ -986,7 +986,7 @@ function Update:Window(text,logo,keybind)
         UIStroke.Name = "UIStroke"
         UIStroke.Parent = CheckFrame2
         UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-        UIStroke.Color = Color3.fromRGB(0, 255, 221)
+        UIStroke.Color = Color3.fromRGB(255, 0, 0)
         UIStroke.LineJoinMode = Enum.LineJoinMode.Round
         UIStroke.Thickness = 1
         UIStroke.Transparency = 0
@@ -1099,7 +1099,7 @@ function Update:Window(text,logo,keybind)
         UIStroke.Name = "UIStroke"
         UIStroke.Parent = Dropdown
         UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-        UIStroke.Color = Color3.fromRGB(0, 255, 221)
+        UIStroke.Color = Color3.fromRGB(255, 0, 0)
         UIStroke.LineJoinMode = Enum.LineJoinMode.Round
         UIStroke.Thickness = 1
         UIStroke.Transparency = 0
@@ -4116,7 +4116,7 @@ NguyenTien:AddSeperator("Nice To Meet You")
 
 NguyenTien:AddLabel("Webhook Notify : Join My Discord Server")
 NguyenTien:AddLabel("Ready Bot Bypass : Bypass Executor And Link")
-NguyenTien:AddLabel("Support Games : Blox Fruit| Blade Ball | Slap Battle \n                             | Prison Life | MemeSea ")
+NguyenTien:AddLabel("Support Games : Blox Fruit| Blade Ball | Slap Battle \n                            | Prison Life | MemeSea ")
 
 NguyenTien:AddSeperator("Developer")
 
@@ -4874,7 +4874,7 @@ end
         end
     end)
 
-   Main:AddToggle("Farm Nearest ",_G.AutoFarmNearest,function(value)
+   Main:AddToggle("Auto Farm Nearest ",_G.AutoFarmNearest,function(value)
    _G.AutoFarmNearest = value
    StopTween(_G.AutoFarmNearest)
  end)
