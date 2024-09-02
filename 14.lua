@@ -261,7 +261,7 @@ ScreenGui1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 ImageButton1.Parent = ScreenGui1
 ImageButton1.BackgroundColor3 = Color3.fromRGB(0, 255, 221)
 ImageButton1.BorderSizePixel = 0
-ImageButton1.Position = UDim2.new(0.001953337, 0, 0.1952890813, 0) --0.120833337, 0, 0.0952890813, 0
+ImageButton1.Position = UDim2.new(0.001955537, 0, 0.1952890813, 0) --0.120833337, 0, 0.0952890813, 0
 ImageButton1.Size = UDim2.new(0, 50, 0, 50)
 ImageButton1.Draggable = true
 ImageButton1.Image = "rbxassetid://107679910024355" --logo button close open
@@ -4116,7 +4116,7 @@ NguyenTien:AddSeperator("Nice To Meet You")
 
 NguyenTien:AddLabel("Webhook Notify : Join My Discord Server")
 NguyenTien:AddLabel("Ready Bot Bypass : Bypass Executor And Link")
-NguyenTien:AddLabel("Support Games : Blox Fruit| Blade Ball | Slap Battle \n    | Prison Life | MemeSea ")
+NguyenTien:AddLabel("Support Games : Blox Fruit| Blade Ball | Slap Battle \n         | Prison Life | MemeSea ")
 
 NguyenTien:AddSeperator("Developer")
 
