@@ -398,7 +398,7 @@ function Update:Window(text,logo,keybind)
     BtnStroke.Name = "BtnStroke"
     BtnStroke.Parent = Main
     BtnStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-    BtnStroke.Color = Color3.fromRGB(255, 0, 0)
+    BtnStroke.Color = Color3.fromRGB(255, 0, 0) --warna samping tab
     BtnStroke.LineJoinMode = Enum.LineJoinMode.Round
     BtnStroke.Thickness = 1
     BtnStroke.Transparency = 0
@@ -412,7 +412,7 @@ function Update:Window(text,logo,keybind)
     local Top = Instance.new("Frame")
     Top.Name = "Top"
     Top.Parent = Main
-    Top.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    Top.BackgroundColor3 = Color3.fromRGB(0, 0, 0) --warna tab diatas
     Top.Size = UDim2.new(0, 556, 0, 30)
     Top.BackgroundTransparency = 1.000
     local TCNR = Instance.new("UICorner")
@@ -446,7 +446,7 @@ function Update:Window(text,logo,keybind)
     Ping.Size = UDim2.new(0, 225, 0, 25)
     Ping.Font = Enum.Font.GothamSemibold
     Ping.Text = "BRUTALITY HUB V4 | by Medusa Script"
-    Ping.TextColor3 = Color3.fromRGB(0, 255, 221) --9, 255, 0 ijo
+    Ping.TextColor3 = Color3.fromRGB(255, 0, 0)
     Ping.TextSize = 14.000
     Ping.TextXAlignment = Enum.TextXAlignment.Left
 
@@ -1122,7 +1122,7 @@ function Update:Window(text,logo,keybind)
         DropScroll.Name = "DropScroll"
         DropScroll.Parent = DropTitle
         DropScroll.Active = true
-        DropScroll.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+        DropScroll.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         DropScroll.BackgroundTransparency = 1.000
         DropScroll.BorderSizePixel = 0
         DropScroll.Position = UDim2.new(0, 0, 0, 31)
@@ -1140,7 +1140,7 @@ function Update:Window(text,logo,keybind)
 
         DropButton.Name = "DropButton"
         DropButton.Parent = Dropdown
-        DropButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+        DropButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         DropButton.BackgroundTransparency = 1.000
         DropButton.Size = UDim2.new(0, 385, 0, 31)
         DropButton.Font = Enum.Font.SourceSans
