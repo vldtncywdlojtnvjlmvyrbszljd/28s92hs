@@ -1400,7 +1400,7 @@ function Update:Window(text,logo,keybind)
         Title_2.Name = "Title_2"
         Title_2.Parent = SliderButton
         Title_2.AnchorPoint = Vector2.new(0, 0)
-        Title_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Title_2.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
         Title_2.AutoButtonColor = false
         Title_2.BackgroundTransparency = 1.000
         Title_2.Position = UDim2.new(0,start,0,0)
@@ -1429,21 +1429,21 @@ function Update:Window(text,logo,keybind)
         
         BoxFrame.Name = "BoxFrame"
         BoxFrame.Parent = SliderFrame_2
-        BoxFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        BoxFrame.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
         BoxFrame.BackgroundTransparency = 1.000
         BoxFrame.Size = UDim2.new(0, 50, 0, 15)
         BoxFrame.Position = UDim2.new(0, 323, 0, 8)
     
         SliderBox.Name = "SliderBox"
         SliderBox.Parent = BoxFrame
-        SliderBox.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+        SliderBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         SliderBox.BackgroundTransparency = 1.000
         SliderBox.Position = UDim2.new(0, 0, 0, 1.65)
         SliderBox.Size = UDim2.new(0, 50, 0, 15)
         SliderBox.ClearTextOnFocus = false
         SliderBox.Font = Enum.Font.Code
         SliderBox.Text = tostring(start and math.floor((start / max) * (max - min) + min) or 0)
-        SliderBox.TextColor3 = Color3.fromRGB(200,200,200)
+        SliderBox.TextColor3 = Color3.fromRGB(255,255,255)
         SliderBox.TextSize = 10.000
         SliderBox.TextTransparency = 0
         SliderBox.TextXAlignment = Enum.TextXAlignment.Center
