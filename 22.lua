@@ -5697,6 +5697,27 @@ end)
     STg:AddSeperator("Setting Skill Gun")
 
     STg:AddLabel("Wait Update")
+    STg:AddSeperator("Buso Haki State")
+    
+    STg:AddDropdown("Select Haki State",{"State 0","State 1","State 2","State 3","State 4","State 5"},function(value)
+        _G.SelectStateHaki = value
+    end)
+    
+    STg:AddButton("Change Buso Haki State",function()
+        if _G.SelectStateHaki == "State 0" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ChangeBusoStage",0)
+        elseif _G.SelectStateHaki == "State 1" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ChangeBusoStage",1)
+        elseif _G.SelectStateHaki == "State 2" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ChangeBusoStage",2)
+        elseif _G.SelectStateHaki == "State 3" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ChangeBusoStage",3)
+        elseif _G.SelectStateHaki == "State 4" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ChangeBusoStage",4)
+        elseif _G.SelectStateHaki == "State 5" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ChangeBusoStage",5)
+        end
+    end)
     
     if World1 or World2 then
     M:AddSeperator("World")
@@ -14616,31 +14637,6 @@ end)
 	Misc:AddTextbox("Lock Factment", "Please Type", true, function(value)
 	_G.LockFragments = value
 	end)
-	
---tadinya tempat hack
---tadinya tempat redeem code
-    
-    Misc:AddSeperator("State")
-    
-    Misc:AddDropdown("Select Haki State",{"State 0","State 1","State 2","State 3","State 4","State 5"},function(value)
-        _G.SelectStateHaki = value
-    end)
-    
-    Misc:AddButton("Change Buso Haki State",function()
-        if _G.SelectStateHaki == "State 0" then
-            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ChangeBusoStage",0)
-        elseif _G.SelectStateHaki == "State 1" then
-            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ChangeBusoStage",1)
-        elseif _G.SelectStateHaki == "State 2" then
-            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ChangeBusoStage",2)
-        elseif _G.SelectStateHaki == "State 3" then
-            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ChangeBusoStage",3)
-        elseif _G.SelectStateHaki == "State 4" then
-            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ChangeBusoStage",4)
-        elseif _G.SelectStateHaki == "State 5" then
-            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ChangeBusoStage",5)
-        end
-    end)
 
     Mh:AddSeperator("Auto Hop Server")
     Mh:AddLabel("Click And Wait 5 Second")
