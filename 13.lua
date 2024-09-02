@@ -133,6 +133,7 @@ local rateLimit = false
 local rateLimitCountdown = 0
 local errorWait = false
 local useDataModel = true -- Set ke true jika Anda ingin menggunakan DataModel
+local countdownActive = false
 
 function onMessage(msg)
     print(msg)
@@ -144,6 +145,18 @@ end
 
 function fSpawn(func)
     spawn(func)
+end
+
+function startCountdown(seconds)
+    countdownActive = true
+    for i = seconds, 0, -1 do
+        onMessage("Time remaining: " .. i .. " seconds")
+        fWait(1)
+    end
+    countdownActive = false
+    onMessage("Time's up! Please re-enter your key.")
+    -- Restart key verification process
+    screenGui.Enabled = true
 end
 
 function verify(key)
@@ -161,6 +174,11 @@ function verify(key)
         -- Verify if the key is present in the result
         if string.find(result, key) then
             onMessage("Key is valid!")
+            if not countdownActive then
+                fSpawn(function()
+                    startCountdown(24 * 60 * 60) -- Start 24-hour countdown (86400 seconds)
+                end)
+            end
             return true
         else
             onMessage("Key is invalid!")
@@ -211,3 +229,4 @@ end)
 wait(3)
 local tween = TweenService:Create(frame, TweenInfo.new(0.5), {Position = UDim2.new(0.5, -150, 0.5, -100)})
 tween:Play()
+
