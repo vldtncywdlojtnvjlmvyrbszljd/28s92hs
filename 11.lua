@@ -4121,14 +4121,13 @@ NguyenTien:AddLabel("Support Games : Blox Fruit | Blade Ball | Slap Battle \n   
 NguyenTien:AddSeperator("Developer")
 
 NguyenTien:AddLabel("Country : Indonesian")
-NguyenTien:AddLabel("City : Jawa Barat")
 NguyenTien:AddLabel("Design Gui : BOTUNA")
 NguyenTien:AddLabel("Support Code : Bocah Tua Nakal")
 NguyenTien:AddLabel("Subscribe YouTube : Medusa Script Roblox")
 
 NguyenTien:AddSeperator("B-Team Community")
 NguyenTien:AddButton("Discord Server",function()
-setclipboard("https://discord.gg/regK5fkR")
+setclipboard("https://discord.gg/brutality-hub-1182005198206545941")
 Notif.New("Copying To Clipboard Done", 3)
 end)
 NguyenTien:AddButton("YouTube Medusa Script",function()
@@ -4279,7 +4278,7 @@ end
 
     Qwe:AddSeperator("Status Moon")
 local FMz = Qwe:AddLabel("Full Moon Phase : ")
- if World3 or world2 or world2 then
+ if World3 or world2 then
  task.spawn(function()
          while task.wait() do
              pcall(function()
@@ -7685,21 +7684,21 @@ SNt:AddToggle('Kill Sea Beast Hop', false, function(value)
     end)
     
 SNt:AddSeperator(" Sea Event ")
-
+if world3 then
 spawn(function()
     pcall(function()
         while wait() do
             if game.Workspace._WorldOrigin.Locations:FindFirstChild('Frozen Dimension') then
-                FrozenIsland:Set('🏔️: Frozen Dimension Spawning')
+                FrozenIsland:Set('Frozen Dimension : 🟢')
             else
-                FrozenIsland:Set('❌: Frozen Dimension Not Found')
+                FrozenIsland:Set('Frozen Dimension : 🔴')
             end
         end
     end)
 end)
+end
 
-
-FrozenIsland = SNt:AddLabel("")
+FrozenIsland = SNt:AddLabel("Frozen Dimension : Only Third Sea")
 
 SNt:AddToggle('Teleport Frozen Dimension [ NEED SPAWN ]', false, function(value)
 _G.Frozen = value
@@ -12633,7 +12632,7 @@ spawn(function()
         pcall(function()
             while wait() do
     if game.Workspace._WorldOrigin.Locations:FindFirstChild('Island 5') then
-    Island5:Set('Island 5 🟢')
+    Island5:Set('Island 5 : 🟢')
     else
       Island5:Set('Island 5 : 🔴' )end
             end
@@ -13665,7 +13664,7 @@ end)
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySanguineArt")
     end)
 
-    S:AddButton("Buy DivineArt (Update) | $7,500 Frag | $7,500,000  ",function()
+    S:AddButton("Buy DivineArt | $7,500 Frag | $7,500,000  ",function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDivineArt")
     end)
     -----Shop----------------
@@ -14901,6 +14900,7 @@ end)
 
 
     Mh:AddSeperator("Mod Hack By Medusa")
+    Mh:AddLabel("Turn On Inf Ability")
     
     Mh:AddToggle("Dodge No Cooldown",false,function(value)
         nododgecool = value
