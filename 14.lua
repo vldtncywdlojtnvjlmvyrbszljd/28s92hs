@@ -134,6 +134,7 @@ local rateLimitCountdown = 0
 local errorWait = false
 local useDataModel = true -- Set ke true jika Anda ingin menggunakan DataModel
 local countdownActive = false
+local savedKey = nil
 
 function onMessage(msg)
     print(msg)
@@ -147,6 +148,19 @@ function fSpawn(func)
     spawn(func)
 end
 
+function saveKey(key)
+    -- Menyimpan kunci ke file lokal atau DataStore (jika di dalam Roblox)
+    writefile("savedKey.txt", key)
+    savedKey = key
+end
+
+function loadKey()
+    -- Memuat kunci dari file lokal atau DataStore
+    if isfile("savedKey.txt") then
+        savedKey = readfile("savedKey.txt")
+    end
+end
+
 function startCountdown(seconds)
     countdownActive = true
     for i = seconds, 0, -1 do
@@ -155,7 +169,12 @@ function startCountdown(seconds)
     end
     countdownActive = false
     onMessage("Time's up! Please re-enter your key.")
-    -- Restart key verification process
+    -- Hapus kunci setelah waktu habis
+    savedKey = nil
+    if isfile("savedKey.txt") then
+        delfile("savedKey.txt")
+    end
+    -- Tampilkan ulang GUI untuk memasukkan kunci baru
     screenGui.Enabled = true
 end
 
@@ -174,6 +193,7 @@ function verify(key)
         -- Verify if the key is present in the result
         if string.find(result, key) then
             onMessage("Key is valid!")
+            saveKey(key) -- Simpan kunci setelah validasi
             if not countdownActive then
                 fSpawn(function()
                     startCountdown(24 * 60 * 60) -- Start 24-hour countdown (86400 seconds)
@@ -230,3 +250,13 @@ wait(3)
 local tween = TweenService:Create(frame, TweenInfo.new(0.5), {Position = UDim2.new(0.5, -150, 0.5, -100)})
 tween:Play()
 
+-- Load saved key and verify it if exists
+loadKey()
+if savedKey then
+    if verify(savedKey) then
+        onMessage("Saved key is valid!")
+        screenGui.Enabled = false
+    else
+        onMessage("Saved key is invalid, please enter a new key.")
+    end
+end
