@@ -259,7 +259,7 @@ ScreenGui1.Parent = game.CoreGui
 ScreenGui1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 ImageButton1.Parent = ScreenGui1
-ImageButton1.BackgroundColor3 = Color3.fromRGB(0, 255, 221)
+ImageButton1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 ImageButton1.BorderSizePixel = 0
 ImageButton1.Position = UDim2.new(0.011955559, 0, 0.1952890813, 0) --0.120833337, 0, 0.0952890813, 0
 ImageButton1.Size = UDim2.new(0, 50, 0, 50)
@@ -273,12 +273,12 @@ local clickSound = sound:Clone()
     clickSound:Play()
 end)
 UICorner.Parent = ImageButton1
-UIStroke.Color = Color3.fromRGB(0, 255, 221)--232, 0, 2)
+UIStroke.Color = Color3.fromRGB(255, 0, 0)--232, 0, 2)
 UIStroke.Thickness = 1.5
 UIStroke.Parent = ImageButton1
 UIGradient.Color = ColorSequence.new{
-	ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 132, 255)),
-	ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 255, 221))
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(20, 20, 20)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 0, 0))
 }
 UIGradient.Parent = UIStroke
 
@@ -398,7 +398,7 @@ function Update:Window(text,logo,keybind)
     BtnStroke.Name = "BtnStroke"
     BtnStroke.Parent = Main
     BtnStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-    BtnStroke.Color = Color3.fromRGB(0, 255, 221)
+    BtnStroke.Color = Color3.fromRGB(255, 0, 0)
     BtnStroke.LineJoinMode = Enum.LineJoinMode.Round
     BtnStroke.Thickness = 1
     BtnStroke.Transparency = 0
