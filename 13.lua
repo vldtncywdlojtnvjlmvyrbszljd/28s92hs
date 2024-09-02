@@ -14179,6 +14179,24 @@ closeButton.MouseButton1Click:Connect(closeGUI)
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("GetFruits")
         game:GetService("Players").LocalPlayer.PlayerGui.Main.FruitShop.Visible = true
     end)
+
+    D:AddToggle("Fruit Notification",true ,_G.FruitCheck,function(value)
+        _G.FruitCheck = value
+        end)
+        
+        spawn(function()
+                while wait(.1) do
+                    if _G.FruitCheck then
+                        for i,v in pairs(game.Workspace:GetChildren()) do
+                            if string.find(v.Name, "Fruit") then
+                                require(game:GetService("ReplicatedStorage").Notification).new("Fruit Spawn"):Display();
+                                wait()
+                                setthreadcontext(5)
+                            end
+                        end
+                    end
+        end
+        end)
     
     D:AddToggle("Auto Drop Fruit",_G.DropFruit,function(value)
         _G.DropFruit = value
