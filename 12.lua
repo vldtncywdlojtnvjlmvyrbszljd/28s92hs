@@ -4159,11 +4159,21 @@ UpdateClient1()
 end
 end)
 ]]
+NguyenTien:AddSeperator("Nice To Meet You")
 
-NguyenTien:AddLabel("Support Games : Blox Fruit| Blade Ball | Slap Battle \n| Prison Life | MemeSea ")
-NguyenTien:AddLabel("Status Script : Blox Fruit Wait For Update Or Upgrade")
+NguyenTien:AddLabel("Support Games : Blox Fruit| Blade Ball | Slap Battle     \n| Prison Life | MemeSea ")
+NguyenTien:AddLabel("Webhook Notify : Join My Discord Server")
+NguyenTien:AddLabel("Status Notify : Mirage | Kitsune | King Legacy And All Notify")
+
+NguyenTien:AddSeperator("Developer")
+
+NguyenTien:AddLabel("Country : Indonesian")
+NguyenTien:AddLabel("City : Karawang Punya :v")
+NguyenTien:AddLabel("Design Gui : BOTUNA")
+NguyenTien:AddLabel("Support Code : Bocah Tua Nakal")
 NguyenTien:AddLabel("Subscribe YouTube : Medusa Script Roblox")
-NguyenTien:AddSeperator("Information Dev")
+
+NguyenTien:AddSeperator("B-Team Community")
 NguyenTien:AddButton("Discord Server",function()
 setclipboard("https://discord.gg/regK5fkR")
 Notif.New("Copying To Clipboard Done", 3)
