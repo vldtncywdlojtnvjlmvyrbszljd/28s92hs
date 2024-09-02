@@ -261,7 +261,7 @@ ScreenGui1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 ImageButton1.Parent = ScreenGui1
 ImageButton1.BackgroundColor3 = Color3.fromRGB(0, 255, 221)
 ImageButton1.BorderSizePixel = 0
-ImageButton1.Position = UDim2.new(0.001833337, 0, 0.1952890813, 0) --0.120833337, 0, 0.0952890813, 0
+ImageButton1.Position = UDim2.new(0.001953337, 0, 0.1952890813, 0) --0.120833337, 0, 0.0952890813, 0
 ImageButton1.Size = UDim2.new(0, 50, 0, 50)
 ImageButton1.Draggable = true
 ImageButton1.Image = "rbxassetid://107679910024355" --logo button close open
@@ -4111,64 +4111,17 @@ local D = Library:AddTab("Devil Fruit","18477363100")
 local Mh = Library:AddTab("Mod Hack","104397992902189")
 local STg = Library:AddTab("Setting","134210609072137")
 local Misc = Library:AddTab("MISC","18477908150")
---- Nama toggle ui
-NguyenTien:AddSeperator("Information")
 
---[[
-Time = NguyenTien:AddLabel("Executor Time")
-
-function UpdateTime()
-local GameTime = math.floor(workspace.DistributedGameTime+0.5)
-local Hour = math.floor(GameTime/(60^2))%24
-local Minute = math.floor(GameTime/(60^1))%60
-local Second = math.floor(GameTime/(60^0))%60
-Time:Set("[GameTime] : Hours : "..Hour.." Min : "..Minute.." Sec : "..Second)
-end
-
-spawn(function()
-while task.wait() do
-pcall(function()
-UpdateTime()
-end)
-end
-end)
-
-Client = NguyenTien:AddLabel("Client")
-
-function UpdateClient()
-local Fps = workspace:GetRealPhysicsFPS()
-Client:Set("[Fps] : "..Fps)
-end
-
-spawn(function()
-while true do wait(.1)
-UpdateClient()
-end
-end)
-
-Client1 = NguyenTien:AddLabel("Client")
-
-function UpdateClient1()
-local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
-Client1:Set("[Ping] : "..Ping)
-end
-
-spawn(function()
-while true do wait(.1)
-UpdateClient1()
-end
-end)
-]]
 NguyenTien:AddSeperator("Nice To Meet You")
 
-NguyenTien:AddLabel("Support Games : Blox Fruit| Blade Ball | Slap Battle     \n| Prison Life | MemeSea ")
 NguyenTien:AddLabel("Webhook Notify : Join My Discord Server")
-NguyenTien:AddLabel("Status Notify : Mirage | Kitsune | King Legacy And All Notify")
+NguyenTien:AddLabel("Ready Bot Bypass : Bypass Executor And Link")
+NguyenTien:AddLabel("Support Games : Blox Fruit| Blade Ball | Slap Battle \n    | Prison Life | MemeSea ")
 
 NguyenTien:AddSeperator("Developer")
 
 NguyenTien:AddLabel("Country : Indonesian")
-NguyenTien:AddLabel("City : Karawang Punya :v")
+NguyenTien:AddLabel("City : Jawa Barat")
 NguyenTien:AddLabel("Design Gui : BOTUNA")
 NguyenTien:AddLabel("Support Code : Bocah Tua Nakal")
 NguyenTien:AddLabel("Subscribe YouTube : Medusa Script Roblox")
@@ -4180,10 +4133,6 @@ Notif.New("Copying To Clipboard Done", 3)
 end)
 NguyenTien:AddButton("YouTube Medusa Script",function()
 setclipboard("www.youtube.com/@medusascriptroblox")
-Notif.New("Copying To Clipboard Done", 3)
-end)
-NguyenTien:AddButton("Website Exploit Roblox",function()
-setclipboard("https://bit.ly/4fA1sUW")
 Notif.New("Copying To Clipboard Done", 3)
 end)
 NguyenTien:AddButton("Instagram Official Owner",function()
