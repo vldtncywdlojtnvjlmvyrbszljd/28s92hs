@@ -2902,6 +2902,74 @@ function UpdatePlayerChams()
 		end)
 	end
 end
+function UpdateIslandKitsuneESP()
+    for i, v in pairs(game:GetService("Workspace").Map.KitsuneIsland.ShrineActive:GetChildren()) do
+        pcall(function()
+            if IslandKitsuneESP then
+                if v.Name ~= "NeonShrinePart" then
+                    if not v:FindFirstChild('IslandESP') then
+                        local bill = Instance.new('BillboardGui', v)
+                        bill.Name = 'IslandESP'
+                        bill.ExtentsOffset = Vector3.new(0, 1, 0)
+                        bill.Size = UDim2.new(1, 200, 1, 30)
+                        bill.Adornee = v
+                        bill.AlwaysOnTop = true
+                        local name = Instance.new('TextLabel', bill)
+                        name.Font = "Code"
+                        name.FontSize = "Size14"
+                        name.TextWrapped = true
+                        name.Size = UDim2.new(1, 0, 1, 0)
+                        name.TextYAlignment = 'Top'
+                        name.BackgroundTransparency = 1
+                        name.TextStrokeTransparency = 0.5
+                        name.TextColor3 = Color3.fromRGB(80, 245, 245)
+                        -- Thay Ä‘á»•i vÄƒn báº£n hiá»ƒn thá»‹ thĂ nh "123"
+                        name.Text = "Kitsune Island"
+                    else
+                        v['IslandESP'].TextLabel.Text = "Kitsune Island"
+                    end
+                end
+            else
+                if v:FindFirstChild('IslandESP') then
+                    v:FindFirstChild('IslandESP'):Destroy()
+                end
+            end
+        end)
+    end
+end
+function UpdateIslandMirageESP() 
+    for i,v in pairs(game:GetService("Workspace")["_WorldOrigin"].Locations:GetChildren()) do
+        pcall(function()
+            if MirageIslandESP then 
+                if v.Name == "Mirage Island" then
+                    if not v:FindFirstChild('NameEsp') then
+                        local bill = Instance.new('BillboardGui',v)
+                        bill.Name = 'NameEsp'
+                        bill.ExtentsOffset = Vector3.new(0, 1, 0)
+                        bill.Size = UDim2.new(1,200,1,30)
+                        bill.Adornee = v
+                        bill.AlwaysOnTop = true
+                        local name = Instance.new('TextLabel',bill)
+                        name.Font = "Code"
+                        name.FontSize = "Size14"
+                        name.TextWrapped = true
+                        name.Size = UDim2.new(1,0,1,0)
+                        name.TextYAlignment = 'Top'
+                        name.BackgroundTransparency = 1
+                        name.TextStrokeTransparency = 0.5
+                        name.TextColor3 = Color3.fromRGB(80, 245, 245)
+                    else
+                        v['NameEsp'].TextLabel.Text = (v.Name ..'   \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' M')
+                    end
+                end
+            else
+                if v:FindFirstChild('NameEsp') then
+                    v:FindFirstChild('NameEsp'):Destroy()
+                end
+            end
+        end)
+    end
+    end
 function UpdateChestChams() 
 	for i,v in pairs(game.Workspace:GetChildren()) do
 		pcall(function()
@@ -5539,6 +5607,20 @@ end)
     end)
 
     STg:AddSeperator("ESP MENU")
+
+    STg:AddToggle("Esp Mirage Island",false,function(a)
+        MirageIslandESP = a
+            while MirageIslandESP do wait()
+                UpdateIslandMirageESP()
+            end
+        end)
+       
+    STg:AddToggle("Esp Kitsune Island",false,function(a)
+        IslandKitsuneESP = a
+            while IslandKitsuneESP do wait()
+                UpdateIslandKitsuneESP()
+            end
+        end)
     
     STg:AddToggle("ESP Player",false,function(a)
         ESPPlayer = a
@@ -5654,6 +5736,8 @@ end)
     end)
 
     STg:AddSeperator("Setting Skill Gun")
+
+    STg:AddLabel("Wait Update")
     
     if World1 or World2 then
     M:AddSeperator("World")
