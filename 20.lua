@@ -491,7 +491,7 @@ function Update:Window(text,logo,keybind)
 	Logo.BackgroundTransparency = 1.000
 	Logo.Position = UDim2.new(0, 5, 0, -1)
 	Logo.Size = UDim2.new(0, 135, 0, 135)
-	Logo.Image = "rbxassetid://107679910024355" --logo didalam tab
+	Logo.Image = "https://www.roblox.com/headshot-thumbnail/image?userId=".. game.Players.LocalPlayer.UserId .."&width=420&height=420&format=png"--"rbxassetid://107679910024355" --logo didalam tab
     local Tab = Instance.new("Frame")
     Tab.Name = "Tab"
     Tab.Parent = Main
