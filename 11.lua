@@ -12585,11 +12585,11 @@ end
     
     local TimeRaid = R:AddLabel("Wait For Dungeon")
     
-    local Island1 = R:AddLabel(": lsland 1")
-    local Island2 = R:AddLabel(": lsland 2")
-    local Island3 = R:AddLabel(": lsland 3")
-    local Island4 = R:AddLabel(": lsland 4")
-    local Island5 = R:AddLabel(": lsland 5")
+    local Island1 = R:AddLabel("lsland 1 : 🔴")
+    local Island2 = R:AddLabel("lsland 2 : 🔴")
+    local Island3 = R:AddLabel("lsland 3 : 🔴")
+    local Island4 = R:AddLabel("Island 4 : 🔴")
+    local Island5 = R:AddLabel("lsland 5 : 🔴")
     
     R:AddLine()
     
@@ -12609,9 +12609,9 @@ end
         pcall(function()
             while wait() do
     if game.Workspace._WorldOrigin.Locations:FindFirstChild('Island 1') then
-    Island1:Set(': Island 1')
+    Island1:Set('Island 1 : 🟢')
     else
-      Island1:Set(': Island 1' )end
+      Island1:Set('Island 1 : 🔴' )end
             end
         end)
 end)
@@ -12620,9 +12620,9 @@ spawn(function()
         pcall(function()
             while wait() do
     if game.Workspace._WorldOrigin.Locations:FindFirstChild('Island 2') then
-    Island2:Set(': Island 2')
+    Island2:Set('Island 2 : 🟢')
     else
-      Island2:Set(': Island 2' )end
+      Island2:Set('Island 2 : 🔴' )end
             end
         end)
 end)
@@ -12631,9 +12631,9 @@ spawn(function()
         pcall(function()
             while wait() do
     if game.Workspace._WorldOrigin.Locations:FindFirstChild('Island 3') then
-    Island3:Set(': Island 3')
+    Island3:Set('Island 3 : 🟢')
     else
-      Island3:Set(': Island 3' )end
+      Island3:Set('Island 3 : 🔴' )end
             end
         end)
 end)
@@ -12642,9 +12642,9 @@ spawn(function()
         pcall(function()
             while wait() do
     if game.Workspace._WorldOrigin.Locations:FindFirstChild('Island 4') then
-    Island4:Set(': Island 4')
+    Island4:Set('Island 4 : 🟢')
     else
-      Island4:Set(': Island 4' )end
+      Island4:Set('Island 4 : 🔴' )end
             end
         end)
 end)
@@ -12653,9 +12653,9 @@ spawn(function()
         pcall(function()
             while wait() do
     if game.Workspace._WorldOrigin.Locations:FindFirstChild('Island 5') then
-    Island5:Set(': Island 5')
+    Island5:Set('Island 5 🟢')
     else
-      Island5:Set(': Island 5' )end
+      Island5:Set('Island 5 : 🔴' )end
             end
         end)
 end)
