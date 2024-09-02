@@ -1360,7 +1360,7 @@ function Update:Window(text,logo,keybind)
         ImageLabel.Image = "rbxassetid://107679910024355" --gambar slider
             
         Title.Parent = SliderFrame_2
-        Title.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
+        Title.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
         Title.BackgroundTransparency = 1.000
         Title.Position = UDim2.new(0, 45, 0, 5)
         Title.Size = UDim2.new(0, 280, 0, 30)
