@@ -21,7 +21,7 @@ headerLabel.Position = UDim2.new(0, 0, 0, 0)
 headerLabel.Text = "BRUTALITY HUB V4"
 headerLabel.Font = Enum.Font.SourceSansBold
 headerLabel.TextSize = 18
-headerLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+headerLabel.TextColor3 = Color3.fromRGB(222, 142, 4)
 headerLabel.BackgroundTransparency = 1
 headerLabel.TextWrapped = true
 headerLabel.Parent = frame
@@ -47,7 +47,7 @@ end)
 local label = Instance.new("TextLabel")
 label.Size = UDim2.new(1, 0, 0, 50)
 label.Position = UDim2.new(0, 0, 0, 12) 
-label.Text = "Nice To Meet You"
+label.Text = "HELLO MY FRIEND "
 label.Font = Enum.Font.SourceSansBold
 label.TextSize = 30
 label.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -127,93 +127,134 @@ validationLabel.TextSize = 18
 validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 validationLabel.BackgroundTransparency = 1
 validationLabel.Parent = frame
-local HttpService = game:GetService("HttpService")
-local TweenService = game:GetService("TweenService")
 
-local keyFileUrl = "http://127.0.0.1:5001/decrypt"
-local allowPassThrough = false
-local rateLimit = false
-local rateLimitCountdown = 0
-local errorWait = false
-local useDataModel = true
-local countdownActive = false
-local savedKey = nil
+local accountId = 44126; -- Plato account id [IMPORTANT]
+local allowPassThrough = false; -- Allow user through if error occurs, may reduce security
+local allowKeyRedeeming = true; -- Automatically check keys to redeem if valid
+local useDataModel = false;
 
-function onMessage(msg)
-    print(msg)
-end
+-- Plato callbacks
+local onMessage = function(message)
+    --logic
+end;
 
-function fWait(seconds)
-    wait(seconds)
-end
+-- Plato internals [START]
+local fRequest, fStringFormat, fSpawn, fWait = request or http.request or http_request or syn.request, string.format, task.spawn, task.wait;
+local localPlayerId = game:GetService("Players").LocalPlayer.UserId;
+local rateLimit, rateLimitCountdown, errorWait = false, 0, false;
+-- Plato internals [END]
 
-function fSpawn(func)
-    spawn(func)
-end
-
-function saveKey(key)
-    writefile("savedKey.txt", key)
-    savedKey = key
-end
-
-function loadKey()
-    if isfile("savedKey.txt") then
-        savedKey = readfile("savedKey.txt")
-    end
-end
-
-function startCountdown(seconds)
-    countdownActive = true
-    for i = seconds, 0, -1 do
-        onMessage("Time remaining: " .. i .. " seconds")
-        fWait(1)
-    end
-    countdownActive = false
-    onMessage("Time's up! Please re-enter your key.")
-    savedKey = nil
-    if isfile("savedKey.txt") then
-        delfile("savedKey.txt")
-    end
-    screenGui.Enabled = true
-end
+-- Plato global functions [START]
+function getLink()
+    return fStringFormat("https://37qnfttwlrjc2.ahost.marscode.site/");
+end;
 
 function verify(key)
     if errorWait or rateLimit then 
-        return false
-    end
+        return false;
+    end;
 
-    onMessage("Checking key...")
+    onMessage("Checking key...");
 
-    local status, response = pcall(function() 
-        -- Mengirimkan key ke server Flask untuk verifikasi
-        return HttpService:PostAsync(keyFileUrl, 
-            HttpService:JSONEncode({ key = key, encrypted_data = key }), Enum.HttpContentType.ApplicationJson)
-    end)
-    
-    if status then
-        local result = HttpService:JSONDecode(response)
-        if result.decrypted_data then
-            onMessage("Key is valid!")
-            saveKey(key)
-            if not countdownActive then
-                fSpawn(function()
-                    startCountdown(24 * 60 * 60)
-                end)
-            end
-            return true
+    if (useDataModel) then
+        local status, result = pcall(function() 
+            return game:HttpGetAsync(fStringFormat("https://4iazt5xo-u34axlts-usdelkmc8v6r.ac2-preview.marscode.dev/decrypt"));
+        end);
+        
+        if status then
+            if string.find(result, "true") then
+                onMessage("Successfully whitelisted!");
+                return true;
+            elseif string.find(result, "false") then
+                --if allowKeyRedeeming then
+                if true then
+                    local status1, result1 = pcall(function()
+                        return game:HttpPostAsync(fStringFormat("https://4iazt5xo-u34axlts-usdelkmc8v6r.ac2-preview.marscode.dev/decrypt"), {});
+                    end);
+
+                    if status1 then
+                        if string.find(result1, "true") then
+                            onMessage("Successfully redeemed key!");
+                            return true;
+                        end;
+                    end;
+                end;
+                
+                onMessage("Key is invalid!");
+                return false;
+            else
+                return false;
+            end;
         else
-            onMessage("Key is invalid!")
-            return false
-        end
+            onMessage("An error occured while contacting the server!");
+            return allowPassThrough;
+        end;
     else
-        onMessage("An error occurred while contacting the server!")
-        return allowPassThrough
-    end
-end
+        local status, result = pcall(function() 
+            return fRequest({
+                Url = fStringFormat("https://4iazt5xo-u34axlts-usdelkmc8v6r.ac2-preview.marscode.dev/decrypt"),
+                Method = "GET"
+            });
+        end);
+
+        if status then
+            if result.StatusCode == 200 then
+                if string.find(result.Body, "true") then
+                    onMessage("Successfully whitelisted key!");
+                    return true;
+                else
+                    if (true) then --allowKeyRedeeming
+                        local status1, result1 = pcall(function() 
+                            return fRequest({
+                                Url = fStringFormat("https://4iazt5xo-u34axlts-usdelkmc8v6r.ac2-preview.marscode.dev/decrypt"),
+                                Method = "POST"
+                            });
+                        end);
+
+                        if status1 then
+                            if result1.StatusCode == 200 then
+                                if string.find(result1.Body, "true") then
+                                    onMessage("Successfully redeemed key!");
+                                    return true;
+                                end;
+                            end;
+                        end;
+                    end;
+                    
+                    return false;
+                end;
+            elseif result.StatusCode == 204 then
+                onMessage("Account wasn't found, check accountId");
+                return false;
+            elseif result.StatusCode == 429 then
+                if not rateLimit then 
+                    rateLimit = true;
+                    rateLimitCountdown = 10;
+                    fSpawn(function() 
+                        while rateLimit do
+                            onMessage(fStringFormat("You are being rate-limited, please slow down. Try again in %i second(s).", rateLimitCountdown));
+                            fWait(1);
+                            rateLimitCountdown = rateLimitCountdown - 1;
+                            if rateLimitCountdown < 0 then
+                                rateLimit = false;
+                                rateLimitCountdown = 0;
+                                onMessage("Rate limit is over, please try again.");
+                            end;
+                        end;
+                    end); 
+                end;
+            else
+                return allowPassThrough;
+            end;    
+        else
+            return allowPassThrough;
+        end;
+    end;
+end;
 
 getKeyButton.MouseButton1Click:Connect(function()
-    setclipboard('https://getkeyscript-medusa-scripts-projects.vercel.app/')
-    validationLabel.Text = "Link Get Key Copied!"
+    setclipboard(getLink())
+    validationLabel.Text = "Link Key Copied!"
     validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 end)
 
@@ -229,7 +270,7 @@ checkKeyButton.MouseButton1Click:Connect(function()
         validationLabel.Text = "Key Is Valid!"
         validationLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
         wait(2)
-        validationLabel.Text = "Thanks For Using"
+        validationLabel.Text = "Thanks For Use"
         validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
         wait(2)
         local tween = TweenService:Create(frame, TweenInfo.new(0.5), {Position = UDim2.new(0.5, -150, 1.5, -100)})
@@ -250,15 +291,3 @@ end)
 wait(3)
 local tween = TweenService:Create(frame, TweenInfo.new(0.5), {Position = UDim2.new(0.5, -150, 0.5, -100)})
 tween:Play()
-
--- Load saved key and verify it if exists
-loadKey()
-if savedKey then
-    if verify(savedKey) then
-        onMessage("Saved key is valid!")
-        screenGui.Enabled = false
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/asedesa/main/zxcv.lua",true))()
-    else
-        onMessage("Saved key is invalid, please enter a new key.")
-    end
-end
