@@ -127,15 +127,12 @@ validationLabel.TextSize = 18
 validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 validationLabel.BackgroundTransparency = 1
 validationLabel.Parent = frame
-local HttpService = game:GetService("HttpService")
-local TweenService = game:GetService("TweenService")
-
-local keyFileUrl = "https://72h0rwzz-ta4pw41v-sdk9nur5vux.ac2-preview.marscode.dev/decrypt"
+local keyFileUrl = "https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/28s92hs/main/key.txt"
 local allowPassThrough = false
 local rateLimit = false
 local rateLimitCountdown = 0
 local errorWait = false
-local useDataModel = true
+local useDataModel = true -- Set ke true jika Anda ingin menggunakan DataModel
 local countdownActive = false
 local savedKey = nil
 
@@ -152,11 +149,13 @@ function fSpawn(func)
 end
 
 function saveKey(key)
+    -- Menyimpan kunci ke file lokal atau DataStore (jika di dalam Roblox)
     writefile("savedKey.txt", key)
     savedKey = key
 end
 
 function loadKey()
+    -- Memuat kunci dari file lokal atau DataStore
     if isfile("savedKey.txt") then
         savedKey = readfile("savedKey.txt")
     end
@@ -170,10 +169,12 @@ function startCountdown(seconds)
     end
     countdownActive = false
     onMessage("Time's up! Please re-enter your key.")
+    -- Hapus kunci setelah waktu habis
     savedKey = nil
     if isfile("savedKey.txt") then
         delfile("savedKey.txt")
     end
+    -- Tampilkan ulang GUI untuk memasukkan kunci baru
     screenGui.Enabled = true
 end
 
@@ -184,20 +185,18 @@ function verify(key)
 
     onMessage("Checking key...")
 
-    local status, response = pcall(function() 
-        -- Mengirimkan key ke server Flask untuk verifikasi
-        return HttpService:PostAsync(keyFileUrl, 
-            HttpService:JSONEncode({ key = key, encrypted_data = key }), Enum.HttpContentType.ApplicationJson)
+    local status, result = pcall(function() 
+        return game:HttpGetAsync(keyFileUrl)
     end)
     
     if status then
-        local result = HttpService:JSONDecode(response)
-        if result.decrypted_data then
+        -- Verify if the key is present in the result
+        if string.find(result, key) then
             onMessage("Key is valid!")
-            saveKey(key)
+            saveKey(key) -- Simpan kunci setelah validasi
             if not countdownActive then
                 fSpawn(function()
-                    startCountdown(24 * 60 * 60)
+                    startCountdown(24 * 60 * 60) -- Start 24-hour countdown (86400 seconds)
                 end)
             end
             return true
