@@ -58,15 +58,16 @@ label.Parent = frame
 
 -- Fungsi untuk memverifikasi key melalui API Flask
 local function verifyKey(key)
-    local url = "https://4iazt5xo-u34axlts-usdelkmc8v6r.ac2-preview.marscode.dev/decrypt" -- Ganti dengan URL Flask API yang benar
+    local url = "https://4iazt5xo-u34axlts-usdelkmc8v6r.ac2-preview.marscode.dev/decrypt" -- URL Flask API Anda
     local response
     local success, err = pcall(function()
         response = HttpService:PostAsync(url, HttpService:JSONEncode({key = key, encrypted_data = "dummy_data"}), Enum.HttpContentType.ApplicationJson)
     end)
 
     if success then
+        print("Response received: " .. response) -- Debugging output
         local result = HttpService:JSONDecode(response)
-        return result.decrypted_data ~= nil -- Sesuaikan sesuai respons dari API
+        return result.decrypted_data ~= nil -- Pastikan respons sesuai dengan yang diharapkan
     else
         warn("Error verifying key: " .. err)
         return false
