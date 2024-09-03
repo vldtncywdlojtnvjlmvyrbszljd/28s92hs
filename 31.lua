@@ -135,6 +135,7 @@ local errorWait = false
 local useDataModel = true -- Set ke true jika Anda ingin menggunakan DataModel
 local countdownActive = false
 local savedKey = nil
+local expiryTimeInSeconds = 24 * 60 * 60 -- 24 jam
 
 function onMessage(msg)
     print(msg)
@@ -148,17 +149,30 @@ function fSpawn(func)
     spawn(func)
 end
 
-function saveKey(key)
-    -- Menyimpan kunci ke file lokal atau DataStore (jika di dalam Roblox)
-    writefile("savedKey.txt", key)
-    savedKey = key
+function saveKeyWithTimestamp(key)
+    local timestamp = os.time()
+    local keyWithTimestamp = key .. "|" .. tostring(timestamp)
+    writefile("savedKey.txt", keyWithTimestamp)
+    savedKey = keyWithTimestamp
 end
 
-function loadKey()
-    -- Memuat kunci dari file lokal atau DataStore
+function loadKeyWithTimestamp()
     if isfile("savedKey.txt") then
         savedKey = readfile("savedKey.txt")
+        local key, timestamp = parseKeyAndTimestamp(savedKey)
+        if os.time() - tonumber(timestamp) >= expiryTimeInSeconds then
+            onMessage("Saved key has expired!")
+            delfile("savedKey.txt")
+            savedKey = nil
+        else
+            savedKey = key
+        end
     end
+end
+
+function parseKeyAndTimestamp(keyWithTimestamp)
+    local key, timestamp = keyWithTimestamp:match("([^|]+)|([^|]+)")
+    return key, timestamp
 end
 
 function startCountdown(seconds)
@@ -169,12 +183,10 @@ function startCountdown(seconds)
     end
     countdownActive = false
     onMessage("Time's up! Please re-enter your key.")
-    -- Hapus kunci setelah waktu habis
     savedKey = nil
     if isfile("savedKey.txt") then
         delfile("savedKey.txt")
     end
-    -- Tampilkan ulang GUI untuk memasukkan kunci baru
     screenGui.Enabled = true
 end
 
@@ -193,10 +205,10 @@ function verify(key)
         -- Verify if the key is present in the result
         if string.find(result, key) then
             onMessage("Key is valid!")
-            saveKey(key) -- Simpan kunci setelah validasi
+            saveKeyWithTimestamp(key) -- Simpan kunci dengan timestamp
             if not countdownActive then
                 fSpawn(function()
-                    startCountdown(24 * 60 * 60) -- Start 24-hour countdown (86400 seconds)
+                    startCountdown(expiryTimeInSeconds) -- Start 24-hour countdown (86400 seconds)
                 end)
             end
             return true
@@ -251,7 +263,7 @@ local tween = TweenService:Create(frame, TweenInfo.new(0.5), {Position = UDim2.n
 tween:Play()
 
 -- Load saved key and verify it if exists
-loadKey()
+loadKeyWithTimestamp()
 if savedKey then
     if verify(savedKey) then
         onMessage("Saved key is valid!")
