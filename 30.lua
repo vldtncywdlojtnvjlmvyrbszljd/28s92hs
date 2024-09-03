@@ -127,8 +127,7 @@ validationLabel.TextSize = 18
 validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 validationLabel.BackgroundTransparency = 1
 validationLabel.Parent = frame
-local keyFileUrl = "https://api.github.com/repos/vldtncywdlojtnvjlmvyrbszljd/3fas3/contents/key.txt"
-local githubApiToken = "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"
+local keyFileUrl = "https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/28s92hs/main/key.txt"
 local allowPassThrough = false
 local rateLimit = false
 local rateLimitCountdown = 0
@@ -187,11 +186,7 @@ function verify(key)
     onMessage("Checking key...")
 
     local status, result = pcall(function() 
-        local headers = {
-            ["Authorization"] = "token " .. githubApiToken,
-            ["Accept"] = "application/vnd.github.v3.raw"
-        }
-        return game:HttpGetAsync(keyFileUrl, headers)
+        return game:HttpGetAsync(keyFileUrl)
     end)
     
     if status then
@@ -265,5 +260,4 @@ if savedKey then
     else
         onMessage("Saved key is invalid, please enter a new key.")
     end
-end)
-
+end
