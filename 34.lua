@@ -47,7 +47,7 @@ end)
 
 local label = Instance.new("TextLabel")
 label.Size = UDim2.new(1, 0, 0, 50)
-label.Position = UDim2.new(0, 0, 0, 12) 
+label.Position = UDim2.new(0, 0, 0, 12)
 label.Text = "Nice To Meet You"
 label.Font = Enum.Font.SourceSansBold
 label.TextSize = 30
@@ -56,27 +56,27 @@ label.BackgroundTransparency = 1
 label.TextWrapped = true
 label.Parent = frame
 
-local label = Instance.new("TextLabel") -- baru ditambah
+local label = Instance.new("TextLabel")
 label.Size = UDim2.new(1, 0, 0, 50)
-label.Position = UDim2.new(0, 0, 0, 35) 
+label.Position = UDim2.new(0, 0, 0, 35)
 label.Text = "".. game.Players.LocalPlayer.Name
 label.Font = Enum.Font.SourceSansBold
 label.TextSize = 20
 label.TextColor3 = Color3.fromRGB(255, 255, 255)
 label.BackgroundTransparency = 1
 label.TextWrapped = true
-label.Parent = frame -- sampai sini
+label.Parent = frame
 
-local label = Instance.new("TextLabel") -- baru ditambah
+local label = Instance.new("TextLabel")
 label.Size = UDim2.new(1, 0, 0, 50)
-label.Position = UDim2.new(0, 0, 0, 55) 
+label.Position = UDim2.new(0, 0, 0, 55)
 label.Text = "".. identifyexecutor()
 label.Font = Enum.Font.SourceSansBold
 label.TextSize = 20
 label.TextColor3 = Color3.fromRGB(255, 255, 255)
 label.BackgroundTransparency = 1
 label.TextWrapped = true
-label.Parent = frame -- sampai sini
+label.Parent = frame
 
 local textBox = Instance.new("TextBox")
 textBox.Size = UDim2.new(0.8, 0, 0, 30)
@@ -96,7 +96,7 @@ getKeyButton.Text = "Get Key"
 getKeyButton.Font = Enum.Font.SourceSansBold
 getKeyButton.TextSize = 18
 getKeyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-getKeyButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0) --0, 170, 0
+getKeyButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 getKeyButton.Parent = frame
 
 local checkKeyButton = Instance.new("TextButton")
@@ -106,7 +106,7 @@ checkKeyButton.Text = "Check Key"
 checkKeyButton.Font = Enum.Font.SourceSansBold
 checkKeyButton.TextSize = 18
 checkKeyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-checkKeyButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0) --0, 170, 0
+checkKeyButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 checkKeyButton.Parent = frame
 
 local DiscordButton = Instance.new("TextButton")
@@ -121,7 +121,7 @@ DiscordButton.Parent = frame
 
 local validationLabel = Instance.new("TextLabel")
 validationLabel.Size = UDim2.new(0.8, 0, 0, 30)
-validationLabel.Position = UDim2.new(0.1, 0, 0.550, 0) --0.1, 0, 0.850, 0
+validationLabel.Position = UDim2.new(0.1, 0, 0.550, 0)
 validationLabel.Text = "Please Get Key"
 validationLabel.Font = Enum.Font.SourceSansBold
 validationLabel.TextSize = 18
@@ -156,9 +156,10 @@ function saveKeyToGitHub(key)
     local url = "https://api.github.com/repos/" .. repoOwner .. "/" .. repoName .. "/contents/" .. filePath
     local timestamp = os.time()
     local keyWithTimestamp = key .. "|" .. tostring(timestamp)
+    local encodedContent = HttpService:Base64Encode(keyWithTimestamp)
     local requestBody = HttpService:JSONEncode({
         message = "Update key",
-        content = HttpService:Base64Encode(keyWithTimestamp),
+        content = encodedContent,
         branch = "main"
     })
     local headers = {
@@ -166,17 +167,23 @@ function saveKeyToGitHub(key)
         ["Content-Type"] = "application/json"
     }
 
-    local response = HttpService:RequestAsync({
-        Url = url,
-        Method = "PUT",
-        Headers = headers,
-        Body = requestBody
-    })
+    local success, response = pcall(function()
+        return HttpService:RequestAsync({
+            Url = url,
+            Method = "PUT",
+            Headers = headers,
+            Body = requestBody
+        })
+    end)
 
-    if response.StatusCode == 201 or response.StatusCode == 200 then
-        onMessage("Key saved successfully to GitHub.")
+    if success then
+        if response.StatusCode == 201 or response.StatusCode == 200 then
+            onMessage("Key saved successfully to GitHub.")
+        else
+            warn("Failed to save key to GitHub: " .. response.StatusMessage)
+        end
     else
-        warn("Failed to save key to GitHub: " .. response.StatusMessage)
+        warn("Error saving key to GitHub: " .. response)
     end
 end
 
@@ -186,28 +193,41 @@ function deleteKeyFromGitHub()
         ["Authorization"] = "token " .. githubToken,
         ["Content-Type"] = "application/json"
     }
-    
-    local response = HttpService:GetAsync(url, true, headers)
-    local responseData = HttpService:JSONDecode(response)
-    local sha = responseData.sha
 
-    local requestBody = HttpService:JSONEncode({
-        message = "Delete key",
-        sha = sha,
-        branch = "main"
-    })
+    local success, response = pcall(function()
+        return HttpService:RequestAsync({
+            Url = url,
+            Method = "GET",
+            Headers = headers
+        })
+    end)
 
-    local deleteResponse = HttpService:RequestAsync({
-        Url = url,
-        Method = "DELETE",
-        Headers = headers,
-        Body = requestBody
-    })
+    if success then
+        local responseData = HttpService:JSONDecode(response)
+        local sha = responseData.sha
 
-    if deleteResponse.StatusCode == 200 then
-        onMessage("Key deleted successfully from GitHub.")
+        local requestBody = HttpService:JSONEncode({
+            message = "Delete key",
+            sha = sha,
+            branch = "main"
+        })
+
+        local deleteSuccess, deleteResponse = pcall(function()
+            return HttpService:RequestAsync({
+                Url = url,
+                Method = "DELETE",
+                Headers = headers,
+                Body = requestBody
+            })
+        end)
+
+        if deleteSuccess and deleteResponse.StatusCode == 200 then
+            onMessage("Key deleted successfully from GitHub.")
+        else
+            warn("Failed to delete key from GitHub: " .. deleteResponse.StatusMessage)
+        end
     else
-        warn("Failed to delete key from GitHub: " .. deleteResponse.StatusMessage)
+        warn("Error retrieving key from GitHub: " .. response)
     end
 end
 
@@ -224,11 +244,11 @@ function verify(key)
 
     onMessage("Checking key...")
 
-    local status, result = pcall(function() 
-        return game:HttpGetAsync(verifyFileUrl)
+    local success, result = pcall(function()
+        return HttpService:GetAsync(verifyFileUrl)
     end)
     
-    if status then
+    if success then
         local keyFound = false
         for keyEntry in string.gmatch(result, "[^%s]+") do
             local savedKey, savedTimestamp = keyEntry:match("([^|]+)|([^|]+)")
