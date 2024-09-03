@@ -1,6 +1,7 @@
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local TweenService = game:GetService("TweenService")
+local HttpService = game:GetService("HttpService")
 
 local screenGui = Instance.new("ScreenGui")
 screenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
@@ -55,7 +56,7 @@ label.BackgroundTransparency = 1
 label.TextWrapped = true
 label.Parent = frame
 
-local label = Instance.new("TextLabel")--baru ditambah
+local label = Instance.new("TextLabel") -- baru ditambah
 label.Size = UDim2.new(1, 0, 0, 50)
 label.Position = UDim2.new(0, 0, 0, 35) 
 label.Text = "".. game.Players.LocalPlayer.Name
@@ -64,9 +65,9 @@ label.TextSize = 20
 label.TextColor3 = Color3.fromRGB(255, 255, 255)
 label.BackgroundTransparency = 1
 label.TextWrapped = true
-label.Parent = frame--sampai sini
+label.Parent = frame -- sampai sini
 
-local label = Instance.new("TextLabel")--baru ditambah
+local label = Instance.new("TextLabel") -- baru ditambah
 label.Size = UDim2.new(1, 0, 0, 50)
 label.Position = UDim2.new(0, 0, 0, 55) 
 label.Text = "".. identifyexecutor()
@@ -75,7 +76,7 @@ label.TextSize = 20
 label.TextColor3 = Color3.fromRGB(255, 255, 255)
 label.BackgroundTransparency = 1
 label.TextWrapped = true
-label.Parent = frame--sampai sini
+label.Parent = frame -- sampai sini
 
 local textBox = Instance.new("TextBox")
 textBox.Size = UDim2.new(0.8, 0, 0, 30)
@@ -127,15 +128,17 @@ validationLabel.TextSize = 18
 validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 validationLabel.BackgroundTransparency = 1
 validationLabel.Parent = frame
+
 local keyFileUrl = "https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/3fas3/main/key.txt"
-local allowPassThrough = false
-local rateLimit = false
-local rateLimitCountdown = 0
-local errorWait = false
-local useDataModel = true -- Set ke true jika Anda ingin menggunakan DataModel
+local verifyFileUrl = "https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/28s92hs/main/key.txt"
+local githubToken = "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"
+local repoOwner = "vldtncywdlojtnvjlmvyrbszljd"
+local repoName = "3fas3"
+local filePath = "key.txt"
+local expiryTimeInSeconds = 24 * 60 * 60 -- 24 jam
+
 local countdownActive = false
 local savedKey = nil
-local expiryTimeInSeconds = 24 * 60 * 60 -- 24 jam
 
 function onMessage(msg)
     print(msg)
@@ -149,30 +152,120 @@ function fSpawn(func)
     spawn(func)
 end
 
-function saveKeyWithTimestamp(key)
+function saveKeyToGitHub(key)
+    local url = "https://api.github.com/repos/" .. repoOwner .. "/" .. repoName .. "/contents/" .. filePath
     local timestamp = os.time()
     local keyWithTimestamp = key .. "|" .. tostring(timestamp)
-    writefile("savedKey.txt", keyWithTimestamp)
-    savedKey = keyWithTimestamp
-end
+    local requestBody = HttpService:JSONEncode({
+        message = "Update key",
+        content = HttpService:Base64Encode(keyWithTimestamp),
+        branch = "main"
+    })
+    local headers = {
+        ["Authorization"] = "token " .. githubToken,
+        ["Content-Type"] = "application/json"
+    }
 
-function loadKeyWithTimestamp()
-    if isfile("savedKey.txt") then
-        savedKey = readfile("savedKey.txt")
-        local key, timestamp = parseKeyAndTimestamp(savedKey)
-        if os.time() - tonumber(timestamp) >= expiryTimeInSeconds then
-            onMessage("Saved key has expired!")
-            delfile("savedKey.txt")
-            savedKey = nil
-        else
-            savedKey = key
-        end
+    local response = HttpService:RequestAsync({
+        Url = url,
+        Method = "PUT",
+        Headers = headers,
+        Body = requestBody
+    })
+
+    if response.StatusCode == 201 or response.StatusCode == 200 then
+        onMessage("Key saved successfully to GitHub.")
+    else
+        warn("Failed to save key to GitHub: " .. response.StatusMessage)
     end
 end
 
-function parseKeyAndTimestamp(keyWithTimestamp)
-    local key, timestamp = keyWithTimestamp:match("([^|]+)|([^|]+)")
-    return key, timestamp
+function deleteKeyFromGitHub()
+    local url = "https://api.github.com/repos/" .. repoOwner .. "/" .. repoName .. "/contents/" .. filePath
+    local headers = {
+        ["Authorization"] = "token " .. githubToken,
+        ["Content-Type"] = "application/json"
+    }
+    
+    local response = HttpService:GetAsync(url, true, headers)
+    local responseData = HttpService:JSONDecode(response)
+    local sha = responseData.sha
+
+    local requestBody = HttpService:JSONEncode({
+        message = "Delete key",
+        sha = sha,
+        branch = "main"
+    })
+
+    local deleteResponse = HttpService:RequestAsync({
+        Url = url,
+        Method = "DELETE",
+        Headers = headers,
+        Body = requestBody
+    })
+
+    if deleteResponse.StatusCode == 200 then
+        onMessage("Key deleted successfully from GitHub.")
+    else
+        warn("Failed to delete key from GitHub: " .. deleteResponse.StatusMessage)
+    end
+end
+
+function checkKeyExpired(timestamp)
+    local currentTime = os.time()
+    local keyTimestamp = tonumber(timestamp)
+    return (currentTime - keyTimestamp) > expiryTimeInSeconds
+end
+
+function verify(key)
+    if countdownActive then 
+        return false
+    end
+
+    onMessage("Checking key...")
+
+    local status, result = pcall(function() 
+        return game:HttpGetAsync(verifyFileUrl)
+    end)
+    
+    if status then
+        local keyFound = false
+        for keyEntry in string.gmatch(result, "[^%s]+") do
+            local savedKey, savedTimestamp = keyEntry:match("([^|]+)|([^|]+)")
+            if savedKey == key and not checkKeyExpired(savedTimestamp) then
+                keyFound = true
+                break
+            end
+        end
+        
+        if keyFound then
+            onMessage("Key is valid!")
+            savedKey = key
+            saveKeyWithTimestamp(key) -- Simpan kunci dengan timestamp
+            saveKeyToGitHub(key) -- Simpan kunci ke GitHub
+            if not countdownActive then
+                fSpawn(function()
+                    startCountdown(expiryTimeInSeconds)
+                end)
+            end
+            return true
+        else
+            onMessage("Key is invalid or expired!")
+            return false
+        end
+    else
+        onMessage("An error occurred while contacting the server!")
+        return false
+    end
+end
+
+function saveKeyWithTimestamp(key)
+    local keyWithTimestamp = key .. "|" .. tostring(os.time())
+    local file = io.open("savedKey.txt", "w")
+    if file then
+        file:write(keyWithTimestamp)
+        file:close()
+    end
 end
 
 function startCountdown(seconds)
@@ -186,90 +279,21 @@ function startCountdown(seconds)
     savedKey = nil
     if isfile("savedKey.txt") then
         delfile("savedKey.txt")
+        deleteKeyFromGitHub() -- Menghapus key dari GitHub setelah kadaluarsa
     end
     screenGui.Enabled = true
 end
 
-function verify(key)
-    if errorWait or rateLimit then 
-        return false
-    end
-
-    onMessage("Checking key...")
-
-    local status, result = pcall(function() 
-        return game:HttpGetAsync(keyFileUrl)
-    end)
-    
-    if status then
-        -- Verify if the key is present in the result
-        if string.find(result, key) then
-            onMessage("Key is valid!")
-            saveKeyWithTimestamp(key) -- Simpan kunci dengan timestamp
-            if not countdownActive then
-                fSpawn(function()
-                    startCountdown(expiryTimeInSeconds) -- Start 24-hour countdown (86400 seconds)
-                end)
-            end
-            return true
-        else
-            onMessage("Key is invalid!")
-            return false
-        end
-    else
-        onMessage("An error occurred while contacting the server!")
-        return allowPassThrough
-    end
-end
-
 getKeyButton.MouseButton1Click:Connect(function()
-    setclipboard('https://getkeyscript-medusa-scripts-projects.vercel.app/')
-    validationLabel.Text = "Link Get Key Copied!"
-    validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-end)
-
-DiscordButton.MouseButton1Click:Connect(function()
-    setclipboard('https://discord.com/invite/brutality-hub-1182005198206545941')
-    validationLabel.Text = "Link Discord Copied!"
-    validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    -- Implementasi untuk mendapatkan key
 end)
 
 checkKeyButton.MouseButton1Click:Connect(function()
     local key = textBox.Text
-    if verify(key) then
-        validationLabel.Text = "Key Is Valid!"
-        validationLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
-        wait(2)
-        validationLabel.Text = "Thanks For Using"
-        validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-        wait(2)
-        local tween = TweenService:Create(frame, TweenInfo.new(0.5), {Position = UDim2.new(0.5, -150, 1.5, -100)})
-        tween:Play()
-        tween.Completed:Connect(function()
-            screenGui:Destroy()
-        end)
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/asedesa/main/zxcv.lua",true))()
+    if key and key ~= "" then
+        local isValid = verify(key)
+        validationLabel.Text = isValid and "Key Validated!" or "Invalid Key"
     else
-        validationLabel.Text = "Checking Key..."
-        validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-        wait(1.7)
-        validationLabel.Text = "Key Is Not Valid!"
-        validationLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+        validationLabel.Text = "Please enter a key!"
     end
 end)
-
-wait(3)
-local tween = TweenService:Create(frame, TweenInfo.new(0.5), {Position = UDim2.new(0.5, -150, 0.5, -100)})
-tween:Play()
-
--- Load saved key and verify it if exists
-loadKeyWithTimestamp()
-if savedKey then
-    if verify(savedKey) then
-        onMessage("Saved key is valid!")
-        screenGui.Enabled = false
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/asedesa/main/zxcv.lua",true))()
-    else
-        onMessage("Saved key is invalid, please enter a new key.")
-    end
-end
