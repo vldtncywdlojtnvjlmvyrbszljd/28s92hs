@@ -7685,7 +7685,7 @@ SNt:AddToggle('Kill Sea Beast Hop', false, function(value)
     end)
     
 SNt:AddSeperator(" Sea Event ")
-if world3 then
+if World3 then
 spawn(function()
     pcall(function()
         while wait() do
@@ -11957,7 +11957,7 @@ tween:Play()
 
 local SoundSFX = Instance.new("Sound") --sound race v4
 SoundSFX.Parent = workspace
-SoundSFX.SoundId = "rbxassetid://14145624031"  --1904813041
+SoundSFX.SoundId = "rbxassetid://1904813041"
 SoundSFX:Play()
 SoundSFX.Name = "POwfpxzxzfFfFF"
 game:GetService("Workspace").Map["Temple of Time"].Lever.Prompt:FindFirstChild("ProximityPrompt"):Remove()
