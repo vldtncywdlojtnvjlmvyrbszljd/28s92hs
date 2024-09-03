@@ -11955,9 +11955,9 @@ local tween = TweenService:Create(partnew, tweenInfo, {Position = endPosition})
 
 tween:Play()
 
-local SoundSFX = Instance.new("Sound")
+local SoundSFX = Instance.new("Sound") --sound race v4
 SoundSFX.Parent = workspace
-SoundSFX.SoundId = "rbxassetid://1904813041"
+SoundSFX.SoundId = "rbxassetid://14145624031"  --1904813041
 SoundSFX:Play()
 SoundSFX.Name = "POwfpxzxzfFfFF"
 game:GetService("Workspace").Map["Temple of Time"].Lever.Prompt:FindFirstChild("ProximityPrompt"):Remove()
@@ -14902,6 +14902,7 @@ end)
 
     Mh:AddSeperator("Play Music Song")
     Mh:AddLabel("Turn On Inf Ability")
+    --[[
     local MusicId = nil
     local MusicToggle = false
     local currentSound = nil
@@ -14925,7 +14926,7 @@ end)
         end
     end
 
-    Mh:AddTextbox("Paste Id Music", true, MusicId, function(value)
+    Mh:AddTextbox("Paste Id Music", true,function(value)
         MusicId = value
         playMusic()
         end)
@@ -14960,7 +14961,7 @@ Mh:AddButton("Copy Id Music",function()
     setclipboard("14145624031")
     --end
 end)
-
+]]
 
 Mh:AddSeperator("Mod Hack By Medusa")
     
