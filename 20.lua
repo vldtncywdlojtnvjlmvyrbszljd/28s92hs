@@ -1,3 +1,4 @@
+local HttpService = game:GetService("HttpService")
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local TweenService = game:GetService("TweenService")
@@ -21,7 +22,7 @@ headerLabel.Position = UDim2.new(0, 0, 0, 0)
 headerLabel.Text = "BRUTALITY HUB V4"
 headerLabel.Font = Enum.Font.SourceSansBold
 headerLabel.TextSize = 18
-headerLabel.TextColor3 = Color3.fromRGB(222, 142, 4)
+headerLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
 headerLabel.BackgroundTransparency = 1
 headerLabel.TextWrapped = true
 headerLabel.Parent = frame
@@ -46,8 +47,8 @@ end)
 
 local label = Instance.new("TextLabel")
 label.Size = UDim2.new(1, 0, 0, 50)
-label.Position = UDim2.new(0, 0, 0, 12) 
-label.Text = "HELLO MY FRIEND "
+label.Position = UDim2.new(0, 0, 0, 12)
+label.Text = "Nice To Meet You"
 label.Font = Enum.Font.SourceSansBold
 label.TextSize = 30
 label.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -55,222 +56,63 @@ label.BackgroundTransparency = 1
 label.TextWrapped = true
 label.Parent = frame
 
-local label = Instance.new("TextLabel")--baru ditambah
-label.Size = UDim2.new(1, 0, 0, 50)
-label.Position = UDim2.new(0, 0, 0, 35) 
-label.Text = "".. game.Players.LocalPlayer.Name
-label.Font = Enum.Font.SourceSansBold
-label.TextSize = 20
-label.TextColor3 = Color3.fromRGB(255, 255, 255)
-label.BackgroundTransparency = 1
-label.TextWrapped = true
-label.Parent = frame--sampai sini
+-- Fungsi untuk memverifikasi key melalui API Flask
+local function verifyKey(key)
+    local url = "http://127.0.0.1:5001/decrypt" -- Ganti dengan URL Flask API yang benar
+    local response
+    local success, err = pcall(function()
+        response = HttpService:PostAsync(url, HttpService:JSONEncode({key = key, encrypted_data = "dummy_data"}), Enum.HttpContentType.ApplicationJson)
+    end)
 
-local label = Instance.new("TextLabel")--baru ditambah
-label.Size = UDim2.new(1, 0, 0, 50)
-label.Position = UDim2.new(0, 0, 0, 55) 
-label.Text = "".. identifyexecutor()
-label.Font = Enum.Font.SourceSansBold
-label.TextSize = 20
-label.TextColor3 = Color3.fromRGB(255, 255, 255)
-label.BackgroundTransparency = 1
-label.TextWrapped = true
-label.Parent = frame--sampai sini
+    if success then
+        local result = HttpService:JSONDecode(response)
+        return result.decrypted_data ~= nil -- Sesuaikan sesuai respons dari API
+    else
+        warn("Error verifying key: " .. err)
+        return false
+    end
+end
 
 local textBox = Instance.new("TextBox")
-textBox.Size = UDim2.new(0.8, 0, 0, 30)
-textBox.Position = UDim2.new(0.1, 0, 0.4, 0)
-textBox.Text = "Enter Key Here"
+textBox.Size = UDim2.new(0, 200, 0, 50)
+textBox.Position = UDim2.new(0.5, -100, 0.5, -25)
+textBox.Text = "Enter Key"
 textBox.Font = Enum.Font.SourceSans
 textBox.TextSize = 18
-textBox.TextColor3 = Color3.fromRGB(0, 0, 0)
-textBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-textBox.TextWrapped = true
+textBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+textBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 textBox.Parent = frame
 
-local getKeyButton = Instance.new("TextButton")
-getKeyButton.Size = UDim2.new(0.4, 0, 0, 30)
-getKeyButton.Position = UDim2.new(0.1, 0, 0.7, 0)
-getKeyButton.Text = "Get Key"
-getKeyButton.Font = Enum.Font.SourceSansBold
-getKeyButton.TextSize = 18
-getKeyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-getKeyButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0) --0, 170, 0
-getKeyButton.Parent = frame
-
 local checkKeyButton = Instance.new("TextButton")
-checkKeyButton.Size = UDim2.new(0.4, 0, 0, 30)
-checkKeyButton.Position = UDim2.new(0.5, 0, 0.7, 0)
+checkKeyButton.Size = UDim2.new(0, 100, 0, 50)
+checkKeyButton.Position = UDim2.new(0.5, -50, 0.7, 0)
 checkKeyButton.Text = "Check Key"
 checkKeyButton.Font = Enum.Font.SourceSansBold
 checkKeyButton.TextSize = 18
 checkKeyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-checkKeyButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0) --0, 170, 0
+checkKeyButton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
 checkKeyButton.Parent = frame
 
-local DiscordButton = Instance.new("TextButton")
-DiscordButton.Size = UDim2.new(0.8, 0, 0, 30)
-DiscordButton.Position = UDim2.new(0.10, 0, 0.850, 0)
-DiscordButton.Text = "Join Discord"
-DiscordButton.Font = Enum.Font.SourceSansBold
-DiscordButton.TextSize = 18
-DiscordButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-DiscordButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-DiscordButton.Parent = frame
-
 local validationLabel = Instance.new("TextLabel")
-validationLabel.Size = UDim2.new(0.8, 0, 0, 30)
-validationLabel.Position = UDim2.new(0.1, 0, 0.550, 0) --0.1, 0, 0.850, 0
-validationLabel.Text = "Please Get Key"
-validationLabel.Font = Enum.Font.SourceSansBold
-validationLabel.TextSize = 18
+validationLabel.Size = UDim2.new(1, 0, 0, 30)
+validationLabel.Position = UDim2.new(0, 0, 0.8, 0)
+validationLabel.Text = ""
+validationLabel.Font = Enum.Font.SourceSans
+validationLabel.TextSize = 16
 validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 validationLabel.BackgroundTransparency = 1
 validationLabel.Parent = frame
 
-local accountId = 44126; -- Plato account id [IMPORTANT]
-local allowPassThrough = false; -- Allow user through if error occurs, may reduce security
-local allowKeyRedeeming = true; -- Automatically check keys to redeem if valid
-local useDataModel = false;
-
--- Plato callbacks
-local onMessage = function(message)
-    --logic
-end;
-
--- Plato internals [START]
-local fRequest, fStringFormat, fSpawn, fWait = request or http.request or http_request or syn.request, string.format, task.spawn, task.wait;
-local localPlayerId = game:GetService("Players").LocalPlayer.UserId;
-local rateLimit, rateLimitCountdown, errorWait = false, 0, false;
--- Plato internals [END]
-
--- Plato global functions [START]
-function getLink()
-    return fStringFormat("https://37qnfttwlrjc2.ahost.marscode.site/");
-end;
-
-function verify(key)
-    if errorWait or rateLimit then 
-        return false;
-    end;
-
-    onMessage("Checking key...");
-
-    if (useDataModel) then
-        local status, result = pcall(function() 
-            return game:HttpGetAsync(fStringFormat("https://4iazt5xo-u34axlts-usdelkmc8v6r.ac2-preview.marscode.dev/generate-key));
-        end);
-        
-        if status then
-            if string.find(result, "true") then
-                onMessage("Successfully whitelisted!");
-                return true;
-            elseif string.find(result, "false") then
-                --if allowKeyRedeeming then
-                if true then
-                    local status1, result1 = pcall(function()
-                        return game:HttpPostAsync(fStringFormat("https://4iazt5xo-u34axlts-usdelkmc8v6r.ac2-preview.marscode.dev/generate-key"), {});
-                    end);
-
-                    if status1 then
-                        if string.find(result1, "true") then
-                            onMessage("Successfully redeemed key!");
-                            return true;
-                        end;
-                    end;
-                end;
-                
-                onMessage("Key is invalid!");
-                return false;
-            else
-                return false;
-            end;
-        else
-            onMessage("An error occured while contacting the server!");
-            return allowPassThrough;
-        end;
-    else
-        local status, result = pcall(function() 
-            return fRequest({
-                Url = fStringFormat("https://4iazt5xo-u34axlts-usdelkmc8v6r.ac2-preview.marscode.dev/generate-key"),
-                Method = "GET"
-            });
-        end);
-
-        if status then
-            if result.StatusCode == 200 then
-                if string.find(result.Body, "true") then
-                    onMessage("Successfully whitelisted key!");
-                    return true;
-                else
-                    if (true) then --allowKeyRedeeming
-                        local status1, result1 = pcall(function() 
-                            return fRequest({
-                                Url = fStringFormat("https://4iazt5xo-u34axlts-usdelkmc8v6r.ac2-preview.marscode.dev/generate-key"),
-                                Method = "POST"
-                            });
-                        end);
-
-                        if status1 then
-                            if result1.StatusCode == 200 then
-                                if string.find(result1.Body, "true") then
-                                    onMessage("Successfully redeemed key!");
-                                    return true;
-                                end;
-                            end;
-                        end;
-                    end;
-                    
-                    return false;
-                end;
-            elseif result.StatusCode == 204 then
-                onMessage("Account wasn't found, check accountId");
-                return false;
-            elseif result.StatusCode == 429 then
-                if not rateLimit then 
-                    rateLimit = true;
-                    rateLimitCountdown = 10;
-                    fSpawn(function() 
-                        while rateLimit do
-                            onMessage(fStringFormat("You are being rate-limited, please slow down. Try again in %i second(s).", rateLimitCountdown));
-                            fWait(1);
-                            rateLimitCountdown = rateLimitCountdown - 1;
-                            if rateLimitCountdown < 0 then
-                                rateLimit = false;
-                                rateLimitCountdown = 0;
-                                onMessage("Rate limit is over, please try again.");
-                            end;
-                        end;
-                    end); 
-                end;
-            else
-                return allowPassThrough;
-            end;    
-        else
-            return allowPassThrough;
-        end;
-    end;
-end;
-
-getKeyButton.MouseButton1Click:Connect(function()
-    setclipboard(getLink())
-    validationLabel.Text = "Link Key Copied!"
-    validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-end)
-
-DiscordButton.MouseButton1Click:Connect(function()
-    setclipboard('https://discord.com/invite/brutality-hub-1182005198206545941')
-    validationLabel.Text = "Link Discord Copied!"
-    validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-end)
-
 checkKeyButton.MouseButton1Click:Connect(function()
     local key = textBox.Text
-    if verify(key) then
+    validationLabel.Text = "Checking Key..."
+    validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+
+    if verifyKey(key) then
         validationLabel.Text = "Key Is Valid!"
         validationLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
         wait(2)
-        validationLabel.Text = "Thanks For Use"
+        validationLabel.Text = "Thanks For Using"
         validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
         wait(2)
         local tween = TweenService:Create(frame, TweenInfo.new(0.5), {Position = UDim2.new(0.5, -150, 1.5, -100)})
@@ -278,11 +120,9 @@ checkKeyButton.MouseButton1Click:Connect(function()
         tween.Completed:Connect(function()
             screenGui:Destroy()
         end)
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/asedesa/main/zxcv.lua",true))()
+        -- Muat skrip dari server setelah validasi berhasil
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/asedesa/main/zxcv.lua", true))()
     else
-        validationLabel.Text = "Checking Key..."
-        validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-        wait(1.7)
         validationLabel.Text = "Key Is Not Valid!"
         validationLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
     end
