@@ -265,4 +265,5 @@ if savedKey then
     else
         onMessage("Saved key is invalid, please enter a new key.")
     end
-end
+end)
+
