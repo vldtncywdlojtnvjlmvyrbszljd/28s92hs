@@ -158,7 +158,7 @@ function verify(key)
 
     if (useDataModel) then
         local status, result = pcall(function() 
-            return game:HttpGetAsync(fStringFormat("https://4iazt5xo-u34axlts-usdelkmc8v6r.ac2-preview.marscode.dev/decrypt"));
+            return game:HttpGetAsync(fStringFormat("https://4iazt5xo-u34axlts-usdelkmc8v6r.ac2-preview.marscode.dev/generate-key));
         end);
         
         if status then
@@ -169,7 +169,7 @@ function verify(key)
                 --if allowKeyRedeeming then
                 if true then
                     local status1, result1 = pcall(function()
-                        return game:HttpPostAsync(fStringFormat("https://4iazt5xo-u34axlts-usdelkmc8v6r.ac2-preview.marscode.dev/decrypt"), {});
+                        return game:HttpPostAsync(fStringFormat("https://4iazt5xo-u34axlts-usdelkmc8v6r.ac2-preview.marscode.dev/generate-key"), {});
                     end);
 
                     if status1 then
@@ -192,7 +192,7 @@ function verify(key)
     else
         local status, result = pcall(function() 
             return fRequest({
-                Url = fStringFormat("https://4iazt5xo-u34axlts-usdelkmc8v6r.ac2-preview.marscode.dev/decrypt"),
+                Url = fStringFormat("https://4iazt5xo-u34axlts-usdelkmc8v6r.ac2-preview.marscode.dev/generate-key"),
                 Method = "GET"
             });
         end);
@@ -206,7 +206,7 @@ function verify(key)
                     if (true) then --allowKeyRedeeming
                         local status1, result1 = pcall(function() 
                             return fRequest({
-                                Url = fStringFormat("https://4iazt5xo-u34axlts-usdelkmc8v6r.ac2-preview.marscode.dev/decrypt"),
+                                Url = fStringFormat("https://4iazt5xo-u34axlts-usdelkmc8v6r.ac2-preview.marscode.dev/generate-key"),
                                 Method = "POST"
                             });
                         end);
