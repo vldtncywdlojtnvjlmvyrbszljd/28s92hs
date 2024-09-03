@@ -130,7 +130,7 @@ validationLabel.Parent = frame
 local HttpService = game:GetService("HttpService")
 local TweenService = game:GetService("TweenService")
 
-local keyFileUrl = "https://4iazt5xo-u34axlts-usdelkmc8v6r.ac2-preview.marscode.dev/decrypt"
+local keyFileUrl = "http://127.0.0.1:5001/decrypt"
 local allowPassThrough = false
 local rateLimit = false
 local rateLimitCountdown = 0
