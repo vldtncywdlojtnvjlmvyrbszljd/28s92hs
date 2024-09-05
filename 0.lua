@@ -4701,10 +4701,10 @@ spawn(function()
   end
 end)
 
-Main:AddToggle("Super Fast Attack", _G.Fastattack, function(value)
+Main:AddToggle("Super Fast Attack",true,function(value)
         _G.FastAttack = value
     end)
-    
+
 --[[
 Main:AddToggle("Attack Aura",true,function(value)
         _G.AttackMob = value
@@ -4894,7 +4894,7 @@ end
     end)
     spawn(function()
         while wait() do
-            if FarmMode == "Normal" and _G.AutoFarm and then
+            if FarmMode == "Normal" and _G.AutoFarm then
                 pcall(function()
                     local QuestTitle = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text
                     if not string.find(QuestTitle, NameMon) then
@@ -4961,7 +4961,7 @@ end
     
     spawn(function()
         while wait() do
-            if FarmMode == "Not Tween To Npc Quest" and _G.AutoFarm and then
+            if FarmMode == "Not Tween To Npc Quest" and _G.AutoFarm then
                 pcall(function()
                     local QuestTitle = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text
                     if not string.find(QuestTitle, NameMon) then
