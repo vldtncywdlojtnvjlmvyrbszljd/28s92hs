@@ -4701,7 +4701,7 @@ spawn(function()
   end
 end)
 
-Main:AddToggle("Super Fast Attack ", _G.Fastattack, function(value)
+Main:AddToggle("Super Fast Attack", _G.Fastattack, function(value)
         _G.FastAttack = value
     end)
 Main:AddToggle("Attack Aura",true,function(value)
