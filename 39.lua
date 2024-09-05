@@ -4704,6 +4704,8 @@ end)
 Main:AddToggle("Super Fast Attack", _G.Fastattack, function(value)
         _G.FastAttack = value
     end)
+    
+--[[
 Main:AddToggle("Attack Aura",true,function(value)
         _G.AttackMob = value
     end)
@@ -4795,7 +4797,7 @@ function AttackNoCD()
         end
     end
 end    
-
+]]
    Main:AddSeperator("Farm Level")
    --status monster farm level
 local MonsterStatus = Main:AddLabel("")
