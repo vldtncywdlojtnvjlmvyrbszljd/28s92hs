@@ -4701,11 +4701,11 @@ spawn(function()
   end
 end)
 
-Main:AddToggle("Super Fast Attack",true,function(value)
+Main:AddToggle("Super Fast Attack",false,function(value)
         _G.FastAttack = value
     end)
 
---[[
+
 Main:AddToggle("Attack Aura",true,function(value)
         _G.AttackMob = value
     end)
@@ -4797,7 +4797,7 @@ function AttackNoCD()
         end
     end
 end    
-]]
+
    Main:AddSeperator("Farm Level")
    --status monster farm level
 local MonsterStatus = Main:AddLabel("")
