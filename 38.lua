@@ -4735,7 +4735,7 @@ function GetCurrentBlade()
 end
 
 function AttackNoCD()
-    if not _G.AutoFarmFruitMastery or not _G.AutoFarmGunMastery then
+    if not _G.AutoFarmGunMastery then
         if _G.FastAttack then
             local U = RBlade.activeController
             for h = 1, 1 do
