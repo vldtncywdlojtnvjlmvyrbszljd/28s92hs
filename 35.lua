@@ -4706,6 +4706,25 @@ Main:AddToggle("Super Fast Attack ",true,function(value)
     end)      
 
    Main:AddSeperator("Farm Level")
+   --status monster farm level
+local MonsterStatus = Main:AddLabel("")
+local QuestStatus = Main:AddLabel("")
+
+spawn(function()
+  while task.wait() do
+  if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
+  MonsterStatus:Set("[Monster] : ...")
+  QuestStatus:Set("[Quest] : ...".." | [Level] : ...")
+  elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
+  pcall(function()
+    CheckQuest()
+    MonsterStatus:Set("[Monster] : "..Mon)
+    QuestStatus:Set("[Quest] : "..NameQuest.." | [Level] : "..LevelQuest)
+    end)
+  end
+  end
+  end)
+--berakhir disini
 
    Main:AddToggle("Auto Farm Kaitun",false,function(value)
     _G.AutoFarm = value
@@ -4775,25 +4794,6 @@ elseif World2 then
 elseif World3 then
  tableMon = {"Pirate Millionaire","Dragon Crew Warrior","Dragon Crew Archer","Female Islander","Giant Islander","Marine Commodore","Marine Rear Admiral","Fishman Raider","Fishman Captain","Forest Pirate","Mythological Pirate","Jungle Pirate","Musketeer Pirate","Reborn Skeleton","Living Zombie","Demonic Soul","Posessed Mummy","Peanut Scout","Peanut President","Ice Cream Chef","Ice Cream Commander","Cookie Crafter","Cake Guard","Baking Staff","Head Baker","Cocoa Warrior","Chocolate Bar Battler","Sweet Thief","Candy Rebel","Candy Pirate","Snow Demon","Isle Outlaw","Island Boy","Sun-kissed Warrior","Isle Champion"}
 end
---status monster farm level
-local MonsterStatus = Main:AddLabel("")
-local QuestStatus = Main:AddLabel("")
-
-spawn(function()
-  while task.wait() do
-  if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
-  MonsterStatus:Set("[Monster] : ...")
-  QuestStatus:Set("[Quest] : ...".." | [Level] : ...")
-  elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
-  pcall(function()
-    CheckQuest()
-    MonsterStatus:Set("[Monster] : "..Mon)
-    QuestStatus:Set("[Quest] : "..NameQuest.." | [Level] : "..LevelQuest)
-    end)
-  end
-  end
-  end)
---berakhir disini
     Main:AddToggle("Auto Farm Level",_G.AutoFarm,function(value)
         _G.AutoFarm = value
         StopTween(_G.AutoFarm)
@@ -4801,7 +4801,7 @@ spawn(function()
     end)
     spawn(function()
         while wait() do
-            if FarmMode == "Normal" and _G.AutoFarm then
+            if FarmMode == "Normal" and _G.AutoFarm and _G.FastAttackDelay  then
                 pcall(function()
                     local QuestTitle = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text
                     if not string.find(QuestTitle, NameMon) then
@@ -4868,7 +4868,7 @@ spawn(function()
     
     spawn(function()
         while wait() do
-            if FarmMode == "Not Tween To Npc Quest" and _G.AutoFarm then
+            if FarmMode == "Not Tween To Npc Quest" and _G.AutoFarm and _G.FastAttackDelay then
                 pcall(function()
                     local QuestTitle = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text
                     if not string.find(QuestTitle, NameMon) then
