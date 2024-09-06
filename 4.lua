@@ -190,18 +190,14 @@ function startCountdown(seconds)
     screenGui.Enabled = true
 end
 
+-- Fungsi untuk memverifikasi kunci dengan API
 function verify(key)
-    local url = "https://bteam2822.pythonanywhere.com/api/authenticate" -- URL API yang Anda gunakan
+    local url = "https://bteam2822.pythonanywhere.com/api/authenticate" -- URL API Anda
 
     -- Membuat body request dalam format JSON
     local requestBody = HttpService:JSONEncode({
         key = key  -- Mengirimkan kunci yang diinput oleh pengguna
     })
-
-    -- Menyiapkan header untuk request POST
-    local headers = {
-        ["Content-Type"] = "application/json"  -- Konten request berupa JSON
-    }
 
     -- Mengirimkan request POST ke API
     local success, response = pcall(function()
@@ -215,38 +211,27 @@ function verify(key)
         
         -- Cek apakah status dari API adalah "success"
         if result.status == "success" then
-            return true -- Kunci valid
-        else
-            return false -- Kunci tidak valid
-        end
-    else
-        -- Jika terjadi error saat request
-        warn("Gagal memvalidasi kunci: " .. tostring(response))
-        return false -- Request gagal
-    end
-end
-    
-    if status then
-        -- Verify if the key is present in the result
-        if string.find(result, key) then
             onMessage("Key is valid!")
             saveKeyWithTimestamp(key) -- Simpan kunci dengan timestamp
             if not countdownActive then
                 fSpawn(function()
-                    startCountdown(expiryTimeInSeconds) -- Start 24-hour countdown (86400 seconds)
+                    startCountdown(expiryTimeInSeconds) -- Mulai countdown 24 jam (86400 detik)
                 end)
             end
-            return true
+            return true -- Kunci valid
         else
             onMessage("Key is invalid!")
-            return false
+            return false -- Kunci tidak valid
         end
     else
+        -- Jika terjadi error saat request
         onMessage("An error occurred while contacting the server!")
-        return allowPassThrough
+        warn("Gagal memvalidasi kunci: " .. tostring(response))
+        return false -- Request gagal
     end
 end
 
+-- Bagian GUI dan tombol
 getKeyButton.MouseButton1Click:Connect(function()
     setclipboard('https://getkeyscript-medusa-scripts-projects.vercel.app/')
     validationLabel.Text = "Link Get Key Copied!"
