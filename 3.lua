@@ -128,44 +128,6 @@ validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 validationLabel.BackgroundTransparency = 1
 validationLabel.Parent = frame
 local HttpService = game:GetService("HttpService")
-
--- Fungsi untuk memverifikasi kunci dengan API
-function verify(key)
-    local url = "https://bteam2822.pythonanywhere.com/api/authenticate" -- URL API yang Anda gunakan
-
-    -- Membuat body request dalam format JSON
-    local requestBody = HttpService:JSONEncode({
-        key = key  -- Mengirimkan kunci yang diinput oleh pengguna
-    })
-
-    -- Menyiapkan header untuk request POST
-    local headers = {
-        ["Content-Type"] = "application/json"  -- Konten request berupa JSON
-    }
-
-    -- Mengirimkan request POST ke API
-    local success, response = pcall(function()
-        return HttpService:PostAsync(url, requestBody, Enum.HttpContentType.ApplicationJson, false)
-    end)
-
-    -- Jika request berhasil
-    if success then
-        -- Menguraikan respons JSON dari API
-        local result = HttpService:JSONDecode(response)
-        
-        -- Cek apakah status dari API adalah "success"
-        if result.status == "success" then
-            return true -- Kunci valid
-        else
-            return false -- Kunci tidak valid
-        end
-    else
-        -- Jika terjadi error saat request
-        warn("Gagal memvalidasi kunci: " .. tostring(response))
-        return false -- Request gagal
-    end
-end
-
 local allowPassThrough = false
 local rateLimit = false
 local rateLimitCountdown = 0
@@ -229,15 +191,40 @@ function startCountdown(seconds)
 end
 
 function verify(key)
-    if errorWait or rateLimit then 
-        return false
-    end
+    local url = "https://bteam2822.pythonanywhere.com/api/authenticate" -- URL API yang Anda gunakan
 
-    onMessage("Checking key...")
+    -- Membuat body request dalam format JSON
+    local requestBody = HttpService:JSONEncode({
+        key = key  -- Mengirimkan kunci yang diinput oleh pengguna
+    })
 
-    local status, result = pcall(function() 
-        return game:HttpGetAsync(keyFileUrl)
+    -- Menyiapkan header untuk request POST
+    local headers = {
+        ["Content-Type"] = "application/json"  -- Konten request berupa JSON
+    }
+
+    -- Mengirimkan request POST ke API
+    local success, response = pcall(function()
+        return HttpService:PostAsync(url, requestBody, Enum.HttpContentType.ApplicationJson, false)
     end)
+
+    -- Jika request berhasil
+    if success then
+        -- Menguraikan respons JSON dari API
+        local result = HttpService:JSONDecode(response)
+        
+        -- Cek apakah status dari API adalah "success"
+        if result.status == "success" then
+            return true -- Kunci valid
+        else
+            return false -- Kunci tidak valid
+        end
+    else
+        -- Jika terjadi error saat request
+        warn("Gagal memvalidasi kunci: " .. tostring(response))
+        return false -- Request gagal
+    end
+end
     
     if status then
         -- Verify if the key is present in the result
