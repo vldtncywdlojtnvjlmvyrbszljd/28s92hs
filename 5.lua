@@ -128,27 +128,19 @@ validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 validationLabel.BackgroundTransparency = 1
 validationLabel.Parent = frame
 local HttpService = game:GetService("HttpService")
+local TweenService = game:GetService("TweenService")
+
 local allowPassThrough = false
-local rateLimit = false
-local rateLimitCountdown = 0
-local errorWait = false
-local useDataModel = true -- Set ke true jika Anda ingin menggunakan DataModel
 local countdownActive = false
 local savedKey = nil
 local expiryTimeInSeconds = 24 * 60 * 60 -- 24 jam
 
+-- Fungsi untuk mengirimkan pesan status
 function onMessage(msg)
     print(msg)
 end
 
-function fWait(seconds)
-    wait(seconds)
-end
-
-function fSpawn(func)
-    spawn(func)
-end
-
+-- Fungsi untuk menyimpan kunci dengan timestamp
 function saveKeyWithTimestamp(key)
     local timestamp = os.time()
     local keyWithTimestamp = key .. "|" .. tostring(timestamp)
@@ -156,6 +148,7 @@ function saveKeyWithTimestamp(key)
     savedKey = keyWithTimestamp
 end
 
+-- Fungsi untuk memuat kunci yang tersimpan
 function loadKeyWithTimestamp()
     if isfile("savedKey.txt") then
         savedKey = readfile("savedKey.txt")
@@ -170,33 +163,19 @@ function loadKeyWithTimestamp()
     end
 end
 
+-- Fungsi untuk memisahkan kunci dan timestamp
 function parseKeyAndTimestamp(keyWithTimestamp)
     local key, timestamp = keyWithTimestamp:match("([^|]+)|([^|]+)")
     return key, timestamp
 end
 
-function startCountdown(seconds)
-    countdownActive = true
-    for i = seconds, 0, -1 do
-        onMessage("Time remaining: " .. i .. " seconds")
-        fWait(1)
-    end
-    countdownActive = false
-    onMessage("Time's up! Please re-enter your key.")
-    savedKey = nil
-    if isfile("savedKey.txt") then
-        delfile("savedKey.txt")
-    end
-    screenGui.Enabled = true
-end
-
--- Fungsi untuk memverifikasi kunci dengan API
+-- Fungsi untuk verifikasi kunci melalui API
 function verify(key)
     local url = "https://bteam2822.pythonanywhere.com/api/authenticate" -- URL API Anda
 
     -- Membuat body request dalam format JSON
     local requestBody = HttpService:JSONEncode({
-        key = key  -- Mengirimkan kunci yang diinput oleh pengguna
+        key = key -- Mengirimkan kunci yang diinput oleh pengguna
     })
 
     -- Mengirimkan request POST ke API
@@ -211,21 +190,12 @@ function verify(key)
         
         -- Cek apakah status dari API adalah "success"
         if result.status == "success" then
-            onMessage("Key is valid!")
-            saveKeyWithTimestamp(key) -- Simpan kunci dengan timestamp
-            if not countdownActive then
-                fSpawn(function()
-                    startCountdown(expiryTimeInSeconds) -- Mulai countdown 24 jam (86400 detik)
-                end)
-            end
             return true -- Kunci valid
         else
-            onMessage("Key is invalid!")
             return false -- Kunci tidak valid
         end
     else
         -- Jika terjadi error saat request
-        onMessage("An error occurred while contacting the server!")
         warn("Gagal memvalidasi kunci: " .. tostring(response))
         return false -- Request gagal
     end
@@ -253,31 +223,36 @@ checkKeyButton.MouseButton1Click:Connect(function()
         validationLabel.Text = "Thanks For Using"
         validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
         wait(2)
+
+        -- Jika kunci valid, jalankan script utama menggunakan loadstring
         local tween = TweenService:Create(frame, TweenInfo.new(0.5), {Position = UDim2.new(0.5, -150, 1.5, -100)})
         tween:Play()
         tween.Completed:Connect(function()
             screenGui:Destroy()
+
+            -- Menjalankan script utama hanya jika kunci valid
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/asedesa/main/zxcv.lua",true))()
         end)
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/asedesa/main/zxcv.lua",true))()
+
+        -- Simpan kunci yang valid dengan timestamp
+        saveKeyWithTimestamp(key)
     else
-        validationLabel.Text = "Checking Key..."
-        validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-        wait(1.7)
         validationLabel.Text = "Key Is Not Valid!"
         validationLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
     end
 end)
 
+-- Muat kunci yang tersimpan (jika ada) saat script dimulai
 wait(3)
 local tween = TweenService:Create(frame, TweenInfo.new(0.5), {Position = UDim2.new(0.5, -150, 0.5, -100)})
 tween:Play()
 
--- Load saved key and verify it if exists
 loadKeyWithTimestamp()
 if savedKey then
     if verify(savedKey) then
         onMessage("Saved key is valid!")
         screenGui.Enabled = false
+        -- Menjalankan script utama hanya jika kunci valid
         loadstring(game:HttpGet("https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/asedesa/main/zxcv.lua",true))()
     else
         onMessage("Saved key is invalid, please enter a new key.")
