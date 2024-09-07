@@ -176,7 +176,7 @@ function verify(key)
     -- Membuat body request dalam format JSON
     local requestBody = HttpService:JSONEncode(
         {
-        "key": "key" -- Mengirimkan kunci yang diinput oleh pengguna
+        key: key -- Mengirimkan kunci yang diinput oleh pengguna
     }
     )
 
