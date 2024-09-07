@@ -191,6 +191,7 @@ function startCountdown(seconds)
 end
 
 -- Fungsi untuk memverifikasi key melalui API
+-- Fungsi untuk memverifikasi key melalui API
 function verify(key)
     if errorWait or rateLimit then 
         return false
@@ -209,18 +210,17 @@ function verify(key)
     local status, response = pcall(function()
         return HttpService:PostAsync(keyFileUrl, requestBody, Enum.HttpContentType.ApplicationJson, false)
     end)
-    
+
     if status then
         -- Menguraikan respons JSON dari server
         local result = HttpService:JSONDecode(response)
 
-        -- Jika status dari API adalah "success"
         if result.status == "success" then
             onMessage("Key is valid!")
             saveKeyWithTimestamp(key) -- Simpan kunci dengan timestamp
             if not countdownActive then
                 fSpawn(function()
-                    startCountdown(expiryTimeInSeconds) -- Mulai countdown 24 jam (86400 detik)
+                    startCountdown(expiryTimeInSeconds) -- Mulai countdown 24 jam
                 end)
             end
             return true
@@ -229,10 +229,12 @@ function verify(key)
             return false
         end
     else
-        onMessage("An error occurred while contacting the server!")
+        -- Menampilkan error yang lebih detail
+        onMessage("An error occurred while contacting the server: " .. tostring(response))
         return allowPassThrough
     end
 end
+
 
 -- Bagian GUI dan tombol
 getKeyButton.MouseButton1Click:Connect(function()
