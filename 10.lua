@@ -178,6 +178,10 @@ function verify(key)
         key = key -- Mengirimkan kunci yang diinput oleh pengguna
     })
 
+    -- Debug: Cetak request yang akan dikirim
+    print("Sending request to API: " .. url)
+    print("Request body: " .. requestBody)
+
     -- Mengirimkan request POST ke API
     local success, response = pcall(function()
         return HttpService:PostAsync(url, requestBody, Enum.HttpContentType.ApplicationJson, false)
@@ -185,16 +189,20 @@ function verify(key)
 
     -- Jika request berhasil
     if success then
+        -- Debug: Cetak respons dari server
+        print("Response from server: " .. response)
+
         -- Menguraikan respons JSON dari API
         local result = HttpService:JSONDecode(response)
 
+        -- Debug: Tampilkan hasil parsing respons
+        print("Parsed result: ", result)
+
         -- Cek apakah status dari API adalah "success"
         if result.status == "success" then
-            onMessage("Key is valid!")
-            saveKeyWithTimestamp(key) -- Simpan kunci jika valid
             return true -- Kunci valid
         else
-            onMessage("Key is invalid!")
+            onMessage("Key is invalid! Status: " .. tostring(result.status))
             return false -- Kunci tidak valid
         end
     else
