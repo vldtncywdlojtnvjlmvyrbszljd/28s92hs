@@ -174,11 +174,9 @@ function verify(key)
     local url = "https://bteam2822.pythonanywhere.com/api/authenticate" -- URL API Anda
 
     -- Membuat body request dalam format JSON
-    local requestBody = HttpService:JSONEncode(
-        {
-        key= key -- Mengirimkan kunci yang diinput oleh pengguna
-    }
-    )
+    local requestBody = HttpService:JSONEncode({
+        key = key -- Mengirimkan kunci yang diinput oleh pengguna
+    })
 
     -- Mengirimkan request POST ke API
     local success, response = pcall(function()
@@ -189,11 +187,14 @@ function verify(key)
     if success then
         -- Menguraikan respons JSON dari API
         local result = HttpService:JSONDecode(response)
-        
+
         -- Cek apakah status dari API adalah "success"
         if result.status == "success" then
+            onMessage("Key is valid!")
+            saveKeyWithTimestamp(key) -- Simpan kunci jika valid
             return true -- Kunci valid
         else
+            onMessage("Key is invalid!")
             return false -- Kunci tidak valid
         end
     else
@@ -202,6 +203,36 @@ function verify(key)
         return false -- Request gagal
     end
 end
+
+-- Fungsi untuk memulai countdown ketika kunci valid
+function startCountdown(seconds)
+    countdownActive = true
+    for i = seconds, 0, -1 do
+        onMessage("Time remaining: " .. i .. " seconds")
+        wait(1)
+    end
+    countdownActive = false
+    onMessage("Time's up! Please re-enter your key.")
+    savedKey = nil
+    if isfile("savedKey.txt") then
+        delfile("savedKey.txt")
+    end
+end
+
+-- Fungsi untuk memverifikasi kunci yang diinput pengguna
+function checkKeyInput(key)
+    if verify(key) then
+        onMessage("Key is valid! Starting countdown...")
+        if not countdownActive then
+            spawn(function()
+                startCountdown(expiryTimeInSeconds) -- Mulai countdown selama 24 jam
+            end)
+        end
+    else
+        onMessage("Key is invalid or verification failed.")
+    end
+end
+
 
 -- Bagian GUI dan tombol
 getKeyButton.MouseButton1Click:Connect(function()
