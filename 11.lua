@@ -127,34 +127,13 @@ validationLabel.TextSize = 18
 validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 validationLabel.BackgroundTransparency = 1
 validationLabel.Parent = frame
-local HttpService = game:GetService("HttpService")
-local TweenService = game:GetService("TweenService")
-
-local allowPassThrough = false
-local countdownActive = false
-local savedKey = nil
-local expiryTimeInSeconds = 24 * 60 * 60 -- 24 jam
-
--- Fungsi untuk mengirimkan pesan status
-function onMessage(msg)
-    print(msg)
-end
-
--- Fungsi untuk menyimpan kunci dengan timestamp
-function saveKeyWithTimestamp(key)
-    local timestamp = os.time()
-    local keyWithTimestamp = key .. "|" .. tostring(timestamp)
-    writefile("savedKey.txt", keyWithTimestamp)
-    savedKey = keyWithTimestamp
-end
-
 -- Fungsi untuk memuat kunci yang tersimpan
 function loadKeyWithTimestamp()
     if isfile("savedKey.txt") then
         savedKey = readfile("savedKey.txt")
         local key, timestamp = parseKeyAndTimestamp(savedKey)
-        if os.time() - tonumber(timestamp) >= expiryTimeInSeconds then
-            onMessage("Saved key has expired!")
+        if not timestamp or os.time() - tonumber(timestamp) >= expiryTimeInSeconds then
+            onMessage("Saved key has expired or invalid format!")
             delfile("savedKey.txt")
             savedKey = nil
         else
@@ -163,84 +142,57 @@ function loadKeyWithTimestamp()
     end
 end
 
--- Fungsi untuk memisahkan kunci dan timestamp
-function parseKeyAndTimestamp(keyWithTimestamp)
-    local key, timestamp = keyWithTimestamp:match("([^|]+)|([^|]+)")
-    return key, timestamp
-end
-
 -- Fungsi untuk verifikasi kunci melalui API
 function verify(key)
     local url = "https://bteam2822.pythonanywhere.com/api/authenticate" -- URL API Anda
 
-    -- Membuat body request dalam format JSON
     local requestBody = HttpService:JSONEncode({
-        key = key -- Mengirimkan kunci yang diinput oleh pengguna
+        key = key
     })
 
-    -- Debug: Cetak request yang akan dikirim
     print("Sending request to API: " .. url)
     print("Request body: " .. requestBody)
 
-    -- Mengirimkan request POST ke API
     local success, response = pcall(function()
         return HttpService:PostAsync(url, requestBody, Enum.HttpContentType.ApplicationJson, false)
     end)
 
-    -- Jika request berhasil
     if success then
-        -- Debug: Cetak respons dari server
         print("Response from server: " .. response)
+        local success, result = pcall(function()
+            return HttpService:JSONDecode(response)
+        end)
 
-        -- Menguraikan respons JSON dari API
-        local result = HttpService:JSONDecode(response)
-
-        -- Debug: Tampilkan hasil parsing respons
-        print("Parsed result: ", result)
-
-        -- Cek apakah status dari API adalah "success"
-        if result.status == "success" then
-            return true -- Kunci valid
+        if success and result.status == "success" then
+            return true
         else
-            onMessage("Key is invalid! Status: " .. tostring(result.status))
-            return false -- Kunci tidak valid
+            onMessage("Key is invalid! Status: " .. tostring(result.status or "Unknown"))
+            return false
         end
     else
-        -- Jika terjadi error saat request
-        warn("Gagal memvalidasi kunci: " .. tostring(response))
-        return false -- Request gagal
+        warn("Failed to validate key: " .. tostring(response))
+        return false
     end
 end
 
--- Fungsi untuk memulai countdown ketika kunci valid
-function startCountdown(seconds)
-    countdownActive = true
-    for i = seconds, 0, -1 do
-        onMessage("Time remaining: " .. i .. " seconds")
-        wait(1)
-    end
-    countdownActive = false
-    onMessage("Time's up! Please re-enter your key.")
-    savedKey = nil
-    if isfile("savedKey.txt") then
-        delfile("savedKey.txt")
-    end
-end
-
--- Fungsi untuk memverifikasi kunci yang diinput pengguna
+-- Mencegah pemanggilan ulang saat countdown
 function checkKeyInput(key)
+    if countdownActive then
+        onMessage("Key verification is already in progress. Please wait.")
+        return
+    end
+
     if verify(key) then
         onMessage("Key is valid! Starting countdown...")
         if not countdownActive then
             spawn(function()
-                startCountdown(expiryTimeInSeconds) -- Mulai countdown selama 24 jam
+                startCountdown(expiryTimeInSeconds)
             end)
         end
     else
         onMessage("Key is invalid or verification failed.")
     end
 end
-
 
 -- Bagian GUI dan tombol
 getKeyButton.MouseButton1Click:Connect(function()
