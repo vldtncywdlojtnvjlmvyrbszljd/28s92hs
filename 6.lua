@@ -174,9 +174,11 @@ function verify(key)
     local url = "https://bteam2822.pythonanywhere.com/api/authenticate" -- URL API Anda
 
     -- Membuat body request dalam format JSON
-    local requestBody = HttpService:JSONEncode({
-        "key": key -- Mengirimkan kunci yang diinput oleh pengguna
-    })
+    local requestBody = HttpService:JSONEncode(
+        {
+        "key": "key" -- Mengirimkan kunci yang diinput oleh pengguna
+    }
+    )
 
     -- Mengirimkan request POST ke API
     local success, response = pcall(function()
