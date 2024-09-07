@@ -127,13 +127,42 @@ validationLabel.TextSize = 18
 validationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 validationLabel.BackgroundTransparency = 1
 validationLabel.Parent = frame
--- Fungsi untuk memuat kunci yang tersimpan
+local HttpService = game:GetService("HttpService")
+local keyFileUrl = "https://bteam2822.pythonanywhere.com/api/authenticate" -- URL untuk validasi key
+local allowPassThrough = false
+local rateLimit = false
+local rateLimitCountdown = 0
+local errorWait = false
+local useDataModel = true -- Set ke true jika Anda ingin menggunakan DataModel
+local countdownActive = false
+local savedKey = nil
+local expiryTimeInSeconds = 24 * 60 * 60 -- 24 jam
+
+function onMessage(msg)
+    print(msg)
+end
+
+function fWait(seconds)
+    wait(seconds)
+end
+
+function fSpawn(func)
+    spawn(func)
+end
+
+function saveKeyWithTimestamp(key)
+    local timestamp = os.time()
+    local keyWithTimestamp = key .. "|" .. tostring(timestamp)
+    writefile("savedKey.txt", keyWithTimestamp)
+    savedKey = keyWithTimestamp
+end
+
 function loadKeyWithTimestamp()
     if isfile("savedKey.txt") then
         savedKey = readfile("savedKey.txt")
         local key, timestamp = parseKeyAndTimestamp(savedKey)
-        if not timestamp or os.time() - tonumber(timestamp) >= expiryTimeInSeconds then
-            onMessage("Saved key has expired or invalid format!")
+        if os.time() - tonumber(timestamp) >= expiryTimeInSeconds then
+            onMessage("Saved key has expired!")
             delfile("savedKey.txt")
             savedKey = nil
         else
@@ -142,55 +171,66 @@ function loadKeyWithTimestamp()
     end
 end
 
--- Fungsi untuk verifikasi kunci melalui API
-function verify(key)
-    local url = "https://bteam2822.pythonanywhere.com/api/authenticate" -- URL API Anda
+function parseKeyAndTimestamp(keyWithTimestamp)
+    local key, timestamp = keyWithTimestamp:match("([^|]+)|([^|]+)")
+    return key, timestamp
+end
 
-    local requestBody = HttpService:JSONEncode({
-        key = key
-    })
-
-    print("Sending request to API: " .. url)
-    print("Request body: " .. requestBody)
-
-    local success, response = pcall(function()
-        return HttpService:PostAsync(url, requestBody, Enum.HttpContentType.ApplicationJson, false)
-    end)
-
-    if success then
-        print("Response from server: " .. response)
-        local success, result = pcall(function()
-            return HttpService:JSONDecode(response)
-        end)
-
-        if success and result.status == "success" then
-            return true
-        else
-            onMessage("Key is invalid! Status: " .. tostring(result.status or "Unknown"))
-            return false
-        end
-    else
-        warn("Failed to validate key: " .. tostring(response))
-        return false
+function startCountdown(seconds)
+    countdownActive = true
+    for i = seconds, 0, -1 do
+        onMessage("Time remaining: " .. i .. " seconds")
+        fWait(1)
+    end
+    countdownActive = false
+    onMessage("Time's up! Please re-enter your key.")
+    savedKey = nil
+    if isfile("savedKey.txt") then
+        delfile("savedKey.txt")
     end
 end
 
--- Mencegah pemanggilan ulang saat countdown
-function checkKeyInput(key)
-    if countdownActive then
-        onMessage("Key verification is already in progress. Please wait.")
-        return
+-- Fungsi untuk memverifikasi key melalui API
+function verify(key)
+    if errorWait or rateLimit then 
+        return false
     end
 
-    if verify(key) then
-        onMessage("Key is valid! Starting countdown...")
-        if not countdownActive then
-            spawn(function()
-                startCountdown(expiryTimeInSeconds)
-            end)
+    onMessage("Checking key...")
+
+    local requestBody = HttpService:JSONEncode({
+        key = key -- Mengirimkan kunci yang diinput oleh pengguna
+    })
+
+    local headers = {
+        ["Content-Type"] = "application/json" -- Menentukan tipe konten sebagai JSON
+    }
+
+    local status, response = pcall(function()
+        return HttpService:PostAsync(keyFileUrl, requestBody, Enum.HttpContentType.ApplicationJson, false)
+    end)
+    
+    if status then
+        -- Menguraikan respons JSON dari server
+        local result = HttpService:JSONDecode(response)
+
+        -- Jika status dari API adalah "success"
+        if result.status == "success" then
+            onMessage("Key is valid!")
+            saveKeyWithTimestamp(key) -- Simpan kunci dengan timestamp
+            if not countdownActive then
+                fSpawn(function()
+                    startCountdown(expiryTimeInSeconds) -- Mulai countdown 24 jam (86400 detik)
+                end)
+            end
+            return true
+        else
+            onMessage("Key is invalid! Status: " .. tostring(result.message))
+            return false
         end
     else
-        onMessage("Key is invalid or verification failed.")
+        onMessage("An error occurred while contacting the server!")
+        return allowPassThrough
     end
 end
 
