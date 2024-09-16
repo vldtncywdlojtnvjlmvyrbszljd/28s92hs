@@ -10240,15 +10240,15 @@ end)
         end
     end)
 
-    local BoneFarm = M:AddToggle("Auto Farm Bone + BF Mastery",_G.Auto_Bone, function(value)
-        _G.Auto_Bone = value
-        StopTween(_G.Auto_Bone)
+    local BoneFarm = M:AddToggle("Auto Farm Bone + BF Mastery",_G.Auto_Bone1, function(value)
+        _G.Auto_Bone1 = value
+        StopTween(_G.Auto_Bone1)
     end)
 
     spawn(function()
         while wait() do 
             local boneframe = CFrame.new(-9508.5673828125, 142.1398468017578, 5737.3603515625)
-            if _G.Auto_Bone and World3 then
+            if _G.Auto_Bone1 and World3 then
                 pcall(function()
                     if BypassTP then
                         if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - boneframe.Position).Magnitude > 2000 then
@@ -10282,7 +10282,7 @@ end)
                                         HyperCahaya(v.HumanoidRootPart.CFrame * CFrame.new(PosX,PosY,PosZ))
                                         game:GetService("VirtualUser"):CaptureController()
                                         game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
-                                    until not _G.Auto_Bone or not v.Parent or v.Humanoid.Health <= 0
+                                    until not _G.Auto_Bone1 or not v.Parent or v.Humanoid.Health <= 0
                                 end
                             end
                         end
