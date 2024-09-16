@@ -10240,7 +10240,7 @@ end)
         end
     end)
 
-    local BoneFarm = M:AddToggle("Auto Farm Bone + BF Mastery",function(value)
+    local BoneFarm = M:AddToggle("Auto Farm Bone + BF Mastery",_G.Auto_Bone , _G.AutoFarmFruitMastery,function(value)
         _G.Auto_Bone = value
         _G.AutoFarmFruitMastery = value
         StopTween(_G.Auto_Bone)
