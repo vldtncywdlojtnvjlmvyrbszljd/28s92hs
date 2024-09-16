@@ -10240,16 +10240,15 @@ end)
         end
     end)
 
-    local BoneFarm = M:AddToggle("Auto Farm Bone + BF Mastery",_G.Auto_Bone , _G.AutoFarmFruitMastery,function(value)
+    local BoneFarm = M:AddToggle("Auto Farm Bone + BF Mastery",_G.Auto_Bone, function(value)
         _G.Auto_Bone = value
-        _G.AutoFarmFruitMastery = value
         StopTween(_G.Auto_Bone)
     end)
 
     spawn(function()
         while wait() do 
             local boneframe = CFrame.new(-9508.5673828125, 142.1398468017578, 5737.3603515625)
-            if _G.Auto_Bone and _G.AutoFarmFruitMastery and World3 then
+            if _G.Auto_Bone and World3 then
                 pcall(function()
                     if BypassTP then
                         if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - boneframe.Position).Magnitude > 2000 then
@@ -10274,7 +10273,7 @@ end)
                                 if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                     repeat task.wait()
                                         AutoHaki()
-                                        EquipWeapon(_G.SelectWeapon)
+                                        EquipWeapon(_G.AutoFarmFruitMastery)
                                         v.HumanoidRootPart.CanCollide = false
                                         v.Humanoid.WalkSpeed = 2
                                         v.Head.CanCollide = false 
@@ -10288,7 +10287,7 @@ end)
                             end
                         end
                     else
-                        StartMagnetBoneMon = true
+                        StartMagnetBoneMon = false
     					HyperCahaya(CFrame.new(-9506.234375, 172.130615234375, 6117.0771484375))
                         for i,v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do 
                             if v.Name == "Kowi" then
