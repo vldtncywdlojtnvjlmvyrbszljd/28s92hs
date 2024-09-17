@@ -199,20 +199,19 @@ local Window = Fluent:CreateWindow({
     MinimizeKey = Enum.KeyCode.End
 })
 local Tabs = {
-    Main = Window:AddTab({ Title = "Tab Farm/Item", Icon = "15712717270" }),
-    Stats = Window:AddTab({ Title = "Tab Stats", Icon = "rbxassetid://15712723981" }),
-    St = Window:AddTab({ Title = "Tab Status", Icon = "" }),
-    Sea = Window:AddTab({ Title = "Tab Sea", Icon = "" }),
-    Player = Window:AddTab({ Title = "Tab Player", Icon = "" }),
-    Teleport = Window:AddTab({ Title = "Tab Teleport", Icon = "" }),
-    Fruit = Window:AddTab({ Title = "Tab Fruits", Icon = "" }),
-    Raid = Window:AddTab({ Title = "Tab Raid", Icon = "" }),
-    Visual = Window:AddTab({ Title = "Tabs Troll", Icon = "" }),
-    Race = Window:AddTab({ Title = "Tabs Race", Icon = "" }),
-    Shop = Window:AddTab({ Title = "Tabs Shop", Icon = "" }),
-	Misc = Window:AddTab({ Title = "Tabs Mics", Icon = "" }),
-    Music = Window:AddTab({ Title = "Musik", Icon = "" }),
-    Setting = Window:AddTab({ Title = "Tabs Setting", Icon = "" }),
+    Main = Window:AddTab({ Title = "Farming", Icon = "rbxassetid://15712717270" }),
+    Stats = Window:AddTab({ Title = "Stats", Icon = "rbxassetid://15712723981" }),
+    St = Window:AddTab({ Title = "Status", Icon = "rbxassetid://10709818996" }),
+    Sea = Window:AddTab({ Title = "Sea Event", Icon = "rbxassetid://15806749681" }),
+    Player = Window:AddTab({ Title = "Player", Icon = "rbxassetid://15712750195" }),
+    Teleport = Window:AddTab({ Title = "Teleport", Icon = "rbxassetid://15712738876" }),
+    Fruit = Window:AddTab({ Title = "Fruits", Icon = "rbxassetid://15712758182" }),
+    Raid = Window:AddTab({ Title = "Auto Raid", Icon = "rbxassetid://15712763124" }),
+    Visual = Window:AddTab({ Title = "Visual", Icon = "rbxassetid://10709789686" }),
+    Race = Window:AddTab({ Title = "Race V4", Icon = "rbxassetid://15712776421" }),
+    Shop = Window:AddTab({ Title = "Dealer Shop", Icon = "rbxassetid://15712767144" }),
+    Setting = Window:AddTab({ Title = "Setting", Icon = "rbxassetid://15712711639" }),
+	Misc = Window:AddTab({ Title = "Misc", Icon = "rbxassetid://15712771666" }),
 }
 
 local Options = Fluent.Options
