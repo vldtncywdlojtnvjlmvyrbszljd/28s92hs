@@ -208,6 +208,7 @@ local Tabs = {
     Race = Window:AddTab({ Title = "Tabs Race", Icon = "" }),
     Shop = Window:AddTab({ Title = "Tabs Shop", Icon = "" }),
 	Misc = Window:AddTab({ Title = "Tabs Mics", Icon = "" }),
+    Music = Window:AddTab({ Title = "Musi", Icon = "" }),
     Setting = Window:AddTab({ Title = "Tabs Setting", Icon = "" }),
 }
 
@@ -6749,22 +6750,22 @@ end
 decalspam(ID)
 wait(0.01)
   sound = Instance.new("Sound",workspace)
-sound.Name = "Phonk-Vol-1-Emotional-Damage"--xịn hok cưng :>>"
-sound.SoundId = "rbxassetid://14145621151"--6129291390"--Này là nhạc
+sound.Name = "Phonk-Vol-1-Step-Up-Or-Step-Back"--xịn hok cưng :>>"
+sound.SoundId = "rbxassetid://14145624031"--6129291390"--Này là nhạc
 sound:Play()
 sound.Looped = true
 repeat
 wait(1)
 until sound.IsLoaded == true
-wait(13)
+wait(5) --13
 de = Instance.new("DistortionSoundEffect",sound)
-de.Level = 0.8
+de.Level = 10 --0.8
 sky = Instance.new("Sky",game:GetService("Lighting"))
-sky.SkyboxBk = "http://www.roblox.com/asset/?id=107679910024355"
-sky.SkyboxFt = "http://www.roblox.com/asset/?id=107679910024355"
-sky.SkyboxLf = "http://www.roblox.com/asset/?id=107679910024355"
-sky.SkyboxRt = "http://www.roblox.com/asset/?id=107679910024355"
-sky.SkyboxUp = "http://www.roblox.com/asset/?id=107679910024355"
+sky.SkyboxBk = "http://www.roblox.com/asset/?id="--107679910024355"
+sky.SkyboxFt = "http://www.roblox.com/asset/?id="--107679910024355"
+sky.SkyboxLf = "http://www.roblox.com/asset/?id="--107679910024355"
+sky.SkyboxRt = "http://www.roblox.com/asset/?id="--107679910024355"
+sky.SkyboxUp = "http://www.roblox.com/asset/?id="--107679910024355"
 	end
 })
 
