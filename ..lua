@@ -132,7 +132,7 @@ do
     end
 end
 repeat
-    wait(1)
+    wait(0.1) --1
 until game:IsLoaded()
 local a = {}
 function a:Window(f, f, f)
@@ -157,7 +157,7 @@ function a:Window(f, f, f)
     i.Size = UDim2.new(0, 0, 0, 0)
     i:TweenSize(UDim2.new(0, 555, 0, 352), "Out", "Quad", 0.4, true)
     local UiToggle_UiStroke1 = Instance.new("UIStroke")
-    UiToggle_UiStroke1.Color = Color3.fromRGB(255, 0, 0)
+    UiToggle_UiStroke1.Color = Color3.fromRGB(255, 0, 0) --toggle klik ke kanan
     UiToggle_UiStroke1.Thickness = 2
     UiToggle_UiStroke1.Name = "UiToggle_UiStroke1"
     UiToggle_UiStroke1.Parent = i
@@ -643,7 +643,7 @@ function a:Window(f, f, f)
             l.Parent = k
             m.Name = "Circle"
             m.Parent = k
-            m.BackgroundColor3 = Color3.fromRGB(12, 12, 12)
+            m.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
             m.BackgroundTransparency = .7
             m.Position = UDim2.new(0, 2, 0, 2)
             m.Size = UDim2.new(0, 16, 0, 16)
