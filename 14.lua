@@ -13,11 +13,13 @@ AlchemyNotify("This is version pro!",5)
 wait(0.1)
 AlchemyNotify("Local Pride",5)
 wait(0.5)
-local Notification = require(game:GetService("ReplicatedStorage").Notification)
+local Notification = loadstring(game:HttpGet('https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/28s92hs/main/ntf.lua'))()--require(game:GetService("ReplicatedStorage").Notification)
+--[[
 Notification.new("<Color=Cyan>Brutality Hub V4<Color=/>"):Display()
 wait(0.5)
 Notification.new("<Color=Yellow>Create By Botuna<Color=/>"):Display()
 wait(1)
+]]
 repeat
     wait()
 until game.Players.LocalPlayer
