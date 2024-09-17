@@ -6760,11 +6760,11 @@ wait(13)
 de = Instance.new("DistortionSoundEffect",sound)
 de.Level = 0.8
 sky = Instance.new("Sky",game:GetService("Lighting"))
-sky.SkyboxBk = "http://www.roblox.com/asset/?id=17221942833"
-sky.SkyboxFt = "http://www.roblox.com/asset/?id=17221942833"
-sky.SkyboxLf = "http://www.roblox.com/asset/?id=17221942833"
-sky.SkyboxRt = "http://www.roblox.com/asset/?id=17221942833"
-sky.SkyboxUp = "http://www.roblox.com/asset/?id=17221942833"
+sky.SkyboxBk = "http://www.roblox.com/asset/?id=107679910024355"
+sky.SkyboxFt = "http://www.roblox.com/asset/?id=107679910024355"
+sky.SkyboxLf = "http://www.roblox.com/asset/?id=107679910024355"
+sky.SkyboxRt = "http://www.roblox.com/asset/?id=107679910024355"
+sky.SkyboxUp = "http://www.roblox.com/asset/?id=107679910024355"
 	end
 })
 
