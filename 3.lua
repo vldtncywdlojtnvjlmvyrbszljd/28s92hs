@@ -6749,8 +6749,8 @@ end
 decalspam(ID)
 wait(0.01)
   sound = Instance.new("Sound",workspace)
-sound.Name = "xịn hok cưng :>>"
-sound.SoundId = "rbxassetid://6129291390"--Này là nhạc
+sound.Name = "Phonk-Vol-1-Emotional-Damage"--xịn hok cưng :>>"
+sound.SoundId = "rbxassetid://14145621151"--6129291390"--Này là nhạc
 sound:Play()
 sound.Looped = true
 repeat
