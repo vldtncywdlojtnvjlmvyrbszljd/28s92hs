@@ -184,7 +184,7 @@ require(game.ReplicatedStorage.Notification).new("<Color=Red> 1<Color=/>"):Displ
     wait(1)
 ]]
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-local LoadAnimation = loadstring(game:HttpGet('https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/28s92hs/main/ntf.lua'))()
+local shared = loadstring(game:HttpGet('https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/28s92hs/main/ntf.lua',true))()
 local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/Accclo/Tuo/main/Ui"))()
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
@@ -8244,7 +8244,7 @@ SliderPosZ:OnChanged(function(Value)
      posZ = Value
 end)
 SliderPosZ:SetValue(0)
---[[
+
 local player = game.Players.LocalPlayer
 local gui = player:WaitForChild("PlayerGui") -- Get the player's PlayerGui
 
@@ -8267,4 +8267,4 @@ local function onClick()
 end
 
 button.MouseButton1Click:Connect(onClick)
-]]
+
