@@ -4,19 +4,19 @@ local AlchemyNotify = function(Text_i,Duration_i)
         Title = "Brutality Hub V4",
         Text = Text_i,
         Duration = Duration_i,
-        Icon = "rbxassetid://14981376704"
+        Icon = "rbxassetid://107679910024355"
     })
 end
 --Key
 wait(0.1)
-AlchemyNotify("Thanks for using Alchemy Hub!",5)
+AlchemyNotify("This is version pro!",5)
 wait(0.1)
-AlchemyNotify("discord.gg/dUdzZskBCC",5)
+AlchemyNotify("Local Pride",5)
 wait(0.5)
 local Notification = require(game:GetService("ReplicatedStorage").Notification)
-Notification.new("<Color=Cyan>Alchemy Hub V2Script<Color=/>"):Display()
+Notification.new("<Color=Cyan>Brutality Hub V4<Color=/>"):Display()
 wait(0.5)
-Notification.new("<Color=Yellow>Create By x2Neptune<Color=/>"):Display()
+Notification.new("<Color=Yellow>Create By Botuna<Color=/>"):Display()
 wait(1)
 repeat
     wait()
@@ -39,9 +39,9 @@ local Raid = a:Tab("Raid", "rbxassetid://15712763124")
 local Shop = a:Tab("Shop", "rbxassetid://15712767144")
 local Misc = a:Tab("Misc", "rbxassetid://15712771666")
 
-HomePage:Seperator("Alchemy Hub")
+HomePage:Seperator("Version")
 
-HomePage:Label("Blox Fruits | English Version")
+HomePage:Label("Brutality Hub V4 | Version PRO")
 
 HomePage:Seperator("Status")
 local AlchemyStatuOn_Time = HomePage:Label("")
