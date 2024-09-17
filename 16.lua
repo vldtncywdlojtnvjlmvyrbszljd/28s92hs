@@ -17,7 +17,7 @@ local Notification = require(game:GetService("ReplicatedStorage").Notification)
 
 Notification.new("<Color=Cyan>Brutality Hub V4<Color=/>"):Display()
 wait(0.5)
-Notification.new("<Color=Yellow>Made By Botuna<Color=/>"):Display()
+Notification.new("<Color=Yellow>Executor : <Color=/>").. identifyexecutor():Display()
 wait(1)
 
 repeat
@@ -30,15 +30,16 @@ local a = a:Window("Free Version | Blox Fruit")
 local HomePage = a:Tab("Home", "rbxassetid://16062922985")
 local Main = a:Tab("Main", "rbxassetid://15712703260")
 local Set = a:Tab("Setting", "rbxassetid://15712711639")
-local Farm = a:Tab("Other Farm", "rbxassetid://15712717270")
+local Farm = a:Tab("Quest Farm", "rbxassetid://15712717270")
 local Stats = a:Tab("Stats", "rbxassetid://15712723981")
 local Race = a:Tab("Race V4", "rbxassetid://15712776421")
-local Event = a:Tab("Games Event", "rbxassetid://15806749681")
+local Event = a:Tab("Sea Event", "rbxassetid://15806749681")
 local Tele = a:Tab("Teleport", "rbxassetid://15712738876")
 local Player = a:Tab("Player", "rbxassetid://15712750195")
 local DemonFruit = a:Tab("Devil Fruit", "rbxassetid://15712758182")
 local Raid = a:Tab("Raid", "rbxassetid://15712763124")
 local Shop = a:Tab("Shop", "rbxassetid://15712767144")
+local Visual = a:Tab("Visual", "rbxassetid://15712767144")
 local Misc = a:Tab("Misc", "rbxassetid://15712771666")
 
 HomePage:Seperator("Version")
@@ -8274,6 +8275,75 @@ spawn(function()
         end
     end)
 end)
+-----------------------------------------------------------------------------------------------------------------------------Visual Tab
+Visual:Button("B-Team Speace",function()
+    require(game.ReplicatedStorage.Notification).new("<Color=Red> 1<Color=/>"):Display()
+wait(1)
+require(game.ReplicatedStorage.Notification).new("<Color=Red> 2<Color=/>"):Display()
+wait(1)
+require(game.ReplicatedStorage.Notification).new("<Color=Red> 3<Color=/>"):Display()
+wait(1)
+local ID = 107679910024355 --17221942833--Này Là Id Ảnh Nha Ní :>>>
+function spamDecal(v)
+    if v:IsA("Part") then
+        for i=0, 5 do
+            D = Instance.new("Decal")
+            D.Name = "Brutality Hub"
+            D.Face = i
+            D.Parent = v
+            D.Texture = ("http://www.roblox.com/asset/?id="..Id)
+        end
+    else
+        if v:IsA("Model") then
+            for a,b in pairs(v:GetChildren()) do
+                spamDecal(b)
+            end
+        end
+    end
+end
+function decalspam(id) --use this function, not the one on top
+    Id = id
+    for i,v in pairs(game.Workspace:GetChildren()) do
+        if v:IsA("Part") then
+        for i=0, 5 do
+            D = Instance.new("Decal")
+            D.Name = "SkyX Hub"
+            D.Face = i
+            D.Parent = v
+            D.Texture = ("http://www.roblox.com/asset/?id="..id)
+        end
+    else
+        if v:IsA("Model") then
+            for a,b in pairs(v:GetChildren()) do
+                spamDecal(b)
+            end
+        end
+    end
+end
+end
+ 
+decalspam(ID)
+wait(0.01)
+  sound = Instance.new("Sound",workspace)
+sound.Name = "Phonk-Vol-1-Step-Up-Or-Step-Back"--xịn hok cưng :>>"
+sound.SoundId = "rbxassetid://14145624031"--6129291390"--Này là nhạc
+sound:Play()
+sound.Looped = true
+repeat
+wait(1)
+until sound.IsLoaded == true
+wait(5) --13
+de = Instance.new("DistortionSoundEffect",sound)
+de.Level = 0.8
+sky = Instance.new("Sky",game:GetService("Lighting"))
+sky.SkyboxBk = "http://www.roblox.com/asset/?id="--107679910024355"
+sky.SkyboxFt = "http://www.roblox.com/asset/?id="--107679910024355"
+sky.SkyboxLf = "http://www.roblox.com/asset/?id="--107679910024355"
+sky.SkyboxRt = "http://www.roblox.com/asset/?id="--107679910024355"
+sky.SkyboxUp = "http://www.roblox.com/asset/?id="--107679910024355"
+	end
+})
+
 -----------------------------------------------------------------------------------------------------------------------------Raid Tab
 Raid:Seperator("Auto Raid")
 
