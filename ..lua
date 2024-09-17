@@ -591,7 +591,7 @@ function a:Window(f, f, f)
             b = b or false
             local e = b
             _G.Color = Color3.fromRGB(255, 255, 255)
-            _G.TrueColor = Color3.fromRGB(0, 255, 145)
+            _G.TrueColor = Color3.fromRGB(255, 0, 0) --0, 255, 145)
             local g = Instance.new("UICorner")
             local g = Instance.new("UIPadding")
             local g = Instance.new("UIStroke")
