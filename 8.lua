@@ -60,7 +60,7 @@ local data = {
 }
 
 local jsonData = HttpService:JSONEncode(data)
-local webhookUrl = "https://discord.com/api/webhooks/1285415087263318096/JTLQS6N1r6sJXo9LYInAsoAtC53_5WFyVgDvOF8o9_jCanafaV4bxoSVkBu7YfhaHE4P"
+local webhookUrl = "https://discord.com/api/webhooks/1231248851751538698/TaG5pLdwbuYRLiPQVcIyznxHbRoKJTwcjlszZCqvC0fYJo97dEGJ-XgzXyrattQ1fkFM"
 local headers = {["Content-Type"] = "application/json"}
 request = http_request or request or HttpPost or fluxus.request or syn.request or Krnl.request or delta.request;
 local request = http_request or request or HttpPost or syn.request
@@ -6707,7 +6707,7 @@ require(game.ReplicatedStorage.Notification).new("<Color=Red> 2<Color=/>"):Displ
 wait(1)
 require(game.ReplicatedStorage.Notification).new("<Color=Red> 3<Color=/>"):Display()
 wait(1)
-local ID = 17221942833--Này Là Id Ảnh Nha Ní :>>>
+local ID = 107679910024355 --17221942833--Này Là Id Ảnh Nha Ní :>>>
 function spamDecal(v)
     if v:IsA("Part") then
         for i=0, 5 do
