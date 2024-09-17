@@ -187,12 +187,12 @@ local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/d
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 local Window = Fluent:CreateWindow({
-    Title = "<font color='rgb(248, 155, 61)'>SkyX Hub </font>".."- "..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name,
+    Title = "<font color='rgb(248, 155, 61)'>Brutality Hub V4</font>".."- "..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name,
     SubTitle = "https://discord.com/invite/8CBzUMVyXd",
     TabWidth = 160,
     Size = UDim2.fromOffset(530, 350),
     Acrylic = false,
-    Theme = "Skyx",
+    Theme = "Amethyst",
     MinimizeKey = Enum.KeyCode.End
 })
 local Tabs = {
