@@ -11694,7 +11694,8 @@ end)
 
     Stats3:Seperator("\\\\  Fake  //")
 
-    Stats3:Toggle("Enabled Fake",function(value)
+    Stats3:Toggle("B-Team Space",function(value)
+        v = value
     end)
     require(game.ReplicatedStorage.Notification).new("<Color=Red> 1<Color=/>"):Display()
 wait(1)
