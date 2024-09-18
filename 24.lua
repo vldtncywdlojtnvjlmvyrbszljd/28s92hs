@@ -1,184 +1,4 @@
-local LocalizationService = game:GetService("LocalizationService")
-local player = game.Players.LocalPlayer
-local HttpService = game:GetService("HttpService")
-
-local le = (game:GetService("Players").LocalPlayer.Data.Level.Value)
-local code = LocalizationService:GetCountryRegionForPlayerAsync(player)
-local data = {
-    embeds = {
-        {
-            title = "SkyX New Player",
-            url = "https://www.roblox.com/users/" .. player.UserId,
-            description = "```" .. player.DisplayName .. " (" .. player.Name .. ") ```",
-            color = tonumber(0xffa500),
-            author = {
-                name = "Admin: Dio and Ari and Dung cũ",
-                url = "https://cdn.discordapp.com/attachments/1226454597724409936/1233430491953107086/Screenshot_2024-04-20-17-04-30-945_com.zing.zalo-edit.jpg?ex=662d1129&is=662bbfa9&hm=345e588812e5489a8219d6939a7b94487e79f1153c99523094d207a830f2ccee&",
-                icon_url = "https://cdn.discordapp.com/attachments/1226454597724409936/1233430491953107086/Screenshot_2024-04-20-17-04-30-945_com.zing.zalo-edit.jpg?ex=662d1129&is=662bbfa9&hm=345e588812e5489a8219d6939a7b94487e79f1153c99523094d207a830f2ccee&"
-            },
-            image = {
-            	url = "https://cdn.discordapp.com/attachments/1229077309194113094/1233391929983504394/320688412_5524593467666764_7520827848036533185_n.gif?ex=662ced3f&is=662b9bbf&hm=25bf897861b49dc4d4e1320aa246bb05f9c5ba67d2a745106b9e0ad159981a55&"
-            },
-            footer = {
-                text = "SkyX Hub | Created by: Ari | https://discord.com/invite/E6ffTF57RG | Time: " .. os.date("%Y-%m-%d %H:%M:%S VN"),
-                icon_url = "https://cdn.discordapp.com/attachments/1226454597724409936/1233424140283940924/09b1d39ef857154916c5425b203eddac.jpg?ex=662d0b3e&is=662bb9be&hm=c9a53bdf01f40ef9cd37ea93422e2ed57ae74cdb31fb2cbf7be875214cb4d7ae&"
-            },
-            fields = {
-                {
-                    name = "ᴄᴏᴜɴᴛʀʏ🌐",
-                    value = "```" .. code .. "```",
-                    inline = true
-                },
-                {
-                    name = "ᴀɢᴇ📆",
-                    value = "```" .. player.AccountAge .. " Days```",
-                    inline = true
-                },
-                {
-                    name = "ᴇxᴇᴄᴜᴛᴏʀ💬",
-                    value = "```" .. identifyexecutor() .. "```",
-                    inline = true
-                },
-                {
-                    name = "ʟᴇᴠᴇʟ🆙:",
-                    value = "```" .. le .. "```",
-                    inline = true
-                },
-                {
-                    name = "ᴊᴏʙ ɪᴅ:",
-                    value = "```".. tostring(game.JobId) .."```",
-                    inline = true
-                },
-                {
-                    name = "sᴛᴀᴛᴜs❗",
-                    value = "```Người Dùng Đã Dùng Script Auto Farm Blox Fruit Cảm Ơn Bạn!!!```",
-                    inline = true
-                }
-            }
-        }
-    }
-}
-
-local jsonData = HttpService:JSONEncode(data)
-local webhookUrl = ""
-local headers = {["Content-Type"] = "application/json"}
-request = http_request or request or HttpPost or fluxus.request or syn.request or Krnl.request or delta.request;
-local request = http_request or request or HttpPost or syn.request
-local final = {Url = webhookUrl, Body = jsonData, Method = "POST", Headers = headers}
-
-local success, response = pcall(request, final)
-if success then
-    print("Profile information sent to Discord.")
-else
-    print("Failed to send profile information to Discord: " .. response)
-end
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-local id = game.PlaceId
-if id == 2753915549 then
-First_Sea = true; 
-else
-if id == 4442272183 then
-Second_Sea = true;
-else
-if id == 7449423635 then 
-Third_Sea = true; 
-else 
-game:Shutdown() 
-end
-end
-end
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-function AntiBan()
-    for i,v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
-        if v:IsA("LocalScript") then
-            if v.Name == "General" or v.Name == "Shiftlock"  or v.Name == "FallDamage" or v.Name == "4444" or v.Name == "CamBob" or v.Name == "JumpCD" or v.Name == "Looking" or v.Name == "Run" then
-                v:Destroy()
-            end
-        end
-     end
-     for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerScripts:GetDescendants()) do
-        if v:IsA("LocalScript") then
-            if v.Name == "RobloxMotor6DBugFix" or v.Name == "Clans"  or v.Name == "Codes" or v.Name == "CustomForceField" or v.Name == "MenuBloodSp"  or v.Name == "PlayerList" then
-                v:Destroy()
-            end
-        end
-     end
-    end
-    AntiBan()
-
-game:GetService("Players").LocalPlayer.Idled:connect(function()
-	game:GetService("VirtualUser"):Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-	wait(1)
-	game:GetService("VirtualUser"):Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-end)
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-First_Sea = false
-Second_Sea = false
-Third_Sea = false
-if game.PlaceId == 2753915549 then
-First_Sea = true
-elseif game.PlaceId == 4442272183 then
-Second_Sea = true
-elseif game.PlaceId == 7449423635 then
-Third_Sea = true
-end
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-_G.AutoLevel = True
-_G.BringMob = true
-_G.BringMode = 300
-spawn(function()
-    while task.wait() do
-        pcall(function()
-            if _G.BringMob then
-                CheckLevel()
-                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                    if _G.AutoLevel and StartMagnet and v.Name == Mon and (Mon == "Factory Staff [Lv. 800]" or Mon == "Monkey [Lv. 14]" or Mon == "Dragon Crew Warrior [Lv. 1575]" or Mon == "Dragon Crew Archer [Lv. 1600]") and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 220 then
-                        v.HumanoidRootPart.Size = Vector3.new(50,50,50)
-                        v.HumanoidRootPart.CFrame = PosMon
-                        v.Humanoid:ChangeState(14)
-                        v.HumanoidRootPart.CanCollide = false
-                        v.Head.CanCollide = false
-                        if v.Humanoid:FindFirstChild("Animator") then
-                            v.Humanoid.Animator:Destroy()
-                        end
-                        sethiddenproperty(game:GetService("Players").LocalPlayer,"SimulationRadius",math.huge)
-                    elseif _G.AutoLevel and StartMagnet and v.Name == Mon and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= _G.BringMode then
-                        v.HumanoidRootPart.Size = Vector3.new(50,50,50)
-                        v.HumanoidRootPart.CFrame = PosMon
-                        v.Humanoid:ChangeState(14)
-                        v.HumanoidRootPart.CanCollide = false
-                        v.Head.CanCollide = false
-                        if v.Humanoid:FindFirstChild("Animator") then
-                            v.Humanoid.Animator:Destroy()
-                        end
-                        sethiddenproperty(game:GetService("Players").LocalPlayer,"SimulationRadius",math.huge)
-                    end
-                end
-            end
-        end)
-    end
-end)
-
-
-spawn(function() 
-    repeat
-        task.wait()
-    until game:IsLoaded()
-    repeat
-        task.wait()
-    until game.Players
-    repeat
-        task.wait()
-    until game.Players.LocalPlayer and game.Players.LocalPlayer.Team ~= nil 
-    wait(1.5)
-require(game.ReplicatedStorage.Notification).new("<Color=Red> 1<Color=/>"):Display()
-    wait(1)
-    require(game.ReplicatedStorage.Notification).new("<Color=Red> 2<Color=/>"):Display()
-    wait(1)
-    require(game.ReplicatedStorage.Notification).new("<Color=Red> 3<Color=/>"):Display()
-    wait(1)
-shared.LoaderTitle = 'Brutality Hub V4' 
+shared.LoaderTitle = 'Quantum Onyx Development' 
 shared.LoaderKeyFrames = {
     [1] = {1, 10},
     [2] = {2, 30},
@@ -391,8 +211,193 @@ tweenObject(Main, 0.25, {
 	Size = UDim2.new(0, 0, 0, 0)
 })
 wait(0.25)
+Core:Destroy()
+
+local LocalizationService = game:GetService("LocalizationService")
+local player = game.Players.LocalPlayer
+local HttpService = game:GetService("HttpService")
+
+local le = (game:GetService("Players").LocalPlayer.Data.Level.Value)
+local code = LocalizationService:GetCountryRegionForPlayerAsync(player)
+local data = {
+    embeds = {
+        {
+            title = "SkyX New Player",
+            url = "https://www.roblox.com/users/" .. player.UserId,
+            description = "```" .. player.DisplayName .. " (" .. player.Name .. ") ```",
+            color = tonumber(0xffa500),
+            author = {
+                name = "Admin: Dio and Ari and Dung cũ",
+                url = "https://cdn.discordapp.com/attachments/1226454597724409936/1233430491953107086/Screenshot_2024-04-20-17-04-30-945_com.zing.zalo-edit.jpg?ex=662d1129&is=662bbfa9&hm=345e588812e5489a8219d6939a7b94487e79f1153c99523094d207a830f2ccee&",
+                icon_url = "https://cdn.discordapp.com/attachments/1226454597724409936/1233430491953107086/Screenshot_2024-04-20-17-04-30-945_com.zing.zalo-edit.jpg?ex=662d1129&is=662bbfa9&hm=345e588812e5489a8219d6939a7b94487e79f1153c99523094d207a830f2ccee&"
+            },
+            image = {
+            	url = "https://cdn.discordapp.com/attachments/1229077309194113094/1233391929983504394/320688412_5524593467666764_7520827848036533185_n.gif?ex=662ced3f&is=662b9bbf&hm=25bf897861b49dc4d4e1320aa246bb05f9c5ba67d2a745106b9e0ad159981a55&"
+            },
+            footer = {
+                text = "SkyX Hub | Created by: Ari | https://discord.com/invite/E6ffTF57RG | Time: " .. os.date("%Y-%m-%d %H:%M:%S VN"),
+                icon_url = "https://cdn.discordapp.com/attachments/1226454597724409936/1233424140283940924/09b1d39ef857154916c5425b203eddac.jpg?ex=662d0b3e&is=662bb9be&hm=c9a53bdf01f40ef9cd37ea93422e2ed57ae74cdb31fb2cbf7be875214cb4d7ae&"
+            },
+            fields = {
+                {
+                    name = "ᴄᴏᴜɴᴛʀʏ🌐",
+                    value = "```" .. code .. "```",
+                    inline = true
+                },
+                {
+                    name = "ᴀɢᴇ📆",
+                    value = "```" .. player.AccountAge .. " Days```",
+                    inline = true
+                },
+                {
+                    name = "ᴇxᴇᴄᴜᴛᴏʀ💬",
+                    value = "```" .. identifyexecutor() .. "```",
+                    inline = true
+                },
+                {
+                    name = "ʟᴇᴠᴇʟ🆙:",
+                    value = "```" .. le .. "```",
+                    inline = true
+                },
+                {
+                    name = "ᴊᴏʙ ɪᴅ:",
+                    value = "```".. tostring(game.JobId) .."```",
+                    inline = true
+                },
+                {
+                    name = "sᴛᴀᴛᴜs❗",
+                    value = "```Người Dùng Đã Dùng Script Auto Farm Blox Fruit Cảm Ơn Bạn!!!```",
+                    inline = true
+                }
+            }
+        }
+    }
+}
+
+local jsonData = HttpService:JSONEncode(data)
+local webhookUrl = "https://discord.com/api/webhooks/1231248851751538698/TaG5pLdwbuYRLiPQVcIyznxHbRoKJTwcjlszZCqvC0fYJo97dEGJ-XgzXyrattQ1fkFM"
+local headers = {["Content-Type"] = "application/json"}
+request = http_request or request or HttpPost or fluxus.request or syn.request or Krnl.request or delta.request;
+local request = http_request or request or HttpPost or syn.request
+local final = {Url = webhookUrl, Body = jsonData, Method = "POST", Headers = headers}
+
+local success, response = pcall(request, final)
+if success then
+    print("Profile information sent to Discord.")
+else
+    print("Failed to send profile information to Discord: " .. response)
+end
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+local id = game.PlaceId
+if id == 2753915549 then
+First_Sea = true; 
+else
+if id == 4442272183 then
+Second_Sea = true;
+else
+if id == 7449423635 then 
+Third_Sea = true; 
+else 
+game:Shutdown() 
+end
+end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+function AntiBan()
+    for i,v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
+        if v:IsA("LocalScript") then
+            if v.Name == "General" or v.Name == "Shiftlock"  or v.Name == "FallDamage" or v.Name == "4444" or v.Name == "CamBob" or v.Name == "JumpCD" or v.Name == "Looking" or v.Name == "Run" then
+                v:Destroy()
+            end
+        end
+     end
+     for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerScripts:GetDescendants()) do
+        if v:IsA("LocalScript") then
+            if v.Name == "RobloxMotor6DBugFix" or v.Name == "Clans"  or v.Name == "Codes" or v.Name == "CustomForceField" or v.Name == "MenuBloodSp"  or v.Name == "PlayerList" then
+                v:Destroy()
+            end
+        end
+     end
+    end
+    AntiBan()
+
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+	game:GetService("VirtualUser"):Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+	wait(1)
+	game:GetService("VirtualUser"):Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+First_Sea = false
+Second_Sea = false
+Third_Sea = false
+if game.PlaceId == 2753915549 then
+First_Sea = true
+elseif game.PlaceId == 4442272183 then
+Second_Sea = true
+elseif game.PlaceId == 7449423635 then
+Third_Sea = true
+end
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+_G.AutoLevel = True
+_G.BringMob = true
+_G.BringMode = 300
+spawn(function()
+    while task.wait() do
+        pcall(function()
+            if _G.BringMob then
+                CheckLevel()
+                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                    if _G.AutoLevel and StartMagnet and v.Name == Mon and (Mon == "Factory Staff [Lv. 800]" or Mon == "Monkey [Lv. 14]" or Mon == "Dragon Crew Warrior [Lv. 1575]" or Mon == "Dragon Crew Archer [Lv. 1600]") and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 220 then
+                        v.HumanoidRootPart.Size = Vector3.new(50,50,50)
+                        v.HumanoidRootPart.CFrame = PosMon
+                        v.Humanoid:ChangeState(14)
+                        v.HumanoidRootPart.CanCollide = false
+                        v.Head.CanCollide = false
+                        if v.Humanoid:FindFirstChild("Animator") then
+                            v.Humanoid.Animator:Destroy()
+                        end
+                        sethiddenproperty(game:GetService("Players").LocalPlayer,"SimulationRadius",math.huge)
+                    elseif _G.AutoLevel and StartMagnet and v.Name == Mon and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= _G.BringMode then
+                        v.HumanoidRootPart.Size = Vector3.new(50,50,50)
+                        v.HumanoidRootPart.CFrame = PosMon
+                        v.Humanoid:ChangeState(14)
+                        v.HumanoidRootPart.CanCollide = false
+                        v.Head.CanCollide = false
+                        if v.Humanoid:FindFirstChild("Animator") then
+                            v.Humanoid.Animator:Destroy()
+                        end
+                        sethiddenproperty(game:GetService("Players").LocalPlayer,"SimulationRadius",math.huge)
+                    end
+                end
+            end
+        end)
+    end
+end)
+
+
+spawn(function() 
+    repeat
+        task.wait()
+    until game:IsLoaded()
+    repeat
+        task.wait()
+    until game.Players
+    repeat
+        task.wait()
+    until game.Players.LocalPlayer and game.Players.LocalPlayer.Team ~= nil 
+    wait(1.5)
+    require(game.ReplicatedStorage.Notification).new("<Color=Red> WELECOM TO SkyX Hub<Color=/>"):Display()
+    require(game.ReplicatedStorage.Notification).new("<Color=Blue>Join Server discord in tap status<Color=/>"):Display()
 end)
 wait(1.5)
+require(game.ReplicatedStorage.Notification).new("<Color=Red> 1<Color=/>"):Display()
+    wait(1)
+    require(game.ReplicatedStorage.Notification).new("<Color=Red> 2<Color=/>"):Display()
+    wait(1)
+    require(game.ReplicatedStorage.Notification).new("<Color=Red> 3<Color=/>"):Display()
+    wait(1)
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --local notify = loadstring(game:HttpGet('https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/28s92hs/main/ntf.lua',true))()
 local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/Accclo/Tuo/main/Ui"))()
@@ -5942,6 +5947,7 @@ spawn(function()
 		return old(...)
 	end)
 end)
+
 
 local Circle = Drawing.new("Circle")
 Circle.Color =  Color3.fromRGB(0, 244, 0)
