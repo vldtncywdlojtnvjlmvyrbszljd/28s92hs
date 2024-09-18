@@ -172,7 +172,13 @@ spawn(function()
         task.wait()
     until game.Players.LocalPlayer and game.Players.LocalPlayer.Team ~= nil 
     wait(1.5)
-    shared.LoaderTitle = 'Quantum Onyx Development' 
+require(game.ReplicatedStorage.Notification).new("<Color=Red> 1<Color=/>"):Display()
+    wait(1)
+    require(game.ReplicatedStorage.Notification).new("<Color=Red> 2<Color=/>"):Display()
+    wait(1)
+    require(game.ReplicatedStorage.Notification).new("<Color=Red> 3<Color=/>"):Display()
+    wait(1)
+shared.LoaderTitle = 'Brutality Hub V4' 
 shared.LoaderKeyFrames = {
     [1] = {1, 10},
     [2] = {2, 30},
@@ -387,13 +393,6 @@ tweenObject(Main, 0.25, {
 wait(0.25)
 end)
 wait(1.5)
-require(game.ReplicatedStorage.Notification).new("<Color=Red> 1<Color=/>"):Display()
-    wait(1)
-    require(game.ReplicatedStorage.Notification).new("<Color=Red> 2<Color=/>"):Display()
-    wait(1)
-    require(game.ReplicatedStorage.Notification).new("<Color=Red> 3<Color=/>"):Display()
-    wait(1)
-
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --local notify = loadstring(game:HttpGet('https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/28s92hs/main/ntf.lua',true))()
 local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/Accclo/Tuo/main/Ui"))()
@@ -5943,7 +5942,6 @@ spawn(function()
 		return old(...)
 	end)
 end)
-
 
 local Circle = Drawing.new("Circle")
 Circle.Color =  Color3.fromRGB(0, 244, 0)
