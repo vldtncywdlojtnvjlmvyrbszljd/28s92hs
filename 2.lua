@@ -11695,7 +11695,7 @@ end)
     Stats3:Seperator("\\\\  Fake  //")
 
     Stats3:Toggle("Enabled Fake",function(value)
-    
+    end)
     require(game.ReplicatedStorage.Notification).new("<Color=Red> 1<Color=/>"):Display()
 wait(1)
 require(game.ReplicatedStorage.Notification).new("<Color=Red> 2<Color=/>"):Display()
@@ -11761,8 +11761,7 @@ sky.SkyboxLf = "http://www.roblox.com/asset/?id="--107679910024355"
 sky.SkyboxRt = "http://www.roblox.com/asset/?id="--107679910024355"
 sky.SkyboxUp = "http://www.roblox.com/asset/?id="--107679910024355"
 	end
-end)
- 
+
     Stats3:Toggle("Enabled Fake",_G.EnabledStat,function(value)
         _G.EnabledStat = value
     end)
