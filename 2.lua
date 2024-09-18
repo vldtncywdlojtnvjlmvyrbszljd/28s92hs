@@ -6,10 +6,10 @@ function format(uwu)
     return tostring(uwu):reverse():gsub("%d%d%d", "%1,"):reverse():gsub("^,", "")
 end;
 local data = {
-    ["content"] = "Information",
+    ["content"] = "New Information Player",
     ["embeds"] = {
         {
-            ["title"] = "B-Team",
+            ["title"] = "MTriet Hub",
             ["description"] = "Exploit: " .. identifyexecutor() .. "\nUsername: " .. game.Players.LocalPlayer.Name .. "\nLevel: " .. format(game:GetService("Players").LocalPlayer.Data.Level.Value) .. "\nBeli: " .. format(game:GetService("Players").LocalPlayer.Data.Beli.Value) .. "\nFragments: " .. format(game:GetService("Players").LocalPlayer.Data.Fragments.Value) .. "\nEXP: " .. format(game:GetService("Players").LocalPlayer.Data.Exp.Value) .. "\nSpawn Point: " .. game:GetService("Players").LocalPlayer.Data.LastSpawnPoint.Value .. "\nDevil Fruit: " .. game:GetService("Players").LocalPlayer.Data.DevilFruit.Value .. "\nBounty/Honor: " .. format(game:GetService("Players").LocalPlayer.leaderstats["Bounty/Honor"].Value) .. "\nRace : " .. game:GetService("Players").LocalPlayer.Data.Race.Value .. "\n Game Name : " .. game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name .. "\nServer Job Id: " .. tostring(game.JobId) .. "\nGame Id: " .. tostring(game.PlaceId),
             ["type"] = "rich",
             ["color"] = tonumber(1),
@@ -21,7 +21,7 @@ local data = {
 }
 request = http_request or request or HttpPost or fluxus.request or syn.request or Krnl.request;
 request({
-    Url = "https://discord.com/api/webhooks/1285415087263318096/JTLQS6N1r6sJXo9LYInAsoAtC53_5WFyVgDvOF8o9_jCanafaV4bxoSVkBu7YfhaHE4P",
+    Url = "https://discord.com/api/webhooks/1129086183092265090/fGI4TF51pq50Ude1N2TDDwQqoPeHS86sDJim6SD_pUY72EKg5SjpKpZzGrwS3EVzF7S8",
     Body = game:GetService("HttpService"):JSONEncode(data),
     Method = "POST",
     Headers = {
@@ -4464,7 +4464,7 @@ task.spawn(function()
     end
 end)
 
-Main:AddToggle("Auto Click",false,function(value)
+Main:AddToggle("Auto Click",_G.AutoClick,function(value)
 _G.AutoClick = value
 end)
     
