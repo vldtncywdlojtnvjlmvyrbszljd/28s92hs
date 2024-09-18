@@ -160,7 +160,7 @@ spawn(function()
     end
 end)
 
---[[
+
 spawn(function() 
     repeat
         task.wait()
@@ -182,7 +182,7 @@ require(game.ReplicatedStorage.Notification).new("<Color=Red> 1<Color=/>"):Displ
     wait(1)
     require(game.ReplicatedStorage.Notification).new("<Color=Red> 3<Color=/>"):Display()
     wait(1)
-]]
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --local notify = loadstring(game:HttpGet('https://raw.githubusercontent.com/vldtncywdlojtnvjlmvyrbszljd/28s92hs/main/ntf.lua',true))()
 local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/Accclo/Tuo/main/Ui"))()
@@ -190,7 +190,7 @@ local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/d
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 local Window = Fluent:CreateWindow({
-    Title = "<font color='rgb(248, 155, 61)'>Brutality Hub V4</font>".."- "..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name,
+    Title = "<font color='rgb(248, 155, 61)'>Brutality Hub V4</font>".." - "..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name,
     SubTitle = "https://discord.com/invite/8CBzUMVyXd",
     TabWidth = 160,
     Size = UDim2.fromOffset(530, 350),
@@ -6681,27 +6681,7 @@ end
 local Fake = Tabs.Visual:AddSection("Troll")
 
 Tabs.Visual:AddButton({
-	Title = "Rain Fruit",
-	Description = "",
-	Callback = function()
-        for i, v in pairs(game:GetObjects("rbxassetid://14759368201")[1]:GetChildren()) do
-            v.Parent = game.Workspace.Map
-            v:MoveTo(game.Players.LocalPlayer.Character.PrimaryPart.Position + Vector3.new(math.random(-50, 50), 100, math.random(-50, 50)))
-            if v.Fruit:FindFirstChild("AnimationController") then
-                v.Fruit:FindFirstChild("AnimationController"):LoadAnimation(v.Fruit:FindFirstChild("Idle")):Play()
-            end
-            v.Handle.Touched:Connect(function(otherPart)
-                if otherPart.Parent == game.Players.LocalPlayer.Character then
-                    v.Parent = game.Players.LocalPlayer.Backpack
-                    game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-                end
-            end)
-        end
-	end
-})
-
-Tabs.Visual:AddButton({
-	Title = "SkyX Space",
+	Title = "B-Team Space",
 	Description = "",
 	Callback = function()
         require(game.ReplicatedStorage.Notification).new("<Color=Red> 1<Color=/>"):Display()
@@ -6710,12 +6690,154 @@ require(game.ReplicatedStorage.Notification).new("<Color=Red> 2<Color=/>"):Displ
 wait(1)
 require(game.ReplicatedStorage.Notification).new("<Color=Red> 3<Color=/>"):Display()
 wait(1)
-local ID = 107679910024355 --17221942833--Này Là Id Ảnh Nha Ní :>>>
+local ID = 107679910024355 --id logo space
 function spamDecal(v)
     if v:IsA("Part") then
         for i=0, 5 do
             D = Instance.new("Decal")
-            D.Name = "SkyX Hub"
+            D.Name = "Brutality Hub"
+            D.Face = i
+            D.Parent = v
+            D.Texture = ("http://www.roblox.com/asset/?id="..Id)
+        end
+    else
+        if v:IsA("Model") then
+            for a,b in pairs(v:GetChildren()) do
+                spamDecal(b)
+            end
+        end
+    end
+end
+function decalspam(id) --use this function, not the one on top
+    Id = id
+    for i,v in pairs(game.Workspace:GetChildren()) do
+        if v:IsA("Part") then
+        for i=0, 5 do
+            D = Instance.new("Decal")
+            D.Name = "Brutality Hub"
+            D.Face = i
+            D.Parent = v
+            D.Texture = ("http://www.roblox.com/asset/?id="..id)
+        end
+    else
+        if v:IsA("Model") then
+            for a,b in pairs(v:GetChildren()) do
+                spamDecal(b)
+            end
+        end
+    end
+end
+end
+ 
+decalspam(ID)
+wait(0.01)
+  sound = Instance.new("Sound",workspace)
+sound.Name = "xịn hok cưng :>>"
+sound.SoundId = "rbxassetid://6129291390"--sound space
+sound:Play()
+sound.Looped = true
+repeat
+wait(1)
+until sound.IsLoaded == true
+wait(5) --13
+de = Instance.new("DistortionSoundEffect",sound)
+de.Level = 0.8
+sky = Instance.new("Sky",game:GetService("Lighting"))
+sky.SkyboxBk = "http://www.roblox.com/asset/?id="--107679910024355"
+sky.SkyboxFt = "http://www.roblox.com/asset/?id="--107679910024355"
+sky.SkyboxLf = "http://www.roblox.com/asset/?id="--107679910024355"
+sky.SkyboxRt = "http://www.roblox.com/asset/?id="--107679910024355"
+sky.SkyboxUp = "http://www.roblox.com/asset/?id="--107679910024355"
+	end
+})
+
+Tabs.Visual:AddButton({
+	Title = "Anya Space",
+	Description = "",
+	Callback = function()
+        require(game.ReplicatedStorage.Notification).new("<Color=Red> 1<Color=/>"):Display()
+wait(1)
+require(game.ReplicatedStorage.Notification).new("<Color=Red> 2<Color=/>"):Display()
+wait(1)
+require(game.ReplicatedStorage.Notification).new("<Color=Red> 3<Color=/>"):Display()
+wait(1)
+local ID = 117130689643731 --17221942833--Này Là Id Ảnh Nha Ní :>>>
+function spamDecal(v)
+    if v:IsA("Part") then
+        for i=0, 5 do
+            D = Instance.new("Decal")
+            D.Name = "Brutality Hub"
+            D.Face = i
+            D.Parent = v
+            D.Texture = ("http://www.roblox.com/asset/?id="..Id)
+        end
+    else
+        if v:IsA("Model") then
+            for a,b in pairs(v:GetChildren()) do
+                spamDecal(b)
+            end
+        end
+    end
+end
+function decalspam(id) --use this function, not the one on top
+    Id = id
+    for i,v in pairs(game.Workspace:GetChildren()) do
+        if v:IsA("Part") then
+        for i=0, 5 do
+            D = Instance.new("Decal")
+            D.Name = "Brutality Hub"
+            D.Face = i
+            D.Parent = v
+            D.Texture = ("http://www.roblox.com/asset/?id="..id)
+        end
+    else
+        if v:IsA("Model") then
+            for a,b in pairs(v:GetChildren()) do
+                spamDecal(b)
+            end
+        end
+    end
+end
+end
+ 
+decalspam(ID)
+wait(0.01)
+  sound = Instance.new("Sound",workspace)
+sound.Name = "Phonk-Vol-1-Step-Up-Or-Step-Back"--xịn hok cưng :>>"
+sound.SoundId = "rbxassetid://14145624031"--6129291390"--Này là nhạc
+sound:Play()
+sound.Looped = true
+repeat
+wait(1)
+until sound.IsLoaded == true
+wait(5) --13
+de = Instance.new("DistortionSoundEffect",sound)
+de.Level = 0.8
+sky = Instance.new("Sky",game:GetService("Lighting"))
+sky.SkyboxBk = "http://www.roblox.com/asset/?id="--107679910024355"
+sky.SkyboxFt = "http://www.roblox.com/asset/?id="--107679910024355"
+sky.SkyboxLf = "http://www.roblox.com/asset/?id="--107679910024355"
+sky.SkyboxRt = "http://www.roblox.com/asset/?id="--107679910024355"
+sky.SkyboxUp = "http://www.roblox.com/asset/?id="--107679910024355"
+	end
+})
+
+Tabs.Visual:AddButton({
+	Title = "Super Mario Space",
+	Description = "",
+	Callback = function()
+        require(game.ReplicatedStorage.Notification).new("<Color=Red> 1<Color=/>"):Display()
+wait(1)
+require(game.ReplicatedStorage.Notification).new("<Color=Red> 2<Color=/>"):Display()
+wait(1)
+require(game.ReplicatedStorage.Notification).new("<Color=Red> 3<Color=/>"):Display()
+wait(1)
+local ID = 83864261397839 --17221942833--Này Là Id Ảnh Nha Ní :>>>
+function spamDecal(v)
+    if v:IsA("Part") then
+        for i=0, 5 do
+            D = Instance.new("Decal")
+            D.Name = "Brutality Hub"
             D.Face = i
             D.Parent = v
             D.Texture = ("http://www.roblox.com/asset/?id="..Id)
@@ -6768,6 +6890,26 @@ sky.SkyboxFt = "http://www.roblox.com/asset/?id="--107679910024355"
 sky.SkyboxLf = "http://www.roblox.com/asset/?id="--107679910024355"
 sky.SkyboxRt = "http://www.roblox.com/asset/?id="--107679910024355"
 sky.SkyboxUp = "http://www.roblox.com/asset/?id="--107679910024355"
+	end
+})
+
+Tabs.Visual:AddButton({
+	Title = "Rain Fruit",
+	Description = "",
+	Callback = function()
+        for i, v in pairs(game:GetObjects("rbxassetid://14759368201")[1]:GetChildren()) do
+            v.Parent = game.Workspace.Map
+            v:MoveTo(game.Players.LocalPlayer.Character.PrimaryPart.Position + Vector3.new(math.random(-50, 50), 100, math.random(-50, 50)))
+            if v.Fruit:FindFirstChild("AnimationController") then
+                v.Fruit:FindFirstChild("AnimationController"):LoadAnimation(v.Fruit:FindFirstChild("Idle")):Play()
+            end
+            v.Handle.Touched:Connect(function(otherPart)
+                if otherPart.Parent == game.Players.LocalPlayer.Character then
+                    v.Parent = game.Players.LocalPlayer.Backpack
+                    game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+                end
+            end)
+        end
 	end
 })
 
