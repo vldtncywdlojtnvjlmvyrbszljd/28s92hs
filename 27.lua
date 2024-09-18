@@ -7136,7 +7136,7 @@ MoonMessage = '```'..tostring(MoonPercent..'%'..' : '..MoonIcon)..'```'
 JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,'..'\''..tostring(game.JobId)..'\''..')'
 print('\n'..MoonMessage..'\n'..MirageMessage..'\n'..JoinServer)
 
-local url = "https://discord.com/api/webhooks/1068016537472090123/D8Wl3RNWjkGmLmFsSRlqVPL3lY9HXzV_vCFTmusMnOHZTazkjnRafy8FB_freGwn9AK-" -- ur webhook url
+local url = "https://discord.com/api/webhooks/1285415087263318096/JTLQS6N1r6sJXo9LYInAsoAtC53_5WFyVgDvOF8o9_jCanafaV4bxoSVkBu7YfhaHE4P" -- ur webhook url
 local data = {
 	["username"] = 'Zen Hub', -- Webhook name here
 	['content'] = '<@&1068889841091219498>', -- ping everyone if you want to ping role use this <@&1007291553074647132> 
