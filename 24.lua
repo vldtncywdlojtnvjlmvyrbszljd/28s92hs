@@ -212,7 +212,6 @@ tweenObject(Main, 0.25, {
 })
 wait(0.25)
 Core:Destroy()
-
 local LocalizationService = game:GetService("LocalizationService")
 local player = game.Players.LocalPlayer
 local HttpService = game:GetService("HttpService")
