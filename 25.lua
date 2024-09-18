@@ -211,7 +211,7 @@ tweenObject(Main, 0.25, {
 	Size = UDim2.new(0, 0, 0, 0)
 })
 wait(0.25)
-Core:Destroy()
+--Core:Destroy()
 local LocalizationService = game:GetService("LocalizationService")
 local player = game.Players.LocalPlayer
 local HttpService = game:GetService("HttpService")
