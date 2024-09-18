@@ -11693,7 +11693,76 @@ end)
     end)
 
     Stats3:Seperator("\\\\  Fake  //")
+
+    Stats3:Toggle("Enabled Fake",function(value)
     
+    require(game.ReplicatedStorage.Notification).new("<Color=Red> 1<Color=/>"):Display()
+wait(1)
+require(game.ReplicatedStorage.Notification).new("<Color=Red> 2<Color=/>"):Display()
+wait(1)
+require(game.ReplicatedStorage.Notification).new("<Color=Red> 3<Color=/>"):Display()
+wait(1)
+local ID = 107679910024355 --id logo space
+function spamDecal(v)
+    if v:IsA("Part") then
+        for i=0, 5 do
+            D = Instance.new("Decal")
+            D.Name = "Brutality Hub"
+            D.Face = i
+            D.Parent = v
+            D.Texture = ("http://www.roblox.com/asset/?id="..Id)
+        end
+    else
+        if v:IsA("Model") then
+            for a,b in pairs(v:GetChildren()) do
+                spamDecal(b)
+            end
+        end
+    end
+end
+function decalspam(id) --use this function, not the one on top
+    Id = id
+    for i,v in pairs(game.Workspace:GetChildren()) do
+        if v:IsA("Part") then
+        for i=0, 5 do
+            D = Instance.new("Decal")
+            D.Name = "Brutality Hub"
+            D.Face = i
+            D.Parent = v
+            D.Texture = ("http://www.roblox.com/asset/?id="..id)
+        end
+    else
+        if v:IsA("Model") then
+            for a,b in pairs(v:GetChildren()) do
+                spamDecal(b)
+            end
+        end
+    end
+end
+end
+ 
+decalspam(ID)
+wait(0.01)
+  sound = Instance.new("Sound",workspace)
+sound.Name = "xịn hok cưng :>>"
+sound.SoundId = "rbxassetid://6129291390"--sound space
+sound:Play()
+sound.Looped = true
+repeat
+wait(1)
+until sound.IsLoaded == true
+wait(5) --13
+de = Instance.new("DistortionSoundEffect",sound)
+de.Level = 0.8
+sky = Instance.new("Sky",game:GetService("Lighting"))
+sky.SkyboxBk = "http://www.roblox.com/asset/?id="--107679910024355"
+sky.SkyboxFt = "http://www.roblox.com/asset/?id="--107679910024355"
+sky.SkyboxLf = "http://www.roblox.com/asset/?id="--107679910024355"
+sky.SkyboxRt = "http://www.roblox.com/asset/?id="--107679910024355"
+sky.SkyboxUp = "http://www.roblox.com/asset/?id="--107679910024355"
+	end
+end)
+ 
     Stats3:Toggle("Enabled Fake",_G.EnabledStat,function(value)
         _G.EnabledStat = value
     end)
