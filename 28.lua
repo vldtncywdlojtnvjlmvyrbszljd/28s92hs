@@ -7073,7 +7073,7 @@ spawn(function()
                 function toTargetWait(a)local b=(a.p-game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).Magnitude;tweenrach=game:GetService('TweenService'):Create(game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart"),TweenInfo.new(b/250,Enum.EasingStyle.Linear),{CFrame=a})tweenrach:Play()end;toTargetWait(workspace.Map.MysticIsland.PrimaryPart.CFrame*CFrame.new(0,250,0))
                 else
 game.StarterGui:SetCore("SendNotification", {
-        Title = "Zenhub"; -- the title (ofc)
+        Title = "𝕭𝖔𝖙𝖚𝖓𝖆.inc"; -- the title (ofc)
         Text = "Mirage not Found!"; -- what the text says (ofc)
         Icon = "rbxassetid://11354741327"; -- the image if u want. 
         Duration = 3; -- how long the notification should in secounds
@@ -7129,18 +7129,18 @@ end
 if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
 	MirageMessage = '```Mirage is spawing : ✔```'
 else
-	MirageMessage = '```Mirage isn\'t spawn : ❌```'
+	MirageMessage = '```Mirage island\' spawn : ❌```'
 end
 
 MoonMessage = '```'..tostring(MoonPercent..'%'..' : '..MoonIcon)..'```'
 JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,'..'\''..tostring(game.JobId)..'\''..')'
 print('\n'..MoonMessage..'\n'..MirageMessage..'\n'..JoinServer)
 
-local url = "https://discord.com/api/webhooks/1285415087263318096/JTLQS6N1r6sJXo9LYInAsoAtC53_5WFyVgDvOF8o9_jCanafaV4bxoSVkBu7YfhaHE4P" -- ur webhook url
+local url = "https://discord.com/api/webhooks/1068016537472090123/D8Wl3RNWjkGmLmFsSRlqVPL3lY9HXzV_vCFTmusMnOHZTazkjnRafy8FB_freGwn9AK-" -- ur webhook url
 local data = {
 	["username"] = 'Zen Hub', -- Webhook name here
-	['content'] = '<@&1068889841091219498>', -- ping everyone if you want to ping role use this <@&1007291553074647132> 
-	["avatar_url"] = "https://cdn.discordapp.com/attachments/1046327225626140693/1068018151452844053/IMG_20221023_070551.png", -- ur discord logo url
+	['content'] = '', -- ping everyone if you want to ping role use this <@&1007291553074647132> 
+	["avatar_url"] = "https://cdn.discordapp.com/attachments/1262105882871730347/1280929213607579678/armor.jpg?ex=66ebaa0b&is=66ea588b&hm=43868fec95709ba791892f7294d3a1b6eade9d55103c1d2a4b6ab7fb1568f7ff&", -- ur discord logo url
 	["embeds"] = {
 		{
 			["description"] = "**__Moon and Mirage Webhook__**",
@@ -7169,9 +7169,19 @@ local data = {
 					["value"] = MirageMessage,
 					["inline"] = true
 				}
+                {
+					["name"] = "[🕑] Kitsune",
+					["value"] = MoonMessage,
+					["inline"] = true
+				},
+				{
+					["name"] = "[🌲] Frozen",
+					["value"] = MirageMessage,
+					["inline"] = true
+				}
 			},
 			["footer"] = {
-				["text"] = "Webhook By Toshi#2667", -- you can remove this but it will hurt
+				["text"] = "Created By Botuna.inc", -- you can remove this but it will hurt
 			},
 			["timestamp"] = DateTime.now():ToIsoDate(),
 		}
@@ -12231,7 +12241,7 @@ Combat3:Slider("Fov Thickness",1,100,2,function(value)
 end
 	
 	local FOVCircle = Drawing.new("Circle")
-                  FOVCircle.Thickness = 1
+    FOVCircle.Thickness = 1
 	FOVCircle.NumSides = 460
 	FOVCircle.Filled = false
 	FOVCircle.Transparency = 0.5
