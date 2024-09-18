@@ -4026,33 +4026,33 @@ task.spawn(function()
         pcall(function()
 			for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 				if string.find(v.Name, "Terror") then
-					StatusTerror = "Found"
+					StatusTerror = "✅"
 				else 
-					StatusTerror = "Not Found"
+					StatusTerror = "❌"
 				end
 			end
 			
 			for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 				if string.find(v.Name, "Piranha") then
-					StatusSea = "Found"
+					StatusSea = "✅"
 				else 
-					StatusSea = "Not Found"
+					StatusSea = "❌"
 				end
 			end
 			
 			for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 				if string.find(v.Name, "Shark") then
-					StatusSea1 = "Found"
+					StatusSea1 = "✅"
 				else 
-					StatusSea1 = "Not Found"
+					StatusSea1 = "❌"
 				end
 			end
 			
 			for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 				if string.find(v.Name, "Fish Crew Member") then
-					StatusSea2 = "Found"
+					StatusSea2 = "✅"
 				else 
-			StatusSea2 = "Not Found"
+			StatusSea2 = "❌"
 		end
     end
  end)
@@ -5349,15 +5349,6 @@ spawn(function()
   end)
  end
  end)
-     
-    Tabs.St:AddButton({
-        Title = "Join Discord",
-        Description = "",
-        Callback = function()
-    setclipboard("https://discord.com/invite/tKvywQZJ4x") 
-        end
-    })
-    
     
     
 local BoneCheck = Tabs.St:AddParagraph({
@@ -5405,9 +5396,9 @@ local BoneCheck = Tabs.St:AddParagraph({
 		while wait() do
 			spawn(function()
 				if game:GetService("ReplicatedStorage"):FindFirstChild("Diablo") or game:GetService("ReplicatedStorage"):FindFirstChild("Deandre") or game:GetService("ReplicatedStorage"):FindFirstChild("Urban") or game:GetService("Workspace").Enemies:FindFirstChild("Diablo") or game:GetService("Workspace").Enemies:FindFirstChild("Deandre") or game:GetService("Workspace").Enemies:FindFirstChild("Urban") then
-					Elite_Hunter_Status:SetDesc("Status : ✅")	
+					Elite_Hunter_Status:SetDesc("✅ | Elite Hunter Spawning")	
 				else
-					Elite_Hunter_Status:SetDesc("Status : ❌")	
+					Elite_Hunter_Status:SetDesc("❌ | Elite Hunter No Spawn")	
 				end
 			end)
 		end
@@ -5422,9 +5413,9 @@ local BoneCheck = Tabs.St:AddParagraph({
         pcall(function()
             while wait() do
     if game:GetService("Workspace").Map:FindFirstChild("KitsuneIsland") then
-    Kitsune:SetDesc('✅')
+    Kitsune:SetDesc('✅ | Kitsune Island Spawning!!')
     else
-      Kitsune:SetDesc('❌' )
+      Kitsune:SetDesc('❌ | Kitsune Island Not Spawn' )
             end
                end
         end)
@@ -5439,9 +5430,9 @@ end)
     pcall(function()
         while wait() do
             if game.Workspace._WorldOrigin.Locations:FindFirstChild('Frozen Dimension') then
-                FrozenIsland:SetDesc('✅')
+                FrozenIsland:SetDesc('✅ | Frozen Island Spawning!!')
             else
-                FrozenIsland:SetDesc('❌')
+                FrozenIsland:SetDesc('❌ | Frozen Island Not Spawn')
             end
         end
     end)
@@ -5456,15 +5447,15 @@ end)
         pcall(function()
             while wait() do
     if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
-    Mirragecheck:SetDesc('✅')
+    Mirragecheck:SetDesc('✅ | Mirage Spawning!!')
     else
-      Mirragecheck:SetDesc('❌' )end
+      Mirragecheck:SetDesc('❌ | Mirage Island Not Spawn' )end
             end
         end)
 end)
     
     local FM = Tabs.St:AddParagraph({
-        Title = "Moon",
+        Title = "Full Moon",
         Content = ""
     })
     
@@ -5482,7 +5473,7 @@ end)
                     elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" then
                         FM:SetDesc("🌕 : Full Moon 15%")
                     else
-                        FM:SetDesc("No Moon")
+                        FM:SetDesc("Wait For Moon")
                     end
                 end)
             end
@@ -5527,8 +5518,6 @@ game:GetService("TeleportService"):TeleportToPlaceInstance(game.placeId,_G.Job, 
 end
 end
 end)
-
-
 
 
 
@@ -6761,7 +6750,7 @@ require(game.ReplicatedStorage.Notification).new("<Color=Red> 2<Color=/>"):Displ
 wait(1)
 require(game.ReplicatedStorage.Notification).new("<Color=Red> 3<Color=/>"):Display()
 wait(1)
-local ID = 117130689643731 --17221942833--Này Là Id Ảnh Nha Ní :>>>
+local ID = 106178327028394 --17221942833--Này Là Id Ảnh Nha Ní :>>>
 function spamDecal(v)
     if v:IsA("Part") then
         for i=0, 5 do
@@ -6832,7 +6821,7 @@ require(game.ReplicatedStorage.Notification).new("<Color=Red> 2<Color=/>"):Displ
 wait(1)
 require(game.ReplicatedStorage.Notification).new("<Color=Red> 3<Color=/>"):Display()
 wait(1)
-local ID = 83864261397839 --17221942833--Này Là Id Ảnh Nha Ní :>>>
+local ID = 75190690552720 --17221942833--Này Là Id Ảnh Nha Ní :>>>
 function spamDecal(v)
     if v:IsA("Part") then
         for i=0, 5 do
