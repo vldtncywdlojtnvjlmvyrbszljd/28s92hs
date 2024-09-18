@@ -7168,7 +7168,7 @@ local data = {
 					["name"] = "[🌲] Mirage Check",
 					["value"] = MirageMessage,
 					["inline"] = true
-				}
+				},
                 {
 					["name"] = "[🕑] Kitsune",
 					["value"] = MoonMessage,
