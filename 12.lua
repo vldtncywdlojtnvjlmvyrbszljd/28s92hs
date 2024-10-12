@@ -54,7 +54,7 @@ function Notif.New(text, timee)
     frame_3.AutomaticSize = Enum.AutomaticSize.X
     frame_3.BackgroundColor3 = Color3.new(0.141176, 0.141176, 0.141176)
     frame_3.BackgroundTransparency = 0.20000000298023224
-    frame_3.BorderColor3 = Color3.new(0, 0, 0)
+    frame_3.BorderColor3 = Color3.new(255, 0, 0)
     frame_3.Position = UDim2.new(0.5, 0, 1, 60)
     frame_3.Size = UDim2.new(0, 0, 0, 30)
     frame_3.Visible = true
@@ -1920,14 +1920,26 @@ end
 return uitab
 end
 
-
+function intiAppleHub() 
+    _G.antiscan = true
+    getgenv().A = require(game:GetService("ReplicatedStorage").CombatFramework.RigLib).wrapAttackAnimationAsync
+    getgenv().B = require(game.Players.LocalPlayer.PlayerScripts.CombatFramework.Particle).play
+    _G.setfflag = true
+    end
+    spawn(function()
+        while wait() do
+            if _G.setfflag then
+                setfflag("AbuseReportScreenshot", "False")
+                setfflag("AbuseReportScreenshotPercentage", "0")
+            end
+        end
+    end)
 
 local Library = Update:Window("Brutality Hub V4","WAIT UPDATE | IS UNDER CONSTRUCTION",Enum.KeyCode.RightControl);
 local Rumah = Library:AddTab("Home","18797343654")
 local Status = Library:AddTab("Status","78118444078057")
 local Main = Library:AddTab("Farming","18477352665")
 local Quest = Library:AddTab("Quest Item","18477473610")
-local Statistic = Library:AddTab("Statistic","18630736310")
 local RaceV4 = Library:AddTab("Race V4","18477916271")
 local SeaEvent = Library:AddTab("Sea Event","18630756931")
 local Bounty = Library:AddTab("Bounty","18492098759")
@@ -1935,7 +1947,8 @@ local Raid = Library:AddTab("Auto Raid","18491947999")
 local Teleport = Library:AddTab("Teleport","18477347703")
 local ShopDealer = Library:AddTab("Shop Dealer","18477410455")
 local DevilFruit = Library:AddTab("Devil Fruit","18477363100")
-local HopServer = Library:AddTab("Priority","104397992902189")
+local HopServer = Library:AddTab("Hop Server","104397992902189")
+local Statistic = Library:AddTab("Statistic","18630736310")
 --local STg = Library:AddTab("Setting","134210609072137")
 local Misc = Library:AddTab("MISC","18477908150")
 
@@ -1977,4 +1990,8 @@ end)
 Rumah:AddButton("Instagram Official Owner",function()
 setclipboard("https://www.instagram.com/medusafrzly/")
 Notif.New("Copying To Clipboard Done", 3)
+end)
+
+DevilFruit:AddSeperator("B-Team Community")
+DevilFruit:AddToggle("Detector Fruit",function()
 end)
