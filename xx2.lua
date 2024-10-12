@@ -5962,9 +5962,9 @@ end)
                             for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                                 if v.Name == "Core" and v.Humanoid.Health > 0 then
                                     repeat task.wait()
-                                        AutoHaki()         
-                                        EquipWeapon(_G.SelectWeapon)           
-                                        HyperCahaya(CFrame.new(448.46756, 199.356781, -441.389252))                                  
+                                        AutoHaki()
+                                        EquipWeapon(_G.SelectWeapon)
+                                        HyperCahaya(CFrame.new(448.46756, 199.356781, -441.389252))
                                         game:GetService("VirtualUser"):CaptureController()
                                         game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
                                     until v.Humanoid.Health <= 0 or _G.AutoFactory == false
@@ -5977,19 +5977,7 @@ end)
                 end)
             end
         end)
-    elseif World3 then
-    spawn(function()
-        pcall(function()
-            while wait() do
-    if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
-    Mirragecheck:Set('Mirage Island : 🟢')
-    else
-      Mirragecheck:Set('Mirage Island : 🔴')end
-            end
-        end)
-end)
-end --1 masalah done
-Mirragecheck = SeaEvent:AddLabel("Mirage Island : Only Third Sea")
+        
 SeaEvent:AddToggle("Teleport Mystic Island",_G.AutoMysticIsland,function(value)
         _G.AutoMysticIsland = value
         StopTween(_G.AutoMysticIsland)
