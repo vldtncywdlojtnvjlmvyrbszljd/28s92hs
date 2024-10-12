@@ -1,11 +1,10 @@
+-- Mengambil layanan LocalizationService
+local LocalizationService = game:GetService("LocalizationService")
+local playerLocale = LocalizationService.RobloxLocaleId -- Mendapatkan ID bahasa pengguna
 
--- Load Roblox LocalizationService
-local LocalizationService = game:GetService(translateText("LocalizationService"))
-local playerLocale = LocalizationService.RobloxLocaleId -- Get the playertranslateText('s locale ID
-
--- Function to translate text based on user')s language
+-- Fungsi untuk menerjemahkan teks berdasarkan bahasa pengguna
 local function translateText(text)
-    -- Tabel terjemahan yang lebih lengkap
+    -- Tabel terjemahan dengan lebih banyak bahasa
     local translations = {
         ["en-us"] = {
             ["Welcome"] = "Welcome",
@@ -49,13 +48,14 @@ local function translateText(text)
         }
     }
 
-    -- Mengembalikan terjemahan atau teks asli jika tidak tersedia
+    -- Kembalikan terjemahan atau teks asli jika tidak ada terjemahan yang tersedia
     if translations[playerLocale] and translations[playerLocale][text] then
         return translations[playerLocale][text]
     else
         return text
     end
 end
+
 
 
 local Notif = {}
