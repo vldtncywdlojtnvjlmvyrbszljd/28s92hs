@@ -4087,8 +4087,6 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------
 -- Fitur Status
 Status:AddSeperator("Status Acient One")
-Status:AddLabel("Acient One :")
-Status:AddLabel("Train V4 :")
 
 local bL = Status:AddLabel("Ancient One : " .. tostring(CheckAcientOneStatus()))
 local bPl = Status:AddLabel("Train v4 Status : " .. tostring(CheckAcientOneStatusTrain()))
@@ -4197,8 +4195,8 @@ spawn(function()
     end
 end)
 
-    NotifyItemFound_Chalice = Status:AddLabel("God's Chalice : 🔴")
-    NotifyItemFound_Fish = Status:AddLabel("Fish of Darkness : 🔴")
+    NotifyItemFound_Chalice = Status:AddLabel("God's Chalice : ")
+    NotifyItemFound_Fish = Status:AddLabel("Fish of Darkness : ")
 
     spawn(function()
         pcall(function()
