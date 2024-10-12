@@ -5,26 +5,58 @@ local playerLocale = LocalizationService.RobloxLocaleId -- Get the playertransla
 
 -- Function to translate text based on user')s language
 local function translateText(text)
-    -- Example translation table (expand this with more languages)
+    -- Tabel terjemahan yang lebih lengkap
     local translations = {
-        [translateText("en-us")] = {
-            [translateText("Welcome")] = translateText("Welcome"),
-            [translateText("Exit")] = translateText("Exit"
-        )},
-        [translateText("es-es")] = {
-            [translateText("Welcome")] = translateText("Bienvenido"),
-            [translateText("Exit")] = translateText("Salir"
-        )},
-        -- Add more languages here
+        ["en-us"] = {
+            ["Welcome"] = "Welcome",
+            ["Exit"] = "Exit"
+        },
+        ["es-es"] = {
+            ["Welcome"] = "Bienvenido",
+            ["Exit"] = "Salir"
+        },
+        ["fr-fr"] = {
+            ["Welcome"] = "Bienvenue",
+            ["Exit"] = "Sortie"
+        },
+        ["de-de"] = {
+            ["Welcome"] = "Willkommen",
+            ["Exit"] = "Ausgang"
+        },
+        ["it-it"] = {
+            ["Welcome"] = "Benvenuto",
+            ["Exit"] = "Uscita"
+        },
+        ["pt-br"] = {
+            ["Welcome"] = "Bem-vindo",
+            ["Exit"] = "Sair"
+        },
+        ["ru-ru"] = {
+            ["Welcome"] = "Добро пожаловать",
+            ["Exit"] = "Выход"
+        },
+        ["zh-cn"] = {
+            ["Welcome"] = "欢迎",
+            ["Exit"] = "退出"
+        },
+        ["ja-jp"] = {
+            ["Welcome"] = "ようこそ",
+            ["Exit"] = "終了"
+        },
+        ["ko-kr"] = {
+            ["Welcome"] = "환영합니다",
+            ["Exit"] = "종료"
+        }
     }
 
-    -- Return the translated text or the original if no translation is available
+    -- Mengembalikan terjemahan atau teks asli jika tidak tersedia
     if translations[playerLocale] and translations[playerLocale][text] then
         return translations[playerLocale][text]
     else
         return text
     end
 end
+
 
 local Notif = {}
 
