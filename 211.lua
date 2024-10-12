@@ -1938,7 +1938,7 @@ function intiBrutalityHub()
 local Library = Update:Window("Brutality Hub V4","WAIT UPDATE | IS UNDER CONSTRUCTION",Enum.KeyCode.RightControl);
 local Rumah = Library:AddTab("Home","18797343654")
 local Status = Library:AddTab("Status","78118444078057")
-local Main = Library:AddTab("Farming","18477352665")
+local Farming = Library:AddTab("Farming","18477352665")
 local Quest = Library:AddTab("Quest Item","18477473610")
 local RaceV4 = Library:AddTab("Race V4","18477916271")
 local SeaEvent = Library:AddTab("Sea Event","18630756931")
