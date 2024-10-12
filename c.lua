@@ -128,59 +128,50 @@ function Notif.New(text, timee)
     image_button.ZIndex = 2
     image_button.Parent = text_button
 
-    local TS = game:GetService("TweenService")
+    --Animations
+    TS:Create(frame_3, TweenInfo.new(0.2, Enum.EasingStyle.Quint), { Position = UDim2.new(0.5, 0, 1, 0) }):Play()
+    TS:Create(frame_2, TweenInfo.new(0.2, Enum.EasingStyle.Quint), { Size = UDim2.new(0, 100, 0, 35) }):Play()
 
--- Fungsi untuk membuka atau menutup frame
-local frame_open = false -- variabel untuk melacak apakah frame terbuka atau tidak
-
-local function toggle_frame()
-    if frame_open then
-        -- Animasi untuk menutup (bergulir ke bawah)
-        TS:Create(frame_3, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.In), { Position = UDim2.new(0.5, 0, 1, 0) }):Play()
-        frame_open = false
-    else
-        -- Animasi untuk membuka (muncul dari bawah ke tengah)
-        frame_3.Position = UDim2.new(0.5, 0, 1, 0) -- Awal dari posisi di bawah layar
-        TS:Create(frame_3, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), { Position = UDim2.new(0.5, 0, 0.5, 0) }):Play() -- Tween ke tengah layar
-        frame_open = true
+    -- Close Button
+    local function close_notif()
+        TS:Create(image_button, TweenInfo.new(0.15, Enum.EasingStyle.Quint), { ImageTransparency = 1 }):Play()
+        TS:Create(text_button, TweenInfo.new(0.15, Enum.EasingStyle.Quint), { BackgroundTransparency = 1 }):Play()
+        TS:Create(text_label, TweenInfo.new(0.15, Enum.EasingStyle.Quint), { TextTransparency = 1 }):Play()
+        task.wait(.17)
+        TS:Create(frame_3, TweenInfo.new(0.25, Enum.EasingStyle.Quint), { BackgroundTransparency = 1 }):Play()
+        TS:Create(uistroke, TweenInfo.new(0.24, Enum.EasingStyle.Quint), { Transparency = 1 }):Play()
+        task.wait(.05)
+        TS:Create(frame_2, TweenInfo.new(0.2, Enum.EasingStyle.Quint), { Size = UDim2.new(0, 100, 0, 0) }):Play()
+        task.wait(.2)
+        frame_2:Destroy()
     end
+    text_button.MouseEnter:Connect(function()
+        TS:Create(text_button, TweenInfo.new(0.25, Enum.EasingStyle.Quint), { BackgroundTransparency = 0.8 }):Play()
+        TS:Create(image_button, TweenInfo.new(0.3, Enum.EasingStyle.Quint),
+            { ImageColor3 = Color3.new(0.890196, 0.054902, 0.054902) }):Play()
+    end)
+
+    text_button.MouseLeave:Connect(function()
+        TS:Create(text_button, TweenInfo.new(0.25, Enum.EasingStyle.Quint), { BackgroundTransparency = 1 }):Play()
+        TS:Create(image_button, TweenInfo.new(0.3, Enum.EasingStyle.Quint),
+            { ImageColor3 = Color3.new(0.784314, 0.784314, 0.784314) }):Play()
+    end)
+
+    text_button.MouseButton1Click:Connect(function()
+        TS:Create(image_button, TweenInfo.new(0.15, Enum.EasingStyle.Quint), { ImageTransparency = 1 }):Play()
+        TS:Create(text_button, TweenInfo.new(0.15, Enum.EasingStyle.Quint), { BackgroundTransparency = 1 }):Play()
+        TS:Create(text_label, TweenInfo.new(0.15, Enum.EasingStyle.Quint), { TextTransparency = 1 }):Play()
+        task.wait(.17)
+        TS:Create(frame_3, TweenInfo.new(0.25, Enum.EasingStyle.Quint), { BackgroundTransparency = 1 }):Play()
+        TS:Create(uistroke, TweenInfo.new(0.24, Enum.EasingStyle.Quint), { Transparency = 1 }):Play()
+        task.wait(.05)
+        TS:Create(frame_2, TweenInfo.new(0.2, Enum.EasingStyle.Quint), { Size = UDim2.new(0, 100, 0, 0) }):Play()
+        task.wait(.2)
+        frame_2:Destroy()
+    end)
+    image_button.MouseButton1Click:Connect(close_notif)
+    task.delay(tonumber(timee) and timee or 10, close_notif)
 end
-
--- Close Button
-local function close_notif()
-    -- Animasi untuk menutup frame saat tombol close diklik
-    TS:Create(image_button, TweenInfo.new(0.15, Enum.EasingStyle.Quint), { ImageTransparency = 1 }):Play()
-    TS:Create(text_button, TweenInfo.new(0.15, Enum.EasingStyle.Quint), { BackgroundTransparency = 1 }):Play()
-    TS:Create(text_label, TweenInfo.new(0.15, Enum.EasingStyle.Quint), { TextTransparency = 1 }):Play()
-    task.wait(.17)
-    TS:Create(frame_3, TweenInfo.new(0.25, Enum.EasingStyle.Quint), { BackgroundTransparency = 1 }):Play()
-    TS:Create(uistroke, TweenInfo.new(0.24, Enum.EasingStyle.Quint), { Transparency = 1 }):Play()
-    task.wait(.05)
-    TS:Create(frame_2, TweenInfo.new(0.2, Enum.EasingStyle.Quint), { Size = UDim2.new(0, 100, 0, 0) }):Play()
-    task.wait(.2)
-    frame_2:Destroy()
-end
-
--- Mouse Enter dan Leave untuk efek hover
-text_button.MouseEnter:Connect(function()
-    TS:Create(text_button, TweenInfo.new(0.25, Enum.EasingStyle.Quint), { BackgroundTransparency = 0.8 }):Play()
-    TS:Create(image_button, TweenInfo.new(0.3, Enum.EasingStyle.Quint),
-        { ImageColor3 = Color3.new(0.890196, 0.054902, 0.054902) }):Play()
-end)
-
-text_button.MouseLeave:Connect(function()
-    TS:Create(text_button, TweenInfo.new(0.25, Enum.EasingStyle.Quint), { BackgroundTransparency = 1 }):Play()
-    TS:Create(image_button, TweenInfo.new(0.3, Enum.EasingStyle.Quint),
-        { ImageColor3 = Color3.new(0.784314, 0.784314, 0.784314) }):Play()
-end)
-
--- Ketika tombol diklik, toggle frame
-text_button.MouseButton1Click:Connect(toggle_frame)
-image_button.MouseButton1Click:Connect(close_notif)
-
--- Tutup otomatis setelah waktu tertentu
-task.delay(tonumber(timee) and timee or 10, close_notif)
-
 
 local ScreenGui1 = Instance.new("ScreenGui")
 local ImageButton1 = Instance.new("ImageButton")
