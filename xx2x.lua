@@ -5977,6 +5977,7 @@ end)
                 end)
             end
         end)
+    end
         
 SeaEvent:AddToggle("Teleport Mystic Island",_G.AutoMysticIsland,function(value)
         _G.AutoMysticIsland = value
