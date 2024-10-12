@@ -5,12 +5,21 @@ end)
 
 -- Penanganan jika terjadi kesalahan saat memuat
 if not success then
-    warn("Failed to load the module from GitHub")
+    return
+end
+
+-- Cek apakah module memiliki fungsi Window()
+if type(module.Window) ~= "function" then
     return
 end
 
 -- Menggunakan module yang dimuat untuk mengakses library GUI
 local Library = module:Window("Brutality Hub V4", "WAIT UPDATE | IS UNDER CONSTRUCTION", Enum.KeyCode.RightControl)
+
+-- Cek apakah Library terdefinisi
+if not Library then
+    return
+end
 
 -- Menambahkan tab ke dalam GUI
 local Rumah = Library:AddTab("Home", "18797343654")
